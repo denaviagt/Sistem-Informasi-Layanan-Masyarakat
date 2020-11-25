@@ -21,4 +21,7 @@ Route::get('/', function () {
 Route::get('home', function () {
     return view('dashboard');
 });
-Route::get('/admin', 'AdminController@index');
+// Route::get('/admin', 'AdminController@index');
+Route::get('/admin', function () {
+    return view('admin');
+});
