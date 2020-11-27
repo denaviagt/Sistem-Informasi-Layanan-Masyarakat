@@ -16,7 +16,10 @@
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
+
+    {{-- Datatable --}}
+    <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,24 +67,12 @@
     <script src="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js') }}"></script>
     <script src="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('dist/js/pages/dashboards/dashboard1.min.js') }}"></script>
+    <script src="{{ asset('assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
 
     <script>
         $(document).ready(function() {
-            $('#admin-menu').click(function(e) {
-                e.preventDefault();
-
-                $.ajax({
-                    url: "{{ url('admin') }}",
-                    type: 'GET',
-                    success: function(data, status, xhr) {
-                        let objData = JSON.parse(data);
-
-                        $('#page-wrapper').html(objData.html);
-                        // $('title').html(objData.title);
-                        // $('.title-halaman').html(objData.title);
-                    }
-                })
-            })
+            $('#zero_config').DataTable();
         })
 
     </script>
