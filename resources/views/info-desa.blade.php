@@ -17,6 +17,14 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
+        <div class="row mb-2">
+            <div class="col-6">
+                <h4 class="card-title">Info Desa</h4>
+            </div>
+            <div class="col-6 text-right">
+            <a href="{{url("tambah-info-desa")}}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">

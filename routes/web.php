@@ -27,3 +27,6 @@ Route::get('/admin', function () {
 Route::get('/info-desa', function () {
     return view('info-desa');
 });
+Route::get('/tambah-info-desa', function () {
+    return view('tambah-info-desa');
+});
