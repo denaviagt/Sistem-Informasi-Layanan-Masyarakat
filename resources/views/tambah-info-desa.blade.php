@@ -41,7 +41,7 @@
                     </div>
                   </div><div class="form-group row">
                     <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <input type="text" class="form-control" id="inputStatus">
                     </div>
                   </div>
