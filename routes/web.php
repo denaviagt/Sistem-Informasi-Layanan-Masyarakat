@@ -30,3 +30,6 @@ Route::get('/info-desa', function () {
 Route::get('/tambah-info-desa', function () {
     return view('tambah-info-desa');
 });
+Route::get('/data-penduduk-desa', function () {
+    return view('data-penduduk-desa');
+});

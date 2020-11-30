@@ -78,7 +78,7 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Laporan</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="data-penduduk-desa"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
                                 class="hide-menu">Data Penduduk
                             </span></a>

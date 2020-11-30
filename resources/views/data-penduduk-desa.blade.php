@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Info Desa')
+@section('tittle', 'Data Penduduk Desa' )
 
 @section('content')
+    
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -19,10 +20,7 @@
         <!-- ============================================================== -->
         <div class="row mb-2">
             <div class="col-6">
-                <h4 class="card-title">Info Desa</h4>
-            </div>
-            <div class="col-6 text-right">
-            <a href="{{url("tambah-info-desa")}}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+                <h4 class="card-title">Data Penduduk Desa Jogotirto</h4>
             </div>
         </div>
         <div class="row">
@@ -35,11 +33,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>ID</th>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>ID Admin</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Pedukuhan</th>
+                                        <th>RT</th>
+                                        <th>RW</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,15 +48,7 @@
                                         <td>61</td>
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
-                                        <td>
-                                            <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                    data-target="#edit-admin"></i></button>
-
-                                            <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                    data-target="#delete-admin"></i></button>
-                                        </td>
+                                        <td>$320,800</td>
                                     </tr>
                                 </tbody>
                             </table>
