@@ -24,7 +24,7 @@
                                 class="feather-icon"></i><span class="hide-menu">Profil Desa
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/info-desa') }}"
                             aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
                                 class="hide-menu">Info Desa</span></a></li>
 
