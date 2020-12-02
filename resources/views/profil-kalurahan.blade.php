@@ -69,6 +69,7 @@
                                     </ul>
 
                                 </div>
+                                <button class="btn btn-primary ml-auto">Edit</button>
                             </div>
                         </div>
                         <div class="tab-pane " id="aparaturs">

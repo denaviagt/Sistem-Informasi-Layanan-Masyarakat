@@ -30,3 +30,15 @@ Route::get('/profil-kalurahan', function () {
 Route::get('/edit-password', function () {
     return view('edit-password');
 });
+Route::get('/info-desa', function () {
+    return view('info-desa');
+});
+Route::get('/tambah-info-desa', function () {
+    return view('tambah-info-desa');
+});
+Route::get('/data-penduduk-desa', function () {
+    return view('data-penduduk-desa');
+});
+Route::get('/info-layanan-a', function () {
+    return view('info-layanan-a');
+});
