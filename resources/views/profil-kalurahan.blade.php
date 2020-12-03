@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs mb-3">
                         <li class="nav-item">
-                            <a href="#visi-misi" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            <a href="#visi-misi" data-toggle="tab" aria-expanded="false" class="nav-link active">
                                 <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
                                 <span class="d-none d-lg-block">Visi Misi</span>
                             </a>
@@ -69,6 +69,7 @@
                                     </ul>
 
                                 </div>
+                                <button class="btn btn-primary ml-auto">Edit</button>
                             </div>
                         </div>
                         <div class="tab-pane " id="aparaturs">
@@ -99,7 +100,7 @@
                                                             <td>1</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Kepala Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -118,7 +119,7 @@
                                                             <td>2</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Sekretaris Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -137,7 +138,7 @@
                                                             <td>3</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Sekretaris Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -156,7 +157,7 @@
                                                             <td>4</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Sekretaris Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -175,7 +176,7 @@
                                                             <td>5</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Sekretaris Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -194,7 +195,7 @@
                                                             <td>6</td>
                                                             <td>AD01</td>
                                                             <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Sekretaris Desa</td>
                                                             <td>2020/2021</td>
                                                             <td>Aktif</td>
                                                             <td>
@@ -243,8 +244,8 @@
                                                         <tr>
                                                             <td>1</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Rejosari</td>
+                                                            <td>Sudarman</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
@@ -261,8 +262,8 @@
                                                         <tr>
                                                             <td>2</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Karongan</td>
+                                                            <td>Suyanto</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
@@ -279,8 +280,8 @@
                                                         <tr>
                                                             <td>3</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Karongan</td>
+                                                            <td>Suyanto</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
@@ -297,8 +298,8 @@
                                                         <tr>
                                                             <td>4</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Karongan</td>
+                                                            <td>Suyanto</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
@@ -315,8 +316,8 @@
                                                         <tr>
                                                             <td>5</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Karongan</td>
+                                                            <td>Suyanto</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
@@ -333,8 +334,8 @@
                                                         <tr>
                                                             <td>6</td>
                                                             <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Edinburgh@gmail.com</td>
+                                                            <td>Karongan</td>
+                                                            <td>Suyanto</td>
                                                             <td>Aktif</td>
                                                             <td>
                                                                 <button type="button" class="btn" data-toggle="tooltip"
