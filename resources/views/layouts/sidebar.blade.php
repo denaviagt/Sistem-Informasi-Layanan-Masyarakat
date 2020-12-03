@@ -30,17 +30,30 @@
 
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
-                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    <li class="sidebar-item"> <a href="javascript:void(0)" class="sidebar-link has-arrow"
                             aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                 class="hide-menu">Info Layanan </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="info-layanan-a" class="sidebar-link"><span
-                                        class="hide-menu"> Layanan A
+                        <ul aria-expanded="false" class="collapse first-level base-level-line">
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link has-arrow"><span
+                                        class="hide-menu">Layanan A
                                     </span></a>
+                                <ul aria-expanded="false" class="collapse second-level base-level-line">
+                                    <li class="sidebar-item"><a href="info-layanan-syarat" class="sidebar-link"><span
+                                                class="hide-menu">Syarat</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ url('info-layanan-alur') }}"
+                                            class="sidebar-link"><span class="hide-menu">Alur</span></a></li>
+                                </ul>
                             </li>
-                            <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link has-arrow"><span
                                         class="hide-menu">Layanan B
                                     </span></a>
+                                <ul aria-expanded="false" class="collapse second-level base-level-line">
+                                    <li class="sidebar-item"><a href="javascript:void(0)"
+                                            class="sidebar-link has-arrow"><span class="hide-menu">Syarat</span></a>
+                                    </li>
+                                    <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                                class="hide-menu">Alur</span></a></li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
