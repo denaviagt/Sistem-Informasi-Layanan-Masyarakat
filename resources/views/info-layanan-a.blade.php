@@ -38,10 +38,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
+                                            <td>1</td>
+                                            <td>01</td>
+                                            <td>Foto Copy KK</td>
+                                            <td>Membawa Foto Copy Kartu Keluarga</td>
                                             <td>
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Edit"><i class="fas fa-edit" data-toggle="modal"
@@ -72,15 +72,5 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center text-muted">
-            All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
 @endsection

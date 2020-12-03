@@ -20,7 +20,7 @@
                      <!-- Logo text -->
                      <span class="logo-text">
                          <!-- dark Logo text -->
-                         <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                         <img src="{{ asset('assets/img/logo.png') }}" alt="homepage" class="dark-logo" />
                          <!-- Light Logo text -->
                          <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo"
                              alt="homepage" />

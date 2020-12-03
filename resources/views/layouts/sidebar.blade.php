@@ -21,7 +21,7 @@
 
                     <li class="sidebar-item"> <a class="sidebar-link"
                             href="{{ url('/profil-kalurahan') }}"" aria-expanded=" false"><i data-feather="tag"
-                                class="feather-icon"></i><span class="hide-menu">Profil Desa
+                                class="feather-icon"></i><span class="hide-menu">Profil Kalurahan
                             </span></a>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/info-desa') }}"

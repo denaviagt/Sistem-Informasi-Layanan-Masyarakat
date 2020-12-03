@@ -37,13 +37,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>1</td>
+                                            <td>01</td>
+                                            <td>3200003002873</td>
                                             <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>$320,800</td>
+                                            <td>Rejosari</td>
+                                            <td>01</td>
+                                            <td>05</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -65,15 +65,5 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center text-muted">
-            All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
 @endsection

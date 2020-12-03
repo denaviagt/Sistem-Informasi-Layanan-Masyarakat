@@ -40,12 +40,12 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>1</td>
+                                            <td>02</td>
+                                            <td>Bantuan Langsung Tunai</td>
+                                            <td>03/12/2020</td>
+                                            <td>1</td>
+                                            <td>Publish</td>
                                             <td>
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Edit"><i class="fas fa-edit" data-toggle="modal"
@@ -78,13 +78,6 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center text-muted">
-            All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+
     </div>
 @endsection
