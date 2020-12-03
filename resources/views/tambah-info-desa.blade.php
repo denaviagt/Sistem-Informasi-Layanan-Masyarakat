@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('tittle', 'Tambah Info Desa')
+@section('title', 'Tambah Info Desa')
 
 @section('content')
 
@@ -15,41 +15,18 @@
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-6">
+            <h4 class="card-title">Tambah Info Desa</h4>
+        </div>
+    </div>
             <form>
-                <div class="form-group row">
-                  <label for="inputJudul" class="col-sm-2 col-form-label">Judul</label>
-                  <div class="col-sm-3">
-                    <input type="text" class="form-control" id="inputJudul">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="inputIsi" class="col-sm-2 col-form-label">Isi</label>
-                  <div class="col-sm-10">
-                    <textarea name="content" id="inputIsi" cols="30" rows="10"></textarea>
-                  </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputGambar" class="col-sm-2 col-form-label">Gambar</label>
-                    <div class="col-sm-6">
-                      <input type="file" class="form-control-file" id="inputGambar">
+                <div class="input-group row">
+                    <label for="inputGambar" class="col-sm-2 col-form-label">Thumbnall</label>
+                    <input type="file" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append"><a href="{{url("tambah-info-desa")}}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Upload</a>
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="inputLampiran" class="col-sm-2 col-form-label">Lampiran</label>
-                    <div class="col-sm-6">
-                      <input type="file" class="form-control-file" id="inputLampiran">
-                    </div>
-                  </div><div class="form-group row">
-                    <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputStatus">
-                    </div>
-                  </div>
-                <div class="form-group row">
-                  <div class="col-sm-8 text-right">
-                    <button type="submit" class="btn btn-danger">Tambah</button>
-                  </div>
-                </div>
             </form>
     </div>
     <!-- ============================================================== -->
@@ -66,5 +43,5 @@
     <!-- End footer -->
     <!-- ============================================================== -->
 </div>
-    
+
 @endsection
