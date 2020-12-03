@@ -24,8 +24,8 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
-Route::get('/info-desa', function () {
-    return view('info-desa');
+Route::get('/profil-kalurahan', function () {
+    return view('profil-kalurahan');
 });
 Route::get('/edit-password', function () {
     return view('edit-password');
