@@ -39,6 +39,9 @@ Route::get('/tambah-info-desa', function () {
 Route::get('/data-penduduk-desa', function () {
     return view('data-penduduk-desa');
 });
-Route::get('/info-layanan-a', function () {
-    return view('info-layanan-a');
+Route::get('/info-layanan-syarat', function () {
+    return view('info-layanan-syarat');
+});
+Route::get('/info-layanan-alur', function () {
+    return view('info-layanan-alur');
 });
