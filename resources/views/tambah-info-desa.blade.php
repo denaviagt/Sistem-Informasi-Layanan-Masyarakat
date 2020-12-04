@@ -15,19 +15,51 @@
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-6">
-            <h4 class="card-title">Tambah Info Desa</h4>
+        <div class="row mb-2">
+            <div class="col-6">
+                <h4 class="card-title">Tambah Info Desa</h4>
+            </div>
         </div>
-    </div>
-            <form>
-                <div class="input-group row">
-                    <label for="inputGambar" class="col-sm-2 col-form-label">Thumbnall</label>
-                    <input type="file" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append"><a href="{{url("tambah-info-desa")}}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Upload</a>
+        <form>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Judul</label>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control">
                     </div>
-                  </div>
-            </form>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Thumbnall</label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="form-control-file" id="colFormLabelSm" placeholder="col-form-label-sm">
+                        </div>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-danger btn-sm">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Status</label>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <select class="custom-select" id="inlineFormCustomSelect">
+                            <option selected>Choose...</option>
+                            <option value="1">Publish</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-right mr-5">
+                <button type="button" class="btn btn-danger btn-sm mb-6">Batal</button>
+                <button type="button" class="btn btn-danger btn-sm mb-6">Selanjutnya</button>
+            </div>
+        </form>
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
@@ -36,8 +68,7 @@
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer text-center">
-        All Rights Reserved by Adminmart. Designed and Developed by <a
-            href="https://wrappixel.com">WrapPixel</a>.
+        All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->
