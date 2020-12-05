@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Info Desa')
+@section('title', 'Isi Tambah Info Desa')
 
 @section('content')
 
@@ -20,44 +20,18 @@
                 <h4 class="card-title">Tambah Info Desa</h4>
             </div>
         </div>
-        <form action="{{url("isi-tambah-info-desa")}}">
+        <form action="{{url("tambah-info-desa")}}">
             <div class="form-group row">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Judul</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Isi</label>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Thumbnall</label>
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="form-control-file" id="colFormLabelSm" placeholder="col-form-label-sm">
-                        </div>
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-danger btn-sm">Upload</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Status</label>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <select class="custom-select" id="inlineFormCustomSelect">
-                            <option selected>Choose...</option>
-                            <option value="1">Publish</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        <textarea name="textarea" id="" cols="80" rows="15"></textarea>
                     </div>
                 </div>
             </div>
             <div class="form-group text-right mr-5">
-                <button type="button" class="btn btn-danger btn-sm mb-6">Batal</button>
-                <button type="submit" class="btn btn-danger btn-sm mb-6">Selanjutnya</button>
+                <button type="submit" class="btn btn-danger btn-sm mb-6">Kembali</button>
+                <button type="button" class="btn btn-danger btn-sm mb-6">Tambah</button>
             </div>
         </form>
     </div>
