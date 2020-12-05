@@ -5,16 +5,49 @@
 @section('content')
     <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3 col-xlg-3">
+                    <div class="card card-hover">
+                        <div class="p-2 bg-primary text-center">
+                            <h1 class="font-light text-white">2,064</h1>
+                            <h6 class="text-white">Total Permohonan</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3 col-xlg-3">
+                    <div class="card card-hover">
+                        <div class="p-2 bg-cyan text-center">
+                            <h1 class="font-light text-white">1,738</h1>
+                            <h6 class="text-white">Proses</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3 col-xlg-3">
+                    <div class="card card-hover">
+                        <div class="p-2 bg-success text-center">
+                            <h1 class="font-light text-white">1100</h1>
+                            <h6 class="text-white">Selesai</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-3 col-xlg-3">
+                    <div class="card card-hover">
+                        <div class="p-2 bg-danger text-center">
+                            <h1 class="font-light text-white">964</h1>
+                            <h6 class="text-white">Pending</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
@@ -22,8 +55,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-right mb-3">
-                                <a href="" type="button"
-                                    class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+                                <a href="#" type="button" class="btn waves-effect waves-light btn-danger"
+                                    data-toggle="modal" data-target="#add-layanan">Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered no-wrap">
@@ -41,11 +74,11 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>02</td>
-                                            <td>Bantuan Langsung Tunai</td>
-                                            <td>03/12/2020</td>
-                                            <td>1</td>
-                                            <td>Publish</td>
+                                            <td>01</td>
+                                            <td>0129919191919</td>
+                                            <td>Sri Wahyuni</td>
+                                            <td>06/12/2020</td>
+                                            <td>Diproses</td>
                                             <td>
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Edit"><i class="fas fa-edit" data-toggle="modal"
@@ -65,19 +98,92 @@
             </div>
             <!-- ============================================================== -->
             <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-
     </div>
+
+    <!--  Modal content for Add Layanan -->
+    <div class="modal fade" id="add-layanan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Tambah Layanan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body m-2">
+                    <form>
+                        <div class="form-group row">
+                            <label for="input-nik" class="col-sm-3 col-form-label">NIK </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="input-nik">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="input-nama" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="input-nama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="input-alamat" class="col-sm-3 col-form-label">Alamat</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" id="input-alamat"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-deskripsi-layanan" class="col-sm-3 col-form-label">Deskripsi</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" id="input-deskripsi-layanan"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label col-form-label-sm">Masukan foto KTP</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="input-berkas-1">
+                                        <label class="custom-file-label" for="input-berkas-1">Pilih Gambar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label col-form-label-sm">Masukan foto KK</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="input-berkas-2">
+                                        <label class="custom-file-label" for="input-berkas-2">Pilih Gambar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label col-form-label-sm">Masukan foto pengantar RW</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="input-berkas-3">
+                                        <label class="custom-file-label" for="input-berkas-3">Pilih Gambar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class=" d-flex mx-auto">
+                                <button type="submit" class="btn btn-danger m-2">Batal</button>
+                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
