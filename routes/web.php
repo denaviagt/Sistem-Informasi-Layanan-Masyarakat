@@ -45,3 +45,9 @@ Route::get('/info-layanan-syarat', function () {
 Route::get('/info-layanan-alur', function () {
     return view('info-layanan-alur');
 });
+Route::get('/isi-tambah-info-desa', function () {
+    return view('isi-tambah-info-desa');
+});
+Route::get('/layanan', function () {
+    return view('layanan');
+});
