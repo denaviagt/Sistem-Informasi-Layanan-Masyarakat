@@ -14,7 +14,7 @@ class AlterCitizensAddForeignDusunId extends Migration
     public function up()
     {
         Schema::table('citizens', function (Blueprint $table) {
-            $table->foreign('dusun_id')->references('id')->on('dusuns');
+            $table->foreignId('dusun_id')->constrained('dusuns');
         });
     }
 

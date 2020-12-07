@@ -14,7 +14,7 @@ class AlterServiceFilesAddForeignServiceId extends Migration
     public function up()
     {
         Schema::table('service_files', function (Blueprint $table) {
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreignId('service_id')->constrained('services');
         });
     }
 

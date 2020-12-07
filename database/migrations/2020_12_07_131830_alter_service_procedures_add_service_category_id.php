@@ -14,7 +14,7 @@ class AlterServiceProceduresAddServiceCategoryId extends Migration
     public function up()
     {
         Schema::table('service_procedures', function (Blueprint $table) {
-            $table->foreign('service_category_id')->references('id')->on('service_categories');
+            $table->foreignId('service_category_id')->constrained('service_categories');
         });
     }
 

@@ -14,8 +14,8 @@ class AlterApparatusesAddForeignKey extends Migration
     public function up()
     {
         Schema::table('apparatuses', function (Blueprint $table) {
-            $table->foreign('citizen_id')->references('id')->on('citizens');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreignId('citizen_id')->constrained('citizens');
+            $table->foreignId('admin_id')->constrained('admins');
         });
     }
 

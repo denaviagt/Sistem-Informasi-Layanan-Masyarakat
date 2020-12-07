@@ -14,7 +14,7 @@ class AlterVillageInfosAddAdminId extends Migration
     public function up()
     {
         Schema::table('village_infos', function (Blueprint $table) {
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreignId('admin_id')->constrained('admins');
         });
     }
 

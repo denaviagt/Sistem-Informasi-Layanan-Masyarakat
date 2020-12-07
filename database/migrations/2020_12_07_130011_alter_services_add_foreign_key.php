@@ -14,8 +14,8 @@ class AlterServicesAddForeignKey extends Migration
     public function up()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->foreign('service_category_id')->references('id')->on('service_categories');
-            $table->foreign('citizen_id')->references('id')->on('citizens');
+            $table->foreignId('service_category_id')->constrained('service_categories');
+            $table->foreignId('citizen_id')->constrained('citizens');
         });
     }
 

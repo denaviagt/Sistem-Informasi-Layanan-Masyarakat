@@ -14,8 +14,8 @@ class AlterVillagesAddForeignKey extends Migration
     public function up()
     {
         Schema::table('villages', function (Blueprint $table) {
-            $table->foreign('mission_id')->references('id')->on('missions');
-            $table->foreign('vision_id')->references('id')->on('visions');
+            $table->foreignId('mission_id')->constrained('missions');
+            $table->foreignId('vision_id')->constrained('visions');
         });
     }
 

@@ -14,8 +14,8 @@ class AlterFeedbacksAddForeignKey extends Migration
     public function up()
     {
         Schema::table('feedbacks', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('dusun_id')->references('id')->on('dusuns');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('dusun_id')->constrained('dusuns');
         });
     }
 
