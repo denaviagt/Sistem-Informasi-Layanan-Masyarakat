@@ -15,6 +15,8 @@ class CreateDusunsTable extends Migration
     {
         Schema::create('dusuns', function (Blueprint $table) {
             $table->id();
+            $table->string('dusun_name');
+            $table->string('head_of_dusun');
             $table->timestamps();
         });
     }

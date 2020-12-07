@@ -15,6 +15,10 @@ class CreateApparatusesTable extends Migration
     {
         Schema::create('apparatuses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('position');
+            $table->string('period');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

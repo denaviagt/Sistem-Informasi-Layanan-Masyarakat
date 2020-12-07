@@ -15,6 +15,13 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name');
+            $table->enum('gender', ['male', 'female']);
+            $table->string('email');
+            $table->string('username');
+            $table->string('password');
+            $table->boolean('is_active')->default(true);
+            $table->enum('level', ['admin', 'superadmin', 'lurah']);
             $table->timestamps();
         });
     }

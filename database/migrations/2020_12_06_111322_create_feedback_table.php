@@ -13,8 +13,12 @@ class CreateFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_anonim')->default(true);
+            $table->string('feedback');
+            $table->date('date');
+            $table->enum('status', ['penting', 'dibaca']);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('feedbacks');
     }
 }

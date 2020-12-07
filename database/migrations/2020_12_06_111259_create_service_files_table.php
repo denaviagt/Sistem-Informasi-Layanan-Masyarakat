@@ -15,6 +15,8 @@ class CreateServiceFilesTable extends Migration
     {
         Schema::create('service_files', function (Blueprint $table) {
             $table->id();
+            $table->string('file_url');
+            $table->enum('status', ['unverified', 'verified', 'denied']);
             $table->timestamps();
         });
     }

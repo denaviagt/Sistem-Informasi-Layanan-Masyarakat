@@ -15,6 +15,9 @@ class CreateServiceRequirementsTable extends Migration
     {
         Schema::create('service_requirements', function (Blueprint $table) {
             $table->id();
+            $table->string('terms');
+            $table->string('description');
+            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
     }
