@@ -15,7 +15,7 @@ class AlterFeedbacksAddForeignKey extends Migration
     {
         Schema::table('feedbacks', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('dusun_id')->constrained('dusuns');
+            $table->foreignId('feedback_dusun_id')->constrained('dusuns');
         });
     }
 
@@ -27,7 +27,7 @@ class AlterFeedbacksAddForeignKey extends Migration
     public function down()
     {
         Schema::table('feedbacks', function (Blueprint $table) {
-            $table->dropForeign(['user_id', 'dusun_id']);
+            $table->dropForeign(['user_id', 'feedback_dusun_id']);
         });
     }
 }
