@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="row mb-2">
                                 <div class="col-6">
-                                    <h4 class="card-title">Tambah Info Desa</h4>
+                                    <h4 class="card-title">Edit Info Desa</h4>
                                 </div>
                             </div>
                             <form action="">
@@ -23,7 +23,8 @@
                                         class="col-sm-2 col-form-label col-form-label-sm">Judul</label>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="input-judul-info">
+                                            <input type="text" class="form-control" id="input-judul-info"
+                                                placeholder="Masukkan judul">
                                         </div>
                                     </div>
                                 </div>

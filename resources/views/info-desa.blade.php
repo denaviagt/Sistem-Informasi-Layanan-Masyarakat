@@ -41,9 +41,8 @@
                                             <td>1</td>
                                             <td>Publish</td>
                                             <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
+                                                <a href="{{ url('/edit-info-desa') }}" class="btn" data-toggle="tooltip"
+                                                    data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Hapus"><i class="fas fa-trash" data-toggle="modal"
