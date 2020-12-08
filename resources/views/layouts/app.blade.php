@@ -15,6 +15,7 @@
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
 
@@ -57,6 +58,8 @@
     <script src="{{ asset('dist/js/feather.min.js') }}"></script>
     <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <!--This page JavaScript -->
@@ -70,10 +73,22 @@
     <script src="{{ asset('assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#zero_config').DataTable();
         })
+
+        $('#summernote').summernote({
+            height: 300,
+            width: 700
+        });
+
+        // $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+        //     $.fn.dataTable.tables({
+        //         visible: true,
+        //         api: true
+        //     }).columns.adjust();
+        // });
 
     </script>
 </body>

@@ -48,6 +48,9 @@ Route::get('/info-layanan-alur', function () {
 Route::get('/isi-tambah-info-desa', function () {
     return view('isi-tambah-info-desa');
 });
+Route::get('/edit-tambah-info-desa', function () {
+    return view('edit-info-desa');
+});
 Route::get('/layanan', function () {
     return view('layanan');
 });
