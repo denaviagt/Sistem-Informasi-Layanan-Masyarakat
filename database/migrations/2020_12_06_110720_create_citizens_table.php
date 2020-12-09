@@ -15,8 +15,8 @@ class CreateCitizensTable extends Migration
     {
         Schema::create('citizens', function (Blueprint $table) {
             $table->id();
-            $table->char('nik')->nullable(false);
-            $table->char('kk')->nullable(false);
+            $table->char('nik', 16)->nullable(false);
+            $table->char('kk', 16)->nullable(false);
             $table->string('full_name')->nullable(false);
             $table->enum('gender', ['male', 'female'])->nullable(false);
             $table->string('religion')->nullable(false);
