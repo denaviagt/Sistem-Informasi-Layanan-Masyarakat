@@ -16,44 +16,44 @@
                                 class="feather-icon"></i><span class="hide-menu">Data Admin</span>
                         </a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
-                            aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                class="hide-menu">Ubah Password</span>
-                        </a>
-                    </li>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Tentang Desa</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link" href="ticket-list.html" aria-expanded="false"><i
-                                data-feather="tag" class="feather-icon"></i><span class="hide-menu">Profil Desa
+                    <li class="sidebar-item"> <a class="sidebar-link"
+                            href="{{ url('/profil-kalurahan') }}"" aria-expanded=" false"><i data-feather="tag"
+                                class="feather-icon"></i><span class="hide-menu">Profil Kalurahan
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-chat.html"
-                            aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                class="hide-menu">Visi Misi</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                            aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                                class="hide-menu">Struktur Organisasi</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                            aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                                class="hide-menu">Profil Pedukuhan</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/info-desa') }}"
                             aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
                                 class="hide-menu">Info Desa</span></a></li>
 
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
-                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    <li class="sidebar-item"> <a href="javascript:void(0)" class="sidebar-link has-arrow"
                             aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                 class="hide-menu">Info Layanan </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                                        class="hide-menu"> Layanan A
+                        <ul aria-expanded="false" class="collapse first-level base-level-line">
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link has-arrow"><span
+                                        class="hide-menu">Layanan A
                                     </span></a>
+                                <ul aria-expanded="false" class="collapse second-level base-level-line">
+                                    <li class="sidebar-item"><a href="info-layanan-syarat" class="sidebar-link"><span
+                                                class="hide-menu">Syarat</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ url('info-layanan-alur') }}"
+                                            class="sidebar-link"><span class="hide-menu">Alur</span></a></li>
+                                </ul>
                             </li>
-                            <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link has-arrow"><span
                                         class="hide-menu">Layanan B
                                     </span></a>
+                                <ul aria-expanded="false" class="collapse second-level base-level-line">
+                                    <li class="sidebar-item"><a href="javascript:void(0)"
+                                            class="sidebar-link has-arrow"><span class="hide-menu">Syarat</span></a>
+                                    </li>
+                                    <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                                class="hide-menu">Alur</span></a></li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -61,7 +61,7 @@
                             aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                 class="hide-menu">Layanan </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="table-basic.html" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="layanan" class="sidebar-link"><span
                                         class="hide-menu"> Layanan A
                                     </span></a>
                             </li>
@@ -78,7 +78,7 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Laporan</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="data-penduduk-desa"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
                                 class="hide-menu">Data Penduduk
                             </span></a>

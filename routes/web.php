@@ -24,3 +24,30 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+Route::get('/profil-kalurahan', function () {
+    return view('profil-kalurahan');
+});
+Route::get('/edit-password', function () {
+    return view('edit-password');
+});
+Route::get('/info-desa', function () {
+    return view('info-desa');
+});
+Route::get('/tambah-info-desa', function () {
+    return view('tambah-info-desa');
+});
+Route::get('/data-penduduk-desa', function () {
+    return view('data-penduduk-desa');
+});
+Route::get('/info-layanan-syarat', function () {
+    return view('info-layanan-syarat');
+});
+Route::get('/info-layanan-alur', function () {
+    return view('info-layanan-alur');
+});
+Route::get('/isi-tambah-info-desa', function () {
+    return view('isi-tambah-info-desa');
+});
+Route::get('/layanan', function () {
+    return view('layanan');
+});
