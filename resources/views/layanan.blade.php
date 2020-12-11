@@ -12,10 +12,13 @@
             <form>
                 <div class="form-group mb-4 col-md-4 pl-0">
                     <select class="custom-select mr-sm-2 bg-white" id="inlineFormCustomSelect">
-                        <option value="Layanan A" selected>Layanan A</option>
-                        <option value="Layanan B">Layanan B</option>
-                        <option value="Layanan C">Layanan C</option>
-                        <option value="Layanan D">Layanan D</option>
+                        <option value="E-KTP" selected>E-KTP</option>
+                        <option value="Kartu Keluarga">Kartu Keluarga</option>
+                        <option value="Akta Kelahiran">Akta Kelahiran</option>
+                        <option value="Akta kematian">Akta kematian</option>
+                        <option value="Pindah penduduk">Pindah penduduk</option>
+                        <option value="Nikah">Nikah</option>
+                        <option value="SKU">SKU</option>
                     </select>
                 </div>
             </form>
@@ -25,10 +28,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="text-right mb-3">
+                            {{-- <div class="text-right mb-3">
                                 <a href="#" type="button" class="btn waves-effect waves-light btn-danger"
                                     data-toggle="modal" data-target="#add-layanan">Tambah</a>
-                            </div>
+                            </div> --}}
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                     <thead>
@@ -45,7 +48,7 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>01</td>
+                                            <td><a href="{{ url('detail-layanan') }}">01</a></td>
                                             <td>0129919191919</td>
                                             <td>Sri Wahyuni</td>
                                             <td>06/12/2020</td>

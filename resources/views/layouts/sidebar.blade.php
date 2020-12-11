@@ -30,7 +30,7 @@
 
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
-                    <li class="sidebar-item"> <a href="{{ url('/info-layanan-alur') }}" class="sidebar-link"
+                    <li class="sidebar-item"> <a href="{{ url('/info-layanan') }}" class="sidebar-link"
                             aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                 class="hide-menu">Info Layanan
                             </span></a>
@@ -59,8 +59,9 @@
                             </li>
                         </ul> --}}
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false"><i
-                                data-feather="grid" class="feather-icon"></i><span class="hide-menu">Layanan </span></a>
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('layanan') }}"
+                            aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                                class="hide-menu">Layanan </span></a>
                         {{-- <ul aria-expanded="false"
                             class="collapse  first-level base-level-line">
                             <li class="sidebar-item"><a href="layanan" class="sidebar-link"><span class="hide-menu">
@@ -73,7 +74,7 @@
                             </li>
                         </ul> --}}
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false"><i
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('aduan') }}" aria-expanded="false"><i
                                 data-feather="bar-chart" class="feather-icon"></i><span class="hide-menu">Aduan
                             </span></a>
                     </li>

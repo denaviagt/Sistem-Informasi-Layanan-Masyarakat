@@ -16,8 +16,11 @@
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+        type="text/css" />
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
     {{-- Datatable --}}
     <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -50,15 +53,20 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    --}}
     <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- apps -->
     <!-- apps -->
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript">
+    </script>
     <script src="{{ asset('dist/js/app-style-switcher.js') }}"></script>
     <script src="{{ asset('dist/js/feather.min.js') }}"></script>
     <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
@@ -76,6 +84,30 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#zero_config').DataTable();
+            $('#syarat-table').DataTable();
+            $('#alur-table').DataTable();
+
+            $('#smartwizard').smartWizard({
+                theme: 'dots',
+                lang: { // Language variables for button
+                    next: 'Selanjutnya',
+                    previous: 'Sebelumnya'
+                },
+                toolbarSettings: {
+                    toolbarExtraButtons: [
+                        $('<button></button>').text('Finish')
+                        .addClass('btn btn-info')
+                        .on('click', function() {
+                            alert('Finish button click');
+                        }),
+                        $('<button></button>').text('Cancel')
+                        .addClass('btn btn-danger')
+                        .on('click', function() {
+                            alert('Cancel button click');
+                        })
+                    ]
+                },
+            });
         })
 
         $('#summernote').summernote({
