@@ -10,6 +10,19 @@
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
+            <form>
+                <div class="form-group mb-4 col-md-4 pl-0">
+                    <select class="custom-select mr-sm-2 bg-white" id="inlineFormCustomSelect">
+                        <option value="E-KTP" selected>E-KTP</option>
+                        <option value="Kartu Keluarga">Kartu Keluarga</option>
+                        <option value="Akta Kelahiran">Akta Kelahiran</option>
+                        <option value="Akta kematian">Akta kematian</option>
+                        <option value="Pindah penduduk">Pindah penduduk</option>
+                        <option value="Nikah">Nikah</option>
+                        <option value="SKU">SKU</option>
+                    </select>
+                </div>
+            </form>
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="card">
@@ -34,7 +47,7 @@
                             <div class="table-responsive">
                                 <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
                                     data-target="#add-alur">Tambah</button>
-                                <table id="myTable1" class="table table-striped table-bordered no-wrap">
+                                <table id="syarat-table" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -69,7 +82,7 @@
 
                                 <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
                                     data-target="#add-syarat">Tambah</button>
-                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                <table id="alur-table" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -186,7 +199,99 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Edit Alur Layanan A</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Hapus Alur Layanan A</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body m-2">
+                    <h4 class="text-center">Apakah anda yakin akan menghapus?</h4>
+                    <div class="form-group row">
+                        <div class=" d-flex mx-auto">
+                            <button type="submit" class="btn btn-danger m-2">Batal</button>
+                            <button type="submit" class="btn btn-primary m-2">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--  Modal content for Add Syarat Layanan -->
+    <div class="modal fade" id="add-syarat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Tambah Syarat Layanan A</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body m-2">
+                    <form>
+                        <div class="form-group row">
+                            <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="input-syarat-layanan">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="input-deskripsi-syarat">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class=" d-flex mx-auto">
+                                <button type="submit" class="btn btn-danger m-2">Batal</button>
+                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--  Modal content for Edit Syarat Layanan -->
+    <div class="modal fade" id="edit-syarat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Edit Syarat Layanan A</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body m-2">
+                    <form>
+                        <div class="form-group row">
+                            <label for="edit-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="edit-syarat-layanan">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="edit-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="edit-deskripsi-syarat">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class=" d-flex mx-auto">
+                                <button type="submit" class="btn btn-danger m-2">Batal</button>
+                                <button type="submit" class="btn btn-primary m-2">Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--  Modal content for Delete Syarat Layanan -->
+    <div class="modal fade" id="delete-syarat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Hapus Alur Layanan A</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body m-2">
