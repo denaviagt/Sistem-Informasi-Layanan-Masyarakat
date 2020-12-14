@@ -17,3 +17,10 @@
     width: 80%;
     left: 10%;
 }
+
+.detail-aduan-val {
+    background-color: rgb(213, 213, 213);
+    border-radius: 5px;
+    padding-left: 10px !important;
+    color: #000;
+}

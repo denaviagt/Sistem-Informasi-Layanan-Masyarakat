@@ -15,6 +15,7 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
+                                            <th>Penting</th>
                                             <th>No</th>
                                             <th>ID</th>
                                             <th>Nama Pengirim</th>
@@ -27,6 +28,39 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="">
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-1">
+                                                    <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>DN01</td>
+                                            <td><a href="#" data-target="#detail-aduan" data-toggle="modal">Edinburgh</a>
+                                            </td>
+                                            <td>Lampu jalan mati</td>
+                                            <td>09/12/2020</td>
+                                            <td>Rejosari</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-aduan"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-aduan"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-2">
+                                                    <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
                                             <td>1</td>
                                             <td>DN01</td>
                                             <td>Edinburgh</td>
@@ -45,6 +79,13 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-3">
+                                                    <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
                                             <td>1</td>
                                             <td>DN01</td>
                                             <td>Edinburgh</td>
@@ -63,6 +104,13 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-4">
+                                                    <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
                                             <td>1</td>
                                             <td>DN01</td>
                                             <td>Edinburgh</td>
@@ -81,6 +129,13 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-5">
+                                                    <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
                                             <td>1</td>
                                             <td>DN01</td>
                                             <td>Edinburgh</td>
@@ -99,24 +154,13 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
                                             <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox" data-checkboxes="mygroup"
+                                                        class="custom-control-input" id="checkbox-6">
+                                                    <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
+                                                </div>
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>1</td>
                                             <td>DN01</td>
                                             <td>Edinburgh</td>
@@ -144,89 +188,48 @@
         </div>
     </div>
 
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
     <!--  Modal content for Detail Aduan -->
-    <div class="modal fade" id="detail-aduan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    <div class="modal fade" id="detail-aduan" tabindex="-1" role="dialog" aria-labelledby="detail-aduan-title"
         aria-hidden="true">
-        <div class="modal-dialog ">
+        <div class="modal-dialog modal-lg ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Detail Aduan</h4>
+                    <h4 class="modal-title" id="detail-aduan-title">Detail Aduan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body m-2">
-                    <form>
-                        <div class="form-group row">
-                            <label for="detail-nama-aduan" class="col-sm-3 col-form-label">Nama Pengirim</label>
-                            <div class="col-sm-9 bg-secondary">
-                                <p>Edinburgh</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="ed-inputEmail" class="col-sm-3 col-form-label">Email</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="ed-inputEmail">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="ed-inputUsername" class="col-sm-3 col-form-label">Username</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="ed-inputUsername">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="ed-inputPassword" class="col-sm-3 col-form-label">Password</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="ed-inputPassword">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="ed-inputNomorHp" class="col-sm-3 col-form-label">Nomor HP</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="ed-inputNomorHp">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="ed-selectLevelAdmin" class="col-sm-3 col-form-label">Level</label>
-                            <div class="col-sm-9">
-                                <select name="ed-selectLevelAdmin" id="ed-selectLevelAdmin" class="form-control">
-                                    <option value="Admin">Admin</option>
-                                    <option value="Kepala Desa">Kepala Desa</option>
-                                    <option value="Super Admin">Super Admin</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class=" d-flex mx-auto">
-                                <button type="submit" class="btn btn-danger m-2">Batal</button>
-                                <button type="submit" class="btn btn-primary m-2">Edit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                    <div class="row m-2 ">
+                        <div class="col-3 p-2">Nama Pengirim</div>
+                        <div class="col-8 p-2 detail-aduan-val">Nama Pengirim</div>
+                    </div>
+                    <div class="row m-2 ">
+                        <div class="col-3 p-2">Aduan</div>
+                        <div class="col-8 p-2 detail-aduan-val">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Omnis
+                            maiores, velit
+                            dolore nulla veritatis fuga beatae perferendis ex quibusdam sit tempora architecto rerum
+                            aspernatur voluptate sapiente error neque aperiam? Eligendi.</div>
+                    </div>
+                    <div class="row m-2 ">
+                        <div class="col-3 p-2">Tanggal</div>
+                        <div class="col-8 p-2 detail-aduan-val">11 Desember 2020</div>
+                    </div>
+                    <div class="row m-2 ">
+                        <div class="col-3 p-2">Daerah</div>
+                        <div class="col-8 p-2 detail-aduan-val">Rejosari</div>
+                    </div>
 
-    <div class="modal fade" id="delete-admin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="mySmallModalLabel">Hapus Admin</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <h4>Apakah Anda yakin akan menghapus?</h4>
                     <div class="form-group row">
                         <div class=" d-flex mx-auto">
-                            <button type="submit" class="btn btn-danger m-2">Batal</button>
-                            <button type="submit" class="btn btn-primary m-2">Hapus</button>
+                            <button type="button" class="btn btn-danger m-2">Penting</button>
+                            {{-- <button type="button" class="btn btn-primary m-2"></button>
+                            --}}
                         </div>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
 @endsection
