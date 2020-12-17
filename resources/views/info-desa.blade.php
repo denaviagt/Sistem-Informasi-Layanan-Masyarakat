@@ -5,12 +5,6 @@
 @section('content')
     <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
@@ -47,13 +41,12 @@
                                             <td>1</td>
                                             <td>Publish</td>
                                             <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
+                                                <a href="{{ url('/edit-info-desa') }}" class="btn" data-toggle="tooltip"
+                                                    data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
+                                                        data-target="#delete-info-desa"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -65,19 +58,32 @@
             </div>
             <!-- ============================================================== -->
             <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-
     </div>
+    <!--  Modal content for Delete Info desa-->
+    <div class="modal fade" id="delete-info-desa" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Hapus Info Desa</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body m-2">
+                    <h4 class="text-center">Apakah anda yakin akan menghapus info desa?</h4>
+                    <div class="form-group row">
+                        <div class=" d-flex mx-auto">
+                            <button type="submit" class="btn btn-danger m-2">Batal</button>
+                            <button type="submit" class="btn btn-primary m-2">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 @endsection
