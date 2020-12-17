@@ -80,6 +80,7 @@
     <script src="{{ asset('dist/js/pages/dashboards/dashboard1.min.js') }}"></script>
     <script src="{{ asset('assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
+    <script src="{{ asset('/assets/libs/chart.js/dist/Chart.min.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -115,12 +116,73 @@
             width: 700
         });
 
-        // $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        //     $.fn.dataTable.tables({
-        //         visible: true,
-        //         api: true
-        //     }).columns.adjust();
-        // });
+        var chart = new Chart(document.getElementById("statistik-layanan"), {
+            type: 'pie',
+            data: {
+                labels: ["Kartu Tanda Penduduk Elektronik", "Kartu Keluarga", "Akta Kelahiran", "Akta kematian",
+                    "Pindah penduduk", "Pengurusan Masuk Penduduk", "Pengurusan Nikah",
+                    "SKU",
+                ],
+                datasets: [{
+                    label: "250",
+                    fill: true,
+                    backgroundColor: ["rgba(116, 96, 238,0.2)", 'red', 'blue', 'green', 'yellow',
+                        'grey', 'lightblue', 'orange'
+                    ],
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: "rgba(116, 96, 238,1)",
+                    data: [10, 20, 30, 40, 50, 40, 30, 25, ]
+                }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    verticalAlign: "center",
+                    labels: {
+                        fontColor: "black",
+                        boxWidth: 20,
+                        padding: 20
+                    }
+                },
+                title: {
+                    display: false,
+                }
+            }
+        });
+        var chart2 = new Chart(document.getElementById("statistik-layanan-perdusun"), {
+            type: 'pie',
+            data: {
+                labels: ["Jragung", "Blambangan", "Morobangun", "Karongan", "Rejosari", "Krasaan", "Jlatren",
+                    "Bulu", "Kranggan 1", "Kranggan 2"
+                ],
+                datasets: [{
+                    label: "250",
+                    fill: true,
+                    backgroundColor: ["rgba(116, 96, 238,0.2)", 'red', 'blue', 'green', 'yellow',
+                        'grey', 'lightblue', 'orange', 'black', 'cream'
+                    ],
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: "rgba(116, 96, 238,1)",
+                    data: [10, 20, 30, 40, 50, 40, 30, 25, 15, 5]
+                }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    verticalAlign: "center",
+                    labels: {
+                        fontColor: "black",
+                        boxWidth: 20,
+                        padding: 20
+                    }
+                },
+                title: {
+                    display: false,
+                }
+            }
+        });
 
     </script>
 </body>

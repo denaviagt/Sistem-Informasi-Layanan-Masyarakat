@@ -60,3 +60,6 @@ Route::get('/detail-layanan', function () {
 Route::get('/aduan', function () {
     return view('aduan');
 });
+Route::get('/statistik-layanan', function () {
+    return view('statistik-layanan');
+});
