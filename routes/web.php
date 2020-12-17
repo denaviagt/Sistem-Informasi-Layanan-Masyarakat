@@ -42,12 +42,24 @@ Route::get('/data-penduduk-desa', function () {
 Route::get('/info-layanan-syarat', function () {
     return view('info-layanan-syarat');
 });
-Route::get('/info-layanan-alur', function () {
-    return view('info-layanan-alur');
+Route::get('/info-layanan', function () {
+    return view('info-layanan');
 });
 Route::get('/isi-tambah-info-desa', function () {
     return view('isi-tambah-info-desa');
 });
+Route::get('/edit-tambah-info-desa', function () {
+    return view('edit-info-desa');
+});
 Route::get('/layanan', function () {
     return view('layanan');
+});
+Route::get('/detail-layanan', function () {
+    return view('detail-layanan');
+});
+Route::get('/aduan', function () {
+    return view('aduan');
+});
+Route::get('/statistik-layanan', function () {
+    return view('statistik-layanan');
 });
