@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfilKalurahanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,12 +28,7 @@ Route::get('login', function () {
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
 Route::get('/admin/{id}/edit', 'AdminController@edit');
-// Route::get('/admin', function () {
-//     return view('admin');
-// });
-Route::get('/profil-kalurahan', function () {
-    return view('profil-kalurahan');
-});
+Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
 Route::get('/edit-password', function () {
     return view('edit-password');
 });

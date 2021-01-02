@@ -81,7 +81,7 @@
     <script src="{{ asset('assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
     <script src="{{ asset('/assets/libs/chart.js/dist/Chart.min.js') }}"></script>
-
+    @yield('script')
     <script type="text/javascript">
         $(document).ready(function() {
             $('#zero_config').DataTable();
