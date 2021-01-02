@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
 Route::get('/admin/{id}/edit', 'AdminController@edit');
+Route::post('/admin/edit', 'AdminController@update');
 // Route::get('/admin', function () {
 //     return view('admin');
 // });
