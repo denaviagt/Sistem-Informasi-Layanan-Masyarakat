@@ -21,9 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/admin', function () {
-    return view('admin');
-});
+Route::get('/admin', 'AdminController@index');
+Route::post('/admin', 'AdminController@store');
+Route::get('/admin/{id}/edit', 'AdminController@edit');
+// Route::get('/admin', function () {
+//     return view('admin');
+// });
 Route::get('/profil-kalurahan', function () {
     return view('profil-kalurahan');
 });

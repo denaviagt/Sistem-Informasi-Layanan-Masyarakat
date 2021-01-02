@@ -8,6 +8,11 @@
             <!-- order table -->
             <div class="row">
                 <div class="col-12">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -22,128 +27,154 @@
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>Username</th>
-                                            <th>No Telepon</th>
+                                            {{-- <th>No Telepon</th>
+                                            --}}
                                             <th>Level</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
+                                        @foreach ($admins as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->full_name }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>{{ $item->username }}</td>
+                                                <td>{{ $item->level }}</td>
+                                                <td>{{ $item->is_active }}</td>
+                                                {{-- <td>{{ $item->email }}</td>
+                                                --}}
 
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
+                                                <td>
+                                                    <a class="btn" data-toggle="tooltip" data-placement="top"
+                                                        title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                            data-target="#edit-admin" data-id="{{ $item->id }}"></i></a>
 
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>AD01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh@gmail.com</td>
-                                            <td>Username</td>
-                                            <td>08971611912</td>
-                                            <td>Admin</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-admin"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-admin"></i></button>
-                                            </td>
-                                        </tr>
+                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                            data-toggle="modal" data-target="#delete-admin"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
+                                    {{-- <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>AD01</td>
+                                            <td>Edinburgh</td>
+                                            <td>Edinburgh@gmail.com</td>
+                                            <td>Username</td>
+                                            <td>08971611912</td>
+                                            <td>Admin</td>
+                                            <td>Aktif</td>
+                                            <td>
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
+                                                        data-target="#edit-admin"></i></button>
+
+                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
+                                                        data-target="#delete-admin"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody> --}}
                                 </table>
                             </div>
                         </div>
@@ -164,41 +195,51 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body m-2">
-                    <form>
+                    <form method="POST" action="{{ url('admin') }}">
+                        @csrf
                         <div class="form-group row">
-                            <label for="nama-admin" class="col-sm-3 col-form-label">Nama</label>
+                            <label for="namaAdmin" class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="nama-admin">
+                                <input type="text" class="form-control" id="namaAdmin" name="name">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                            <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail">
+                                <input type="email" class="form-control" id="inputEmail" name="email">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Username</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputUsername">
+                                <input type="text" class="form-control" id="inputUsername" name="username">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword">
+                                <input type="password" class="form-control" id="inputPassword" name="password">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
-                            <label for="inputNomorHp" class="col-sm-3 col-form-label">Nomor HP</label>
+                            <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputNomorHp">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="genderMale" name="gender" class="custom-control-input"
+                                        value="male">
+                                    <label class="custom-control-label" for="genderMale">Laki-laki</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="genderFemale" name="gender" class="custom-control-input"
+                                        value="female">
+                                    <label class="custom-control-label" for="genderFemale">Perempuan</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="selectLevelAdmin" class="col-sm-3 col-form-label">Level</label>
                             <div class="col-sm-9">
-                                <select name="selectLevelAdmin" id="selectLevelAdmin" class="form-control">
+                                <select name="levelAdmin" id="selectLevelAdmin" class="form-control">
                                     <option value="Admin">Admin</option>
                                     <option value="Kepala Desa">Kepala Desa</option>
                                     <option value="Super Admin">Super Admin</option>
