@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     // return view('welcome');
 //     return view('index');
 // });
-
+Route::group(['middleware' => ['auth']], function() {
+    // your routes
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -71,3 +72,8 @@ Route::get('/aduan', function () {
 Route::get('/statistik-layanan', function () {
     return view('statistik-layanan');
 });
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+});
+
+Auth::routes();
+

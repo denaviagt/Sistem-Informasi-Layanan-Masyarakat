@@ -1,3 +1,6 @@
+@php
+ $user = auth()->user();
+ @endphp
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
