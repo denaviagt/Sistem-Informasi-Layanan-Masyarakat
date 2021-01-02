@@ -22,6 +22,8 @@
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     {{-- Datatable --}}
     <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

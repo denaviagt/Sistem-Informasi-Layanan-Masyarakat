@@ -52,8 +52,8 @@
 
                                         <td>
                                             <a class="btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-target="#edit-admin" onclick="editPostModal(event.target)" data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
 
-                                            <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash" data-toggle="modal" data-target="#delete-admin"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -221,7 +221,7 @@
                 <div class="form-group row">
                     <div class=" d-flex mx-auto">
                         <button type="submit" class="btn btn-danger m-2">Batal</button>
-                        <button type="submit" class="btn btn-primary m-2">Hapus</button>
+                        <button type="submit" class="btn btn-primary m-2" onclick="deleteData(event.target)" id="confirm-delete-admin">Hapus</button>
                     </div>
                 </div>
             </div>
@@ -258,8 +258,33 @@
         });
     }
 
-    function updateDaata() {
+    function modalDelete(event) {
+        var id = $(event).data("id");
 
+        $('#confirm-delete-admin').data('id', id); //setter
+        $('#delete-admin').modal('show');
+
+    }
+
+    function deleteData(event) {
+        var id = $(event).data("id");
+        let _url = `/delete/${id}`;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: _url,
+            type: "DELETE",
+            success: function(response) {
+                if (response) {
+                    if (response.status) {
+                        location.reload();
+                    }
+                }
+            }
+        });
     }
 </script>
 

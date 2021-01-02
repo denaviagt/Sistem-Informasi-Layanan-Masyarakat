@@ -106,9 +106,9 @@ class AdminController extends Controller
         }
 
         if ($admins->save()) {
-            return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
+            return redirect('admin')->with('status', 'Ubah Data Admin Berhasil!');
         } else {
-            return redirect('admin')->with('status', 'Tambah Data Admin Gagal!');
+            return redirect('admin')->with('status', 'Ubah Data Admin Gagal!');
         }
     }
 
@@ -120,6 +120,16 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $admins = Admin::find($id);
+        if ($admins->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }
