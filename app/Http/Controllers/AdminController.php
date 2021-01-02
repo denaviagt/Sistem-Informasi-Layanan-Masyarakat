@@ -78,7 +78,6 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin = Admin::find($id);
-        dd($admin);
         // show the edit form and pass the shark
         // return View::make('admin', compact('admin'));
         return response()->json([
@@ -93,9 +92,24 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        Admin::updateOrCreate();
+        $admins = Admin::find($request->ed_id_admin);
+
+        $admins->full_name = $request->ed_name_admin;
+        $admins->gender = $request->ed_gender_admin;
+        $admins->email = $request->ed_email_admin;
+        $admins->username = $request->ed_username_admin;
+        $admins->level = $request->ed_level_admin;
+        if ($request->ed_password_admin != null) {
+            $admins->password = Hash::make($request->ed_password_admin);
+        }
+
+        if ($admins->save()) {
+            return redirect('admin')->with('status', 'Ubah Data Admin Berhasil!');
+        } else {
+            return redirect('admin')->with('status', 'Ubah Data Admin Gagal!');
+        }
     }
 
     /**
@@ -106,6 +120,16 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $admins = Admin::find($id);
+        if ($admins->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }
