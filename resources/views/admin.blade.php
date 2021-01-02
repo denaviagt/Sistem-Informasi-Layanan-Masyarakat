@@ -220,7 +220,7 @@
                 <h4>Apakah Anda yakin akan menghapus?</h4>
                 <div class="form-group row">
                     <div class=" d-flex mx-auto">
-                        <button type="submit" class="btn btn-danger m-2">Batal</button>
+                        <button type="submit" class="btn btn-danger m-2" data-dismiss="modal" aria-hidden="true">Batal</button>
                         <button type="submit" class="btn btn-primary m-2" onclick="deleteData(event.target)" id="confirm-delete-admin">Hapus</button>
                     </div>
                 </div>
