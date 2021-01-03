@@ -25,7 +25,7 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        //
+        return view('data-penduduk-tambah');
     }
 
     /**

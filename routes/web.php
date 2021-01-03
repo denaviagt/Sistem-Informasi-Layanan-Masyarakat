@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tambah-info-desa', 'infoDesaController@create');
     Route::post('/tambah-info-desa', 'infoDesaController@store');
     Route::get('/data-penduduk-desa', 'CitizenController@index');
+    Route::get('/data-penduduk/create', 'CitizenController@create');
 
     Route::get('/info-layanan-syarat', function () {
         return view('info-layanan-syarat');
