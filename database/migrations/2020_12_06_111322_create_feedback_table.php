@@ -18,7 +18,8 @@ class CreateFeedbackTable extends Migration
             $table->boolean('is_anonim')->default(true);
             $table->string('feedback');
             $table->date('date');
-            $table->enum('status', ['penting', 'dibaca']);
+            $table->boolean('is_urgent')->default(false);
+            $table->boolean('is_done')->default(false);
             $table->timestamps();
         });
     }
