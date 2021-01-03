@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     // return view('welcome');
 //     return view('index');
 // });
-
+Route::group(['middleware' => ['auth']], function() {
+    // your routes
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -28,18 +29,7 @@ Route::get('login', function () {
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
 Route::get('/admin/{id}/edit', 'AdminController@edit');
-<<<<<<< HEAD
-Route::post('/admin/edit', 'AdminController@update');
-Route::delete('/delete/{id}', 'AdminController@destroy');
-// Route::get('/admin', function () {
-//     return view('admin');
-// });
-Route::get('/profil-kalurahan', function () {
-    return view('profil-kalurahan');
-});
-=======
 Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
->>>>>>> dev/gita
 Route::get('/edit-password', function () {
     return view('edit-password');
 });
@@ -49,9 +39,8 @@ Route::get('/info-desa', function () {
 Route::get('/tambah-info-desa', function () {
     return view('tambah-info-desa');
 });
-Route::get('/data-penduduk-desa', function () {
-    return view('data-penduduk-desa');
-});
+Route::get('/data-penduduk-desa', 'CitizenController@index');
+
 Route::get('/info-layanan-syarat', function () {
     return view('info-layanan-syarat');
 });
@@ -76,3 +65,8 @@ Route::get('/aduan', function () {
 Route::get('/statistik-layanan', function () {
     return view('statistik-layanan');
 });
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+});
+
+Auth::routes();
+
