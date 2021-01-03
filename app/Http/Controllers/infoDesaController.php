@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VillageInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class infoDesaController extends Controller
 {
@@ -26,7 +27,7 @@ class infoDesaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah-info-desa');
     }
 
     /**
@@ -37,7 +38,24 @@ class infoDesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $request->validate([
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
+        $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+
+        $infoDesaAdd = new VillageInfo;
+
+        $infoDesaAdd->title = $request->title;
+        $infoDesaAdd->content = $request->summernote;
+        $infoDesaAdd->thumbnail = $thumbName;
+        $infoDesaAdd->date = now();
+        $infoDesaAdd->status = $request->status;
+        $infoDesaAdd->admin_id = $request->admin_id;
+
+        $infoDesaAdd->save();
+        return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
     }
 
     /**
