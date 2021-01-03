@@ -17,10 +17,12 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->string('full_name');
             $table->enum('gender', ['male', 'female']);
-            $table->string('email');
-            $table->string('username');
+            $table->string('email')->index()->unique();
+            $table->string('username')->unique();;
             $table->string('password');
             $table->boolean('is_active')->default(true);
+            $table->string('token');
+            $table->string('remember_token');
             $table->enum('level', ['admin', 'superadmin', 'lurah']);
             $table->timestamps();
         });
