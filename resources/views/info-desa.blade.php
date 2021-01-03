@@ -33,22 +33,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>02</td>
-                                            <td>Bantuan Langsung Tunai</td>
-                                            <td>03/12/2020</td>
-                                            <td>1</td>
-                                            <td>Publish</td>
-                                            <td>
-                                                <a href="{{ url('/edit-info-desa') }}" class="btn" data-toggle="tooltip"
-                                                    data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                        @foreach ($infoDesa as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->date }}</td>
+                                                <td>{{ $item->admin_id }}</td>
+                                                <td>{{ $item->status }}</td>
+                                                <td>
+                                                    <a href="{{ url('info-desa/' . $item->id) }}" class="btn"
+                                                        data-toggle="tooltip" data-placement="top" title="Detail"><i
+                                                            class="fas fa-eye"></i></a>
 
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-info-desa"></i></button>
-                                            </td>
-                                        </tr>
+                                                    <a href="{{ url('/edit-info-desa') }}" class="btn" data-toggle="tooltip"
+                                                        data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+
+                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                            data-toggle="modal"
+                                                            data-target="#delete-info-desa"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
