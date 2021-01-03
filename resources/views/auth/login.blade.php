@@ -16,8 +16,7 @@
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dist/css/customlogin.css') }}">
@@ -45,28 +44,37 @@
                 </div>
                 <div class="col-lg-12 col-md-12 login-box">
                     <div class="p-5">
-                        <h2 class="mt-3 text-center text-dark font-weight-bold">Masuk</h2>
-                        <form class="mt-4">
+                        <h2 class="mt-3 text-center text-dark font-weight-bold">{{ __('Login') }}</h2>
+                        <form class="mt-4" method="POST" action="{{ route('login') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="username">Username/ Email</label>
-                                        <input class="form-control" name="username" id="username" type="text"
-                                            placeholder="Masukkan Username atau Email">
+                                        <input class="form-control @error('email') is-invalid @enderror" value="{{ old('username') }}" name="username" id="username" type="text" placeholder="Masukkan Username atau Email">
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="password">Password</label>
-                                        <input class="form-control" name="password" id="password" type="password"
-                                            placeholder="Masukkan password">
+                                        <input class="form-control @error('password') is-invalid @enderror" name="password" id="password" type="password" placeholder="Masukkan password" autocomplete="current-password">
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 d-flex m-2 mb-4">
                                     <div class="form-check col-6">
-                                        <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="rememberMe">
-                                            Ingat saya?
+                                        {{ __('Ingat Saya?') }}
                                         </label>
                                     </div>
                                     <div class="col-6 d-flex justify-content-end">
@@ -104,7 +112,6 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <script>
         $(".preloader ").fadeOut();
-
     </script>
 </body>
 

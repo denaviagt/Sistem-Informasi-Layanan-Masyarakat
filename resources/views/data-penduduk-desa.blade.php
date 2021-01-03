@@ -31,20 +31,24 @@
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>Pedukuhan</th>
-                                        <th>RT</th>
-                                        <th>RW</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($citizen as $item)
                                     <tr>
-                                        <td>1</td>
-                                        <td>01</td>
-                                        <td>3200003002873</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>Rejosari</td>
-                                        <td>01</td>
-                                        <td>05</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->nik }}</td>
+                                        <td>{{ $item->full_name }}</td>
+                                        <td>{{ $item->dusun->dusun_name }}</td>
+                                        <td>
+                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit" data-target="#edit-admin" onclick="editPostModal(event.target)" data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
