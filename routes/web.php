@@ -28,24 +28,14 @@ Route::get('login', function () {
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
 Route::get('/admin/{id}/edit', 'AdminController@edit');
-<<<<<<< HEAD
 Route::post('/admin/edit', 'AdminController@update');
 Route::delete('/delete/{id}', 'AdminController@destroy');
-// Route::get('/admin', function () {
-//     return view('admin');
-// });
-Route::get('/profil-kalurahan', function () {
-    return view('profil-kalurahan');
-});
-=======
 Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
->>>>>>> dev/gita
 Route::get('/edit-password', function () {
     return view('edit-password');
 });
-Route::get('/info-desa', function () {
-    return view('info-desa');
-});
+Route::get('/info-desa', 'infoDesaController@index');
+Route::get('/info-desa/{id}', 'infoDesaController@show');
 Route::get('/tambah-info-desa', function () {
     return view('tambah-info-desa');
 });
