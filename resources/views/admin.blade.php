@@ -180,12 +180,12 @@
                                 <input type="text" class="form-control" name="ed_username_admin" id="ed-username-admin">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="ed-inputPassword" class="col-sm-3 col-form-label">Password</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" name="ed_password_admin" id="ed-password-admin">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-9">
