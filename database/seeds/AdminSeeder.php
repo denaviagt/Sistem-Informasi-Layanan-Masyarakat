@@ -25,6 +25,8 @@ class AdminSeeder extends Seeder
                 'email' => $faker->freeEmail,
                 'username' => $faker->userName,
                 'password' => Hash::make('password'),
+                'token' => "",
+                'remember_token' => "",
                 'is_active' => 1,
                 'level' => 'admin',
             ]);
