@@ -17,9 +17,9 @@ class CreateFeedbackTable extends Migration
             $table->id();
             $table->boolean('is_important')->default(false);
             $table->boolean('is_anonim')->default(false);
+            $table->boolean('is_read')->default(false);
             $table->string('feedback');
             $table->date('date');
-            $table->enum('status', ['dibaca']);
             $table->timestamps();
         });
     }
