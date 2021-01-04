@@ -21,7 +21,7 @@ class CreateCitizensTable extends Migration
             $table->enum('gender', ['male', 'female'])->nullable(false);
             $table->string('religion')->nullable(false);
             $table->string('married_status', 10)->default(false);
-            $table->string('last_education', 5)->nullable(true);
+            $table->string('last_education', 20)->nullable(true);
             $table->string('blood_type', 2)->nullable(true);
             $table->string('profession');
             $table->string('pob')->nullable(false);
