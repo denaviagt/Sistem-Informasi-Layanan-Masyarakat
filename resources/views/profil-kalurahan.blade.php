@@ -223,18 +223,11 @@
                         </div>
                         <div class="tab-pane " id="produkHukum">
                             <div class="d-flex justify-content-center">
-                                {{-- <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="input-thumbnail" hidden>
-                                        <label class="custom-file-label" for="input-thumbnail">Pilih Gambar</label>
-                                    </div>
-                                </div> --}}
                                 <input type="file" id="upload" hidden />
                                 <label style="background-color: grey; padding: 0.5rem; color: white; border-radius: 0.3rem;
-                                                                                                  cursor: pointer;"
+                                                                                                          cursor: pointer;"
                                     for="upload">Choose
                                     file</label>
-
                             </div>
                         </div>
                     </div>
