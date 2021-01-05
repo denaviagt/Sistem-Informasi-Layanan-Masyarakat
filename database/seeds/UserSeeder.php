@@ -2,12 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
 
-class AdminSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,19 +15,13 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        // $gender = $faker->randomElement(['male', 'female']);
         for ($i = 1; $i <= 5; $i++) {
-            DB::table('admins')->insert([
-                'full_name' => $faker->name,
-                'gender' => $faker->randomElement(['male', 'female']),
+            DB::table('users')->insert([
                 'email' => $faker->freeEmail,
                 'username' => $faker->userName,
                 'password' => Hash::make('password'),
-                'token' => "",
-                'remember_token' => "",
-                'is_active' => 1,
-                'level' => 'admin',
                 'created_at' => now(),
+                'citizen_id' => $faker->randomElement([1, 2, 3, 4, 5])
             ]);
         }
     }
