@@ -36,16 +36,9 @@
                                 </div>
                                 <div class="col-lg-10 ">
                                     <ul class="grid-container">
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, officiis
-                                            aspernatur!
-                                            Fuga alias minima maiores nisi odio. Porro quae corporis illum ipsam blanditiis.
-                                            Minima
-                                            dolorem omnis facere ducimus enim asperiores!</li>
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, officiis
-                                            aspernatur!
-                                            Fuga alias minima maiores nisi odio. Porro quae corporis illum ipsam blanditiis.
-                                            Minima
-                                            dolorem omnis facere ducimus enim asperiores!</li>
+                                        @foreach ($visions as $item)
+                                            <li>{{ $item->vision }}</li>
+                                        @endforeach
                                     </ul>
 
                                 </div>
@@ -56,16 +49,9 @@
                                 </div>
                                 <div class="col-lg-10">
                                     <ul class="grid-container">
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, officiis
-                                            aspernatur!
-                                            Fuga alias minima maiores nisi odio. Porro quae corporis illum ipsam blanditiis.
-                                            Minima
-                                            dolorem omnis facere ducimus enim asperiores!</li>
-                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, officiis
-                                            aspernatur!
-                                            Fuga alias minima maiores nisi odio. Porro quae corporis illum ipsam blanditiis.
-                                            Minima
-                                            dolorem omnis facere ducimus enim asperiores!</li>
+                                        @foreach ($missions as $item)
+                                            <li>{{ $item->mission }}</li>
+                                        @endforeach
                                     </ul>
 
                                 </div>
@@ -81,7 +67,7 @@
                                             <div class="table-responsive">
                                                 <button type="button" class="btn btn-danger mb-2 d-flex ml-auto"
                                                     data-toggle="modal" data-target="#add-aparaturs">Tambah</button>
-                                                <table id="default_order"
+                                                <table id="aparatusTable"
                                                     class="table table-striped table-bordered display no-wrap"
                                                     style="width:100%">
                                                     <thead>
@@ -96,120 +82,27 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Kepala Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
+                                                        @foreach ($apparatus as $item)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->id }}</td>
+                                                                <td>{{ $item->name }}</td>
+                                                                <td>{{ $item->position }}</td>
+                                                                <td>{{ $item->period }}</td>
+                                                                <td>{{ $item->status }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                                        data-placement="top" title="Edit"><i
+                                                                            class="fas fa-edit" data-toggle="modal"
+                                                                            data-target="#edit-admin"></i></button>
 
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Sekretaris Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Sekretaris Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Sekretaris Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Sekretaris Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>6</td>
-                                                            <td>AD01</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>Sekretaris Desa</td>
-                                                            <td>2020/2021</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
+                                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                                        data-placement="top" title="Hapus"><i
+                                                                            class="fas fa-trash" data-toggle="modal"
+                                                                            data-target="#delete-admin"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -227,7 +120,7 @@
                                             <div class="table-responsive">
                                                 <button type="button" class="btn btn-danger mb-2 d-flex ml-auto"
                                                     data-toggle="modal" data-target="#add-pedukuhan">Tambah</button>
-                                                <table id="default_order"
+                                                <table id="dusunTable"
                                                     class="table table-striped table-bordered display no-wrap"
                                                     style="width:100%">
                                                     <thead>
@@ -236,119 +129,34 @@
                                                             <th>ID</th>
                                                             <th>Nama Pedukuhan</th>
                                                             <th>Kepala Dukuh</th>
-                                                            <th>Status</th>
+                                                            {{-- <th>Status</th>
+                                                            --}}
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>AD01</td>
-                                                            <td>Rejosari</td>
-                                                            <td>Sudarman</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
+                                                        @foreach ($dusuns as $item)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->id }}</td>
+                                                                <td>{{ $item->dusun_name }}</td>
+                                                                <td>{{ $item->head_of_dusun }}</td>
+                                                                {{-- <td>Aktif</td>
+                                                                --}}
+                                                                <td>
+                                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                                        data-placement="top" title="Edit"><i
+                                                                            class="fas fa-edit" data-toggle="modal"
+                                                                            data-target="#edit-admin"></i></button>
 
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>AD01</td>
-                                                            <td>Karongan</td>
-                                                            <td>Suyanto</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
+                                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                                        data-placement="top" title="Hapus"><i
+                                                                            class="fas fa-trash" data-toggle="modal"
+                                                                            data-target="#delete-admin"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
 
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>AD01</td>
-                                                            <td>Karongan</td>
-                                                            <td>Suyanto</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>AD01</td>
-                                                            <td>Karongan</td>
-                                                            <td>Suyanto</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>AD01</td>
-                                                            <td>Karongan</td>
-                                                            <td>Suyanto</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>6</td>
-                                                            <td>AD01</td>
-                                                            <td>Karongan</td>
-                                                            <td>Suyanto</td>
-                                                            <td>Aktif</td>
-                                                            <td>
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#edit-admin"></i></button>
-
-                                                                <button type="button" class="btn" data-toggle="tooltip"
-                                                                    data-placement="top" title="Hapus"><i
-                                                                        class="fas fa-trash" data-toggle="modal"
-                                                                        data-target="#delete-admin"></i></button>
-                                                            </td>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -364,4 +172,11 @@
         </div>
     </div>
 
+@endsection
+@section('script')
+    <script>
+        $('#aparatusTable').DataTable();
+        $('#dusunTable').DataTable();
+
+    </script>
 @endsection

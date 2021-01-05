@@ -30,10 +30,12 @@
 
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
-                    <li class="sidebar-item"> <a href="javascript:void(0)" class="sidebar-link has-arrow"
+                    <li class="sidebar-item"> <a href="{{ url('/info-layanan') }}" class="sidebar-link"
                             aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                class="hide-menu">Info Layanan </span></a>
-                        <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                class="hide-menu">Info Layanan
+                            </span></a>
+                        {{-- <ul aria-expanded="false"
+                            class="collapse first-level base-level-line">
                             <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link has-arrow"><span
                                         class="hide-menu">Layanan A
                                     </span></a>
@@ -55,35 +57,36 @@
                                                 class="hide-menu">Alur</span></a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('layanan') }}"
                             aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                 class="hide-menu">Layanan </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="layanan" class="sidebar-link"><span
-                                        class="hide-menu"> Layanan A
+                        {{-- <ul aria-expanded="false"
+                            class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a href="layanan" class="sidebar-link"><span class="hide-menu">
+                                        Layanan A
                                     </span></a>
                             </li>
                             <li class="sidebar-item"><a href="table-dark-basic.html" class="sidebar-link"><span
                                         class="hide-menu"> Layanan B
                                     </span></a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                            aria-expanded="false"><i data-feather="bar-chart" class="feather-icon"></i><span
-                                class="hide-menu">Aduan </span></a>
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('aduan') }}" aria-expanded="false"><i
+                                data-feather="bar-chart" class="feather-icon"></i><span class="hide-menu">Aduan
+                            </span></a>
                     </li>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Laporan</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="data-penduduk-desa"
-                            aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                class="hide-menu">Data Penduduk
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
+                            href="{{ url('data-penduduk-desa') }}" aria-expanded="false"><i data-feather="lock"
+                                class="feather-icon"></i><span class="hide-menu">Data Penduduk
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('statistik-layanan') }}"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
                                 class="hide-menu">Statistik Data Layanan
                             </span></a>
