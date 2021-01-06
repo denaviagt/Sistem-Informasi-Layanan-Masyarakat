@@ -75,9 +75,35 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Golongan Darah</label>
+                                    <div class="col-sm-9">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="bloodA" name="blood_type" class="custom-control-input"
+                                                value="A">
+                                            <label class="custom-control-label" for="bloodA">A</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="bloodB" name="blood_type" class="custom-control-input"
+                                                value="B">
+                                            <label class="custom-control-label" for="bloodB">A</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="bloodO" name="blood_type" class="custom-control-input"
+                                                value="O">
+                                            <label class="custom-control-label" for="bloodO">O</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="bloodAB" name="blood_type" class="custom-control-input"
+                                                value="AB">
+                                            <label class="custom-control-label" for="bloodAB">AB</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="religion" class="col-sm-3 col-form-label">Agama/Kepercayaan</label>
                                     <div class="col-sm-9">
                                         <select name="religion" id="religion" class="form-control">
+                                            <option disabled selected>Pilih Agama</option>
                                             <option value="Islam">Islam</option>
                                             <option value="Katholik">Khatolik</option>
                                             <option value="Kristen">Kristen</option>
@@ -92,16 +118,31 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Status Perkawinan</label>
                                     <div class="col-sm-9">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="married" name="has_married" class="custom-control-input"
-                                                value="1">
-                                            <label class="custom-control-label" for="married">Kawin</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="single" name="has_married" class="custom-control-input"
-                                                value="0">
-                                            <label class="custom-control-label" for="single">Belum Kawin</label>
-                                        </div>
+                                        <select name="married_status" id="marriedStatus" class="form-control">
+                                            <option disabled selected>Pilih Status</option>
+                                            <option value="Kawin">Kawin</option>
+                                            <option value="Belum Kawin">Belum Kawin</option>
+                                            <option value="Cerai Hidup">Cerai Hidup</option>
+                                            <option value="Cerai Mati">Cerai Mati</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Pendidikan Terakhir</label>
+                                    <div class="col-sm-9">
+                                        <select name="last_education" id="lastEducation" class="form-control">
+                                            <option disabled selected>Pilih Pendidikan</option>
+                                            <option value="Tidak/Belum Sekolah">Tidak/Belum Sekolah</option>
+                                            <option value="Tidak Tamat SD/Sederajat">Tidak Tamat SD/Sederajat</option>
+                                            <option value="Tamat SD/Sederajat">Tamat SD/Sederajat</option>
+                                            <option value="SLTP/Sederajat">SLTP/Sederajat</option>
+                                            <option value="SLTA/Sederjat">SLTA/Sederjat</option>
+                                            <option value="Diploma I/II">Diploma I/II</option>
+                                            <option value="Akademi/Diploma III/S. Muda">Akademi/Diploma III/S. Muda</option>
+                                            <option value="DilpomaIV/Strata I">DilpomaIV/Strata I</option>
+                                            <option value="Strata II">Strata II</option>
+                                            <option value="Strata III">Strata III</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
