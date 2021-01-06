@@ -15,10 +15,10 @@
                     @endif
                     <div class="card">
                         <div class="card-body">
+                            <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                data-target="#add-admin">Tambah</button>
                             <div class="table-responsive">
-                                <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
-                                    data-target="#add-admin">Tambah</button>
-                                <table id="default_order" class="table table-striped table-bordered display no-wrap"
+                                <table id="adminTable" class="table table-striped table-bordered display"
                                     style="width:100%">
                                     <thead>
                                         <tr>
@@ -27,8 +27,6 @@
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>Username</th>
-                                            {{-- <th>No Telepon</th>
-                                            --}}
                                             <th>Level</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -49,9 +47,6 @@
                                                     <td><span class="badge badge-danger">Tidak Aktif</span></td>
                                                     }
                                                 @endif
-                                                {{-- <td>{{ $item->email }}</td>
-                                                --}}
-
                                                 <td>
                                                     <a class="btn" data-toggle="tooltip" data-placement="top"
                                                         title="Edit"><i class="fas fa-edit" data-target="#edit-admin"
@@ -222,7 +217,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
+    {{-- Modal Delete --}}
     <div class="modal fade" id="delete-admin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -248,7 +243,12 @@
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
 
+@section('script')
     <script>
+        $(document).ready(function() {
+            $('#adminTable').DataTable();
+        })
+
         function editPostModal(event) {
             var id = $(event).data("id");
             let _url = `/admin/${id}/edit`;
@@ -305,5 +305,6 @@
         }
 
     </script>
+@endsection
 
 @endsection
