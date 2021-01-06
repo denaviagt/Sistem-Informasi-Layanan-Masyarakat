@@ -91,7 +91,7 @@
                                 class="hide-menu">Statistik Data Layanan
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-register1.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('statistik-aduan') }}"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
                                 class="hide-menu">Statistik Data Aduan
                             </span></a>
