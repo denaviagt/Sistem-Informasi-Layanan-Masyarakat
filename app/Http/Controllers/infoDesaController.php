@@ -38,7 +38,6 @@ class infoDesaController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
