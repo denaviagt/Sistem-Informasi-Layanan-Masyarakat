@@ -84,6 +84,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detail-pindah-penduduk', function () {
         return view('detail-pindah-penduduk');
     });
+    Route::get('/detail-masuk-penduduk', function () {
+        return view('detail-masuk-penduduk');
+    });
+    Route::get('/detail-pengurusan-nikah', function () {
+        return view('detail-pengurusan-nikah');
+    });
+    Route::get('/detail-pengajuan-sku', function () {
+        return view('detail-pengajuan-sku');
+    });
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
