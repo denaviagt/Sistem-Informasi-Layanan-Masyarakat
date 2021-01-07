@@ -16,7 +16,7 @@ class CreateVillageInfosTable extends Migration
         Schema::create('village_infos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->dateTime('date');
             $table->string('thumbnail');
             $table->enum('status', ['published', 'draft']);

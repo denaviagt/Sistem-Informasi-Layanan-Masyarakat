@@ -10,7 +10,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Selamat Pagi, Jason!</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Selamat datang, {{auth()->user()->full_name}}!</h3>
                 </div>
             </div>
         </div>
