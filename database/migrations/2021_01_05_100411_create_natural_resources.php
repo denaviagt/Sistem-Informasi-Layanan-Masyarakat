@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeedbackTable extends Migration
+class CreateNaturalResources extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('natural_resources', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_important')->default(false);
-            $table->boolean('is_anonim')->default(false);
-            $table->boolean('is_read')->default(false);
-            $table->string('feedback');
-            $table->date('date');
+            $table->string('title');
+            $table->string('images');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('natural_resources');
     }
 }
