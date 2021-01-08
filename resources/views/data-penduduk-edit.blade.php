@@ -158,7 +158,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class=" d-flex mx-auto">
-                                   <a href="{{ url()->previous() }}"><button  class="btn btn-danger m-2">Batal</button></a>
+                                   <a href="{{ url()->previous() }}" class="btn btn-danger m-2">Batal</a>
                                     <button type="submit" class="btn btn-primary m-2">Simpan</button>
                                 </div>
                             </div>

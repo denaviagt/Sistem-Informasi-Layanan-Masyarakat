@@ -52,7 +52,7 @@
                                         <td>{{ $item->dusun->dusun_name }}</td>
                                         <td>
                                             <a class="btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
-                                            <a class="btn" href="{{ url('data-penduduk/' . $item->id . '/detail') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a class="btn" href="{{ url('data-penduduk/' . $item->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                                             
                                             <a class="btn" data-toggle="tooltip"  data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
                                         </td>

@@ -48,9 +48,7 @@ class CitizenController extends Controller
      */
     public function show($id)
     {
-        $citizen = Citizen::find($id);
-        $dusun = Dusun::all();
-        return view('data-penduduk-edit',compact('citizen','dusun'));
+ 
         
     }
 
@@ -62,7 +60,9 @@ class CitizenController extends Controller
      */
     public function edit($id)
     {
-        return view('data-penduduk-edit');
+        $citizen = Citizen::find($id);
+        $dusun = Dusun::all();
+        return view('data-penduduk-edit',compact('citizen','dusun'));
     }
 
     /**
