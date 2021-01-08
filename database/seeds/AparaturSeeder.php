@@ -14,7 +14,7 @@ class AparaturSeeder extends Seeder
     {
         DB::table('apparatuses')->insert([
             [
-                'name' => 'Arum Setya, S.Pd',
+                // 'name' => 'Arum Setya, S.Pd',
                 'position' => 'Lurah',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -23,7 +23,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Erwin Dwi Hastomo, SE',
+                // 'name' => 'Erwin Dwi Hastomo, SE',
                 'position' => 'Carik',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -32,7 +32,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Vitra Ikayati, SP',
+                // 'name' => 'Vitra Ikayati, SP',
                 'position' => 'Kaur Tatalaksana',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -41,7 +41,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Dra. Rini Prabaharsi',
+                // 'name' => 'Dra. Rini Prabaharsi',
                 'position' => 'Kaur Danarta',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -50,7 +50,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Nurkartika Rahmawati, S.Pd',
+                // 'name' => 'Nurkartika Rahmawati, S.Pd',
                 'position' => 'Kaur Pangripta',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -59,7 +59,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Ali Rozikin, S.Pd.I',
+                // 'name' => 'Ali Rozikin, S.Pd.I',
                 'position' => 'Jayabaya',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -68,7 +68,7 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Maryadi, Amd',
+                // 'name' => 'Maryadi, Amd',
                 'position' => 'Ulu-ulu',
                 'period' => '2019/2022',
                 'status' => 'active',
@@ -77,11 +77,11 @@ class AparaturSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'name' => 'Arif Aryono, S.sos.I',
+                // 'name' => 'Arif Aryono, S.sos.I',
                 'position' => 'Kamituwa',
                 'period' => '2019/2022',
                 'status' => 'active',
-                'citizen_id' => 1,
+                'citizen_id' => 8,
                 'admin_id' => 1,
                 'created_at' => now()
             ],
