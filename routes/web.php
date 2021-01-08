@@ -45,11 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
 
-    Route::get('/info-layanan-syarat', function () {
+    Route::get('/info-layanan/{category?}','serviceController@index');
+
+    Route::get('/info-layanan-syarat/{category}', function () {
         return view('info-layanan-syarat');
-    });
-    Route::get('/info-layanan', function () {
-        return view('info-layanan');
     });
     Route::get('/isi-tambah-info-desa', function () {
         return view('isi-tambah-info-desa');
