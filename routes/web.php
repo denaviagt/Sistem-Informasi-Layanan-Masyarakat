@@ -93,6 +93,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detail-pengajuan-sku', function () {
         return view('detail-pengajuan-sku');
     });
+    Route::get('/potensi-desa', function () {
+        return view('potensi-desa');
+    });
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
