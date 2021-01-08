@@ -16,11 +16,10 @@ class serviceController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->category);
         $category = ServiceCategory::all();
-        $procedure = ServiceProcedure::where('service_category_id',$request->category)->get();
-        $req = ServiceRequirement::where('service_category_id',$request->category)->get();
-        return view('info-layanan',compact('category','procedure','req'));
+        $procedure = ServiceProcedure::where('service_category_id', $request->category ?? 1)->get();
+        $req = ServiceRequirement::where('service_category_id', $request->category ?? 1)->get();
+        return view('info-layanan', compact('category', 'procedure', 'req'));
     }
 
     /**
@@ -41,7 +40,21 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ($request->type == 'procedure') {
+            $service = new ServiceProcedure();
+            $service->procedure = $request->procedure;
+        } else {
+            $service = new ServiceRequirement();
+            $service->terms = $request->terms;
+        }
+        $service->description = $request->description;
+        $service->service_category_id = $request->category??1;
+        if ($service->save()) {
+            return redirect('info-layanan?category=' . $request->category??1)->with('status-success', 'Tambah Data Layanan ' . $request->type . '  Berhasil!');
+        } else {
+            return redirect('info-layanan')->with('status-fail', 'Tambah Data Layanan ' . $request->type . '  Gagal!');
+        }
     }
 
     /**

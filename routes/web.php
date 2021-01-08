@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
 
     Route::get('/info-layanan/{category?}','serviceController@index');
+    Route::post('/info-layanan','serviceController@store');
 
     Route::get('/info-layanan-syarat/{category}', function () {
         return view('info-layanan-syarat');

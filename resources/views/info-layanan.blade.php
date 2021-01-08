@@ -10,7 +10,7 @@
     <!-- ============================================================== -->
     <div class="container-fluid">
         <!-- ============================================================== -->
-        <form method="GET"  action="{{ url('/info-layanan/') }}">
+        <form method="GET" action="{{ url('/info-layanan/') }}">
             <div class="form-group mb-4 col-md-4 pl-0">
                 <select name="category" class="custom-select mr-sm-2 bg-white" onchange='this.form.submit()' id="inlineFormCustomSelect">
                     @foreach ($category as $item)
@@ -53,7 +53,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($procedure as $item)
+                                    @foreach ($procedure as $item)
                                     <tr>
                                         <td>1</td>
                                         <td>{{$item->id}}</td>
@@ -84,7 +84,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($req as $item)
+                                    @foreach ($req as $item)
                                     <tr>
                                         <td>1</td>
                                         <td>{{$item->id}}</td>
@@ -120,17 +120,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body m-2">
-                <form>
+                <form action="{{ url('/info-layanan/') }}" method="POST">
+                    @csrf
                     <div class="form-group row">
+                        <input type="text" hidden class="form-control" name="type" value="procedure" id="input-alur-layanan">
+                        <input type="text" hidden class="form-control" name="category" value="{{request()->category}}" id="input-alur-layanan">
                         <label for="input-alur-layanan" class="col-sm-3 col-form-label">Alur</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input-alur-layanan">
+                            <input type="text" class="form-control" name="procedure" id="input-alur-layanan">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="input-deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="input-deskripsi">
+                            <input type="text" class="form-control" name="description" id="input-deskripsi">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -209,25 +212,28 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body m-2">
-                <form>
-                    <div class="form-group row">
-                        <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input-syarat-layanan">
+                <form action="{{ url('/info-layanan/') }}" method="POST">
+                    @csrf
+                        <input type="text" hidden class="form-control" name="type" value="terms" id="input-alur-layanan">
+                        <input type="text" hidden class="form-control" name="category" value="{{request()->category}}" id="input-alur-layanan">
+                        <div class="form-group row">
+                            <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="terms" id="input-syarat-layanan">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="input-deskripsi-syarat">
+                        <div class="form-group row">
+                            <label for="input-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="description" id="input-deskripsi-syarat">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class=" d-flex mx-auto">
-                            <button type="submit" class="btn btn-danger m-2">Batal</button>
-                            <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                        <div class="form-group row">
+                            <div class=" d-flex mx-auto">
+                                <button type="submit" class="btn btn-danger m-2">Batal</button>
+                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                            </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div><!-- /.modal-content -->
