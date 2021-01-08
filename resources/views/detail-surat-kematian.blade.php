@@ -24,6 +24,11 @@
                                     Berkas Permohonan
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#step-3">
+                                    Selesai
+                                </a>
+                            </li>
                         </ul>
 
                         <div class="tab-content">
@@ -112,6 +117,75 @@
                                     <span class="col-4">Fotokopi KTP Saksi 2 Orang</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                            </div>
+                            <div id="step-3" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-3">
+                                <div class="row">
+                                    <div class="col-md-5 mx-auto mt-6">
+                                        <div class="payment">
+                                            <div class="payment_header">
+                                                <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                            </div>
+                                            <div class="content">
+                                                <h1>Berkas Sudah Lengkap, Verifikasi Selesai !</h1>
+                                                <a href="http://www.schauhan.in/wp-content/uploads/2020/12/payment_success.html#">Cetak Dokumen</a>
+                                                <a href="http://www.schauhan.in/wp-content/uploads/2020/12/payment_success.html#">Kirim Notifikasi</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+                                    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+                                    <style type="text/css">
+                                        body {
+                                            background: #f2f2f2;
+                                        }
+
+                                        .payment {
+                                            border: 1px solid #f2f2f2;
+                                            height: 150px;
+                                            border-radius: 20px;
+                                            background: #fff;
+                                        }
+                                        .payment_header {
+                                            background: rgb(141, 212, 230);
+                                            padding: 8px;
+                                            border-radius: 10px 10px 0px 0px;
+                                        }
+                                        .check {
+                                            margin: 0px auto;
+                                            width: 30px;
+                                            height: 30px;
+                                            border-radius: 100%;
+                                            background: #fff;
+                                            text-align: center;
+                                        }
+                                        .check i {
+                                            vertical-align: middle;
+                                            line-height: 30px;
+                                            font-size: 30px;
+                                        }
+                                        .content {
+                                            text-align: center;
+                                        }
+                                        .content h1 {
+                                            font-size: 15px;
+                                            padding-top: 15px;
+                                        }
+                                        .content a {
+                                            width: 200px;
+                                            height: 35px;
+                                            color: #fff;
+                                            border-radius: 30px;
+                                            padding: 5px 10px;
+                                            background: rgb(109, 203, 231);
+                                            transition: all ease-in-out 0.3s;
+                                        }
+                                        .content a:hover {
+                                            text-decoration: none;
+                                            background: #000;
+                                        }
+                                    </style>
                                 </div>
                             </div>
                         </div>
