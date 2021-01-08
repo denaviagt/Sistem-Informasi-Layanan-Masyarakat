@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tambah-info-desa', 'infoDesaController@create');
     Route::post('/tambah-info-desa', 'infoDesaController@store');
     Route::get('/data-penduduk-desa', 'CitizenController@index');
+    Route::get('/data-penduduk/create', 'CitizenController@create');
+    Route::get('/data-penduduk/{id}/edit', 'CitizenController@edit');
+    Route::get('/data-penduduk-desa/delete/{id}', 'CitizenController@delete');
 
     Route::get('/info-layanan-syarat', function () {
         return view('info-layanan-syarat');
@@ -50,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/isi-tambah-info-desa', function () {
         return view('isi-tambah-info-desa');
     });
-    Route::get('/edit-tambah-info-desa', function () {
+    Route::get('/edit-info-desa', function () {
         return view('edit-info-desa');
     });
     Route::get('/layanan', function () {
@@ -64,6 +67,33 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
+    });
+    Route::get('/statistik-aduan', function () {
+        return view('statistik-aduan');
+    });
+    Route::get('/detail-kk', function () {
+        return view('detail-kk');
+    });
+    Route::get('/detail-akta-kelahiran', function () {
+        return view('detail-akta-kelahiran');
+    });
+    Route::get('/detail-surat-kematian', function () {
+        return view('detail-surat-kematian');
+    });
+    Route::get('/detail-pindah-penduduk', function () {
+        return view('detail-pindah-penduduk');
+    });
+    Route::get('/detail-masuk-penduduk', function () {
+        return view('detail-masuk-penduduk');
+    });
+    Route::get('/detail-pengurusan-nikah', function () {
+        return view('detail-pengurusan-nikah');
+    });
+    Route::get('/detail-pengajuan-sku', function () {
+        return view('detail-pengajuan-sku');
+    });
+    Route::get('/potensi-desa', function () {
+        return view('potensi-desa');
     });
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });

@@ -15,11 +15,11 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_anonim')->default(true);
+            $table->boolean('is_important')->default(false);
+            $table->boolean('is_anonim')->default(false);
+            $table->boolean('is_read')->default(false);
             $table->string('feedback');
             $table->date('date');
-            $table->boolean('is_urgent')->default(false);
-            $table->boolean('is_done')->default(false);
             $table->timestamps();
         });
     }

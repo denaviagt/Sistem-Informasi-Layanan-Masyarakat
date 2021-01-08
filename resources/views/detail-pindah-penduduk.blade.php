@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'E-KTP')
+@section('title', 'Pengurusan Pindah Penduduk')
 
 @section('content')
     <div class="page-wrapper">
@@ -74,17 +74,17 @@
                             </div>
                             <div id="step-2" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-2">
                                 <div class="row m-3">
-                                    <span class="col-4">Surat Pengantar E-KTP Dusun</span>
+                                    <span class="col-4">Surat Pengantar RT/RW/Dukuh</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>
                                 <div class="row m-3">
-                                    <span class="col-4">Formulir F-1.07 Legalisir Dukuh</span>
+                                    <span class="col-4">Kartu Keluarga & KTP Asli</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>
                                 <div class="row m-3">
-                                    <span class="col-4">Fotokopi KK</span>
+                                    <span class="col-4">Foto Berwarna</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>

@@ -25,7 +25,7 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        //
+        return view('data-penduduk-tambah');
     }
 
     /**
@@ -58,7 +58,7 @@ class CitizenController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('data-penduduk-edit');
     }
 
     /**

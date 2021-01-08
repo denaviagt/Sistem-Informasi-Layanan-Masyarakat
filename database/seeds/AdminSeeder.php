@@ -16,6 +16,18 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('admins')->insert([
+            'full_name' => 'Rizka Sarasvati',
+            'gender' => 'female',
+            'email' => 'saras@gmail.com',
+            'username' => 'sarasv',
+            'password' => Hash::make('password'),
+            'token' => "",
+            'remember_token' => "",
+            'is_active' => 1,
+            'level' => 'admin',
+            'created_at' => now(),
+        ]);
         $faker = Faker::create('id_ID');
         // $gender = $faker->randomElement(['male', 'female']);
         for ($i = 1; $i <= 5; $i++) {
@@ -29,6 +41,7 @@ class AdminSeeder extends Seeder
                 'remember_token' => "",
                 'is_active' => 1,
                 'level' => 'admin',
+                'created_at' => now(),
             ]);
         }
     }

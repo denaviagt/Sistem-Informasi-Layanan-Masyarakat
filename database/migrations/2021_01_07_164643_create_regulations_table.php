@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVillageInfosTable extends Migration
+class CreateRegulationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateVillageInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('village_infos', function (Blueprint $table) {
+        Schema::create('regulations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
-            $table->dateTime('date');
-            $table->string('thumbnail');
-            $table->enum('status', ['published', 'draft']);
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateVillageInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('village_infos');
+        Schema::dropIfExists('regulations');
     }
 }

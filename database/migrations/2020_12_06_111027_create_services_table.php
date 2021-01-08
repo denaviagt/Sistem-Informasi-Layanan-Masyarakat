@@ -16,7 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->enum('status', ['accepted', 'processing', 'rejected', 'completed', 'draft']);
+            $table->enum('status', ['accepted', 'processing', 'rejected', 'completed', 'sent']);
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="aduan-table" class="table table-striped table-bordered display no-wrap"
+                                <table id="aduanTable" class="table table-striped table-bordered display"
                                     style="width:100%">
                                     <thead>
                                         <tr>
@@ -23,7 +23,7 @@
                                             <th>Tanggal</th>
                                             <th>Daerah</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -37,7 +37,7 @@
                                             </td>
                                             <td>1</td>
                                             <td>DN01</td>
-                                            <td><a href="#" data-target="#detail-aduan" data-toggle="modal">Edinburgh</a>
+                                            <td>Edinburgh
                                             </td>
                                             <td>Lampu jalan mati</td>
                                             <td>09/12/2020</td>
@@ -45,8 +45,8 @@
                                             <td>Aktif</td>
                                             <td>
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
+                                                    title="Detail"><i class="fas fa-eye" data-toggle="modal"
+                                                        data-target="#detail-aduan"></i></button>
 
                                                 <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                     title="Hapus"><i class="fas fa-trash" data-toggle="modal"
@@ -232,4 +232,34 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    {{-- Modal Delete --}}
+    <div class="modal fade" id="delete-aduan" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mySmallModalLabel">Hapus Aduan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <h4>Apakah Anda yakin akan menghapus?</h4>
+                    <div class="form-group row">
+                        <div class=" d-flex mx-auto">
+                            <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
+                                aria-hidden="true">Batal</button>
+                            <button type="submit" class="btn btn-primary m-2" onclick="deleteData(event.target)"
+                                id="confirm-delete-aduan">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+@endsection
+@section('script')
+    <script>
+        $('#aduanTable').DataTable();
+
+    </script>
 @endsection

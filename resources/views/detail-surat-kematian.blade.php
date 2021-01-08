@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'E-KTP')
+@section('title', 'Surat Kematian')
 
 @section('content')
     <div class="page-wrapper">
@@ -74,17 +74,47 @@
                             </div>
                             <div id="step-2" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-2">
                                 <div class="row m-3">
-                                    <span class="col-4">Surat Pengantar E-KTP Dusun</span>
+                                    <span class="col-4">Surat Pengantar RT/RW/Dukuh</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>
                                 <div class="row m-3">
-                                    <span class="col-4">Formulir F-1.07 Legalisir Dukuh</span>
+                                    <span class="col-4">Surat Pengantar Dari Kelurahan</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>
                                 <div class="row m-3">
-                                    <span class="col-4">Fotokopi KK</span>
+                                    <span class="col-4">Fotokopi Surat Kematian </span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">Fotokopi Surat Nikah (Jika Sudah Menikah)/Surat Nikah Orang Tua(Jika Belum Menikah) </span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">Fotokopi Akta Kelahiran</span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">Fotokopi KK/KTP Pelapor dan Saksi</span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">SKBRI Bagi WNI</span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">SK WNA Bagi WNA</span>
+                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
+                                    <button class="btn btn-primary">Lihat File</button>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-4">Fotokopi KTP Saksi 2 Orang</span>
                                     <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
                                     <button class="btn btn-primary">Lihat File</button>
                                 </div>
