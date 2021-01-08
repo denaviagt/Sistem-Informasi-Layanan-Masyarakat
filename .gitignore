@@ -16,3 +16,5 @@ package.json
 /public/css/app.css
 /public/js/app.js
 /.idea/
+.storage/logs
+
