@@ -38,8 +38,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/info-desa', 'infoDesaController@index');
     Route::get('/info-desa/{id}', 'infoDesaController@show');
+    Route::get('/edit-info-desa/{id}/edit', 'infoDesaController@edit');
+    Route::put('/edit-info-desa/{id}', 'infoDesaController@update');
     Route::get('/tambah-info-desa', 'infoDesaController@create');
     Route::post('/tambah-info-desa', 'infoDesaController@store');
+    Route::delete('/info-desa/{id}', 'infoDesaController@destroy');
     Route::get('/data-penduduk-desa', 'CitizenController@index');
     Route::get('/data-penduduk/create', 'CitizenController@create');
     Route::get('/data-penduduk/{id}/edit', 'CitizenController@edit');
@@ -53,9 +56,6 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/isi-tambah-info-desa', function () {
         return view('isi-tambah-info-desa');
-    });
-    Route::get('/edit-info-desa', function () {
-        return view('edit-info-desa');
     });
     Route::get('/layanan', function () {
         return view('layanan');

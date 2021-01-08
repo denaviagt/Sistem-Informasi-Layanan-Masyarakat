@@ -77,7 +77,8 @@ class infoDesaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $infoDesaDetail = VillageInfo::where('id', $id)->first();
+        return view('edit-info-desa', compact('infoDesaDetail'));
     }
 
     /**
@@ -87,9 +88,27 @@ class infoDesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
+        $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+
+        $infoDesaAdd = VillageInfo::find($request->id);
+        // Admin::find($request->ed_id_admin);
+
+        $infoDesaAdd->title = $request->title;
+        $infoDesaAdd->content = $request->summernote;
+        $infoDesaAdd->thumbnail = $thumbName;
+        $infoDesaAdd->date = now();
+        $infoDesaAdd->status = $request->status;
+        $infoDesaAdd->admin_id = $request->admin_id;
+
+        $infoDesaAdd->save();
+        return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
     }
 
     /**
@@ -100,6 +119,17 @@ class infoDesaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $infoDesa = VillageInfo::find($id);
+        // $infoDesa->delete();
+        if ($infoDesa->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+            return redirect('info-desa')->with('status', 'Hapus Data Info Desa Berhasil!');
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }

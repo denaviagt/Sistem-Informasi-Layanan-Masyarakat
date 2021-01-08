@@ -32,13 +32,28 @@
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label col-form-label-sm">Thumbnail</label>
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="input-thumbnail"
                                                     name="thumbnail">
                                                 <label class="custom-file-label" for="input-thumbnail">Pilih Gambar</label>
                                             </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-sm-6">
+                                        <div id="msg"></div>
+                                        <input type="file" name="thumbnail" class="file" accept="image/*"
+                                            style="visibility: hidden; position: absolute">
+                                        <div class="input-group my-3">
+                                            <input type="text" class="form-control" disabled placeholder="Upload File"
+                                                id="file">
+                                            <div class="input-group-append">
+                                                <button type="button" class="browse btn btn-primary">Upload</button>
+                                            </div>
+                                        </div>
+                                        <div class="ml-2 col-sm-6">
+                                            <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
                                         </div>
                                     </div>
                                 </div>
@@ -81,4 +96,25 @@
         <!-- End Container fluid  -->
     </div>
 
+@endsection
+@section('script')
+    <script>
+        $(document).on("click", ".browse", function() {
+            var file = $(this).parents().find(".file");
+            file.trigger("click");
+        });
+        $('input[type="file"]').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $("#file").val(fileName);
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("preview").src = e.target.result;
+            };
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        });
+
+    </script>
 @endsection

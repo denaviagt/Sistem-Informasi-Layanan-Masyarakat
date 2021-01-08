@@ -17,7 +17,7 @@
                         <li class="nav-item">
                             <a href="#missions" data-toggle="tab" aria-expanded="false" class="nav-link">
                                 <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
-                                <span class="d-none d-lg-block">Mission</span>
+                                <span class="d-none d-lg-block">Misi</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -231,7 +231,7 @@
                                 <input type="file" id="upload" hidden />
                                 <label
                                     style="background-color: grey; padding: 0.5rem; color: white; border-radius: 0.3rem;
-                                                                                                                      cursor: pointer;"
+                                                                                                                          cursor: pointer;"
                                     for="upload">Choose
                                     file</label>
                             </div>
