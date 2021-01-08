@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Citizen;
+use App\Models\Dusun;
 use Illuminate\Http\Request;
 
 class CitizenController extends Controller
@@ -47,7 +48,10 @@ class CitizenController extends Controller
      */
     public function show($id)
     {
-        //
+        $citizen = Citizen::find($id);
+        $dusun = Dusun::all();
+        return view('data-penduduk-edit',compact('citizen','dusun'));
+        
     }
 
     /**
@@ -70,7 +74,26 @@ class CitizenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $citizen = Citizen::find($id);
+        $citizen->nik = $request->nik;
+        $citizen->kk = $request->kk;
+        $citizen->full_name = $request->full_name;
+        $citizen->pob = $request->pob;
+        $citizen->dob = $request->dob;
+        $citizen->gender = $request->gender;
+        $citizen->blood_type = $request->blood_type;
+        $citizen->religion = $request->religion;
+        $citizen->married_status = $request->married_status;
+        $citizen->last_education = $request->last_education;
+        $citizen->profession = $request->profession;
+        $citizen->address = $request->address;
+        $citizen->dusun_id = $request->dusun_id;
+
+        if ($citizen->save()) {
+            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Berhasil!');
+        } else {
+            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Gagal!');
+        }
     }
 
     /**
@@ -81,6 +104,15 @@ class CitizenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $citizen = Citizen::find($id);
+        if ($citizen->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }
