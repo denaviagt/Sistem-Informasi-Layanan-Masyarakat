@@ -28,7 +28,7 @@
                                     class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                <table id="infoTable" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -60,8 +60,8 @@
 
                                                     <a class="btn" data-toggle="tooltip" data-placement="top"
                                                         title="Hapus"><i class="fas fa-trash" id="DeleteInfo"
-                                                            onclick="modalDelete(event.target)"
-                                                            data-id="{{ $item->id }}"></i></a>
+                                                            onclick="modalDelete(event.target)" data-id="{{ $item->id }}"
+                                                            value="{{ $item->id }}"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -108,8 +108,10 @@
 
 @section('script')
     <script>
+        $('#infoTable').DataTable();
         // $(document).ready(function() {
         function modalDelete(event) {
+            // var $elem = $(this).parent().parent();
             var id = $(event).data("id");
 
             // $('#confirm-delete-admin').data('id', id); //setter
@@ -119,6 +121,7 @@
         }
 
         function deleteData(event) {
+            // e.preventDefault();
             var id = $(event).data("id");
             let _url = `/info-desa/${id}`;
             $.ajaxSetup({
@@ -132,6 +135,7 @@
                 success: function(data) {
                     location.reload();
                     $('#deleteInfoDesa').modal('hide');
+                    // $('#infoTable').DataTable().ajax.reload();
                 },
                 // success: function(response) {
                 //     if (response) {
