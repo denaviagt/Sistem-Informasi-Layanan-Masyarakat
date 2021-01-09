@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfilKalurahanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,13 +45,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/data-penduduk-desa', 'CitizenController@index');
     Route::get('/data-penduduk/create', 'CitizenController@create');
     Route::get('/data-penduduk/{id}/edit', 'CitizenController@edit');
-    Route::get('/data-penduduk-desa/delete/{id}', 'CitizenController@delete');
+    Route::post('/data-penduduk/{id}/update', 'CitizenController@update');
+    Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
 
-    Route::get('/info-layanan-syarat', function () {
+    Route::get('/info-layanan/{category?}','serviceController@index');
+    Route::post('/info-layanan','serviceController@store');
+
+    Route::get('/info-layanan-syarat/{category}', function () {
         return view('info-layanan-syarat');
-    });
-    Route::get('/info-layanan', function () {
-        return view('info-layanan');
     });
     Route::get('/isi-tambah-info-desa', function () {
         return view('isi-tambah-info-desa');
