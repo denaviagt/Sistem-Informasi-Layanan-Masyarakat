@@ -17,7 +17,7 @@
                         <li class="nav-item">
                             <a href="#missions" data-toggle="tab" aria-expanded="false" class="nav-link">
                                 <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
-                                <span class="d-none d-lg-block">Mission</span>
+                                <span class="d-none d-lg-block">Misi</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -149,10 +149,15 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $item->id }}</td>
-                                                        <td>{{ $item->name }}</td>
+                                                        <td>{{ $item->citizen->full_name }}</td>
                                                         <td>{{ $item->position }}</td>
                                                         <td>{{ $item->period }}</td>
-                                                        <td>{{ $item->status }}</td>
+                                                        @if ($item->status == 'active'){
+                                                            <td><span class="badge badge-success">Aktif</span></td>
+                                                        }@else{
+                                                            <td><span class="badge badge-danger">Tidak Aktif</span></td>
+                                                            }
+                                                        @endif
                                                         <td>
                                                             <button type="button" class="btn" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
@@ -224,8 +229,9 @@
                         <div class="tab-pane " id="produkHukum">
                             <div class="d-flex justify-content-center">
                                 <input type="file" id="upload" hidden />
-                                <label style="background-color: grey; padding: 0.5rem; color: white; border-radius: 0.3rem;
-                                                                                                          cursor: pointer;"
+                                <label
+                                    style="background-color: grey; padding: 0.5rem; color: white; border-radius: 0.3rem;
+                                                                                                                          cursor: pointer;"
                                     for="upload">Choose
                                     file</label>
                             </div>

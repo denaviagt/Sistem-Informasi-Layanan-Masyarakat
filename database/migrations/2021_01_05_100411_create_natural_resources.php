@@ -16,7 +16,6 @@ class CreateNaturalResources extends Migration
         Schema::create('natural_resources', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('images');
             $table->text('description');
             $table->timestamps();
         });
