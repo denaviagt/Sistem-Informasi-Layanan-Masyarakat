@@ -18,7 +18,7 @@
 
                     <div class="card-body">
                         <div class="text-right mb-3">
-                            <a href="{{ url('tambah-info-desa') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+                            <a href="{{ url('tambah-potensi-desa') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered no-wrap">
@@ -42,7 +42,7 @@
                                         <td>id admin </td>
                                         <td>isi status</td>
                                         <td>
-                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                            <a class="btn" href="{{ url('detail-potensi-desa/') }}" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
 
                                             <a class="btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
