@@ -19,7 +19,7 @@ class ServiceInfoController extends Controller
         $category = ServiceCategory::all();
         $procedure = ServiceProcedure::where('service_category_id', $request->category ?? 1)->get();
         $req = ServiceRequirement::where('service_category_id', $request->category ?? 1)->get();
-        return view('info-layanan', compact(['category', 'procedure', 'req']));
+        return view('service-info/index', compact(['category', 'procedure', 'req']));
     }
 
     /**

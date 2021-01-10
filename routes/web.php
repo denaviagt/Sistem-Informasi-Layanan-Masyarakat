@@ -55,55 +55,53 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
     Route::post('/info-layanan', 'ServiceInfoController@store');
 
-    Route::get('/info-layanan-syarat/{category}', function () {
-        return view('info-layanan-syarat');
-    });
-    Route::get('/isi-tambah-info-desa', function () {
-        return view('isi-tambah-info-desa');
-    });
     Route::get('/layanan', function () {
-        return view('layanan');
+        return view('service/index');
     });
     Route::get('/detail-layanan', function () {
-        return view('detail-layanan');
+        return view('service/detail-layanan');
     });
+    Route::get('/detail-kk', function () {
+        return view('service/detail-kk');
+    });
+    Route::get('/detail-akta-kelahiran', function () {
+        return view('service/detail-akta-kelahiran');
+    });
+    Route::get('/detail-surat-kematian', function () {
+        return view('service/detail-surat-kematian');
+    });
+    Route::get('/detail-pindah-penduduk', function () {
+        return view('service/detail-pindah-penduduk');
+    });
+    Route::get('/detail-masuk-penduduk', function () {
+        return view('service/detail-masuk-penduduk');
+    });
+    Route::get('/detail-pengurusan-nikah', function () {
+        return view('service/detail-pengurusan-nikah');
+    });
+    Route::get('/detail-pengajuan-sku', function () {
+        return view('service/detail-pengajuan-sku');
+    });
+
     Route::get('/aduan', 'FeedbackController@index');
+
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
     });
     Route::get('/statistik-aduan', function () {
         return view('statistik-aduan');
     });
-    Route::get('/detail-kk', function () {
-        return view('detail-kk');
-    });
-    Route::get('/detail-akta-kelahiran', function () {
-        return view('detail-akta-kelahiran');
-    });
-    Route::get('/detail-surat-kematian', function () {
-        return view('detail-surat-kematian');
-    });
-    Route::get('/detail-pindah-penduduk', function () {
-        return view('detail-pindah-penduduk');
-    });
-    Route::get('/detail-masuk-penduduk', function () {
-        return view('detail-masuk-penduduk');
-    });
-    Route::get('/detail-pengurusan-nikah', function () {
-        return view('detail-pengurusan-nikah');
-    });
-    Route::get('/detail-pengajuan-sku', function () {
-        return view('detail-pengajuan-sku');
-    });
+
     Route::get('/potensi-desa', function () {
-        return view('potensi-desa');
+        return view('natural-resource/index');
     });
     Route::get('/tambah-potensi-desa', function () {
-        return view('tambah-potensi-desa');
+        return view('natural-resource/tambah');
     });
     Route::get('/detail-potensi-desa', function () {
-        return view('detail-potensi-desa');
+        return view('natural-resource/detail');
     });
+    
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
