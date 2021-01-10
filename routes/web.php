@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
 
-    Route::get('/info-layanan/{category?}','serviceController@index');
-    Route::post('/info-layanan','serviceController@store');
+    Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
+    Route::post('/info-layanan', 'ServiceInfoController@store');
 
     Route::get('/info-layanan-syarat/{category}', function () {
         return view('info-layanan-syarat');
@@ -63,9 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detail-layanan', function () {
         return view('detail-layanan');
     });
-    Route::get('/aduan', function () {
-        return view('aduan');
-    });
+    Route::get('/aduan', 'FeedbackController@index');
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
     });

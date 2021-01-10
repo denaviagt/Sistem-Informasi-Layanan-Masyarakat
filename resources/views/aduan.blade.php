@@ -27,157 +27,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="">
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-1">
-                                                    <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh
-                                            </td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Detail"><i class="fas fa-eye" data-toggle="modal"
-                                                        data-target="#detail-aduan"></i></button>
+                                        @foreach ($feedbacks as $item)
+                                            <tr>
+                                                <td class="">
+                                                    <div class="custom-checkbox custom-control">
+                                                        <input type="checkbox" data-checkboxes="mygroup"
+                                                            class="custom-control-input" id="checkbox-1">
+                                                        <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>
+                                                </td>
+                                                <td>Lampu jalan mati</td>
+                                                <td>09/12/2020</td>
+                                                <td>Rejosari</td>
+                                                <td>Aktif</td>
+                                                <td>
+                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                        data-placement="top" title="Detail"><i class="fas fa-eye"
+                                                            data-toggle="modal" data-target="#detail-aduan"></i></button>
 
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-2">
-                                                    <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-3">
-                                                    <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-4">
-                                                    <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-5">
-                                                    <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox" data-checkboxes="mygroup"
-                                                        class="custom-control-input" id="checkbox-6">
-                                                    <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>DN01</td>
-                                            <td>Edinburgh</td>
-                                            <td>Lampu jalan mati</td>
-                                            <td>09/12/2020</td>
-                                            <td>Rejosari</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i class="fas fa-edit" data-toggle="modal"
-                                                        data-target="#edit-aduan"></i></button>
-
-                                                <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                                    title="Hapus"><i class="fas fa-trash" data-toggle="modal"
-                                                        data-target="#delete-aduan"></i></button>
-                                            </td>
-                                        </tr>
+                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                            data-toggle="modal" data-target="#delete-aduan"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
