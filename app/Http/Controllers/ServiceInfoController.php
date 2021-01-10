@@ -22,6 +22,14 @@ class ServiceInfoController extends Controller
         return view('service-info/index', compact(['category', 'procedure', 'req']));
     }
 
+    public function data_alur(Request $request)
+    {
+        $category = ServiceCategory::all();
+        $procedure = ServiceProcedure::where('service_category_id', $request->category ?? 1)->get();
+        return view('service-info/alur-data', compact('procedure'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -74,9 +82,16 @@ class ServiceInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $type)
     {
-        //
+        if ($type == 'alur') {
+            $service = ServiceProcedure::find($id);
+        } else {
+            $service = ServiceRequirement::find($id);
+        }
+        return response()->json([
+            'data' => $service
+        ]);
     }
 
     /**
@@ -86,9 +101,21 @@ class ServiceInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $type)
     {
-        //
+        if ($type == 'alur') {
+            $service = ServiceProcedure::find($request->edit_alur_id);
+            $service->procedure = $request->edit_alur_layanan;
+        } else {
+            $service = ServiceRequirement::find($request->ed_id_admin);
+            $service->procedure = $request->edit_syarat_layanan;
+        }
+        $service->description = $request->edit_description_layanan;
+        if ($service->save()) {
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Admin Berhasil!');
+        } else {
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Admin Gagal!');
+        }
     }
 
     /**
@@ -97,8 +124,22 @@ class ServiceInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $type)
     {
-        //
+        if ($type == 'alur') {
+            $service = ServiceProcedure::find($id);
+        } else {
+            $service = ServiceRequirement::find($id);
+        }
+
+        if ($service->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }

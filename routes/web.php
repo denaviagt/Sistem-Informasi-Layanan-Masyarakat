@@ -54,6 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
     Route::post('/info-layanan', 'ServiceInfoController@store');
+    Route::get('/info-layanan/{id}/{type}/edit', 'ServiceInfoController@edit');
+    Route::put('/info-layanan/{type}', 'ServiceInfoController@update');
+    Route::delete('/info-layanan/{id}/{type}', 'ServiceInfoController@destroy');
+    Route::get('/info-layanan/data/alur', 'ServiceInfoController@data_alur');
 
     Route::get('/layanan', function () {
         return view('service/index');
