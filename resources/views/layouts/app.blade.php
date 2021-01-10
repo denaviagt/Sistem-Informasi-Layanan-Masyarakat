@@ -1,6 +1,6 @@
 @php
- $user = auth()->user();
- @endphp
+$user = auth()->user();
+@endphp
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -21,6 +21,9 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
         type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
@@ -71,7 +74,7 @@
     <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
@@ -90,7 +93,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#zero_config').DataTable();
-           
+
 
             $('#smartwizard').smartWizard({
                 theme: 'dots',

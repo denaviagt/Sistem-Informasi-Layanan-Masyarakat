@@ -34,7 +34,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/edit', 'AdminController@update');
     Route::delete('/delete/{id}', 'AdminController@destroy');
 
-    Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
+    Route::get('/profil-kalurahan', 'VillageProfileController@index');
+    Route::post('/profil-kalurahan', 'VillageProfileController@store');
+    Route::get('/citizen-name', 'VillageProfileController@select2Name');
+    
     Route::get('/edit-password', function () {
         return view('edit-password');
     });
