@@ -90,8 +90,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#zero_config').DataTable();
-            $('#syarat-table').DataTable();
-            $('#alur-table').DataTable();
+           
 
             $('#smartwizard').smartWizard({
                 theme: 'dots',
