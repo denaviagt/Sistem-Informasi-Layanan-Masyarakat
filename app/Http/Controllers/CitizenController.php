@@ -16,7 +16,7 @@ class CitizenController extends Controller
     public function index()
     {
         $citizen = Citizen::all();
-        return view('data-penduduk-desa', compact('citizen'));
+        return view('data-penduduk/data', compact('citizen'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        return view('data-penduduk-tambah');
+        return view('data-penduduk/tambah');
     }
 
     /**
@@ -62,7 +62,7 @@ class CitizenController extends Controller
     {
         $citizen = Citizen::find($id);
         $dusun = Dusun::all();
-        return view('data-penduduk-edit',compact('citizen','dusun'));
+        return view('data-penduduk/edit',compact('citizen','dusun'));
     }
 
     /**
@@ -90,9 +90,9 @@ class CitizenController extends Controller
         $citizen->dusun_id = $request->dusun_id;
 
         if ($citizen->save()) {
-            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Berhasil!');
+            return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Berhasil!');
         } else {
-            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Gagal!');
+            return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Gagal!');
         }
     }
 

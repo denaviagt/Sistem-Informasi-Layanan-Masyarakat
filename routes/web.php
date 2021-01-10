@@ -27,11 +27,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('login', function () {
         return view('login');
     });
+
     Route::get('/admin', 'AdminController@index');
     Route::post('/admin', 'AdminController@store');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
     Route::delete('/delete/{id}', 'AdminController@destroy');
+
     Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
     Route::get('/edit-password', function () {
         return view('edit-password');
@@ -43,11 +45,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tambah-info-desa', 'infoDesaController@create');
     Route::post('/tambah-info-desa', 'infoDesaController@store');
     Route::delete('/info-desa/{id}', 'infoDesaController@destroy');
-    Route::get('/data-penduduk-desa', 'CitizenController@index');
-    Route::get('/data-penduduk/create', 'CitizenController@create');
-    Route::get('/data-penduduk/{id}/edit', 'CitizenController@edit');
-    Route::post('/data-penduduk/{id}/update', 'CitizenController@update');
-    Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
+
+    Route::get('/data-penduduk', 'CitizenController@index');
+    Route::get('data-penduduk/create', 'CitizenController@create');
+    Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
+    Route::post('data-penduduk/{id}/update', 'CitizenController@update');
+    Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
 
     Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
     Route::post('/info-layanan', 'ServiceInfoController@store');
