@@ -98,6 +98,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/potensi-desa', function () {
         return view('potensi-desa');
     });
+    Route::get('/tambah-potensi-desa', function () {
+        return view('tambah-potensi-desa');
+    });
+    Route::get('/detail-potensi-desa', function () {
+        return view('detail-potensi-desa');
+    });
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
