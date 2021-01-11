@@ -16,7 +16,7 @@ class CreateServiceProceduresTable extends Migration
         Schema::create('service_procedures', function (Blueprint $table) {
             $table->id();
             $table->string('procedure');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });

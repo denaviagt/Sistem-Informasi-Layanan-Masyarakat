@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterVillagesAddForeignKey extends Migration
+class AlterVisionsForeignkey extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AlterVillagesAddForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('villages', function (Blueprint $table) {
-            $table->foreignId('mission_id')->constrained('missions');
-            $table->foreignId('vision_id')->constrained('visions');
+        Schema::table('visions', function (Blueprint $table) {
+            $table->foreignId('village_id')->constrained('villages');
         });
     }
 
@@ -26,8 +25,8 @@ class AlterVillagesAddForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('villages', function (Blueprint $table) {
-            $table->dropForeign(['mission_id', 'vision_id']);
+        Schema::table('visions', function (Blueprint $table) {
+            $table->dropForeign('village_id');
         });
     }
 }

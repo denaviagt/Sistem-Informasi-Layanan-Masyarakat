@@ -23,7 +23,7 @@ class CreateCitizensTable extends Migration
             $table->string('married_status', 15)->default(false);
             $table->string('last_education', 30)->nullable(true);
             $table->string('blood_type', 2)->nullable(true);
-            $table->string('profession');
+            $table->string('profession')->nullable();
             $table->string('pob')->nullable(false);
             $table->date('dob')->nullable(false);
             $table->string('address')->nullable(false);

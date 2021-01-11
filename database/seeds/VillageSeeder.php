@@ -15,8 +15,8 @@ class VillageSeeder extends Seeder
         DB::table('villages')->insert([
             'village_name' => 'Jogotirto',
             'lurah' => 'Arum Setiya, S.Pd',
-            'mission_id' => '1',
-            'vision_id' => '1',
+            // 'mission_id' => '1',
+            // 'vision_id' => '1',
             'created_at' => now(),
         ]);
     }
