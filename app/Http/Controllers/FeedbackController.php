@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Citizen;
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FeedbackController extends Controller
 {
@@ -15,8 +18,11 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = Feedback::all();
-        // return $feedbacks;
-        return view('aduan', compact('feedbacks'));
+        // return $feedbacks->id;
+        foreach ($feedbacks as $key ) {
+            $feed_val = [Str::limit($key->feedback, 20, '...')];
+        }
+        return view('aduan', compact(['feedbacks']));
     }
 
     /**
@@ -48,7 +54,18 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        // $id_user = User::where('id', $feedback->user_id)->first();
+        // dd($id_user);
+        // $full_name = Citizen::where('id', $id_user->citizen_id)->first();
+
+        $full_name = $feedback->user->citizen->full_name;
+        $dusun = $feedback->dusun->dusun_name;
+        return response()->json([
+            'data' => $feedback,
+            'full_name' => $full_name,
+            'dusun' => $dusun
+        ]);
     }
 
     /**
@@ -69,9 +86,12 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function importantUpdate($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        $feedback->is_important = 1;
+
+        $feedback->save();
     }
 
     /**
