@@ -97,12 +97,13 @@ body {
     line-height: 1.5;
     color: #7c8798;
     text-align: left;
-    background-color: #f9fbfd;
+    background-color: #FAFAFA;
 }
 
 [tabindex="-1"]:focus {
     outline: 0 !important;
 }
+
 
 hr {
     box-sizing: content-box;

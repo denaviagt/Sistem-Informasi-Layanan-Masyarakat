@@ -12,7 +12,7 @@
              <!-- ============================================================== -->
              <div class="navbar-brand">
                  <!-- Logo icon -->
-                 <a href="index.html">
+                 <a href="{{ url('/') }}">
                      <b class="logo-icon">
                          <!-- Dark Logo icon -->
                          <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
@@ -41,11 +41,11 @@
          <!-- ============================================================== -->
          <!-- End Logo -->
          <!-- ============================================================== -->
-         <div class="navbar-collapse collapse" id="navbarSupportedContent">
+         <div class="navbar-collapse collapse shadow-sm bg-white" id="navbarSupportedContent">
              <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                  <li class="nav-item header-title">
                      <h3 class="pl-md-3 position-relative title">
-                         @yield('title')
+                        <b> @yield('title')</b>
                      </h3>
                  </li>
              </ul>
@@ -73,10 +73,9 @@
                      <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                          aria-haspopup="true" aria-expanded="false">
                          <img src="{{ asset('assets/images/users/profile-pic.jpg') }}" alt="user" class="rounded-circle"
-                             width="40">
-                         <span class="ml-2 d-none d-lg-inline-block"><span
-                                 class="text-dark">{{ $user->full_name }}</span> <i data-feather="chevron-down"
-                                 class="svg-icon"></i></span>
+                             width="30">
+                         <span class="ml-2 d-none d-lg-inline-block"><span class="">{{ $user->full_name }}</span> <i
+                                 data-feather="chevron-down" class="svg-icon"></i></span>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                          <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
