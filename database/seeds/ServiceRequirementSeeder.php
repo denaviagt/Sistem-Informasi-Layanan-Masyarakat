@@ -28,6 +28,13 @@ class ServiceRequirementSeeder extends Seeder
                 'service_category_id' => 1
             ],
             [
+                'terms' => 'Fotokopi Kartu Keluarga',
+                'description' => '',
+                'status' => 'active',
+                'created_at' => now(),
+                'service_category_id' => 1
+            ],
+            [
                 'terms' => 'Pengantar RT/RW',
                 'description' => '',
                 'status' => 'active',
