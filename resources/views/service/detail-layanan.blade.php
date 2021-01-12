@@ -33,129 +33,86 @@
 
                         <div class="tab-content">
                             <div id="step-1" class="tab-pane detail-data-pemohon" role="tabpanel" aria-labelledby="step-1">
+                                <input type="hidden" name="citizen_id" id="citizen_id" value="{{ $service->citizen_id }}">
                                 <div class="row m-3">
                                     <span class="col-3">NIK</span>
-                                    <span class="col-5 detail-value detail-value">3244465774736</span>
+                                    <span class="col-5 detail-value detail-value">{{ $service->nik }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Nomor KK</span>
-                                    <span class="col-5 detail-value">234626251626553</span>
+                                    <span class="col-5 detail-value">{{ $service->kk }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Nama</span>
-                                    <span class="col-5 detail-value">Dzawin Nur</span>
+                                    <span class="col-5 detail-value">{{ $service->full_name }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Jenis Kelamin</span>
-                                    <span class="col-5 detail-value">Laki-laki</span>
+                                    @if ($service->gender == 'male')
+                                        <span class="col-3 mr-3 detail-value">Laki-laki</span>
+                                    @else
+                                        <span class="col-3 mr-3 detail-value">Perempuan</span>
+
+                                    @endif
+                                    <span class="col-2">Golongan Darah</span>
+                                    <span class="col-3 detail-value">{{ $service->blood_type }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Agama</span>
-                                    <span class="col-5 detail-value">Islam</span>
+                                    <span class="col-3 mr-3 detail-value">{{ $service->religion }}</span>
+                                    <span class="col-2">Status</span>
+                                    <span class="col-3 detail-value">{{ $service->married_status }}</span>
                                 </div>
                                 <div class="row m-3">
-                                    <span class="col-3">Status</span>
-                                    <span class="col-5 detail-value">Kawim</span>
-                                </div>
-                                <div class="row m-3">
-                                    <span class="col-3">Pekerjaan</span>
-                                    <span class="col-5 detail-value">Wiraswasta</span>
+                                    <span class="col-3">Pendidikan Terakhir</span>
+                                    <span class="col-3 mr-3 detail-value">{{ $service->last_education }}</span>
+                                    <span class="col-2">Pekerjaan</span>
+                                    <span class="col-3 detail-value">{{ $service->profession }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Tempat lahir</span>
-                                    <span class="col-3 mr-3 detail-value">Sleman</span>
+                                    <span class="col-3 mr-3 detail-value">{{ $service->pob }}</span>
                                     <span class="col-2">Tanggal lahir</span>
-                                    <span class="col-3 detail-value">03/09/1990</span>
+                                    <span class="col-3 detail-value">{{ $service->dob }}</span>
                                 </div>
                                 <div class="row m-3">
                                     <span class="col-3">Alamat</span>
-                                    <span class="col-5 detail-value">Alamatnya dimana aja bebas</span>
+                                    <span class="col-5 detail-value">{{ $service->address }}</span>
+                                </div>
+                                <div class="row m-3">
+                                    <span class="col-3">Dusun</span>
+                                    <span class="col-5 detail-value">{{ $service->dusun_name }}</span>
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-2">
-                                <div class="row m-3">
-                                    <span class="col-4">Surat Pengantar E-KTP Dusun</span>
-                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
-                                    <button class="btn btn-primary">Lihat File</button>
-                                </div>
-                                <div class="row m-3">
-                                    <span class="col-4">Formulir F-1.07 Legalisir Dukuh</span>
-                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
-                                    <button class="btn btn-primary">Lihat File</button>
-                                </div>
-                                <div class="row m-3">
-                                    <span class="col-4">Fotokopi KK</span>
-                                    <span class="col-4 mr-3 detail-value">Nama File.pdf</span>
-                                    <button class="btn btn-primary">Lihat File</button>
-                                </div>
+                                @foreach ($requirement as $key => $req)
+                                    <div class="row m-3">
+                                        <span class="col-4">{{ $req->terms }}</span>
+                                        <span class="col-4 mr-3 detail-value">{{ $files[$key]['file_url'] ?? '' }}</span>
+                                        <button type="button" class="btn btn-primary mr-3">Lihat File</button>
+                                        <button type="button" class="btn btn-success"
+                                            id="berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileVerif(event.target)"
+                                            data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+                                    </div>
+                                @endforeach
                             </div>
                             <div id="step-3" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-3">
                                 <div class="row">
                                     <div class="col-md-5 mx-auto mt-6">
-                                        <div class="payment">
-                                            <div class="payment_header">
+                                        <div class="verification">
+                                            <div class="verification_header">
                                                 <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             </div>
-                                            <div class="content">
+                                            <div class="verification_content">
                                                 <h1>Berkas Sudah Lengkap, Verifikasi Selesai !</h1>
-                                                <a href="http://www.schauhan.in/wp-content/uploads/2020/12/payment_success.html#">Cetak Dokumen</a>
-                                                <a href="http://www.schauhan.in/wp-content/uploads/2020/12/payment_success.html#">Kirim Notifikasi</a>
+                                                <a href="#">Cetak
+                                                    Dokumen</a>
+                                                <a href="#">Kirim
+                                                    Notifikasi</a>
 
                                             </div>
                                         </div>
                                     </div>
-                                    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-                                    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-                                    <style type="text/css">
-                                        body {
-                                            background: #f2f2f2;
-                                        }
-
-                                        .payment {
-                                            border: 1px solid #f2f2f2;
-                                            height: 150px;
-                                            border-radius: 20px;
-                                            background: #fff;
-                                        }
-                                        .payment_header {
-                                            background: rgb(141, 212, 230);
-                                            padding: 8px;
-                                            border-radius: 10px 10px 0px 0px;
-                                        }
-                                        .check {
-                                            margin: 0px auto;
-                                            width: 30px;
-                                            height: 30px;
-                                            border-radius: 100%;
-                                            background: #fff;
-                                            text-align: center;
-                                        }
-                                        .check i {
-                                            vertical-align: middle;
-                                            line-height: 30px;
-                                            font-size: 30px;
-                                        }
-                                        .content {
-                                            text-align: center;
-                                        }
-                                        .content h1 {
-                                            font-size: 15px;
-                                            padding-top: 15px;
-                                        }
-                                        .content a {
-                                            width: 200px;
-                                            height: 35px;
-                                            color: #fff;
-                                            border-radius: 30px;
-                                            padding: 5px 10px;
-                                            background: rgb(109, 203, 231);
-                                            transition: all ease-in-out 0.3s;
-                                        }
-                                        .content a:hover {
-                                            text-decoration: none;
-                                            background: #000;
-                                        }
-                                    </style>
                                 </div>
                             </div>
                         </div>
@@ -164,4 +121,62 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#zero_config').DataTable();
+            $('#smartwizard').smartWizard({
+                theme: 'dots',
+                lang: { // Language variables for button
+                    next: 'Selanjutnya',
+                    previous: 'Sebelumnya'
+                },
+                toolbarSettings: {
+                    toolbarExtraButtons: [
+                        $('<button></button>').text('Finish')
+                        .addClass('btn btn-info')
+                        .on('click', function() {
+                            alert('Finish button click');
+                        }),
+                        $('<button></button>').text('Cancel')
+                        .addClass('btn btn-danger')
+                        .on('click', function() {
+                            alert('Cancel button click');
+                        })
+                    ]
+                },
+            });
+            $('#smartwizard').on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+                var step1 = $("#step-1");
+                if (stepDirection === 1 && step1) {
+                    var id = $('#citizen_id').val();
+                    console.log(id);
+                    let _url = `/citizen/${id}/dataverif`;
+                    $.ajax({
+                        url: _url,
+                        type: "POST",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                    });
+                }
+                return true;
+            });
+
+        })
+
+        function fileVerif(event) {
+            var id = $(event).data('id');
+            let _url = `/sevice-file/${id}/status`;
+            $.ajax({
+                url: _url,
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            });
+        }
+
+    </script>
 @endsection

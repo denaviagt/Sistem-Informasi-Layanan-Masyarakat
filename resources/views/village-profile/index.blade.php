@@ -231,7 +231,7 @@
                                 <input type="file" id="upload" hidden />
                                 <label
                                     style="background-color: grey; padding: 0.5rem; color: white; border-radius: 0.3rem;
-                                                                                                                                                                  cursor: pointer;"
+                                                                                                                                                                          cursor: pointer;"
                                     for="upload">Choose
                                     file</label>
                             </div> --}}
@@ -438,16 +438,14 @@
                             <label for="inputDusun" class="col-sm-3 col-form-label">Nama Dusun</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="dusun_name" id="inputDusun" type="text"
-                                    placeholder="Masukkan Nama Dusun">
-                                </input>
+                                    placeholder="Masukkan Nama Dusun" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputHeadOfDusun" class="col-sm-3 col-form-label">Nama Dusun</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="head_of_dusun" id="inputHeadOfDusun" type="text"
-                                    placeholder="Masukkan Kepala Dukuh">
-                                </input>
+                                    placeholder="Masukkan Kepala Dukuh" />
                             </div>
                         </div>
                         <div class="form-group row">

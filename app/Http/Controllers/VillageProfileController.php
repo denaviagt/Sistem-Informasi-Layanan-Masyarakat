@@ -61,31 +61,4 @@ class VillageProfileController extends Controller
             return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data Layanan ' . $request->type . '  Gagal!');
         }
     }
-
-    public function select2Name(Request $request)
-    {
-        // $name = Citizen::select('id', 'full_name');
-        $name = DB::table('citizens')->select('id', 'full_name');
-        $last_page = null;
-
-        if ($request->has('search') && $request->search != '') {
-            // Apply search param
-            $name = $name->where('full_name', 'like', '%' . $request->search . '%');
-        }
-
-        if ($request->has('page')) {
-            // If request has page parameter, add paginate to eloquent
-            $name->paginate(10);
-            // Get last page
-            $last_page = $name->paginate(10)->lastPage();
-        }
-        $name = $name->get();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Data Fetched',
-            'last_page' => $last_page,
-            'data' => $name,
-        ]);
-    }
 }

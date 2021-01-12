@@ -140,15 +140,19 @@ body {
     margin: 2px;
     padding: 5px;
 }
-.btn-action:hover{
+
+.btn-action:hover {
     cursor: pointer;
 }
-table thead  tr{
+
+table thead tr {
     background-color: var(--table_thead) !important;
 }
-table tbody  td{
+
+table tbody td {
     background-color: var(--table_content) !important;
 }
+
 /* Datatable */
 /* .dataTables_length select{
     background-color: var(--primary) !important;
@@ -163,6 +167,58 @@ color: var(--text2);
     background-color: var(--primary) !important;
     border-radius: 10px;
     color: var(--text2);
+}
+
+.verification {
+    border: 1px solid #f2f2f2;
+    height: 150px;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.verification_header {
+    background: rgb(141, 212, 230);
+    padding: 8px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.check {
+    margin: 0px auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: #fff;
+    text-align: center;
+}
+
+.check i {
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 30px;
+}
+
+.verification_content {
+    text-align: center;
+}
+
+.verification_content h1 {
+    font-size: 15px;
+    padding-top: 15px;
+}
+
+.verification_content a {
+    width: 200px;
+    height: 35px;
+    color: #fff;
+    border-radius: 30px;
+    padding: 5px 10px;
+    background: rgb(109, 203, 231);
+    transition: all ease-in-out 0.3s;
+}
+
+.verification_content a:hover {
+    text-decoration: none;
+    background: #000;
 }
 
 [tabindex="-1"]:focus {
@@ -1736,9 +1792,10 @@ pre code {
     border: 1px solid #e8eef3;
 }
 
-.table-bordered th{
+.table-bordered th {
     border: 1px solid #e8eef3;
 }
+
 .table-bordered td {
     border: 1px solid #dedfe2;
 }

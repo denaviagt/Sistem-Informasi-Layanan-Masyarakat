@@ -37,8 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profil-kalurahan', 'VillageProfileController@index');
     Route::post('/profil-kalurahan', 'VillageProfileController@store');
-    Route::get('/citizen-name', 'VillageProfileController@select2Name');
-    
+
     Route::get('/edit-password', function () {
         return view('edit-password');
     });
@@ -55,6 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
     Route::post('data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
+    Route::get('/citizen-name', 'CitizenController@select2Name');
+    Route::get('/citizen-nik', 'CitizenController@select2Nik');
+    Route::get('/citizen/{id}', 'CitizenController@show');
+    Route::post('/citizen/{id}/dataverif', 'CitizenController@dataVerif');
 
     Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
     Route::post('/info-layanan', 'ServiceInfoController@store');
@@ -63,15 +66,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/info-layanan/{id}/{type}', 'ServiceInfoController@destroy');
     Route::get('/info-layanan/data/alur', 'ServiceInfoController@data_alur');
 
-    Route::get('/layanan', function () {
-        return view('service/index');
-    });
+    // Route::get('/layanan', function () {
+    //     return view('service/index');
+    // });
     // Route::get('/service/index', 'ServiceInfoController@index');
     // Route::get('/service/index/{id}/edit', 'ServiceInfoController@edit');
     // Route::POST('/service/store', 'ServiceInfoController@store');
     // Route::delete('/service/store/{id}', 'ServiceInfoController@destroy');
+    Route::get('layanan/{category}/{id}', 'ServiceController@show');
+    Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::resource('service', 'ServiceController');
-    
+    Route::post('sevice-file/{id}/status', 'ServiceFileController@statusUpdate');
+
     Route::get('/detail-layanan', function () {
         return view('service/detail-layanan');
     });
@@ -117,7 +123,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detail-potensi-desa', function () {
         return view('natural-resource/detail');
     });
-    
+
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
