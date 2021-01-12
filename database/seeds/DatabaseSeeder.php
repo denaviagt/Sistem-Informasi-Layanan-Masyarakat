@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\ServiceFile;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DusunSeeder::class);
         $this->call(CitizenSeeder::class);
         $this->call(AparaturSeeder::class);
+        $this->call(VillageSeeder::class);
         $this->call(VisionSeeder::class);
         $this->call(MissionSeeder::class);
         $this->call(UserSeeder::class);
@@ -24,5 +27,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(ServiceProcedureSeeder::class);
         $this->call(ServiceRequirementSeeder::class);
+        $this->call(NaturalResourcesSeeder::class);
+        $this->call(NaturalResourceImageSeeder::class);
+        $this->call(RegulationSeeder::class);
+        $this->call(ServiceFileSeeder::class);
+        $this->call(VillageInfoSeeder::class);
     }
 }
