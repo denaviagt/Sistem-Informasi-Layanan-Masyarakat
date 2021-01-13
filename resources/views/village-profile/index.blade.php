@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto" data-toggle="modal"
                                             data-target="#addVision">Tambah</button>
                                         <table id="visionTable" class="table table-striped table-bordered display "
                                             style="width:100%; table-layout: auto;">
