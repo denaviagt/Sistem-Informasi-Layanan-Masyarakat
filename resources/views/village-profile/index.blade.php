@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded" data-toggle="modal"
                                             data-target="#addVision">Tambah</button>
                                         <table id="visionTable" class="table table-striped table-bordered display "
                                             style="width:100%; table-layout: auto;">
@@ -87,7 +87,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded" data-toggle="modal"
                                             data-target="#addMission">Tambah</button>
                                         <table id="missionTable" class="table table-striped table-bordered display"
                                             style="width:100%">
@@ -129,7 +129,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded" data-toggle="modal"
                                             data-target="#addApparatus">Tambah</button>
                                         <table id="aparatusTable" class="table table-striped table-bordered display"
                                             style="width:100%">
@@ -182,7 +182,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded" data-toggle="modal"
                                             data-target="#addDusuns">Tambah</button>
                                         <table id="dusunTable" class="table table-striped table-bordered display no-wrap"
                                             style="width:100%">
@@ -238,7 +238,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded" data-toggle="modal"
                                             data-target="#addRegulation">Tambah</button>
                                         <table id="regulationsTable"
                                             class="table table-striped table-bordered display no-wrap" style="width:100%">
