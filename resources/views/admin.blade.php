@@ -15,12 +15,12 @@
                     @endif
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                            <button type="button" class="btn-add btn  mb-2 d-flex ml-auto" data-toggle="modal"
                                 data-target="#add-admin">Tambah</button>
                             <div class="table-responsive">
-                                <table id="adminTable" class="table table-striped table-bordered display"
+                                <table id="adminTable" class="table table-bordered display"
                                     style="width:100%">
-                                    <thead>
+                                    <thead class="">
                                         <tr>
                                             <th>No</th>
                                             <th>ID</th>
@@ -35,24 +35,24 @@
                                     <tbody>
                                         @foreach ($admins as $item)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->full_name }}</td>
-                                                <td>{{ $item->email }}</td>
-                                                <td>{{ $item->username }}</td>
-                                                <td>{{ $item->level }}</td>
+                                                <td class="table-info">{{ $loop->iteration }}</td>
+                                                <td class="table-info">{{ $item->id }}</td>
+                                                <td class="table-info">{{ $item->full_name }}</td>
+                                                <td class="table-info">{{ $item->email }}</td>
+                                                <td class="table-info">{{ $item->username }}</td>
+                                                <td class="table-info">{{ $item->level }}</td>
                                                 @if ($item->is_active){
-                                                    <td><span class="badge badge-success">Aktif</span></td>
+                                                    <td class="table-info"><span class="badge badge-success">Aktif</span></td>
                                                 }@else{
-                                                    <td><span class="badge badge-danger">Tidak Aktif</span></td>
+                                                    <td class="table-info"><span class="badge badge-danger">Tidak Aktif</span></td>
                                                     }
                                                 @endif
-                                                <td>
-                                                    <a class="btn" data-toggle="tooltip" data-placement="top"
-                                                        title="Edit"><i class="fas fa-edit" data-target="#edit-admin"
+                                                <td class="table-info">
+                                                    <a class="btn text-success btn-action" data-toggle="tooltip" data-placement="top"
+                                                        title="Edit"><i class="fa fa-edit" data-target="#edit-admin"
                                                             onclick="editPostModal(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
-                                                    <a class="btn" data-toggle="tooltip" data-placement="top"
+                                                    <a class="btn btn-action text-danger" data-toggle="tooltip" data-placement="top"
                                                         title="Delete"><i class="fas fa-trash"
                                                             onclick="modalDelete(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
@@ -246,7 +246,9 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#adminTable').DataTable();
+            $('#adminTable').DataTable({
+                
+            });
         })
 
         function editPostModal(event) {

@@ -24,36 +24,40 @@
             <!-- *************************************************************** -->
             <!-- Start First Cards -->
             <!-- *************************************************************** -->
-            <div class="card-group">
+            <div class="card-group card-dashboard">
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Masuk</h6>
                             <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Permohonan Masuk</h6>
+                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
                 </div>
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Diproses</h6>
                             <h2 class="text-dark mb-1 font-weight-medium">10</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Permohonan Diproses</h6>
+                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
                 </div>
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
+                            <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Selesai</h6>
                             <h2 class="text-dark mb-1 font-weight-medium">100</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Permohonan Selesai</h6>
+                            <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="align-items-center text-center">
+                            <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Jumlah Aduan</h6>
                             <h2 class="text-dark mb-1 font-weight-medium">20</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Jumlah Aduan</h6>
+                            <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Aduan</h6>
                         </div>
                     </div>
                 </div>

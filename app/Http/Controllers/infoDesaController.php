@@ -17,7 +17,7 @@ class infoDesaController extends Controller
     {
         $infoDesa = VillageInfo::all();
 
-        return view('info-desa', compact('infoDesa'));
+        return view('info-desa/index', compact('infoDesa'));
     }
 
     /**
@@ -27,7 +27,7 @@ class infoDesaController extends Controller
      */
     public function create()
     {
-        return view('tambah-info-desa');
+        return view('info-desa/tambah');
     }
 
     /**
@@ -66,7 +66,7 @@ class infoDesaController extends Controller
     public function show($id)
     {
         $infoDesaDetail = VillageInfo::where('id', $id)->first();
-        return view('info-desa-detail', compact('infoDesaDetail'));
+        return view('info-desa/detail', compact('infoDesaDetail'));
     }
 
     /**
@@ -78,7 +78,7 @@ class infoDesaController extends Controller
     public function edit($id)
     {
         $infoDesaDetail = VillageInfo::where('id', $id)->first();
-        return view('edit-info-desa', compact('infoDesaDetail'));
+        return view('info-desa/edit', compact('infoDesaDetail'));
     }
 
     /**
@@ -108,7 +108,7 @@ class infoDesaController extends Controller
         $infoDesaAdd->admin_id = $request->admin_id;
 
         $infoDesaAdd->save();
-        return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
+        return redirect('info-desa')->with('status', 'Ubah Data Info Desa Berhasil!');
     }
 
     /**

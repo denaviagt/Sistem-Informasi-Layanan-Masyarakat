@@ -14,4 +14,12 @@ class Citizen extends Model
     {
         return $this->hasOne(Apparatus::class);
     }
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

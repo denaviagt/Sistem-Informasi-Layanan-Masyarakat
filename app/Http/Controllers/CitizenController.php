@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Citizen;
 use App\Models\Dusun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitizenController extends Controller
 {
@@ -16,7 +17,7 @@ class CitizenController extends Controller
     public function index()
     {
         $citizen = Citizen::all();
-        return view('data-penduduk-desa', compact('citizen'));
+        return view('data-penduduk/data', compact('citizen'));
     }
 
     /**
@@ -26,7 +27,7 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        return view('data-penduduk-tambah');
+        return view('data-penduduk/tambah');
     }
 
     /**
@@ -48,8 +49,17 @@ class CitizenController extends Controller
      */
     public function show($id)
     {
- 
-        
+        $citizen = Citizen::query();
+        if ($id != '') {
+            // Apply NIK if Request has NIK ID
+            $citizen = $citizen->where('id', $id);
+        }
+        $citizen = $citizen->first();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data Fetched',
+            'data' => $citizen,
+        ]);
     }
 
     /**
@@ -62,7 +72,7 @@ class CitizenController extends Controller
     {
         $citizen = Citizen::find($id);
         $dusun = Dusun::all();
-        return view('data-penduduk-edit',compact('citizen','dusun'));
+        return view('data-penduduk/edit', compact('citizen', 'dusun'));
     }
 
     /**
@@ -90,10 +100,17 @@ class CitizenController extends Controller
         $citizen->dusun_id = $request->dusun_id;
 
         if ($citizen->save()) {
-            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Berhasil!');
+            return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Berhasil!');
         } else {
-            return redirect('data-penduduk-desa')->with('status', 'Ubah Data Penduduk Gagal!');
+            return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Gagal!');
         }
+    }
+
+    public function dataVerif($id)
+    {
+        $citizen = Citizen::find($id);
+        $citizen->status = 'verified';
+        $citizen->save();
     }
 
     /**
@@ -114,5 +131,57 @@ class CitizenController extends Controller
                 'status' => false
             ]);
         }
+    }
+    public function select2Name(Request $request)
+    {
+        // $name = Citizen::select('id', 'full_name');
+        $name = DB::table('citizens')->select('id', 'full_name');
+        $last_page = null;
+
+        if ($request->has('search') && $request->search != '') {
+            // Apply search param
+            $name = $name->where('full_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('page')) {
+            // If request has page parameter, add paginate to eloquent
+            $name->paginate(10);
+            // Get last page
+            $last_page = $name->paginate(10)->lastPage();
+        }
+        $name = $name->get();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data Fetched',
+            'last_page' => $last_page,
+            'data' => $name,
+        ]);
+    }
+    public function select2Nik(Request $request)
+    {
+        // $name = Citizen::select('id', 'full_name');
+        $nik = DB::table('citizens')->select('id', 'nik');
+        $last_page = null;
+
+        if ($request->has('search') && $request->search != '') {
+            // Apply search param
+            $nik = $nik->where('nik', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('page')) {
+            // If request has page parameter, add paginate to eloquent
+            $nik->paginate(10);
+            // Get last page
+            $last_page = $nik->paginate(10)->lastPage();
+        }
+        $nik = $nik->get();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data Fetched',
+            'last_page' => $last_page,
+            'data' => $nik,
+        ]);
     }
 }

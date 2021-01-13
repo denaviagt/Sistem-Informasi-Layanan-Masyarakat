@@ -13,8 +13,9 @@ class ServiceFileSeeder extends Seeder
     public function run()
     {
         DB::table('service_files')->insert([
+            'service_requirement_id' => 1,
             'file_url' => 'berkas1.pdf',
-            'status'=> 'unverified',
+            'status' => 'unverified',
             'service_id' => 1,
             'created_at' => now(),
         ]);

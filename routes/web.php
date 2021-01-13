@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ServiceInfoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +28,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('login', function () {
         return view('login');
     });
+
     Route::get('/admin', 'AdminController@index');
     Route::post('/admin', 'AdminController@store');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
     Route::delete('/delete/{id}', 'AdminController@destroy');
-    Route::get('/profil-kalurahan', 'ProfilKalurahanController@index');
+
+    Route::get('/profil-kalurahan', 'VillageProfileController@index');
+    Route::post('/profil-kalurahan', 'VillageProfileController@store');
+
     Route::get('/edit-password', function () {
         return view('edit-password');
     });
@@ -42,66 +48,82 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tambah-info-desa', 'infoDesaController@create');
     Route::post('/tambah-info-desa', 'infoDesaController@store');
     Route::delete('/info-desa/{id}', 'infoDesaController@destroy');
-    Route::get('/data-penduduk-desa', 'CitizenController@index');
-    Route::get('/data-penduduk/create', 'CitizenController@create');
-    Route::get('/data-penduduk/{id}/edit', 'CitizenController@edit');
-    Route::post('/data-penduduk/{id}/update', 'CitizenController@update');
-    Route::delete('/data-penduduk-desa/delete/{id}', 'CitizenController@destroy');
 
-    Route::get('/info-layanan/{category?}','serviceController@index');
-    Route::post('/info-layanan','serviceController@store');
+    Route::get('/data-penduduk', 'CitizenController@index');
+    Route::get('data-penduduk/create', 'CitizenController@create');
+    Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
+    Route::post('data-penduduk/{id}/update', 'CitizenController@update');
+    Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
+    Route::get('/citizen-name', 'CitizenController@select2Name');
+    Route::get('/citizen-nik', 'CitizenController@select2Nik');
+    Route::get('/citizen/{id}', 'CitizenController@show');
+    Route::post('/citizen/{id}/dataverif', 'CitizenController@dataVerif');
 
-    Route::get('/info-layanan-syarat/{category}', function () {
-        return view('info-layanan-syarat');
-    });
-    Route::get('/isi-tambah-info-desa', function () {
-        return view('isi-tambah-info-desa');
-    });
-    Route::get('/layanan', function () {
-        return view('layanan');
-    });
+    Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
+    Route::post('/info-layanan', 'ServiceInfoController@store');
+    Route::get('/info-layanan/{id}/{type}/edit', 'ServiceInfoController@edit');
+    Route::put('/info-layanan/{type}', 'ServiceInfoController@update');
+    Route::delete('/info-layanan/{id}/{type}', 'ServiceInfoController@destroy');
+    Route::get('/info-layanan/data/alur', 'ServiceInfoController@data_alur');
+
+    // Route::get('/layanan', function () {
+    //     return view('service/index');
+    // });
+    // Route::get('/service/index', 'ServiceInfoController@index');
+    // Route::get('/service/index/{id}/edit', 'ServiceInfoController@edit');
+    // Route::POST('/service/store', 'ServiceInfoController@store');
+    // Route::delete('/service/store/{id}', 'ServiceInfoController@destroy');
+    Route::get('layanan/{category}/{id}', 'ServiceController@show');
+    Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
+    Route::resource('service', 'ServiceController');
+    Route::post('sevice-file/{id}/status', 'ServiceFileController@statusUpdate');
+
     Route::get('/detail-layanan', function () {
-        return view('detail-layanan');
+        return view('service/detail-layanan');
     });
-    Route::get('/aduan', function () {
-        return view('aduan');
+    Route::get('/detail-kk', function () {
+        return view('service/detail-kk');
     });
+    Route::get('/detail-akta-kelahiran', function () {
+        return view('service/detail-akta-kelahiran');
+    });
+    Route::get('/detail-surat-kematian', function () {
+        return view('service/detail-surat-kematian');
+    });
+    Route::get('/detail-pindah-penduduk', function () {
+        return view('service/detail-pindah-penduduk');
+    });
+    Route::get('/detail-masuk-penduduk', function () {
+        return view('service/detail-masuk-penduduk');
+    });
+    Route::get('/detail-pengurusan-nikah', function () {
+        return view('service/detail-pengurusan-nikah');
+    });
+    Route::get('/detail-pengajuan-sku', function () {
+        return view('service/detail-pengajuan-sku');
+    });
+
+    Route::get('/aduan', 'FeedbackController@index');
+    Route::get('/aduan/{id}', 'FeedbackController@show');
+    Route::post('/aduan/{id}/importantUpdate', 'FeedbackController@importantUpdate');
+
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
     });
     Route::get('/statistik-aduan', function () {
         return view('statistik-aduan');
     });
-    Route::get('/detail-kk', function () {
-        return view('detail-kk');
-    });
-    Route::get('/detail-akta-kelahiran', function () {
-        return view('detail-akta-kelahiran');
-    });
-    Route::get('/detail-surat-kematian', function () {
-        return view('detail-surat-kematian');
-    });
-    Route::get('/detail-pindah-penduduk', function () {
-        return view('detail-pindah-penduduk');
-    });
-    Route::get('/detail-masuk-penduduk', function () {
-        return view('detail-masuk-penduduk');
-    });
-    Route::get('/detail-pengurusan-nikah', function () {
-        return view('detail-pengurusan-nikah');
-    });
-    Route::get('/detail-pengajuan-sku', function () {
-        return view('detail-pengajuan-sku');
-    });
+
     Route::get('/potensi-desa', function () {
-        return view('potensi-desa');
+        return view('natural-resource/index');
     });
     Route::get('/tambah-potensi-desa', function () {
-        return view('tambah-potensi-desa');
+        return view('natural-resource/tambah');
     });
     Route::get('/detail-potensi-desa', function () {
-        return view('detail-potensi-desa');
+        return view('natural-resource/detail');
     });
+
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
