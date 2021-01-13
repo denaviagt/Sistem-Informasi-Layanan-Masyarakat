@@ -43,7 +43,7 @@
                                                     <td>{{ $item->user->citizen->full_name }}</td>
                                                     }
                                                 @endif
-                                                <td>{{ $fedd_val }}</td>
+                                                <td>{{ $item->feedback }}</td>
                                                 <td>{{ $item->date }}</td>
                                                 <td>{{ $item->dusun->dusun_name }}</td>
                                                 @if ($item->status == 'active'){

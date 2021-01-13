@@ -19,9 +19,9 @@ class FeedbackController extends Controller
     {
         $feedbacks = Feedback::all();
         // return $feedbacks->id;
-        foreach ($feedbacks as $key ) {
-            $feed_val = [Str::limit($key->feedback, 20, '...')];
-        }
+        // foreach ($feedbacks as $key) {
+        //     $feed_val = [Str::limit($key->feedback, 20, '...')];
+        // }
         return view('aduan', compact(['feedbacks']));
     }
 

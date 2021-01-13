@@ -26,13 +26,17 @@
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/info-desa') }}"
                             aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                                class="hide-menu">Info Desa</span></a>
+                                class="hide-menu">Info Kalurahan</span></a>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/potensi-desa') }}"
                             aria-expanded="false"><i data-feather="globe" class="feather-icon"></i><span
-                                class="hide-menu">Potensi Desa</span></a>
+                                class="hide-menu">Potensi Kalurahan</span></a>
                     </li>
-
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('data-penduduk') }}"
+                            aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
+                                class="hide-menu">Data Penduduk
+                            </span></a>
+                    </li>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
                     <li class="sidebar-item"> <a href="{{ url('/info-layanan') }}" class="sidebar-link"
@@ -86,21 +90,16 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Laporan</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('data-penduduk') }}"
-                            aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                class="hide-menu">Data Penduduk
-                            </span></a>
-                    </li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('statistik-layanan') }}"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                class="hide-menu">Statistik Data Layanan
+                                class="hide-menu">Statistik Layanan
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('statistik-aduan') }}"
-                            aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                class="hide-menu">Statistik Data Aduan
+                    {{-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
+                            href="{{ url('statistik-aduan') }}" aria-expanded="false"><i data-feather="lock"
+                                class="feather-icon"></i><span class="hide-menu">Statistik Data Aduan
                             </span></a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->

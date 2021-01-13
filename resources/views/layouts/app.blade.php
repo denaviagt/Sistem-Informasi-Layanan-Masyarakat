@@ -30,7 +30,7 @@ $user = auth()->user();
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
     <!-- Custom CSS -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/css.css') }}" rel="stylesheet">
     {{--
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
