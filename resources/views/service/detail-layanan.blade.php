@@ -33,7 +33,10 @@
 
                         <div class="tab-content">
                             <div id="step-1" class="tab-pane detail-data-pemohon" role="tabpanel" aria-labelledby="step-1">
+                                <input type="hidden" name="service_id" id="service_id" value="{{ $service->id }}">
                                 <input type="hidden" name="citizen_id" id="citizen_id" value="{{ $service->citizen_id }}">
+                                <input type="hidden" name="service_category_id" id="service_category_id"
+                                    value="{{ $service->service_category_id }}">
                                 <div class="row m-3">
                                     <span class="col-3">NIK</span>
                                     <span class="col-5 detail-value detail-value">{{ $service->nik }}</span>
@@ -88,11 +91,15 @@
                                 @foreach ($requirement as $key => $req)
                                     <div class="row m-3">
                                         <span class="col-4">{{ $req->terms }}</span>
-                                        <span class="col-4 mr-3 detail-value">{{ $files[$key]['file_url'] ?? '' }}</span>
+                                        <span class="col-4 mr-3 detail-value" name="file-name"
+                                            id="file-name{{ $files[$key]['id'] ?? '' }}">{{ $files[$key]['file_url'] ?? '' }}</span>
                                         <button type="button" class="btn btn-primary mr-3">Lihat File</button>
-                                        <button type="button" class="btn btn-success"
+                                        <button type="button" class="btn btn-success mr-3"
                                             id="berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileVerif(event.target)"
                                             data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+                                        <button type="button" class="btn btn-danger"
+                                            id="btn-berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileDenied(event.target)"
+                                            data-id="{{ $files[$key]['id'] ?? '' }}">Tolak</button>
                                     </div>
                                 @endforeach
                             </div>
@@ -128,30 +135,49 @@
             $('#zero_config').DataTable();
             $('#smartwizard').smartWizard({
                 theme: 'dots',
-                lang: { // Language variables for button
-                    next: 'Selanjutnya',
-                    previous: 'Sebelumnya'
-                },
                 toolbarSettings: {
+                    showNextButton: false, // show/hide a Next button
+                    showPreviousButton: false,
                     toolbarExtraButtons: [
-                        $('<button></button>').text('Finish')
+                        $('<a></a>').text('Batal')
+                        .addClass('btn')
+                        .attr('id', 'wizard-btn-cancel')
+                        .on('click', function() {
+                            window.location.href = "{{ url('/service/') }}";
+                        }),
+                        $('<button></button>').text('Kembali')
+                        .addClass('btn')
+                        .attr('id', 'wizard-btn-back')
+                        .on('click', function() {
+                            $('#smartwizard').smartWizard("prev");
+                        }),
+                        $('<button></button>').text('Selanjutnya')
+                        .addClass('btn')
+                        .attr('id', 'wizard-btn-next')
+                        .on('click', function() {
+                            $('#smartwizard').smartWizard("next");
+                        }),
+                        $('<button></button>').text('Verfikasi')
                         .addClass('btn btn-info')
+                        .attr('id', 'wizard-btn-verified')
                         .on('click', function() {
                             alert('Finish button click');
                         }),
-                        $('<button></button>').text('Cancel')
-                        .addClass('btn btn-danger')
-                        .on('click', function() {
-                            alert('Cancel button click');
-                        })
+
                     ]
                 },
             });
-            $('#smartwizard').on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+
+            $('#smartwizard').on("leaveStep", async function(e, anchorObject, currentStepIndex, nextStepIndex,
+                stepDirection) {
                 var step1 = $("#step-1");
-                if (stepDirection === 1 && step1) {
-                    var id = $('#citizen_id').val();
-                    console.log(id);
+                var status = false;
+                // console.log(currentStepIndex);
+                var id = $('#citizen_id').val();
+                var id_service = $('#service_id').val();
+                var id_category = $('#service_category_id').val();
+                if (nextStepIndex === 1 && step1) {
+                    // console.log(id);
                     let _url = `/citizen/${id}/dataverif`;
                     $.ajax({
                         url: _url,
@@ -160,15 +186,75 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                     });
+                    // status = true
+                    return true;
                 }
-                return true;
+                if (nextStepIndex === 2) {
+                    let _url = `/sevice-file/${id_service}/verifFiles/${id_category}`;
+
+                    async function ajaxVerif(ajaxUrl) {
+                        var statusAjax = false;
+                        $.ajax({
+                            url: ajaxUrl,
+                            type: "GET",
+                            success: function(response) {
+                                if (response) {
+                                    if (response.status) {
+                                        statusAjax = response.status;
+                                    } else {
+                                        // alert('Data Gagal Verif')
+                                        statusAjax = false;
+                                    }
+                                }
+                            }
+                        });
+                        return status;
+                    }
+                    await ajaxVerif(_url).then(function(data) {
+                        console.log(data);
+                    })
+                    // return true;
+                }
+            });
+
+
+            var stepIndex = $('#smartwizard').smartWizard("getStepIndex");
+            if (stepIndex === 0) {
+                $('#wizard-btn-back').hide();
+                $('#wizard-btn-cancel').show();
+                $('#wizard-btn-verified').hide();
+            } else if (stepIndex === 2) {
+                $('#wizard-btn-next').hide()
+                $('#wizard-btn-back').show();
+                $('#wizard-btn-verified').show();
+                $('#wizard-btn-cancel').hide();
+            } else {
+                $('#wizard-btn-next').show()
+                $('#wizard-btn-back').show();
+                $('#wizard-btn-cancel').hide();
+                $('#wizard-btn-verified').hide();
+            }
+            $("#smartwizard").on("stepContent", function(e, anchorObject, stepIndex, stepDirection) {
+                if (stepIndex === 0) {
+                    $('#wizard-btn-back').hide();
+                    $('#wizard-btn-cancel').show();
+                } else if (stepIndex === 2) {
+                    $('#wizard-btn-next').hide()
+                    $('#wizard-btn-back').show();
+                    $('#wizard-btn-verified').show();
+                } else {
+                    $('#wizard-btn-next').show()
+                    $('#wizard-btn-back').show();
+                    $('#wizard-btn-cancel').hide();
+                    $('#wizard-btn-verified').hide();
+                }
             });
 
         })
 
         function fileVerif(event) {
             var id = $(event).data('id');
-            let _url = `/sevice-file/${id}/status`;
+            let _url = `/sevice-file/${id}/verifStatus`;
             $.ajax({
                 url: _url,
                 type: "POST",
@@ -176,6 +262,23 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
             });
+        }
+
+        function fileDenied(event) {
+            var id = $(event).data('id');
+            var fileName = $('#file-name' + id).text();
+            let _url = `/sevice-file/${id}/deniedStatus`;
+            if (confirm("Ingin menolak berkas " + fileName + '?')) {
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                });
+            } else {
+                return false;
+            }
         }
 
     </script>

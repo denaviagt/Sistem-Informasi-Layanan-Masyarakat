@@ -76,7 +76,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::resource('service', 'ServiceController');
-    Route::post('sevice-file/{id}/status', 'ServiceFileController@statusUpdate');
+    Route::post('sevice-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
+    Route::post('sevice-file/{id}/deniedStatus', 'ServiceFileController@deniedUpdate');
+    Route::get('sevice-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
 
     Route::get('/detail-layanan', function () {
         return view('service/detail-layanan');
