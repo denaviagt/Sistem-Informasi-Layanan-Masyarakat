@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Potensi Desa')
+@section('title', 'Potensi Kalurahan')
 
 @section('content')
 
@@ -18,7 +18,7 @@
 
                     <div class="card-body">
                         <div class="text-right mb-3">
-                            <a href="{{ url('tambah-potensi-desa') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+                            <a href="{{ url('tambah-potensi-desa') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered no-wrap">

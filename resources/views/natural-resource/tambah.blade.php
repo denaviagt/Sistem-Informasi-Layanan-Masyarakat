@@ -79,7 +79,7 @@
                             </div>
                             <div class="form-group text-right mr-5">
                                 <button type="submit" class="btn btn-danger btn-sm mb-6">Batal</button>
-                                <button type="submit" class="btn btn-danger btn-sm mb-6">Simpan</button>
+                                <button type="submit" class="btn btn-primary btn-sm mb-6">Simpan</button>
                             </div>
                         </form>
                     </div>
