@@ -15,7 +15,7 @@ class VisionSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        DB::table('Visions')->insert([
+        DB::table('visions')->insert([
             'vision' => $faker->text(250),
             'village_id' => 1,
             'created_at' => now(),

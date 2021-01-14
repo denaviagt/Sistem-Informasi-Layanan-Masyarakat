@@ -64,7 +64,7 @@ class ServiceFileSeeder extends Seeder
         for ($i = 0; $i < 6; $i++) {
             DB::table('service_files')->insert([
                 'service_requirement_id' => $faker->numberBetween(4, 6),
-                'file_url' => $faker->imageGenerator('D:\PROJECT\e-silam\public\assets\serviceFile', 640, 480, 'png', false, 'Berkas Tester', null, null),
+                'file_url' => $faker->imageGenerator(public_path('assets\serviceFile'), 640, 480, 'png', false, 'Berkas Tester', null, null),
                 'status' => 'unverified',
                 'service_id' => 4,
                 'created_at' => now(),
