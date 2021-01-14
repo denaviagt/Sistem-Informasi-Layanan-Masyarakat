@@ -9,14 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo.jpg') }}">
     <title>Login - e-SILAM</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+        type="text/css" />
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dist/css/customlogin.css') }}">
@@ -51,30 +52,35 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="username">Username/ Email</label>
-                                        <input class="form-control @error('email') is-invalid @enderror" value="{{ old('username') }}" name="username" id="username" type="text" placeholder="Masukkan Username atau Email">
+                                        <input class="form-control @error('email') is-invalid @enderror"
+                                            value="{{ old('username') }}" name="username" id="username" type="text"
+                                            placeholder="Masukkan Username atau Email">
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="password">Password</label>
-                                        <input class="form-control @error('password') is-invalid @enderror" name="password" id="password" type="password" placeholder="Masukkan password" autocomplete="current-password">
+                                        <input class="form-control @error('password') is-invalid @enderror"
+                                            name="password" id="password" type="password"
+                                            placeholder="Masukkan password" autocomplete="current-password">
                                         @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 d-flex m-2 mb-4">
                                     <div class="form-check col-6">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                            {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="rememberMe">
-                                        {{ __('Ingat Saya?') }}
+                                            {{ __('Ingat Saya?') }}
                                         </label>
                                     </div>
                                     <div class="col-6 d-flex justify-content-end">
@@ -112,6 +118,7 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <script>
         $(".preloader ").fadeOut();
+
     </script>
 </body>
 

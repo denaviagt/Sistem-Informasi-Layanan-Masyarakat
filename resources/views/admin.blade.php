@@ -18,8 +18,7 @@
                             <button type="button" class="btn-add btn  mb-2 d-flex ml-auto" data-toggle="modal"
                                 data-target="#add-admin">Tambah</button>
                             <div class="table-responsive">
-                                <table id="adminTable" class="table table-bordered display"
-                                    style="width:100%">
+                                <table id="adminTable" class="table table-bordered display" style="width:100%">
                                     <thead class="">
                                         <tr>
                                             <th>No</th>
@@ -42,18 +41,20 @@
                                                 <td class="table-info">{{ $item->username }}</td>
                                                 <td class="table-info">{{ $item->level }}</td>
                                                 @if ($item->is_active){
-                                                    <td class="table-info"><span class="badge badge-success">Aktif</span></td>
+                                                    <td class="table-info"><span class="badge badge-success">Aktif</span>
+                                                    </td>
                                                 }@else{
-                                                    <td class="table-info"><span class="badge badge-danger">Tidak Aktif</span></td>
+                                                    <td class="table-info"><span class="badge badge-danger">Tidak
+                                                            Aktif</span></td>
                                                     }
                                                 @endif
                                                 <td class="table-info">
-                                                    <a class="btn text-success btn-action" data-toggle="tooltip" data-placement="top"
-                                                        title="Edit"><i class="fa fa-edit" data-target="#edit-admin"
-                                                            onclick="editPostModal(event.target)"
+                                                    <a class="btn text-success btn-action" data-toggle="tooltip"
+                                                        data-placement="top" title="Edit"><i class="fa fa-edit"
+                                                            data-target="#edit-admin" onclick="editPostModal(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
-                                                    <a class="btn btn-action text-danger" data-toggle="tooltip" data-placement="top"
-                                                        title="Delete"><i class="fas fa-trash"
+                                                    <a class="btn btn-action text-danger" data-toggle="tooltip"
+                                                        data-placement="top" title="Delete"><i class="fas fa-trash"
                                                             onclick="modalDelete(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
 
@@ -247,7 +248,7 @@
     <script>
         $(document).ready(function() {
             $('#adminTable').DataTable({
-                
+
             });
         })
 
@@ -287,7 +288,7 @@
 
         function deleteData(event) {
             var id = $(event).data("id");
-            let _url = `/delete/${id}`;
+            let _url = `admin/delete/${id}`;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
