@@ -1,6 +1,5 @@
 @extends('layouts.app')
-
-@section('title', 'Nama Layanan')
+@section('title', 'Layanan Masyarakat')
 
 @section('content')
     <div class="page-wrapper">
@@ -9,19 +8,6 @@
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
-            {{-- <form>
-                <div class="form-group mb-4 col-md-4 pl-0">
-                    <select class="custom-select mr-sm-2 bg-white" id="inlineFormCustomSelect">
-                        <option value="E-KTP" selected>E-KTP</option>
-                        <option value="Kartu Keluarga">Kartu Keluarga</option>
-                        <option value="Akta Kelahiran">Akta Kelahiran</option>
-                        <option value="Akta kematian">Akta kematian</option>
-                        <option value="Pindah penduduk">Pindah penduduk</option>
-                        <option value="Nikah">Nikah</option>
-                        <option value="SKU">SKU</option>
-                    </select>
-                </div>
-            </form> --}}
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
@@ -46,7 +32,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($services as $item)
-                                            <tr>
+                                            <tr id="row_{{ $item->id }}">
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nik }}</td>
                                                 <td>{{ $item->full_name }}</td>
@@ -74,15 +60,16 @@
                                                         data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                             class="fas fa-eye" onclick="detailLayanan(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
-                                                    <a href="javascript:void(0)" data-id="{{ $item->id }}"
-                                                        onclick="editService(event.target)"
+                                                    {{-- <a href="javascript:void(0)"
+                                                        data-id="{{ $item->id }}" onclick="editService(event.target)"
                                                         class="btn btn-action text-success" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                    --}}
 
-                                                    <a href="javascript:void(0)" data-id="{{ $item->id }}"
-                                                        onclick="deleteService(event.target)"
-                                                        class="btn btn-action text-danger" data-toggle="tooltip"
-                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-action text-danger" data-toggle="tooltip"
+                                                        data-placement="top" title="Hapus"><i data-id="{{ $item->id }}"
+                                                            class="fas fa-trash"
+                                                            onclick="modalDelete(event.target)"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -115,19 +102,6 @@
                     <form id="serviceForm" name="serviceForm" method="POST" action="{{ url('service/store') }}">
                         @csrf
                         <input type="hidden" name="service_id" id="service_id">
-
-                        {{-- <div class="form-group row">
-                            <label for="service_category_id" class="col-sm-3 col-form-label">Kategori </label>
-                            <div class="col-sm-9">
-                                <input type='text' id="service_category_id" name="service_category_id">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="citizen_id" class="col-sm-3 col-form-label">ID User </label>
-                            <div class="col-sm-9">
-                                <input type='text' id="citizen_id" name="citizen_id">
-                            </div>
-                        </div> --}}
 
                         <div class="form-group row">
                             <label for="input-nik" class="col-sm-3 col-form-label">NIK </label>
@@ -215,25 +189,53 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    {{-- Delete Modal --}}
+    <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mySmallModalLabel">Hapus Layanan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <h4>Apakah Anda yakin akan menghapus?</h4>
+                    <div class="form-group row">
+                        <div class=" d-flex mx-auto">
+                            <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
+                                aria-hidden="true">Batal</button>
+                            <button type="submit" class="btn btn-primary m-2" onclick="deleteService(event.target)"
+                                id="confirmDeleteService">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 @endsection
 @section('script')
     <script type="text/javascript">
         $('.service-table').DataTable();
         $(document).ready(function() {
+            $('#sidebarService').addClass('selected');
+            $('#sidebarService .sidebar-link').addClass('active');
             $('.title').hide();
-            var dl = ` <form method="GET" action="{{ url('/service/') }}">
-                            <div class="form-group pl-0">
-                                <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
-                                    id="inlineFormCustomSelect">
-                                    @foreach ($category as $item)
-                                        <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
-                                            {{ $item->category }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </form>`
+            var dl =
+                ` <form method="GET" action="{{ url('/service/') }}">
+                                            <div class="form-group pl-0 d-flex">
+                                                <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
+                                                    id="inlineFormCustomSelect">
+                                                    @foreach ($category as $item)
+                                                        <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
+                                                            {{ $item->category }}
+                                                            <i class="fas fa-chevron-down"></i>
+                                                        </option>
+                                                    @endforeach
+                                                    
+                                                    </select>
+                                            </div>
+                                        </form>`
             $('.header-title').append(dl);
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
@@ -292,6 +294,7 @@
 
         function detailLayanan(event) {
             var id = $(event).data('id');
+            console.log(id);
             var id_category = $('#categoryService').val();
             window.location.href = `/layanan/${id_category}/${id}`;
             let _url = `/layanan/${id}/status`;
@@ -308,10 +311,6 @@
             $('#service_id').val(' ');
             $('#ajaxModal').modal('show');
         };
-        // $('#createService').on('click', function () {
-        //     $('#service_id').val('');
-        //     $('#ajaxModal').modal('show');
-        // });
 
         function editService(evet) {
             var id = $(event).data('id');
@@ -332,58 +331,15 @@
             });
         }
 
-        function createService() {
-            var status = $('#status').val();
-            var service_category_id = $('#service_category_id').val();
-            var citizen_id = $('#citizen_id').val();
-            var id = $('#service_id').val();
-            var date = Date.now();
+        function modalDelete(event) {
+            var id = $(event).data("id");
+            $('#confirmDeleteService').attr('data-id', id);
+            console.log(id); //setter
+            $('#deleteService').modal('show');
 
-            let _url = '/service/store';
-            let _token = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                url: _url,
-                type: 'POST',
-                data: {
-                    id: id,
-                    status: status,
-                    service_category_id: service_category_id,
-                    date: date,
-                    citizen_id: citizen_id,
-                    _token: _token
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response.code == 200) {
-                        if (id != "") {
-                            $("#row_" + id + " td:nth-child(2)").html(response.data.citizen_id);
-                            $("#row_" + id + " td:nth-child(3)").html(response.data.date);
-                            $("#row_" + id + " td:nth-child(4)").html(response.data.status);
-                        } else {
-                            $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response
-                                .data.id + '</td><td>' + response.data.citizen_id + '</td><td>' + response
-                                .data.date + '</td><td>' + response.data.status +
-                                '</td><td><a href="javascript:void(0)" data-id="' + response.data.id +
-                                '" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="' +
-                                response.data.id +
-                                '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>'
-                            );
-                        }
-                        $('#citizen_id').val(' ');
-                        $('#category_service_id').val(' ');
-                        $('#date').val(' ');
-                        $('#status').val(' ');
-                        $('#serviceForm').trigger("reset");
-                        $('#post-modal').modal('hide');
-                    }
-                },
-                error: function(response) {
-                    // 
-                }
-            });
         }
 
-        function deletePost(event) {
+        function deleteService(event) {
             var id = $(event).data("id");
             let _url = `/service/${id}`;
             let _token = $('meta[name="csrf-token"]').attr('content');
@@ -396,6 +352,8 @@
                 },
                 success: function(response) {
                     $("#row_" + id).remove();
+                    $('#deleteService').modal('hide');
+
                 }
             });
         }

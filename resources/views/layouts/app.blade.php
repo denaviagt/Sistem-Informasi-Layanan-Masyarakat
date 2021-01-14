@@ -32,6 +32,7 @@ $user = auth()->user();
     <!-- Custom CSS -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/css.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/newcss.css') }}" rel="stylesheet">
     {{--
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'E-KTP')
-
+@section('title')
+    Layanan {{ $service->service_category }}
+@endsection
 @section('content')
     <div class="page-wrapper">
         <!-- ============================================================== -->
@@ -93,9 +94,10 @@
                                         <span class="col-4">{{ $req->terms }}</span>
                                         <span class="col-4 mr-3 detail-value" name="file-name"
                                             id="file-name{{ $files[$key]['id'] ?? '' }}">{{ $files[$key]['file_url'] ?? '' }}</span>
-                                        <button type="button" class="btn btn-primary mr-3">Lihat File</button>
+                                        <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
+                                            class="btn btn-primary mr-3 service-file-btn">Lihat File</a>
                                         <button type="button" class="btn btn-success mr-3"
-                                            id="berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileVerif(event.target)"
+                                            id="berkas{{ $files[$key]['id'] ?? '' }}" onclick="statusUpdate(event.target)"
                                             data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
                                         <button type="button" class="btn btn-danger"
                                             id="btn-berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileDenied(event.target)"
@@ -107,17 +109,13 @@
                                 <div class="row">
                                     <div class="col-md-5 mx-auto mt-6">
                                         <div class="verification">
-                                            <div class="verification_header">
-                                                <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
-                                            </div>
+                                            <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
-                                                <h1>Berkas Sudah Lengkap, Verifikasi Selesai !</h1>
-                                                <a href="#">Cetak
+                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
+                                                <a class="btn btn-primary" href="#">Cetak
                                                     Dokumen</a>
-                                                <a href="#">Kirim
-                                                    Notifikasi</a>
-
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -130,9 +128,14 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('dist/js/EZView.js') }}"></script>
+    <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $('#sidebarService').addClass('selected');
+            $('#sidebarService .sidebar-link').addClass('active');
             $('#zero_config').DataTable();
+            $('.service-file-btn').EZView();
             $('#smartwizard').smartWizard({
                 theme: 'dots',
                 toolbarSettings: {
@@ -158,11 +161,11 @@
                             $('#smartwizard').smartWizard("next");
                         }),
                         $('<button></button>').text('Verfikasi')
-                        .addClass('btn btn-info')
-                        .attr('id', 'wizard-btn-verified')
-                        .on('click', function() {
-                            alert('Finish button click');
-                        }),
+                        .addClass('btn')
+                        .attr('id', 'wizard-btn-verified'),
+                        // .on('click', function() {
+                        //     alert('Finish button click');
+                        // }),
 
                     ]
                 },
@@ -217,7 +220,6 @@
                 }
             });
 
-
             var stepIndex = $('#smartwizard').smartWizard("getStepIndex");
             if (stepIndex === 0) {
                 $('#wizard-btn-back').hide();
@@ -250,10 +252,34 @@
                 }
             });
 
+            $('#wizard-btn-verified').on('click', function() {
+                var service_id = $('#service_id').val();
+                console.log(service_id);
+                let _url = `/service/${service_id}/verified`;
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function() {
+                        alert('Layanan terverifikasi');
+
+                    }
+                })
+            })
         })
 
-        function fileVerif(event) {
+        function statusUpdate(event) {
             var id = $(event).data('id');
+            var fileName = $('#file-name' + id).text();
+            fileVerif(id);
+            serviceProcessing();
+            return alert('Berkas ' + fileName + ' terverifikasi.')
+        }
+
+        function fileVerif(id) {
+            console.log(id);
             let _url = `/sevice-file/${id}/verifStatus`;
             $.ajax({
                 url: _url,
@@ -264,10 +290,23 @@
             });
         }
 
+        function serviceProcessing() {
+            var id_service = $('#service_id').val();
+            let _url = `/layanan/${id_service}/status`;
+            $.ajax({
+                url: _url,
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            });
+        };
+
         function fileDenied(event) {
             var id = $(event).data('id');
+            var service_id = $('#service_id').val();
             var fileName = $('#file-name' + id).text();
-            let _url = `/sevice-file/${id}/deniedStatus`;
+            let _url = `/sevice-file/${id}/deniedStatus/${service_id}`;
             if (confirm("Ingin menolak berkas " + fileName + '?')) {
                 $.ajax({
                     url: _url,

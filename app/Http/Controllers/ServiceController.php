@@ -21,33 +21,20 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $category = ServiceCategory::all();
-        // $citizen = Citizen::all();
-        // return($services->citizen);
-        // return $services;
-        // $services = Service::where('service_category_id', $request->category ?? 1)->with('citizen')->get();
-        // $citizen = $citizen->service()->where('service_category_id', $request->category ?? 1)->get();
+
         $services = DB::table('citizens')
             ->join('services', 'citizens.id', 'services.citizen_id')
             ->join('dusuns', 'dusuns.id', 'citizens.dusun_id')
+            // ->join('service_categories', 'service_categories.id', 'services.service_category_id')
             ->select(
                 'services.id',
                 'services.date as date',
                 'services.status as status',
                 'citizens.id as citizen_id',
                 'citizens.nik as nik',
-                'citizens.kk as no_kk',
                 'citizens.full_name as full_name',
-                'citizens.gender as gender',
-                'citizens.religion as religion',
-                'citizens.married_status as married_status',
-                'citizens.last_education as last_education',
-                'citizens.blood_type as blood_type',
-                'citizens.profession as profession',
-                'citizens.pob as pob',
-                'citizens.dob as dob',
-                'citizens.address as address',
-                'citizens.status as citizen_status',
-                'dusuns.dusun_name'
+                'dusuns.dusun_name',
+                // 'service_categories.category as service_category',
             )
             ->where('service_category_id', $request->category ?? 1)
             ->get();
@@ -105,17 +92,16 @@ class ServiceController extends Controller
     public function show($category, $id)
     {
         $requirement = ServiceRequirement::where('service_category_id', $category)->get();
-        $service = DB::table('citizens')
-            ->join('services', 'citizens.id', 'services.citizen_id')
-            ->join(
-                'dusuns',
-                'dusuns.id',
-                'citizens.dusun_id'
-            )
+        $service = DB::table('services')
+            ->join('citizens', 'citizens.id', 'services.citizen_id')
+            ->join('dusuns', 'dusuns.id', 'citizens.dusun_id')
+            ->join('service_categories', 'service_categories.id', 'services.service_category_id')
             ->select(
                 'services.id',
                 'services.date as date',
                 'services.status as status',
+                'services.service_category_id as service_category_id',
+                'service_categories.category as service_category',
                 'citizens.id as citizen_id',
                 'citizens.nik as nik',
                 'citizens.kk as kk',
@@ -168,6 +154,18 @@ class ServiceController extends Controller
         $service->status = 'processing';
         $service->save();
     }
+    public function serviceVerified($id)
+    {
+        $service = Service::find($id);
+        $service->status = 'completed';
+        $service->save();
+    }
+    // public function statusDenied($id)
+    // {
+    //     $fileStatus = ServiceFile::;
+    //     $service->status = 'processing';
+    //     $service->save();
+    // }
     /**
      * Remove the specified resource from storage.
      *

@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin', 'AdminController@store');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
-    Route::delete('/delete/{id}', 'AdminController@destroy');
+    Route::delete('admin/delete/{id}', 'AdminController@destroy');
 
     Route::get('/profil-kalurahan', 'VillageProfileController@index');
     Route::post('/profil-kalurahan', 'VillageProfileController@store');
@@ -75,9 +75,10 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::delete('/service/store/{id}', 'ServiceInfoController@destroy');
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
+    Route::post('service/{id}/verified', 'ServiceController@serviceVerified');
     Route::resource('service', 'ServiceController');
     Route::post('sevice-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
-    Route::post('sevice-file/{id}/deniedStatus', 'ServiceFileController@deniedUpdate');
+    Route::post('sevice-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
     Route::get('sevice-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
 
     Route::get('/detail-layanan', function () {
