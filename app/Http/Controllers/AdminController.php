@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -83,6 +84,16 @@ class AdminController extends Controller
         return response()->json([
             'data' => $admin
         ]);
+    }
+
+    public function updatePassword(UpdatePasswordRequest $request){
+        $request->user()->update(
+            [
+                'password' => Hash::make($request->get('new_password'))
+            ]
+        );
+
+        return redirect()->back();
     }
 
     /**

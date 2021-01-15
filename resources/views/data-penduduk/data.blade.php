@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex">
-                            <a href="{{ url('/data-penduduk/create') }}" class="btn btn-danger mb-2 ml-auto" role="button">Tambah</a>
+                            <a href="{{ url('/data-penduduk/create') }}" class="btn mb-2 ml-auto btn-rounded btn-primary" role="button">Tambah</a>
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered no-wrap">

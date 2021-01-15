@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="row mb-2">
                                 <div class="col-6">
-                                    <h4 class="card-title">Tambah Info Desa</h4>
+                                    <h4 class="card-title">Tambah Info Kalurahan</h4>
                                 </div>
                             </div>
                             <form action="{{ url('tambah-info-desa') }}" method="POST" enctype="multipart/form-data">
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group text-right mr-5">
-                                    <button type="submit" class="btn btn-danger btn-sm mb-6">Tambah</button>
+                                    <button type="submit" class="btn btn-primary btn-sm mb-6">Tambah</button>
                                     <button type="submit" class="btn btn-danger btn-sm mb-6">Batal</button>
                                 </div>
                             </form>
