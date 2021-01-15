@@ -223,7 +223,9 @@
                                     <label for="dusunId" class="col-sm-3 col-form-label">Dusun</label>
                                     <div class="col-sm-9">
                                         <select name="dusun_id" id="dusunId" class="form-control @error('dusun_id') is-invalid @enderror">
-                                            <option value="1">Nama Dusun</option>
+                                            @foreach($dusuns as $dusun)
+                                                <option value="{{ $dusun->id }}" @if(old('dusun_id') == $dusun->id) selected @endif>{{ $dusun->dusun_name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('dusun_id')
                                         <span class="invalid-feedback" role="alert">

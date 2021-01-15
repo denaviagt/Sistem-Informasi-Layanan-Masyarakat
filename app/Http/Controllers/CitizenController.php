@@ -28,7 +28,10 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        return view('data-penduduk/tambah');
+        $data = [
+            'dusuns' => Dusun::all()
+        ];
+        return view('data-penduduk/tambah', $data);
     }
 
     /**
