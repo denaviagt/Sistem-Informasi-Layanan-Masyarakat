@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
+    protected $fillable = ['password'];
     public function villageInfo()
     {
         return $this->hasMany(VillageInfo::class);

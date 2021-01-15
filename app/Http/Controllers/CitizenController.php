@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Constants\CitizenCons;
+use App\Http\Requests\StoreCitizenRequest;
 use App\Models\Citizen;
 use App\Models\Dusun;
 use Illuminate\Http\Request;
@@ -27,7 +29,15 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        return view('data-penduduk/tambah');
+        $data = [
+            'dusuns' => Dusun::all(),
+            'bloodTypes' => CitizenCons::$bloodTypes,
+            'genders' => CitizenCons::$genders,
+            'religions' => CitizenCons::$religions,
+            'marriedStatuses' => CitizenCons::$marriedStatuses,
+            'lastEducations' => CitizenCons::$lastEducations,
+        ];
+        return view('data-penduduk/tambah', $data);
     }
 
     /**
@@ -36,9 +46,36 @@ class CitizenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCitizenRequest $request)
     {
-        //
+
+        $request->validated();
+
+        $citizen = new Citizen();
+        $citizen->nik = $request->nik;
+        $citizen->kk = $request->kk;
+        $citizen->full_name = $request->full_name;
+        $citizen->pob = $request->pob;
+        $citizen->dob = $request->dob;
+        $citizen->gender = $request->gender;
+        $citizen->religion = $request->religion;
+        $citizen->married_status = $request->married_status;
+        $citizen->last_education = $request->last_education;
+        $citizen->dusun_id = $request->dusun_id;
+        $citizen->address = $request->address;
+
+        if (isset($request->blood_type)) {
+            $citizen->blood_type = $request->blood_type;
+        }
+        if (isset($request->profession)) {
+            $citizen->profession = $request->profession;
+        }
+
+        if ($citizen->save()) {
+            return redirect('data-penduduk')->with('status', 'Tambah Data Penduduk Berhasil!');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
