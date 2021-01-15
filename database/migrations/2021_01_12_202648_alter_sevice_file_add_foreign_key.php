@@ -14,7 +14,7 @@ class AlterSeviceFileAddForeignKey extends Migration
     public function up()
     {
         Schema::table('service_files', function (Blueprint $table) {
-            $table->foreignId('service_requirement_id')->constrained('service_requirements')->onDelete('NO ACTION');
+            $table->foreignId('service_requirement_id')->constrained('service_requirements')->onDelete('cascade');
         });
     }
 

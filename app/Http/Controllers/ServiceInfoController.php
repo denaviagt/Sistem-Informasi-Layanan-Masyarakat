@@ -84,7 +84,7 @@ class ServiceInfoController extends Controller
      */
     public function edit($id, $type)
     {
-        if ($type == 'alur') {
+        if ($type == 'procedure') {
             $service = ServiceProcedure::find($id);
         } else {
             $service = ServiceRequirement::find($id);
@@ -103,18 +103,20 @@ class ServiceInfoController extends Controller
      */
     public function update(Request $request, $type)
     {
-        if ($type == 'alur') {
+        if ($type == 'procedure') {
             $service = ServiceProcedure::find($request->edit_alur_id);
             $service->procedure = $request->edit_alur_layanan;
+            $service->description = $request->edit_description_layanan;
         } else {
-            $service = ServiceRequirement::find($request->ed_id_admin);
-            $service->procedure = $request->edit_syarat_layanan;
+            $service = ServiceRequirement::find($request->edit_syarat_id);
+            $service->terms = $request->edit_syarat_layanan;
+            $service->description = $request->edit_description_layanan;
         }
-        $service->description = $request->edit_description_layanan;
+
         if ($service->save()) {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Admin Berhasil!');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Info Layanan Berhasil!');
         } else {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Admin Gagal!');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Info Layanan Gagal!');
         }
     }
 
@@ -126,7 +128,7 @@ class ServiceInfoController extends Controller
      */
     public function destroy($id, $type)
     {
-        if ($type == 'alur') {
+        if ($type == 'procedure') {
             $service = ServiceProcedure::find($id);
         } else {
             $service = ServiceRequirement::find($id);
