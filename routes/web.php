@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profil-kalurahan', 'VillageProfileController@index');
     Route::post('/profil-kalurahan', 'VillageProfileController@store');
+    Route::get('/profil-kalurahan/{id}/{type}/edit', 'VillageProfileController@edit');
+    Route::put('/profil-kalurahan/{type}', 'VillageProfileController@update');
+    Route::delete('/profil-kalurahan/{id}/{type}', 'VillageProfileController@destroy');
 
     Route::get('/edit-password', function () {
         return view('edit-password');
