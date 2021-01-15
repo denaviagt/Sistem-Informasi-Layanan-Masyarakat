@@ -263,7 +263,7 @@
                                                         <td>
                                                             <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
                                                                 class="btn regulation-file-view" data-toggle="tooltip"
-                                                                data-placement="top" title="Detail">lihat</a>
+                                                                data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                                                             <button type="button" class="btn" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
