@@ -84,6 +84,9 @@
                          <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
                                  class="svg-icon mr-2 ml-1"></i>
                              Account Setting</a>
+                         <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal"><i data-feather="settings"
+                                 class="svg-icon mr-2 ml-1"></i>
+                             Edit Password</a>
                          <div class="dropdown-divider"></div>
                          <a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="power"
                                  class="svg-icon mr-2 ml-1"></i>
@@ -100,5 +103,51 @@
          </div>
      </nav>
  </header>
+ <!--  Modal content for the above example -->
+ <div class="modal fade" id="modal-edit-password" tabindex="-1" role="dialog"
+      aria-labelledby="editPasswordModal" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered modal-lg">
+         <div class="modal-content">
+             <form action="{{ url("/admin/edit/password") }}" method="post">
+                 @csrf
+                 <div class="modal-header modal-colored-header bg-primary">
+                     <h4 class="modal-title" id="editPasswordModal">Edit Password</h4>
+                     <button type="button" class="close" data-dismiss="modal"
+                             aria-hidden="true">×</button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="form-group row">
+                         <label for="oldPassword" class="col-sm-3 col-form-label">Password Lama</label>
+                         <div class="col-sm-9">
+                             <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" id="oldPassword" placeholder="Masukkan password lama anda yang ingin dirubah"  required="">
+                             @error('old_password')
+                             <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                             @enderror
+                         </div>
+                     </div>
+
+                     <div class="form-group row">
+                         <label for="newPassword" class="col-sm-3 col-form-label">Password Baru</label>
+                         <div class="col-sm-9">
+                             <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" id="newPassword" placeholder="Masukkan password baru anda" required="">
+                             @error('new_password')
+                             <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                             @enderror
+                         </div>
+                     </div>
+
+                     <div class="form-group text-center">
+                         <button class="btn btn-danger m-2" type="reset" data-dismiss="modal">Batal</button>
+                         <button class="btn btn-primary m-2" type="submit">Ubah Password</button>
+                     </div>
+                 </div>
+             </form>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
  <!-- ============================================================== -->
  <!-- End Topbar header -->

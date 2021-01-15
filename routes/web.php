@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin', 'AdminController@store');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
-    Route::delete('admin/delete/{id}', 'AdminController@destroy');
+    Route::post('/admin/edit/password', 'AdminController@updatePassword');
+    Route::delete('/delete/{id}', 'AdminController@destroy');
 
     Route::get('/profil-kalurahan', 'VillageProfileController@index');
     Route::post('/profil-kalurahan', 'VillageProfileController@store');
