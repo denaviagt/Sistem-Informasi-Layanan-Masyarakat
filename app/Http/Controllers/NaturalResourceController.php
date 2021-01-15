@@ -48,7 +48,7 @@ class NaturalResourceController extends Controller
         $title = $request->title;
         $status = $request->status;
         $thumbnail = $request->thumbnail;
-        $description = $request->summernote;
+        $description = $request->description;
 
         $data = [
           'title' => $title,

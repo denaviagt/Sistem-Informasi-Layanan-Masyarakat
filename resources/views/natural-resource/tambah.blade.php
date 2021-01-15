@@ -24,7 +24,12 @@
                                 <label for="input-judul-info" class="col-sm-2 col-form-label col-form-label-sm">Judul</label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="input-judul-info" placeholder="Masukkan judul" name="title">
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="input-judul-info" placeholder="Masukkan judul" name="title">
+                                        @error('title')
+                                        <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +38,7 @@
                                 <label for="input-status" class="col-sm-2 col-form-label col-form-label-sm">Status</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <select class="custom-select" id="input-status" name="status">
+                                        <select class="custom-select @error('status') is-invalid @enderror" id="input-status" name="status">
                                             <option selected>Pilih Status...</option>
                                             @foreach($statuses as $key => $status)
                                             <option value="{{ $key }}"
@@ -43,6 +48,11 @@
                                             {{-- <option value="3">Three</option>
                                                 --}}
                                         </select>
+                                        @error('status')
+                                        <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -60,12 +70,17 @@
                                 <div class="col-sm-6">
                                     <div id="msg"></div>
                                     <input type="file" name="thumbnail" class="file" accept="image/*" style="visibility: hidden; position: absolute">
-                                    <div class="input-group my-3">
-                                        <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+                                    <div class="input-group @error('thumbnail') is-invalid @enderror my-3">
+                                        <input type="text" class="form-control @error('thumbnail') is-invalid @enderror" disabled placeholder="Upload File" id="file">
                                         <div class="input-group-append">
                                             <button type="button" class="browse btn btn-primary">Upload</button>
                                         </div>
                                     </div>
+                                    @error('thumbnail')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                     <div class="ml-2 col-sm-6">
                                         <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
                                     </div>
@@ -75,9 +90,14 @@
                             <div class="form-group row">
                                 <label for="input-isi-info" class="col-sm-2 col-form-label col-form-label-sm">Deskripsi</label>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <textarea name="summernote" id="summernote" id="input-isi-info" cols="80" rows="15"></textarea>
+                                    <div class="form-group @error('description') is-invalid @enderror">
+                                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="summernote" id="input-isi-info" cols="80" rows="15"></textarea>
                                     </div>
+                                    @error('description')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group text-right mr-5">
