@@ -261,9 +261,9 @@
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}" class="btn"
-                                                                data-toggle="tooltip" data-placement="top" title="Detail"><i
-                                                                    class="fas fa-eye"></i></a>
+                                                            <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
+                                                                class="btn regulation-file-view" data-toggle="tooltip"
+                                                                data-placement="top" title="Detail">lihat</a>
                                                             <button type="button" class="btn" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
@@ -477,7 +477,8 @@
                     <form action="{{ url('/profil-kalurahan') }}" method="POST">
                         @csrf
                         <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}">
-                        <input type="text" hidden class="form-control" name="type" value="apparatus" id="inputMissionType">
+                        <input type="text" hidden class="form-control" name="type" value="apparatus"
+                            id="inputApparatusType">
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
@@ -833,7 +834,16 @@
     </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script src="{{ asset('dist/js/EZView.js') }}"></script>
+    <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
+        $('#aparatusTable').DataTable();
+        $('#dusunTable').DataTable();
+        $('#visionTable').DataTable();
+        $('#regulationsTable').DataTable();
+        $('#missionTable').DataTable();
+
+        $('.regulation-file-view').EZView();
         $(document).ready(function() {
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
@@ -873,11 +883,6 @@
                 }
             });
         });
-        $('#aparatusTable').DataTable();
-        $('#dusunTable').DataTable();
-        $('#visionTable').DataTable();
-        $('#regulationsTable').DataTable();
-        $('#missionTable').DataTable();
 
         function modalEditVision(event) {
             var id = $(event).data("id");
