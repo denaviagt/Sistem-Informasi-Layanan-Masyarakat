@@ -127,6 +127,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/potensi-desa/add', 'NaturalResourceController@store');
     Route::get('/potensi-desa/{id}', 'NaturalResourceController@show');
     Route::get('/potensi-desa/{id}/edit', 'NaturalResourceController@edit');
+    Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });

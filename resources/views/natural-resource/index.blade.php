@@ -39,9 +39,27 @@
                                         <td>{!! $naturalResource->description !!}</td>
                                         <td>{{ $naturalResource->timestamps }}</td>
                                         <td>
-                                            <a class="btn" href="{{ url('potensi-desa', $naturalResource->id) }}" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
-                                            <a class="btn" href="{{ url('potensi-desa/'.$naturalResource->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash" data-toggle="modal" data-target="#delete-info-desa"></i></button>
+                                            <a class="btn btn-primary" href="{{ url('potensi-desa', $naturalResource->id) }}" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                            <a class="btn btn-warning" href="{{ url('potensi-desa/'.$naturalResource->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-placement="center" data-target="#modalDelete{{ $naturalResource->id }}" title="Hapus"><i class="fas fa-trash" data-toggle="modal" data-target="#delete-info-desa"></i></button>
+
+                                            <!--  Modal content for the above example -->
+                                            <div class="modal fade" id="modalDelete{{ $naturalResource->id }}" tabindex="-1" role="dialog"
+                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                                                            <a href="{{ url('potensi-desa/'.$naturalResource->id.'/destroy') }}" class="btn btn-danger">Hapus <strong>{{ $naturalResource->title }}</strong></a>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
                                         </td>
                                 @endforeach
                                 </tbody>

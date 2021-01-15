@@ -106,6 +106,12 @@ class NaturalResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $naturalResource = NaturalResource::find($id);
+
+        if ($naturalResource->delete()) {
+            return back()->with('status', 'Berhasil Hapus data '.$naturalResource->title);
+        }else{
+            return back()->with('status', 'Gagal Hapus data '.$naturalResource->title);
+        }
     }
 }
