@@ -61,7 +61,6 @@
     border-radius: 50%;
     color: var(--primary);
     transition: all ease-in-out 0.3s;
-
 }
 
 .verification_content {
@@ -81,4 +80,12 @@
     padding: 5px 10px;
     background: var(--primary);
     transition: all ease-in-out 0.3s;
+}
+
+.note-resizebar {
+    padding-top: 1px;
+    height: 9px;
+    width: 100%;
+    cursor: ns-resize;
+    background-color: var(--primary);
 }

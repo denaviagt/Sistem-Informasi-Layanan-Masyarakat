@@ -77,7 +77,7 @@
                             </div>
                             <div class="form-group text-right mr-5">
                                 <a href="{{ url('/edit-info-desa/' . $infoDesaDetail->id . '/edit') }}" type="submit"
-                                    class="btn btn-success btn-sm mb-6 text-white">Edit</a>
+                                    class="btn btn-primary btn-sm mb-6 text-white">Edit</a>
                             </div>
                         </div>
                     </div>
