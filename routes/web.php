@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/data-penduduk', 'CitizenController@index');
     Route::get('data-penduduk/create', 'CitizenController@create');
+    Route::post('data-penduduk/create', 'CitizenController@store');
     Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
     Route::post('data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
