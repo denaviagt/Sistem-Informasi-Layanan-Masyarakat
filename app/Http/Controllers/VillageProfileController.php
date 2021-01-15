@@ -102,6 +102,7 @@ class VillageProfileController extends Controller
             $villageProfile->dusun_name = $request->dusun_name;
             $villageProfile->head_of_dusun = $request->head_of_dusun;
         } else if ($request->type == 'regulations') {
+            // return ('berhasil');
             $request->validate([
                 'file' => 'required|mimes:pdf|max:2048',
             ]);

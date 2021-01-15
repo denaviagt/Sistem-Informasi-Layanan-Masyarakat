@@ -5,6 +5,16 @@
     <!-- ============================================================== -->
     <div class="page-wrapper" id="page-wrapper">
         <div class="container-fluid">
+            @if (session('status-success'))
+                <div class="alert alert-success">
+                    {{ session('status-success') }}
+                </div>
+            @endif
+            @if (session('status-fail'))
+                <div class="alert alert-danger">
+                    {{ session('status-fail') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <ul class="nav nav-tabs mb-3">
@@ -184,7 +194,7 @@
                                     <div class="table-responsive">
                                         <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
                                             data-toggle="modal" data-target="#addDusuns">Tambah</button>
-                                        <table id="dusunTable" class="table table-striped table-bordered display no-wrap"
+                                        <table id="dusunTable" class="table table-striped table-bordered display"
                                             style="width:100%">
                                             <thead>
                                                 <tr>
@@ -232,8 +242,8 @@
                                     <div class="table-responsive">
                                         <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
                                             data-toggle="modal" data-target="#addRegulation">Tambah</button>
-                                        <table id="regulationsTable"
-                                            class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                        <table id="regulationsTable" class="table table-striped table-bordered display"
+                                            style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
@@ -716,7 +726,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Tambah Profil Pedukuhan --}}
+    {{-- Modal Tambah Produk Hukum --}}
     <div class="modal fade" id="addRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -757,7 +767,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Edit Profil Pedukuhan --}}
+    {{-- Modal Edit Produk Hukum --}}
     <div class="modal fade" id="editRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -767,7 +777,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/profil-kalurahan/regulation') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/profil-kalurahan/regulations') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="text" hidden class="form-control" name="regulationId" id="regulationId">
@@ -784,13 +794,14 @@
                             <div class="col-sm-9">
                                 <input class="form-control" name="file" id="editFileReg" type="file">
                                 </input>
+                                <span id="fileNameEdit"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class=" d-flex mx-auto">
                                 <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
                                     aria-hidden="true">Batal</button>
-                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                                <button type="submit" class="btn btn-primary m-2">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -798,7 +809,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Delete Profil Pedukuhan--}}
+    {{-- Modal Delete Produk Hukum--}}
     <div class="modal fade" id="deleteRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -1062,8 +1073,8 @@
                         if (response.status) {
                             // location.reload();
                             $("#row_dusun_" + id).remove();
-                            $('#deletedusun').modal('hide');
-                            $('#dusunTable').reload();
+                            $('#deleteDusun').modal('hide');
+                            // $('#dusunTable').reload();
                         } else {
                             alert("Gagal hapus data")
                         }
@@ -1084,9 +1095,12 @@
                     if (response) {
                         $('#regulationId').val(response.data['id'])
                         $('#editTitle').val(response.data['title'])
-                        // $('#editFileReg').val(response.data['file'])
+                        $('#fileNameEdit').append(response.data['file'])
                         $('#editRegulation').modal('show');
                     }
+                    // if ($('#editFileReg').val() != '') {
+                    //     $('#fileNameEdit').hide();
+                    // }
                 }
             });
         }
