@@ -14,8 +14,15 @@
         <!-- basic table -->
         <div class="row">
             <div class="col-12">
+                <div class="alert alert-success" style="display:none">
+                    {{ Session::get('success') }}
+                </div>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="card">
-
                     <div class="card-body">
                         <div class="text-right mb-3">
                             <a href="{{ url('potensi-desa/add') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>

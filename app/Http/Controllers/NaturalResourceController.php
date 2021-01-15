@@ -59,8 +59,8 @@ class NaturalResourceController extends Controller
 
         $naturalResource = new NaturalResource();
 
-        if ($naturalResource->insertOrIgnore($data)) return redirect('potensi-desa');
-        else return redirect()->back();
+        if ($naturalResource->insertOrIgnore($data)) return redirect('potensi-desa')->with('status', 'Berhasil tambah data');
+        else return redirect()->back()->with('status', 'Gagal tambah data');
     }
 
     /**
@@ -83,7 +83,9 @@ class NaturalResourceController extends Controller
      */
     public function edit($id)
     {
-        return back();
+        $naturalResource = NaturalResource::find($id);
+
+        return back()->with('status', 'Data detail '.$naturalResource->title.' delum tersedia');
     }
 
     /**
