@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="text-right mb-3">
                                 <a href="{{ url('tambah-info-desa') }}" type="button"
-                                    class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
+                                    class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table id="infoTable" class="table table-striped table-bordered no-wrap">

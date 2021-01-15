@@ -15,7 +15,7 @@ class MissionSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        DB::table('Missions')->insert([
+        DB::table('missions')->insert([
             'mission' => $faker->text(250),
             'village_id' => 1,
             'created_at' => now(),

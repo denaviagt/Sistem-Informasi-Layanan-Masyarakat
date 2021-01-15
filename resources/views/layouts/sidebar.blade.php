@@ -68,7 +68,7 @@
                             </li>
                         </ul> --}}
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('service') }}"
+                    <li id="sidebarService" class="sidebar-item"> <a class="sidebar-link" href="{{ url('service') }}"
                             aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                 class="hide-menu">Layanan </span></a>
                         {{-- <ul aria-expanded="false"
