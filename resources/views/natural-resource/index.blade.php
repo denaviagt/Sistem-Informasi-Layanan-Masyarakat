@@ -18,36 +18,32 @@
 
                     <div class="card-body">
                         <div class="text-right mb-3">
-                            <a href="{{ url('tambah-potensi-desa') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
+                            <a href="{{ url('potensi-desa/add') }}" type="button" class="btn waves-effect waves-light btn-rounded btn-danger">Tambah</a>
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>ID</th>
                                         <th>Judul</th>
+                                        <th>Deskripsi</th>
                                         <th>Tanggal</th>
-                                        <th>ID Admin</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($naturalResources as $naturalResource)
                                     <tr>
-                                        <td>1</td>
-                                        <td>0001</td>
-                                        <td>Isi Judul</td>
-                                        <td>Tanggal berapa ?</td>
-                                        <td>id admin </td>
-                                        <td>isi status</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $naturalResource->title }}</td>
+                                        <td>{!! $naturalResource->description !!}</td>
+                                        <td>{{ $naturalResource->timestamps }}</td>
                                         <td>
-                                            <a class="btn" href="{{ url('detail-potensi-desa/') }}" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
-
-                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-
+                                            <a class="btn" href="{{ url('potensi-desa', $naturalResource->id) }}" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                            <a class="btn" href="{{ url('potensi-desa/'.$naturalResource->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                                             <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash" data-toggle="modal" data-target="#delete-info-desa"></i></button>
                                         </td>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
