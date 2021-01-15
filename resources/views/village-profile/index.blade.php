@@ -62,7 +62,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Visi</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -71,17 +70,18 @@
                                                 @foreach ($visions as $item)
                                                     <tr id="row_vision_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->vision }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditVision(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteVision(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -104,7 +104,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Misi</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -113,17 +112,17 @@
                                                 @foreach ($missions as $item)
                                                     <tr id="row_msision_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->mission }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-id="{{ $item->id }}"
                                                                     onclick="modalEditMission(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteMission(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -146,7 +145,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Nama</th>
                                                     <th>Jabatan</th>
                                                     <th>Periode</th>
@@ -158,7 +156,6 @@
                                                 @foreach ($apparatus as $item)
                                                     <tr id="row_apparatus_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->citizen->full_name }}</td>
                                                         <td>{{ $item->position }}</td>
                                                         <td>{{ $item->period }}</td>
@@ -169,14 +166,16 @@
                                                             }
                                                         @endif
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditApparatus(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteApparatus(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -199,33 +198,32 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Nama Pedukuhan</th>
                                                     <th>Kepala Dukuh</th>
                                                     {{-- <th>Status</th>
                                                     --}}
-                                                    <th>Aksi</th>
+                                                    <th style="width: 10px">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($dusuns as $item)
                                                     <tr id="row_dusun_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->dusun_name }}</td>
                                                         <td>{{ $item->head_of_dusun }}</td>
-                                                        {{-- <td>Aktif</td>
-                                                        --}}
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            {{-- <button type="button"
+                                                                class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
+                                                            --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -247,31 +245,32 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Judul</th>
                                                     <th>File</th>
-                                                    <th>Aksi</th>
+                                                    <th style="width: 5em">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($regulations as $item)
                                                     <tr id="row_regulation_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
                                                             <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
-                                                                class="btn regulation-file-view" data-toggle="tooltip"
-                                                                data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                                class="btn btn-action text-info regulation-file-view"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Detail">Lihat</a>
+                                                            <button type="button" class="btn btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit text-success" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditRegulation(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash text-danger" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteRegulation(event.target)"></i></button>
                                                         </td>
                                                     </tr>

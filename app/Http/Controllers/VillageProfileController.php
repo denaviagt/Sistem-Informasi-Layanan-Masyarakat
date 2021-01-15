@@ -52,7 +52,7 @@ class VillageProfileController extends Controller
                 'file' => 'required|mimes:pdf|max:2048',
             ]);
             $fileName = time() . '-' . $request->file('file')->getClientOriginalName();
-            $request->file->move(public_path('regulationFile'), $fileName);
+            $request->file->move(public_path('uploads/regulationFile'), $fileName);
             $villageProfile = new Regulation();
             $villageProfile->title = $request->title;
             $villageProfile->file = $fileName;
@@ -107,7 +107,7 @@ class VillageProfileController extends Controller
                 'file' => 'required|mimes:pdf|max:2048',
             ]);
             $fileName = time() . '-' . $request->file('file')->getClientOriginalName();
-            $request->file->move(public_path('regulationFile'), $fileName);
+            $request->file->move(public_path('uploads/regulationFile'), $fileName);
             $villageProfile = Regulation::find($request->regulationId);
             $villageProfile->title = $request->title;
             $villageProfile->file = $fileName;
