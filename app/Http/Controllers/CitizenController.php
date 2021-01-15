@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Constants\CitizenCons;
 use App\Http\Requests\StoreCitizenRequest;
 use App\Models\Citizen;
 use App\Models\Dusun;
@@ -28,7 +29,15 @@ class CitizenController extends Controller
      */
     public function create()
     {
-        return view('data-penduduk/tambah');
+        $data = [
+            'dusuns' => Dusun::all(),
+            'bloodTypes' => CitizenCons::$bloodTypes,
+            'genders' => CitizenCons::$genders,
+            'religions' => CitizenCons::$religions,
+            'marriedStatuses' => CitizenCons::$marriedStatuses,
+            'lastEducations' => CitizenCons::$lastEducations,
+        ];
+        return view('data-penduduk/tambah', $data);
     }
 
     /**

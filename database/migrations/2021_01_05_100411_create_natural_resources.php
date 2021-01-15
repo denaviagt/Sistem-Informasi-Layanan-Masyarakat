@@ -17,6 +17,7 @@ class CreateNaturalResources extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->enum('status', ['draft', 'published']);
             $table->timestamps();
         });
     }

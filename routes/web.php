@@ -122,15 +122,12 @@ Route::group(['middleware' => ['auth']], function () {
         return view('statistik-aduan');
     });
 
-    Route::get('/potensi-desa', function () {
-        return view('natural-resource/index');
-    });
-    Route::get('/tambah-potensi-desa', function () {
-        return view('natural-resource/tambah');
-    });
-    Route::get('/detail-potensi-desa', function () {
-        return view('natural-resource/detail');
-    });
+    Route::get('/potensi-desa', 'NaturalResourceController@index');
+    Route::get('/potensi-desa/add', 'NaturalResourceController@create');
+    Route::post('/potensi-desa/add', 'NaturalResourceController@store');
+    Route::get('/potensi-desa/{id}', 'NaturalResourceController@show');
+    Route::get('/potensi-desa/{id}/edit', 'NaturalResourceController@edit');
+    Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
