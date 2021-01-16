@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('data-penduduk/create', 'CitizenController@create');
     Route::post('data-penduduk/create', 'CitizenController@store');
     Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
+    Route::get('data-penduduk/{id}', 'CitizenController@show');
     Route::post('data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
     Route::get('/citizen-name', 'CitizenController@select2Name');
@@ -127,6 +128,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/potensi-desa/add', 'NaturalResourceController@store');
     Route::get('/potensi-desa/{id}', 'NaturalResourceController@show');
     Route::get('/potensi-desa/{id}/edit', 'NaturalResourceController@edit');
+    Route::post('/potensi-desa/{id}/edit', 'NaturalResourceController@update');
     Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
