@@ -207,23 +207,15 @@
         function isImportantCheck(event) {
             var id = $(event).data("id");
             var checkbox = $('#importantCheckbox' + id)
-            // console.log(checkbox);
-            if (checkbox.prop('checked') == true) {
-                let _url = `/aduan/${id}/importantUpdate/true`;
-                console.log('true');
-                return _url
-
-            } else {
-                let _url = `/aduan/${id}/importantUpdate/false`;
-                console.log('false');
-                return _url
-            }
+            let _url = `/aduan/${id}/importantUpdate/${checkbox.prop('checked')}`;
             $.ajax({
                 url: _url,
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
+            }).fail(function() {
+                alert("Gagal ubah data");
             });
             // console.log(id);
 
