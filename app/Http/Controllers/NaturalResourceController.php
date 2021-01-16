@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Data\Constants\NaturalResourceCons;
 use App\Http\Requests\StoreNatureResourceRequest;
 use App\Models\NaturalResource;
+use App\Models\NaturalResourceImage;
 use Illuminate\Http\Request;
 
 class NaturalResourceController extends Controller
@@ -47,7 +48,6 @@ class NaturalResourceController extends Controller
 
         $title = $request->title;
         $status = $request->status;
-        $thumbnail = $request->thumbnail;
         $description = $request->description;
 
         $data = [
@@ -58,9 +58,32 @@ class NaturalResourceController extends Controller
         ];
 
         $naturalResource = new NaturalResource();
+        $naturalResource->title = $title;
+        $naturalResource->status = $status;
+        $naturalResource->description = $description;
 
-        if ($naturalResource->insertOrIgnore($data)) return redirect('potensi-desa')->with('status', 'Berhasil tambah data');
-        else return redirect()->back()->with('status', 'Gagal tambah data');
+        if ($naturalResource->save()) {
+            $naturalResource->refresh();
+            if ($request->hasFile('images')) {
+                $images = $request->file('images');
+                foreach ($images as $image){
+                    $name = $image->getFilename().'.'.$image->extension();
+                    $uploadDir = public_path() . '/uploads/images/natural_resource';
+                    $image->move($uploadDir, $name);
+
+                    $naturalResourceImage = new NaturalResourceImage();
+                    $naturalResourceImage->image = $name;
+                    $naturalResourceImage->natural_resource_id = $naturalResource->id;
+                    $naturalResourceImages[] = $naturalResourceImage;
+                }
+                $naturalResource->images()->saveMany($naturalResourceImages);
+                if ($naturalResource->push()) {
+                    return redirect('potensi-desa')->with('status', 'Berhasil tambah data');
+                }
+            }
+        }
+
+        return redirect()->back()->with('status', 'Gagal tambah data');
     }
 
     /**

@@ -62,7 +62,7 @@
                             <div class="row m-1">
                                 @foreach($detail->images as $image)
                                     <div class="ml-2 col-sm-4">
-                                        <img src="{{ asset('thumbnail/' . $image->image) }}" id="preview" class="img-thumbnail">
+                                        <img src="{{ asset('uploads/images/natural_resource/' . $image->image) }}" id="preview" class="img-thumbnail">
                                     </div>
                                 @endforeach
                             </div>
