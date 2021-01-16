@@ -64,12 +64,12 @@
                                                         <td>{{ $item->id }}</td>
                                                         <td>{{ $item->vision }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalEditVision(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn  btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteVision(event.target)"></i></button>
@@ -106,12 +106,12 @@
                                                         <td>{{ $item->id }}</td>
                                                         <td>{{ $item->mission }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-id="{{ $item->id }}"
                                                                     onclick="modalEditMission(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteMission(event.target)"></i></button>
@@ -159,12 +159,12 @@
                                                             }
                                                         @endif
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalEditApparatus(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteApparatus(event.target)"></i></button>
@@ -207,12 +207,12 @@
                                                         {{-- <td>Aktif</td>
                                                         --}}
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
@@ -251,15 +251,15 @@
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}" class="btn"
+                                                            <a href="{{ url('info-desa/' . $item->id) }}" class="btn btn-action text-primary"
                                                                 data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                                     class="fas fa-eye"></i></a>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i class="fas fa-edit"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalEditRegulation(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteRegulation(event.target)"></i></button>
@@ -438,7 +438,7 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="mySmallModalLabel">Hapus Data Visi</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">Hapus Data Misi</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">

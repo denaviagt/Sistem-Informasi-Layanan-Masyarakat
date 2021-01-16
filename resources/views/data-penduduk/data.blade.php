@@ -53,10 +53,10 @@
                                         <td>{{ $item->address }}</td>
                                         <td>{{ $item->dusun->dusun_name }}</td>
                                         <td>
-                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="View" href="{{url('data-penduduk/' .$item->id)}}"><i class="fas fa-eye"  data-id="{{ $item->id }}"></i></a>
-                                            <a class="btn" href="{{ url('data-penduduk/' . $item->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-action text-primary" data-toggle="tooltip" data-placement="top" title="View" href="{{url('data-penduduk/' .$item->id)}}"><i class="fas fa-eye"  data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn text-success btn-action" href="{{ url('data-penduduk/' . $item->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
-                                            <a class="btn" data-toggle="tooltip"  data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn btn-action text-danger" data-toggle="tooltip"  data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -92,8 +92,8 @@
                 <h4>Apakah Anda yakin akan menghapus?</h4>
                 <div class="form-group row">
                     <div class=" d-flex mx-auto">
-                        <button type="submit" class="btn btn-danger m-2" data-dismiss="modal" aria-hidden="true">Batal</button>
-                        <button type="submit" class="btn btn-primary m-2" onclick="deleteData(event.target)" id="confirm-delete-citizen">Hapus</button>
+                        <button type="submit" class="btn m-2" data-dismiss="modal" aria-hidden="true">Batal</button>
+                        <button type="submit" class="btn m-2" onclick="deleteData(event.target)" id="confirm-delete-citizen">Hapus</button>
                     </div>
                 </div>
             </div>

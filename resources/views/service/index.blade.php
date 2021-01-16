@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="text-right mb-3">
                                 <a href="javascript:void(0)" id="createService" type="button"
-                                    class="btn waves-effect waves-light btn-primary" onclick="addService()">Tambah</a>
+                                    class="btn waves-effect waves-light btn-rounded btn-primary" onclick="addService()">Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="service-table table table-striped table-bordered no-wrap">
@@ -232,7 +232,7 @@
                                                             <i class="fas fa-chevron-down"></i>
                                                         </option>
                                                     @endforeach
-                                                    
+
                                                     </select>
                                             </div>
                                         </form>`
