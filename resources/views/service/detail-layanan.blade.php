@@ -206,7 +206,7 @@
                 if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
                     // console.log(stepDirection);
                     $('#smartwizard').smartWizard("loader", "show");
-                    let _url = `/sevice-file/${id_service}/verifFiles/${id_category}`;
+                    let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
                     ajaxInvoke = true;
                     $.ajax({
                         url: _url,
@@ -293,7 +293,7 @@
 
         function fileVerif(id) {
             console.log(id);
-            let _url = `/sevice-file/${id}/verifStatus`;
+            let _url = `/service-file/${id}/verifStatus`;
             $.ajax({
                 url: _url,
                 type: "POST",
@@ -323,7 +323,7 @@
             var id = $(event).data('id');
             var service_id = $('#service_id').val();
             var fileName = $('#file-name' + id).text();
-            let _url = `/sevice-file/${id}/deniedStatus/${service_id}`;
+            let _url = `/service-file/${id}/deniedStatus/${service_id}`;
             if (confirm("Ingin menolak berkas " + fileName + '?')) {
                 $.ajax({
                     url: _url,
