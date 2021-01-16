@@ -172,15 +172,21 @@ $user = auth()->user();
                 }
             }
         });
+
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if({{ ($errors->has('old_password') || $errors->has('new_password')) }}) {
+    {{-- <script type="text/javascript">
+        $(document).ready(function() {
+            if ({
+                    {
+                        $errors - > has('old_password') || $errors - > has('new_password')
+                    }
+                }) {
                 $('#modal-edit-password').modal('show');
             }
         })
-    </script>
+
+    </script> --}}
 </body>
 
 </html>

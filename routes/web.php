@@ -114,6 +114,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/aduan', 'FeedbackController@index');
     Route::get('/aduan/{id}', 'FeedbackController@show');
+    Route::delete('/aduan/{id}', 'FeedbackController@destroy');
+    Route::post('/aduan/{id}/readUpdate', 'FeedbackController@readUpdate');
     Route::post('/aduan/{id}/importantUpdate/{status}', 'FeedbackController@importantUpdate');
 
     Route::get('/statistik-layanan', function () {
