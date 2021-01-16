@@ -35,10 +35,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>ID</th>
                                         <th>NIK</th>
-                                        <th>Nama</th>
-                                        <th>Pedukuhan</th>
+                                        <th>KK</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Alamat</th>
+                                        <th>Padukuhan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -46,14 +47,15 @@
                                     @foreach ($citizen as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->nik }}</td>
+                                        <td>{{ $item->kk }}</td>
                                         <td>{{ $item->full_name }}</td>
+                                        <td>{{ $item->address }}</td>
                                         <td>{{ $item->dusun->dusun_name }}</td>
                                         <td>
-                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
+                                            <a class="btn" data-toggle="tooltip" data-placement="top" title="View" href="{{url('data-penduduk/' .$item->id)}}"><i class="fas fa-eye"  data-id="{{ $item->id }}"></i></a>
                                             <a class="btn" href="{{ url('data-penduduk/' . $item->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                            
+
                                             <a class="btn" data-toggle="tooltip"  data-placement="top" title="Delete"><i class="fas fa-trash" onclick="modalDelete(event.target)" data-id="{{ $item->id }}"></i></a>
                                         </td>
                                     </tr>

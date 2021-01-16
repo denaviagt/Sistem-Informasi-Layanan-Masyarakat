@@ -92,6 +92,13 @@ class CitizenController extends Controller
             $citizen = $citizen->where('id', $id);
         }
         $citizen = $citizen->first();
+
+        $citizen = Citizen::find($id);
+        $data = [
+            'detail' => $citizen,
+        ];
+        return view('data-penduduk.detail', $data);
+
         return response()->json([
             'status' => 'success',
             'message' => 'Data Fetched',

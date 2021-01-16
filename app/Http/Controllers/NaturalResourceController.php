@@ -30,7 +30,7 @@ class NaturalResourceController extends Controller
     public function create()
     {
         $data = [
-          'statuses' => NaturalResourceCons::$statuses
+            'statuses' => NaturalResourceCons::$statuses
         ];
         return view('natural-resource.tambah', $data);
     }
@@ -51,10 +51,10 @@ class NaturalResourceController extends Controller
         $description = $request->description;
 
         $data = [
-          'title' => $title,
-          'status' => $status,
-//          'thumbnail' => $thumbnail,
-          'description' => $description,
+            'title' => $title,
+            'status' => $status,
+            //          'thumbnail' => $thumbnail,
+            'description' => $description,
         ];
 
         $naturalResource = new NaturalResource();
@@ -71,7 +71,10 @@ class NaturalResourceController extends Controller
      */
     public function show($id)
     {
-        $data = [];
+        $naturalResource = NaturalResource::find($id);
+        $data = [
+            'detail' => $naturalResource,
+        ];
         return view('natural-resource.detail', $data);
     }
 
@@ -84,8 +87,11 @@ class NaturalResourceController extends Controller
     public function edit($id)
     {
         $naturalResource = NaturalResource::find($id);
-
-        return back()->with('status', 'Data detail '.$naturalResource->title.' delum tersedia');
+        $data = [
+            'statuses' => NaturalResourceCons::$statuses,
+            'naturalResource' => $naturalResource
+        ];
+        return view('natural-resource.edit', $data);
     }
 
     /**
@@ -97,7 +103,26 @@ class NaturalResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$request->validated();
+
+        $title = $request->title;
+        $status = $request->status;
+        $thumbnail = $request->thumbnail;
+        $description = $request->description;
+
+        $data = [
+            'title' => $title,
+            'status' => $status,
+            //          'thumbnail' => $thumbnail,
+            'description' => $description,
+        ];
+
+        $naturalResource = NaturalResource::find($id);
+        $naturalResource->title=$title;
+        $naturalResource->status=$status;
+        $naturalResource->description=$description;
+        if ($naturalResource->save()) return redirect('potensi-desa')->with('status', 'Berhasil Update Data');
+        else return redirect()->back()->with('status', 'Gagal Update data');
     }
 
     /**
@@ -111,9 +136,9 @@ class NaturalResourceController extends Controller
         $naturalResource = NaturalResource::find($id);
 
         if ($naturalResource->delete()) {
-            return back()->with('status', 'Berhasil Hapus data '.$naturalResource->title);
-        }else{
-            return back()->with('status', 'Gagal Hapus data '.$naturalResource->title);
+            return back()->with('status', 'Berhasil Hapus data ' . $naturalResource->title);
+        } else {
+            return back()->with('status', 'Gagal Hapus data ' . $naturalResource->title);
         }
     }
 }
