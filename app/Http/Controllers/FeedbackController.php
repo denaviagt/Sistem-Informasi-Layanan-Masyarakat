@@ -86,11 +86,14 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function importantUpdate($id)
+    public function importantUpdate($id, $status)
     {
         $feedback = Feedback::find($id);
-        $feedback->is_important = 1;
-
+        if ($status == 'true') {
+            $feedback->is_important = 1;
+        } else {
+            $feedback->is_important = 0;
+        }
         $feedback->save();
     }
 

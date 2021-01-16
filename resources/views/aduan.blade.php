@@ -18,8 +18,7 @@
                                             <th>Penting</th>
                                             <th>No</th>
                                             <th>Nama Pengirim</th>
-                                            <th>Aduan
-                                            </th>
+                                            <th>Aduan</th>
                                             <th>Tanggal</th>
                                             <th>Daerah</th>
                                             <th>Status</th>
@@ -28,13 +27,29 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($feedbacks as $item)
+                                            {{-- <span hidden id="id">{{ $item->id }}</span>
+                                            --}}
                                             <tr>
-                                                <td class="">
-                                                    <div class="custom-checkbox custom-control">
-                                                        <input type="checkbox" data-checkboxes="mygroup"
-                                                            class="custom-control-input" id="importantCheckbox">
-                                                        <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                                                    </div>
+                                                <td class="importantValue">
+                                                    @if ($item->is_important == 1)
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="importantCheckbox{{ $item->id }}" checked
+                                                                onclick="isImportantCheck(event.target)"
+                                                                data-id="{{ $item->id }}">
+                                                            <label class="custom-control-label"
+                                                                for="importantCheckbox{{ $item->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @else
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="importantCheckbox{{ $item->id }}"
+                                                                onclick="isImportantCheck(event.target)"
+                                                                data-id="{{ $item->id }}">
+                                                            <label class="custom-control-label"
+                                                                for="importantCheckbox{{ $item->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @endif
                                                 </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 @if ($item->is_anonim == 1){
@@ -175,8 +190,8 @@
 
         function isImportant(event) {
             var id = $('#feedback_id').val();
-            console.log(id);
-            let _url = `/aduan/${id}/importantUpdate`;
+            // console.log(id);
+            let _url = `/aduan/${id}/importantUpdate/true`;
             $.ajax({
                 url: _url,
                 type: "POST",
@@ -184,13 +199,33 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    // if (response) {
-                    // console.log(response);
-                    $('#importantCheckbox').attr('checked', 'checked');
                     $('#modalDetail').modal('hide');
-                    // }
                 }
             });
+        }
+
+        function isImportantCheck(event) {
+            var id = $(event).data("id");
+            var checkbox = $('#importantCheckbox' + id)
+            // console.log(checkbox);
+            if (checkbox.prop('checked') == true) {
+                let _url = `/aduan/${id}/importantUpdate/true`;
+                console.log('true');
+                return _url
+
+            } else {
+                let _url = `/aduan/${id}/importantUpdate/false`;
+                console.log('false');
+                return _url
+            }
+            $.ajax({
+                url: _url,
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            });
+            // console.log(id);
 
         }
 
