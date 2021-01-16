@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <div class="align-items-center text-center">
                             <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Masuk</h6>
-                            <h2 class="text-dark mb-1 font-weight-medium">{{ $accepteds }}</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium count">{{ $accepteds }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <div class="align-items-center text-center">
                             <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Diproses</h6>
-                            <h2 class="text-dark mb-1 font-weight-medium">{{ $proccesses }}</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium count">{{ $proccesses }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="card-body">
                         <div class="align-items-center text-center">
                             <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Selesai</h6>
-                            <h2 class="text-dark mb-1 font-weight-medium">{{ $completeds }}</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium count ">{{ $completeds }}</h2>
                             <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="card-body">
                         <div class="align-items-center text-center">
                             <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Jumlah Aduan</h6>
-                            <h2 class="text-dark mb-1 font-weight-medium">{{ $feedbacks }}</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium count">{{ $feedbacks }}</h2>
                             <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Aduan</h6>
                         </div>
                     </div>
@@ -157,9 +157,17 @@
 @section('script')
 
     <script>
-        // $(document).ready(function() {
-        //     serviceChart();
-        // })
+        $('.count').each(function() {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
 
         var array = [];
         $.ajax({
