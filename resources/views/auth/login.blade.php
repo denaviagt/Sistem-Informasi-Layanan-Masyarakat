@@ -24,12 +24,6 @@
 
     {{-- Datatable --}}
     <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 <body>
@@ -65,9 +59,22 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="password">Password</label>
-                                        <input class="form-control @error('password') is-invalid @enderror"
-                                            name="password" id="password" type="password"
-                                            placeholder="Masukkan password" autocomplete="current-password">
+                                        <div class="input-group">
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" id="password" type="password"
+                                                placeholder="Masukkan password" autocomplete="current-password">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-secondary" type="button" id="showPassword"><i
+                                                        class="fas fa-eye"></i></button>
+                                            </span>
+                                        </div>
+                                        {{-- <input
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            id="password" type="password" placeholder="Masukkan password"
+                                            autocomplete="current-password">
+                                        <input class="form-check" type="checkbox" name="showPassword" id="showPassword">
+                                        --}}
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -100,11 +107,6 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
     </div>
-
-
-
-
-
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
@@ -118,6 +120,24 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <script>
         $(".preloader ").fadeOut();
+        $(document).ready(function() {
+            var $password = $('#password');
+            $('#showPassword').click(function() {
+                if ($password.attr('type') === 'password') {
+                    $password.attr('type', 'text')
+                    $('#showPassword .fas').removeClass('fa-eye');
+                    $('#showPassword .fas').addClass('fa-eye-slash');
+                    $('#showPassword').removeClass('btn-secondary');
+                    $('#showPassword').addClass('btn-success');
+                } else {
+                    $password.attr('type', 'password')
+                    $('#showPassword .fas').removeClass('fa-eye-slash');
+                    $('#showPassword .fas').addClass('fa-eye');
+                    $('#showPassword').addClass('btn-secondary');
+                    $('#showPassword').removeClass('btn-success');
+                }
+            })
+        })
 
     </script>
 </body>

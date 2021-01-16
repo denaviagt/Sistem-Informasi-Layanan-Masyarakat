@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterCitizensAddForeignDusunId extends Migration
+class AlterDusunsTableAddSoftdeletes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterCitizensAddForeignDusunId extends Migration
      */
     public function up()
     {
-        Schema::table('citizens', function (Blueprint $table) {
-            $table->foreignId('dusun_id')->constrained('dusuns');
+        Schema::table('dusuns', function (Blueprint $table) {
+            $table->SoftDeletes();
         });
     }
 
@@ -25,8 +25,8 @@ class AlterCitizensAddForeignDusunId extends Migration
      */
     public function down()
     {
-        Schema::table('citizens', function (Blueprint $table) {
-            $table->dropForeign(['dusun_id']);
+        Schema::table('dusuns', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 }

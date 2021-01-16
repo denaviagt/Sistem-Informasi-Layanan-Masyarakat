@@ -5,6 +5,16 @@
     <!-- ============================================================== -->
     <div class="page-wrapper" id="page-wrapper">
         <div class="container-fluid">
+            @if (session('status-success'))
+                <div class="alert alert-success">
+                    {{ session('status-success') }}
+                </div>
+            @endif
+            @if (session('status-fail'))
+                <div class="alert alert-danger">
+                    {{ session('status-fail') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <ul class="nav nav-tabs mb-3">
@@ -52,7 +62,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Visi</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -61,17 +70,18 @@
                                                 @foreach ($visions as $item)
                                                     <tr id="row_vision_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->vision }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditVision(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteVision(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -94,7 +104,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Misi</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -103,17 +112,17 @@
                                                 @foreach ($missions as $item)
                                                     <tr id="row_msision_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->mission }}</td>
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-id="{{ $item->id }}"
                                                                     onclick="modalEditMission(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteMission(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -136,7 +145,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Nama</th>
                                                     <th>Jabatan</th>
                                                     <th>Periode</th>
@@ -148,7 +156,6 @@
                                                 @foreach ($apparatus as $item)
                                                     <tr id="row_apparatus_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->citizen->full_name }}</td>
                                                         <td>{{ $item->position }}</td>
                                                         <td>{{ $item->period }}</td>
@@ -159,14 +166,16 @@
                                                             }
                                                         @endif
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditApparatus(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteApparatus(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -184,38 +193,37 @@
                                     <div class="table-responsive">
                                         <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
                                             data-toggle="modal" data-target="#addDusuns">Tambah</button>
-                                        <table id="dusunTable" class="table table-striped table-bordered display no-wrap"
+                                        <table id="dusunTable" class="table table-striped table-bordered display"
                                             style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Nama Pedukuhan</th>
                                                     <th>Kepala Dukuh</th>
                                                     {{-- <th>Status</th>
                                                     --}}
-                                                    <th>Aksi</th>
+                                                    <th style="width: 10px">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($dusuns as $item)
                                                     <tr id="row_dusun_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->dusun_name }}</td>
                                                         <td>{{ $item->head_of_dusun }}</td>
-                                                        {{-- <td>Aktif</td>
-                                                        --}}
                                                         <td>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-success"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
+                                                            {{-- <button type="button"
+                                                                class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
+                                                            --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -232,36 +240,37 @@
                                     <div class="table-responsive">
                                         <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
                                             data-toggle="modal" data-target="#addRegulation">Tambah</button>
-                                        <table id="regulationsTable"
-                                            class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                        <table id="regulationsTable" class="table table-striped table-bordered display"
+                                            style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID</th>
                                                     <th>Judul</th>
                                                     <th>File</th>
-                                                    <th>Aksi</th>
+                                                    <th style="width: 5em">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($regulations as $item)
                                                     <tr id="row_regulation_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}" class="btn"
-                                                                data-toggle="tooltip" data-placement="top" title="Detail"><i
-                                                                    class="fas fa-eye"></i></a>
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
+                                                                class="btn btn-action text-info regulation-file-view"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Detail">Lihat</a>
+                                                            <button type="button" class="btn btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit text-success" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditRegulation(event.target)"></i></button>
 
-                                                            <button type="button" class="btn" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash text-danger" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteRegulation(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -467,7 +476,8 @@
                     <form action="{{ url('/profil-kalurahan') }}" method="POST">
                         @csrf
                         <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}">
-                        <input type="text" hidden class="form-control" name="type" value="apparatus" id="inputMissionType">
+                        <input type="text" hidden class="form-control" name="type" value="apparatus"
+                            id="inputApparatusType">
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
@@ -716,7 +726,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Tambah Profil Pedukuhan --}}
+    {{-- Modal Tambah Produk Hukum --}}
     <div class="modal fade" id="addRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -757,7 +767,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Edit Profil Pedukuhan --}}
+    {{-- Modal Edit Produk Hukum --}}
     <div class="modal fade" id="editRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -767,7 +777,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/profil-kalurahan/regulation') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/profil-kalurahan/regulations') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="text" hidden class="form-control" name="regulationId" id="regulationId">
@@ -784,13 +794,14 @@
                             <div class="col-sm-9">
                                 <input class="form-control" name="file" id="editFileReg" type="file">
                                 </input>
+                                <span id="fileNameEdit"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class=" d-flex mx-auto">
                                 <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
                                     aria-hidden="true">Batal</button>
-                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                                <button type="submit" class="btn btn-primary m-2">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -798,7 +809,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Delete Profil Pedukuhan--}}
+    {{-- Modal Delete Produk Hukum--}}
     <div class="modal fade" id="deleteRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -822,7 +833,16 @@
     </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script src="{{ asset('dist/js/EZView.js') }}"></script>
+    <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
+        $('#aparatusTable').DataTable();
+        $('#dusunTable').DataTable();
+        $('#visionTable').DataTable();
+        $('#regulationsTable').DataTable();
+        $('#missionTable').DataTable();
+
+        $('.regulation-file-view').EZView();
         $(document).ready(function() {
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
@@ -862,11 +882,6 @@
                 }
             });
         });
-        $('#aparatusTable').DataTable();
-        $('#dusunTable').DataTable();
-        $('#visionTable').DataTable();
-        $('#regulationsTable').DataTable();
-        $('#missionTable').DataTable();
 
         function modalEditVision(event) {
             var id = $(event).data("id");
@@ -1062,8 +1077,8 @@
                         if (response.status) {
                             // location.reload();
                             $("#row_dusun_" + id).remove();
-                            $('#deletedusun').modal('hide');
-                            $('#dusunTable').reload();
+                            $('#deleteDusun').modal('hide');
+                            // $('#dusunTable').reload();
                         } else {
                             alert("Gagal hapus data")
                         }
@@ -1084,9 +1099,12 @@
                     if (response) {
                         $('#regulationId').val(response.data['id'])
                         $('#editTitle').val(response.data['title'])
-                        // $('#editFileReg').val(response.data['file'])
+                        $('#fileNameEdit').append(response.data['file'])
                         $('#editRegulation').modal('show');
                     }
+                    // if ($('#editFileReg').val() != '') {
+                    //     $('#fileNameEdit').hide();
+                    // }
                 }
             });
         }
