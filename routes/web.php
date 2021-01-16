@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::group(['middleware' => ['auth']], function () {
     // your routes
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', 'DashboardController@index');
     Route::get('login', function () {
         return view('login');
     });
@@ -82,10 +80,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::post('service/{id}/verified', 'ServiceController@serviceVerified');
-    Route::resource('service', 'ServiceController');
-    Route::post('sevice-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
-    Route::post('sevice-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
-    Route::get('sevice-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
+    // Route::resource('service', 'ServiceController');
+    Route::post('service-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
+    Route::post('service-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
+    Route::get('service-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
+    Route::get('service/count', 'DashboardController@countService');
 
     Route::get('/detail-layanan', function () {
         return view('service/detail-layanan');
