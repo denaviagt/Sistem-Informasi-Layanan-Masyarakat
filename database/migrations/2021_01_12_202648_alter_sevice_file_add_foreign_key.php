@@ -15,6 +15,7 @@ class AlterSeviceFileAddForeignKey extends Migration
     {
         Schema::table('service_files', function (Blueprint $table) {
             $table->foreignId('service_requirement_id')->constrained('service_requirements')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,7 @@ class AlterSeviceFileAddForeignKey extends Migration
     {
         Schema::table('service_files', function (Blueprint $table) {
             $table->dropForeign('service_requirement_id');
+            $table->dropSoftDeletes();
         });
     }
 }
