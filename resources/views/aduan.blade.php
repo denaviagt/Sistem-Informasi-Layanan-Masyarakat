@@ -18,23 +18,35 @@
                                             <th>Penting</th>
                                             <th>No</th>
                                             <th>Nama Pengirim</th>
-                                            <th>Aduan
-                                            </th>
+                                            <th>Aduan</th>
                                             <th>Tanggal</th>
                                             <th>Daerah</th>
-                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($feedbacks as $item)
-                                            <tr>
-                                                <td class="">
-                                                    <div class="custom-checkbox custom-control">
-                                                        <input type="checkbox" data-checkboxes="mygroup"
-                                                            class="custom-control-input" id="importantCheckbox">
-                                                        <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                                                    </div>
+                                            <tr id="row_feedback_{{ $item->id }}">
+                                                <td class="importantValue">
+                                                    @if ($item->is_important == 1)
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="importantCheckbox{{ $item->id }}" checked
+                                                                onclick="isImportantCheck(event.target)"
+                                                                data-id="{{ $item->id }}">
+                                                            <label class="custom-control-label"
+                                                                for="importantCheckbox{{ $item->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @else
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="importantCheckbox{{ $item->id }}"
+                                                                onclick="isImportantCheck(event.target)"
+                                                                data-id="{{ $item->id }}">
+                                                            <label class="custom-control-label"
+                                                                for="importantCheckbox{{ $item->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @endif
                                                 </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 @if ($item->is_anonim == 1){
@@ -46,12 +58,6 @@
                                                 <td>{{ $item->feedback }}</td>
                                                 <td>{{ $item->date }}</td>
                                                 <td>{{ $item->dusun->dusun_name }}</td>
-                                                @if ($item->status == 'active'){
-                                                    <td><span class="badge badge-success">Aktif</span></td>
-                                                }@else{
-                                                    <td><span class="badge badge-danger">Tidak Aktif</span></td>
-                                                    }
-                                                @endif
                                                 <td>
                                                     <button type="button" class="btn btn-action text-info"
                                                         data-toggle="tooltip" data-placement="top" title="Detail"><i
@@ -60,8 +66,9 @@
 
                                                     <button type="button" class="btn btn-action text-danger"
                                                         data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                            class="fas fa-trash" data-toggle="modal"
-                                                            data-target="#delete-aduan"></i></button>
+                                                            data-id="{{ $item->id }}"
+                                                            onclick="deleteModalFeedback(event.target)"
+                                                            class="fas fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -119,7 +126,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     {{-- Modal Delete --}}
-    <div class="modal fade" id="delete-aduan" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    <div class="modal fade" id="deleteFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
@@ -134,7 +141,7 @@
                             <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
                                 aria-hidden="true">Batal</button>
                             <button type="submit" class="btn btn-primary m-2" onclick="deleteData(event.target)"
-                                id="confirm-delete-aduan">Hapus</button>
+                                id="confirmDeleteFeedback">Hapus</button>
                         </div>
                     </div>
                 </div>
@@ -168,15 +175,23 @@
                             $('#user_name').append(response.full_name)
                         }
                         $('#modalDetail').modal('show');
+                        $.ajax({
+                            url: `/aduan/${id}/readUpdate`,
+                            type: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                        });
                     }
                 }
             });
+
         }
 
         function isImportant(event) {
             var id = $('#feedback_id').val();
-            console.log(id);
-            let _url = `/aduan/${id}/importantUpdate`;
+            // console.log(id);
+            let _url = `/aduan/${id}/importantUpdate/true`;
             $.ajax({
                 url: _url,
                 type: "POST",
@@ -184,14 +199,57 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    // if (response) {
-                    // console.log(response);
-                    $('#importantCheckbox').attr('checked', 'checked');
                     $('#modalDetail').modal('hide');
-                    // }
                 }
             });
+        }
 
+        function isImportantCheck(event) {
+            var id = $(event).data("id");
+            var checkbox = $('#importantCheckbox' + id)
+            let _url = `/aduan/${id}/importantUpdate/${checkbox.prop('checked')}`;
+            $.ajax({
+                url: _url,
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            }).fail(function() {
+                alert("Gagal ubah data");
+            });
+            // console.log(id);
+
+        }
+
+        function deleteModalFeedback(event) {
+            var id = $(event).data("id");
+            console.log(id);
+
+            $('#confirmDeleteFeedback').data('id', id); //setter
+            $('#deleteFeedbackModal').modal('show');
+        }
+
+        function deleteData(event) {
+            var id = $(event).data("id");
+            let _url = `aduan/${id}`;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: _url,
+                type: "DELETE",
+                success: function(response) {
+                    if (response) {
+                        if (response.status) {
+                            // location.reload();
+                            $("#row_feedback_" + id).remove();
+                            $('#deleteFeedbackModal').modal('hide');
+                        }
+                    }
+                }
+            });
         }
 
     </script>

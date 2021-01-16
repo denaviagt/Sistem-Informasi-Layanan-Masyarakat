@@ -92,13 +92,22 @@
                                 @foreach ($requirement as $key => $req)
                                     <div class="row m-3">
                                         <span class="col-4">{{ $req->terms }}</span>
-                                        <span class="col-4 mr-3 detail-value" name="file-name"
+                                        <span class="col-3 mr-2 detail-value" name="file-name"
                                             id="file-name{{ $files[$key]['id'] ?? '' }}">{{ $files[$key]['file_url'] ?? '' }}</span>
                                         <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
-                                            class="btn btn-primary mr-3 service-file-btn">Lihat File</a>
-                                        <button type="button" class="btn btn-success mr-3"
-                                            id="berkas{{ $files[$key]['id'] ?? '' }}" onclick="statusUpdate(event.target)"
-                                            data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+                                            class="btn btn-primary mr-2 service-file-btn p-auto ">Lihat File</a>
+                                        @if ($files[$key]['status'] == 'verified')
+                                            <button type="button" class="btn btn-success mr-2 btn-verif-file"
+                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
+                                                onclick="statusUpdate(event.target)"
+                                                data-id="{{ $files[$key]['id'] ?? '' }}" disabled>Verifikasi</button>
+                                        @else
+                                            <button type="button" class="btn btn-warning mr-2 btn-verif-file"
+                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
+                                                onclick="statusUpdate(event.target)"
+                                                data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+
+                                        @endif
                                         <button type="button" class="btn btn-danger"
                                             id="btn-berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileDenied(event.target)"
                                             data-id="{{ $files[$key]['id'] ?? '' }}">Tolak</button>
@@ -170,17 +179,15 @@
                     ]
                 },
             });
-
-            $('#smartwizard').on("leaveStep", async function(e, anchorObject, currentStepIndex, nextStepIndex,
+            var ajaxInvoke = false;
+            $('#smartwizard').on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex,
                 stepDirection) {
                 var step1 = $("#step-1");
                 var status = false;
-                // console.log(currentStepIndex);
                 var id = $('#citizen_id').val();
                 var id_service = $('#service_id').val();
                 var id_category = $('#service_category_id').val();
                 if (nextStepIndex === 1 && step1) {
-                    // console.log(id);
                     let _url = `/citizen/${id}/dataverif`;
                     $.ajax({
                         url: _url,
@@ -189,34 +196,39 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                     });
-                    // status = true
                     return true;
-                }
-                if (nextStepIndex === 2) {
-                    let _url = `/sevice-file/${id_service}/verifFiles/${id_category}`;
 
-                    async function ajaxVerif(ajaxUrl) {
-                        var statusAjax = false;
-                        $.ajax({
-                            url: ajaxUrl,
-                            type: "GET",
-                            success: function(response) {
-                                if (response) {
-                                    if (response.status) {
-                                        statusAjax = response.status;
-                                    } else {
-                                        // alert('Data Gagal Verif')
-                                        statusAjax = false;
-                                    }
-                                }
+                }
+                if (stepDirection === "backward") {
+                    return true
+                }
+                // console.log(currentStepIndex);
+                if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
+                    // console.log(stepDirection);
+                    $('#smartwizard').smartWizard("loader", "show");
+                    let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
+                    ajaxInvoke = true;
+                    $.ajax({
+                        url: _url,
+                        type: "GET",
+
+                    }).then(function(response) {
+                        $('#smartwizard').smartWizard("loader", "hide");
+                        if (response) {
+                            console.log(response);
+                            if (response.status) {
+                                $('#smartwizard').smartWizard("next");
+                                ajaxInvoke = false;
+                            } else {
+                                alert('Data Gagal Verif')
+                                $('#smartwizard').smartWizard("prev");
+                                // statusAjax = false;
+                                ajaxInvoke = false;
                             }
-                        });
-                        return status;
-                    }
-                    await ajaxVerif(_url).then(function(data) {
-                        console.log(data);
-                    })
-                    // return true;
+                        }
+
+                        return false;
+                    });
                 }
             });
 
@@ -276,17 +288,22 @@
             fileVerif(id);
             serviceProcessing();
             return alert('Berkas ' + fileName + ' terverifikasi.')
+
         }
 
         function fileVerif(id) {
             console.log(id);
-            let _url = `/sevice-file/${id}/verifStatus`;
+            let _url = `/service-file/${id}/verifStatus`;
             $.ajax({
                 url: _url,
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
+                success: function() {
+                    $('.btn-verif-file').removeClass('btn-warning');
+                    $('.btn-verif-file').addClass('btn-success');
+                }
             });
         }
 
@@ -306,7 +323,7 @@
             var id = $(event).data('id');
             var service_id = $('#service_id').val();
             var fileName = $('#file-name' + id).text();
-            let _url = `/sevice-file/${id}/deniedStatus/${service_id}`;
+            let _url = `/service-file/${id}/deniedStatus/${service_id}`;
             if (confirm("Ingin menolak berkas " + fileName + '?')) {
                 $.ajax({
                     url: _url,
