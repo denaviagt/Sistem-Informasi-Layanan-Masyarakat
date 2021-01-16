@@ -37,24 +37,11 @@
                             </div>
                             <div class="row m-2">
                                 <div class="col-sm-2 d-flex">
-                                    <span>Thumbnail</span>
+                                    <span>Deskripsi</span>
                                     <span class="ml-auto">:</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    {{-- <img src="{{ $infoDesaDetail->thumbnail }}" alt=""
-                                        width="200px"> --}}
-                                    <img src="{{ url('thumbnail/' . $detail->thumbnail) }}" alt="" width="400px">
-                                </div>
-                            </div>
-                            <div class="row m-2">
-                                <div class="col-sm-2 d-flex">
-                                    <span>ID Admin</span>
-                                    <span class="ml-auto">:</span>
-                                </div>
-                                <div class="col-sm-10">
-                                    <span>
-                                        {{ $detail->admin_id }}
-                                    </span>
+                                    {!! $detail->description !!}
                                 </div>
                             </div>
                             <div class="row m-2">
@@ -66,14 +53,18 @@
                                     <span>{{ $detail->status }}</span>
                                 </div>
                             </div>
-                            <div class="row m-2">
+                            <div class="row ml-2 mt-4">
                                 <div class="col-sm-2 d-flex">
-                                    <span>Isi</span>
+                                    <span>Gambar</span>
                                     <span class="ml-auto">:</span>
                                 </div>
-                                <div class="col-sm-10">
-                                    {!! $detail->content !!}
-                                </div>
+                            </div>
+                            <div class="row m-1">
+                                @foreach($detail->images as $image)
+                                    <div class="ml-2 col-sm-4">
+                                        <img src="{{ asset('thumbnail/' . $image->image) }}" id="preview" class="img-thumbnail">
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="form-group text-right mr-5">
                                 <a href="{{ url('potensi-desa/' . $detail->id . '/edit') }}" type="submit"
