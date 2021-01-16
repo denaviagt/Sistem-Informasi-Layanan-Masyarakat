@@ -120,6 +120,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
     });
+    Route::get('/statistik-layanan/{month}', 'StatisticsController@getCountService');
     Route::get('/statistik-aduan', function () {
         return view('statistik-aduan');
     });
