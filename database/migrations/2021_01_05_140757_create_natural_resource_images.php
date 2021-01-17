@@ -16,7 +16,9 @@ class CreateNaturalResourceImages extends Migration
         Schema::create('natural_resource_images', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->foreignId('natural_resource_id')->constrained('natural_resources');
+            $table->foreignId('natural_resource_id')
+                ->constrained('natural_resources')
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

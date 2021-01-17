@@ -107,18 +107,13 @@ $user = auth()->user();
 
     </script>
 
-    {{-- <script type="text/javascript">
-        $(document).ready(function() {
-            if ({
-                    {
-                        $errors - > has('old_password') || $errors - > has('new_password')
-                    }
-                }) {
+    @if ($errors->has('old_password') || $errors->has('new_password'))
+    <script type="text/javascript">
+        $(document).ready(function () {
                 $('#modal-edit-password').modal('show');
-            }
         })
-
-    </script> --}}
+    </script>
+    @endif
 </body>
 
 </html>
