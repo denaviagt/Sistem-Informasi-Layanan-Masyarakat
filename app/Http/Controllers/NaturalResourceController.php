@@ -17,10 +17,14 @@ class NaturalResourceController extends Controller
      */
     public function index()
     {
-        $data = [
-            'naturalResources' => NaturalResource::all()
-        ];
-        return view('natural-resource.index', $data);
+
+        $naturalResources = NaturalResource::all();
+        foreach ($naturalResources as $key => $value) {
+            $date = $naturalResources[$key]->created_at->isoFormat('dddd, D MMMM Y');
+        }
+
+
+        return view('natural-resource.index', compact(['naturalResources', 'date']));
     }
 
     /**
@@ -66,8 +70,8 @@ class NaturalResourceController extends Controller
             $naturalResource->refresh();
             if ($request->hasFile('images')) {
                 $images = $request->file('images');
-                foreach ($images as $image){
-                    $name = $image->getFilename().'.'.$image->extension();
+                foreach ($images as $image) {
+                    $name = $image->getFilename() . '.' . $image->extension();
                     $uploadDir = public_path() . '/uploads/images/natural_resource';
                     $image->move($uploadDir, $name);
 
@@ -141,9 +145,9 @@ class NaturalResourceController extends Controller
         ];
 
         $naturalResource = NaturalResource::find($id);
-        $naturalResource->title=$title;
-        $naturalResource->status=$status;
-        $naturalResource->description=$description;
+        $naturalResource->title = $title;
+        $naturalResource->status = $status;
+        $naturalResource->description = $description;
         if ($naturalResource->save()) return redirect('potensi-desa')->with('status', 'Berhasil Update Data');
         else return redirect()->back()->with('status', 'Gagal Update data');
     }
