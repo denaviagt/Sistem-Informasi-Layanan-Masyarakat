@@ -44,7 +44,7 @@
                     <div class="tab-content">
                         <div class="tab-pane show active" id="alur">
                             <div class="table-responsive">
-                                <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary" data-toggle="modal"
                                     data-target="#add-alur">Tambah</button>
                                 <table id="syarat-table" class="table table-striped table-bordered">
                                     <thead>
@@ -64,11 +64,11 @@
                                                 <td>{{ $item->procedure }}</td>
                                                 <td>{{ $item->description }}</td>
                                                 <td>
-                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                    <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i class="fas fa-edit"
                                                             data-toggle="modal" data-id="{{ $item->id }}"
                                                             onclick="editAlurModal(event.target)"></i></button>
-                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                    <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                         data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                             data-toggle="modal" data-id="{{ $item->id }}"
                                                             onclick="modalAlurDelete(event.target)"></i></button>
@@ -82,7 +82,7 @@
                         <div class="tab-pane show" id="syarat">
                             <div class="table-responsive">
 
-                                <button type="button" class="btn btn-danger mb-2 d-flex ml-auto" data-toggle="modal"
+                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary" data-toggle="modal"
                                     data-target="#add-syarat">Tambah</button>
                                 <table id="alur-table" class="table table-striped table-bordered no-wrap">
                                     <thead>
@@ -102,11 +102,11 @@
                                                 <td>{{ $item->terms }}</td>
                                                 <td>{{ $item->description }}</td>
                                                 <td>
-                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                    <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i class="fas fa-edit"
                                                             data-toggle="modal" data-id="{{ $item->id }}"
                                                             onclick="editSyaratModal(event.target)"></i></button>
-                                                    <button type="button" class="btn" data-toggle="tooltip"
+                                                    <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
                                                         data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                             data-toggle="modal" data-id="{{ $item->id }}"
                                                             onclick="modalSyaratDelete(event.target)"></i></button>

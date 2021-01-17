@@ -48,16 +48,16 @@
                                                 <td>{{ $item->admin->full_name }}</td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>
-                                                    <a href="{{ url('info-desa/' . $item->id) }}" class="btn btn-action"
+                                                    <a href="{{ url('info-desa/' . $item->id) }}" class="btn btn-action text-primary"
                                                         data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                             class="fas fa-eye text-info"></i></a>
 
                                                     <a href="{{ url('/edit-info-desa/' . $item->id . '/edit') }}"
-                                                        class="btn btn-action" data-toggle="tooltip" data-placement="top"
-                                                        title="Edit"><i class="fas fa-edit text-success"></i></a>
+                                                        class="btn text-success btn-action" data-toggle="tooltip" data-placement="top"
+                                                        title="Edit"><i class="fas fa-edit"></i></a>
 
-                                                    <a class="btn btn-action" data-toggle="tooltip" data-placement="top"
-                                                        title="Hapus"><i class="fas fa-trash text-danger" id="DeleteInfo"
+                                                    <a class="btn btn-action text-danger" data-toggle="tooltip" data-placement="top"
+                                                        title="Hapus"><i class="fas fa-trash" id="DeleteInfo"
                                                             onclick="modalDelete(event.target)" data-id="{{ $item->id }}"
                                                             value="{{ $item->id }}"></i></a>
                                                 </td>
