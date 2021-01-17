@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Citizen;
 use App\Models\Feedback;
 use App\Models\User;
+use FeedbackSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,7 +18,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::orderBy('date', 'desc')->get();
         // return $feedbacks->id;
         // foreach ($feedbacks as $key) {
         //     $feed_val = [Str::limit($key->feedback, 20, '...')];
@@ -96,6 +97,12 @@ class FeedbackController extends Controller
         }
         $feedback->save();
     }
+    public function readUpdate($id)
+    {
+        $feedback = Feedback::find($id);
+        $feedback->is_read = 1;
+        $feedback->save();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -105,6 +112,15 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        if ($feedback->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }

@@ -172,6 +172,7 @@ $user = auth()->user();
                 }
             }
         });
+
     </script>
 
     @if ($errors->has('old_password') || $errors->has('new_password'))
