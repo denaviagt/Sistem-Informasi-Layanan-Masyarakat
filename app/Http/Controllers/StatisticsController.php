@@ -11,15 +11,19 @@ class StatisticsController extends Controller
     public function getCountService($month)
     {
         $data = array();
-        $catService = ServiceCategory::all();
-
-        foreach ($catService as $key => $value) {
-            $result = DB::table('services')->where('service_category_id', $value)->whereMonth('date', $month)->whereYear('date', Date('Y'))->get();
-            $data[$catService[$value]] = count($result) ?? 0;
+        $category = array();
+        $catService = DB::table('service_categories')->select('category')->get();
+        for ($i = 0; $i < 8; $i++) {
+            array_push($category, $catService[$i]->category);
         }
 
-        $labels = (array_keys($data));
-        $service = (array_values($data));
-        return ([$labels, $service]);
+        for ($cat = 1; $cat < 9; $cat++) {
+            $result = DB::table('services')->where('service_category_id', $cat)->whereMonth('date', $month)->whereYear('date', Date('Y'))->get();
+            $data[$cat - 1] = count($result) ?? 0;
+        }
+
+        // $labels = (array_values($catService));
+        // $service = (array_values($data));
+        return ([$data, $category]);
     }
 }

@@ -178,7 +178,7 @@
                 serviceChart(response.labels, response.service, response.feedback)
             }
         });
-        console.log(array);
+        // console.log(array);
 
         function serviceChart(labels, service, feedback) {
             var myLine = document.getElementById("dashboardStatistik").getContext("2d");
