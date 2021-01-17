@@ -21,9 +21,41 @@ class StatisticsController extends Controller
             $result = DB::table('services')->where('service_category_id', $cat)->whereMonth('date', $month)->whereYear('date', Date('Y'))->get();
             $data[$cat - 1] = count($result) ?? 0;
         }
-
-        // $labels = (array_values($catService));
-        // $service = (array_values($data));
         return ([$data, $category]);
+    }
+    public function getCountServiceDusun($month)
+    {
+        $data = array();
+        $dusunArray = array();
+        $dusuns = DB::table('dusuns')->select('dusun_name')->get();
+        foreach ($dusuns as $key => $value) {
+            array_push($dusunArray, $dusuns[$key]->dusun_name);
+        }
+        foreach ($dusuns as $key => $value) {
+            $result = DB::table('services')
+                ->join('citizens', 'services.citizen_id', 'citizens.id')
+                ->where('citizens.dusun_id', $key + 1)
+                ->whereMonth('date', $month)->whereYear('date', Date('Y'))
+                ->get();
+            $data[$key] = count($result) ?? 0;
+        }
+        return ([$data, $dusunArray]);
+    }
+    public function getCountFeedbackDusun($month)
+    {
+        $data = array();
+        $dusunArray = array();
+        $dusuns = DB::table('dusuns')->select('dusun_name')->get();
+        foreach ($dusuns as $key => $value) {
+            array_push($dusunArray, $dusuns[$key]->dusun_name);
+        }
+        foreach ($dusuns as $key => $value) {
+            $result = DB::table('feedbacks')
+                ->where('feedback_dusun_id', $key + 1)
+                ->whereMonth('date', $month)->whereYear('date', Date('Y'))
+                ->get();
+            $data[$key] = count($result) ?? 0;
+        }
+        return ([$data, $dusunArray]);
     }
 }

@@ -121,6 +121,8 @@ Route::group(['middleware' => ['auth']], function () {
         return view('statistik-layanan');
     });
     Route::get('/statistik-layanan/{month}', 'StatisticsController@getCountService');
+    Route::get('/statistik-layanan-dusun/{month}', 'StatisticsController@getCountServiceDusun');
+    Route::get('/statistik-aduan-dusun/{month}', 'StatisticsController@getCountFeedbackDusun');
     Route::get('/statistik-aduan', function () {
         return view('statistik-aduan');
     });
