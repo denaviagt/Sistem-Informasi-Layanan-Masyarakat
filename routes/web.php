@@ -74,13 +74,15 @@ Route::group(['middleware' => ['auth']], function () {
     //     return view('service/index');
     // });
     // Route::get('/service/index', 'ServiceInfoController@index');
-    // Route::get('/service/index/{id}/edit', 'ServiceInfoController@edit');
-    // Route::POST('/service/store', 'ServiceInfoController@store');
-    // Route::delete('/service/store/{id}', 'ServiceInfoController@destroy');
+    Route::get('service', 'ServiceController@index');
+    Route::get('/service/index/{id}/edit', 'ServiceController@edit');
+    Route::POST('/service/store', 'ServiceController@store');
+    Route::delete('/service/store/{id}', 'ServiceController@destroy');
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::post('service/{id}/verified', 'ServiceController@serviceVerified');
     // Route::resource('service', 'ServiceController');
+
     Route::post('service-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
     Route::post('service-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
     Route::get('service-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
@@ -120,6 +122,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/statistik-layanan', function () {
         return view('statistik-layanan');
     });
+    Route::get('/statistik-layanan/{month}', 'StatisticsController@getCountService');
+    Route::get('/statistik-layanan-dusun/{month}', 'StatisticsController@getCountServiceDusun');
+    Route::get('/statistik-aduan-dusun/{month}', 'StatisticsController@getCountFeedbackDusun');
     Route::get('/statistik-aduan', function () {
         return view('statistik-aduan');
     });

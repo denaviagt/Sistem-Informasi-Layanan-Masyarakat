@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // DataTable
-       //yajra\DataTables\DataTablesServiceProvider::class,
+        //yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
