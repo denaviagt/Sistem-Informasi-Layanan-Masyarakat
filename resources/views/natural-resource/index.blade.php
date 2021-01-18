@@ -79,20 +79,27 @@
                                                     <div class="modal fade" id="modalDelete{{ $naturalResource->id }}"
                                                         tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                                                         aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg">
+                                                        <div class="modal-dialog ">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title" id="myLargeModalLabel">Large
-                                                                        modal</h4>
+                                                                    <h4 class="modal-title" id="myLargeModalLabel"> Hapus
+                                                                        Potensi Desa</h4>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-hidden="true">×</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <button type="button" class="btn btn-light"
-                                                                        data-dismiss="modal">Batal</button>
-                                                                    <a href="{{ url('potensi-desa/' . $naturalResource->id . '/destroy') }}"
-                                                                        class="btn btn-danger">Hapus
-                                                                        <strong>{{ $naturalResource->title }}</strong></a>
+                                                                    <h4>Apakah Anda yakin akan menghapus
+                                                                        <strong>{{ $naturalResource->title }}</strong>?
+                                                                    </h4>
+                                                                    <div class="form-group row ">
+                                                                        <div class="d-flex mx-auto ">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary mr-2"
+                                                                                data-dismiss="modal">Batal</button>
+                                                                            <a href="{{ url('potensi-desa/' . $naturalResource->id . '/destroy') }}"
+                                                                                class="btn btn-danger">Hapus</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div><!-- /.modal-content -->
                                                         </div><!-- /.modal-dialog -->

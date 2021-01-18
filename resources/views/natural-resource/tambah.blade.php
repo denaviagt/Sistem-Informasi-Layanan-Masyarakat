@@ -90,8 +90,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group @error('description') is-invalid @enderror">
                                             <textarea class="form-control @error('description') is-invalid @enderror"
-                                                name="description" id="summernote" id="input-isi-info" cols="80"
-                                                rows="15"></textarea>
+                                                name="description" id="summernote" cols="80" rows="15"></textarea>
                                         </div>
                                         @error('description')
                                             <span class="text-danger">
