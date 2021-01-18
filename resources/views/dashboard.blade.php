@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #E9EDF1; border-radius: 20px;">
                         <div class="card-body">
                             <h4 class="card-title">Aktivitas Terbaru</h4>
                             <div class="mt-4 activity">
@@ -125,8 +125,8 @@
                                         <p class="font-14 mb-2 text-muted">Ryne Doe memproses layanan dengan ID 20</p>
                                         <span class="font-weight-light font-14 mb-1 d-block text-muted">2 jam yang
                                             lalu</span>
-                                        <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load
-                                            More</a>
+                                        <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Lihat
+                                            Selanjutnya</a>
                                     </div>
                                 </div>
                             </div>
@@ -146,12 +146,6 @@
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
 
-    {{-- <script>
-        $(document).ready(function() {
-            console.log(test);
-        })
-
-    </script> --}}
 @endsection
 
 @section('script')
