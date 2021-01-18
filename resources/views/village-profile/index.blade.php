@@ -72,14 +72,16 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $item->vision }}</td>
                                                         <td>
-                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn text-success btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditVision(event.target)"></i></button>
 
-                                                            <button type="button" class="btn  btn-action text-danger" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn  btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteVision(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -112,14 +114,15 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $item->mission }}</td>
                                                         <td>
-                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn text-success btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-id="{{ $item->id }}"
                                                                     onclick="modalEditMission(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteMission(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -163,14 +166,16 @@
                                                             }
                                                         @endif
                                                         <td>
-                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn text-success btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditApparatus(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteApparatus(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -197,7 +202,7 @@
                                                     <th>Kepala Dukuh</th>
                                                     {{-- <th>Status</th>
                                                     --}}
-                                                    <th style="width: 10px">Aksi</th>
+                                                    <th style="width: 10px !important">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -207,16 +212,17 @@
                                                         <td>{{ $item->dusun_name }}</td>
                                                         <td>{{ $item->head_of_dusun }}</td>
                                                         <td>
-                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn text-success btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
-                                                            --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -250,17 +256,20 @@
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}" class="btn btn-action text-primary"
+                                                            <a href="{{ url('info-desa/' . $item->id) }}"
+                                                                class="btn btn-action text-primary regulation-file-view"
                                                                 data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                                     class="fas fa-eye"></i></a>
-                                                            <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                                data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn text-success btn-action"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                                    class="fas fa-edit" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalEditRegulation(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                                    data-toggle="modal" data-id="{{ $item->id }}"
+                                                            <button type="button" class="btn btn-action text-danger"
+                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                                    class="fas fa-trash" data-toggle="modal"
+                                                                    data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteRegulation(event.target)"></i></button>
                                                         </td>
                                                     </tr>
@@ -295,7 +304,7 @@
                             <label for="visionAdd" class="col-sm-3 col-form-label">Visi</label>
                             <div class="col-sm-9">
                                 <textarea type="text" class="form-control" name="visionAdd" id="visionAdd"
-                                    placeholder="Masukkan visi"></textarea>
+                                    placeholder="Masukkan visi" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -328,7 +337,7 @@
                             <label for="visionEdit" class="col-sm-3 col-form-label">Visi</label>
                             <div class="col-sm-9">
                                 <textarea type="text" class="form-control" name="visionEdit" id="visionEdit"
-                                    placeholder="Masukkan visi"></textarea>
+                                    placeholder="Masukkan visi" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -383,7 +392,7 @@
                             <label for="missionAdd" class="col-sm-3 col-form-label">Misi</label>
                             <div class="col-sm-9">
                                 <textarea type="text" class="form-control" name="missionAdd" id="missionnAdd"
-                                    placeholder="Masukkan misi"></textarea>
+                                    placeholder="Masukkan misi" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -416,7 +425,7 @@
                             <label for="missionAdd" class="col-sm-3 col-form-label">Misi</label>
                             <div class="col-sm-9">
                                 <textarea type="text" class="form-control" name="missionEdit" id="missionEdit"
-                                    placeholder="Masukkan misi"></textarea>
+                                    placeholder="Masukkan misi" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -466,20 +475,20 @@
                     <form action="{{ url('/profil-kalurahan') }}" method="POST">
                         @csrf
                         <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}">
-                        <input type="text" hidden class="form-control" name="type" value="apparatus"
-                            id="inputApparatusType">
+                        <input type="text" hidden class="form-control" name="type" value="apparatus" id="inputApparatusType"
+                            required>
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single form-control" name="citizen_id" id="inputName"
-                                    style="width: 100%;">
+                                    style="width: 100%;" required>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputPosition" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="position" id="inputPosition">
+                                <select class="form-control" name="position" id="inputPosition" required>
                                     <option disabled selected>Pilih Posisi</option>
                                     <option value="Lurah">Lurah</option>
                                     <option value="Carik">Carik</option>
@@ -496,13 +505,13 @@
                             <label for="inputPeriod" class="col-sm-3 col-form-label">Periode Jabatan</label>
                             <div class="col-sm-9">
                                 <input type="text" value="" name="period" class="form-control" id="inputPeriod"
-                                    placeholder="Masukkan Periode Jabatan">
+                                    placeholder="Masukkan Periode Jabatan" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputStatus" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="status" id="inputStatus">
+                                <select class="form-control" name="status" id="inputStatus" required>
                                     <option disabled selected>Pilih Jabatan</option>
                                     <option value="active">Aktif</option>
                                     <option value="inactive">Tidak Aktif</option>
@@ -542,14 +551,14 @@
                             <label for="editName" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single form-control" name="citizen_id" id="editName"
-                                    style="width: 100%;">
+                                    style="width: 100%;" required>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="editPosition" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="position" id="editPosition">
+                                <select class="form-control" name="position" id="editPosition" required>
                                     <option disabled selected>Pilih Posisi</option>
                                     <option value="Lurah">Lurah</option>
                                     <option value="Carik">Carik</option>
@@ -566,13 +575,13 @@
                             <label for="editPeriod" class="col-sm-3 col-form-label">Periode Jabatan</label>
                             <div class="col-sm-9">
                                 <input type="text" value="" name="period" class="form-control" id="editPeriod"
-                                    placeholder="Masukkan Periode Jabatan">
+                                    placeholder="Masukkan Periode Jabatan" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="editStatus" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="status" id="editStatus">
+                                <select class="form-control" name="status" id="editStatus" required>
                                     <option disabled selected>Pilih Jabatan</option>
                                     <option value="active">Aktif</option>
                                     <option value="inactive">Tidak Aktif</option>
@@ -632,14 +641,14 @@
                             <label for="inputDusun" class="col-sm-3 col-form-label">Nama Dusun</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="dusun_name" id="inputDusun" type="text"
-                                    placeholder="Masukkan Nama Dusun" />
+                                    placeholder="Masukkan Nama Dusun" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputHeadOfDusun" class="col-sm-3 col-form-label">Nama Dusun</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="head_of_dusun" id="inputHeadOfDusun" type="text"
-                                    placeholder="Masukkan Kepala Dukuh" />
+                                    placeholder="Masukkan Kepala Dukuh" required />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -672,14 +681,14 @@
                             <label for="editDusunName" class="col-sm-3 col-form-label">Nama Dusun</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="dusun_name" id="editDusunName" type="text"
-                                    placeholder="Masukkan Nama Dusun" />
+                                    placeholder="Masukkan Nama Dusun" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="editHeadOfDusun" class="col-sm-3 col-form-label">Nama Kepala Dukuh</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="head_of_dusun" id="editHeadOfDusun" type="text"
-                                    placeholder="Masukkan Kepala Dukuh" />
+                                    placeholder="Masukkan Kepala Dukuh" required />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -734,15 +743,15 @@
                             <label for="inputTitle" class="col-sm-3 col-form-label">Judul Produk Hukum</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="title" id="inputTitle" type="text"
-                                    placeholder="Masukkan Judul Produk Hukum">
+                                    placeholder="Masukkan Judul Produk Hukum" required>
                                 </input>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputFileReg" class="col-sm-3 col-form-label">File Produk Hukum</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="file" id="inputFileReg" type="file">
-                                </input>
+                                <input class="form-control" name="file" id="inputFileReg" type="file" required>
+
                             </div>
                         </div>
                         <div class="form-group row">
@@ -775,14 +784,14 @@
                             <label for="editTitle" class="col-sm-3 col-form-label">Judul Produk Hukum</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="title" id="editTitle" type="text"
-                                    placeholder="Masukkan Judul Produk Hukum">
+                                    placeholder="Masukkan Judul Produk Hukum" required>
                                 </input>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="editFileReg" class="col-sm-3 col-form-label">File Produk Hukum</label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="file" id="editFileReg" type="file">
+                                <input class="form-control" name="file" id="editFileReg" type="file" required>
                                 </input>
                                 <span id="fileNameEdit"></span>
                             </div>
@@ -832,45 +841,47 @@
         $('#regulationsTable').DataTable();
         $('#missionTable').DataTable();
 
-        $('.regulation-file-view').EZView();
         $(document).ready(function() {
-            $('.js-example-basic-single').select2({
-                theme: "bootstrap",
-                placeholder: "Pilih Nama Lengkap",
-                // allowClear: true,
-                minimumResultsForSearch: 10,
-                ajax: {
-                    url: "{{ url('citizen-name') }}",
-                    delay: 250,
-                    data: function(params) {
-                        var query = {
-                            search: params.term,
-                            page: params.page || 1
-                        }
-                        // Query parameters will be ?search=[term]&type=public
-                        return query;
-                    },
-                    processResults: function(data, params) {
-                        var items = $.map(data.data, function(obj) {
-                            // console.log(obj);
-                            obj.id = obj.id;
-                            obj.text = obj.full_name;
+            $('.regulation-file-view').EZView();
 
-                            return obj;
-                        });
-                        params.page = params.page || 1;
-
+        });
+        $('.js-example-basic-single').select2({
+            theme: "bootstrap",
+            placeholder: "Pilih Nama Lengkap",
+            // allowClear: true,
+            minimumResultsForSearch: 10,
+            ajax: {
+                url: "{{ url('citizen-name') }}",
+                // type: 'GET',
+                delay: 250,
+                data: function(params) {
+                    var query = {
+                        search: params.term,
+                        page: params.page || 1
+                    }
+                    // console.log(query);
+                    // Query parameters will be ?search=[term]&type=public
+                    return query;
+                },
+                processResults: function(data, params) {
+                    var items = $.map(data.data, function(obj) {
                         console.log(data);
-                        // Transforms the top-level key of the response object from 'items' to 'results'
-                        return {
-                            results: items,
-                            pagination: {
-                                more: params.page < data.last_page
-                            }
-                        };
-                    },
-                }
-            });
+                        obj.id = obj.id;
+                        obj.text = obj.full_name;
+
+                    });
+                    params.page = params.page || 1;
+
+                    // console.log();
+                    // Transforms the top-level key of the response object from 'items' to 'results'
+                    return {
+                        results: data.data,
+                        pagination: {
+                            more: params.page < data.last_page
+                        }
+                    };
+                },
+            }
         });
 
         function modalEditVision(event) {
