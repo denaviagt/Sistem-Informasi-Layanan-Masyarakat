@@ -49,7 +49,7 @@ class infoDesaController extends Controller
             'status' => 'required'
         ]);
         $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
-        $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+        $request->thumbnail->move(public_path('uploads/images/village_info'), $thumbName);
 
         $infoDesaAdd = new VillageInfo;
 
@@ -106,7 +106,7 @@ class infoDesaController extends Controller
         ]);
         if ($request->thumbnail != null) {
             $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
-            $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+            $request->thumbnail->move(public_path('uploads/images/village_info'), $thumbName);
         }
 
         $infoDesaAdd = VillageInfo::find($request->id);

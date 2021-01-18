@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                         <div class="ml-2 col-sm-6">
-                                            <img src="{{ url('thumbnail/' . $infoDesaDetail->thumbnail) }}" id="preview"
+                                            <img src="{{ url('uploads/images/village_info/' . $infoDesaDetail->thumbnail) }}" id="preview"
                                                 class="img-thumbnail">
                                         </div>
                                         @error('thumbnail')

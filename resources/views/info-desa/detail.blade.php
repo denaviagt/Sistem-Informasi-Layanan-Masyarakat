@@ -41,7 +41,8 @@
                                     <span class="ml-auto">:</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <img src="{{ asset('thumbnail/' . $infoDesaDetail->thumbnail) }}" alt="" width="400px">
+                                    <img src="{{ asset('uploads/images/village_info/' . $infoDesaDetail->thumbnail) }}"
+                                        alt="" width="400px">
                                 </div>
                             </div>
                             <div class="row m-2">
