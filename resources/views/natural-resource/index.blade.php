@@ -29,7 +29,7 @@
                                     class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                <table id="zero_config" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
