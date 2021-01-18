@@ -9,19 +9,16 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            {{-- <form method="GET" action="{{ url('/info-layanan/') }}">
-                <div class="form-group mb-4 col-md-4 pl-0">
-                    <select name="category" class="custom-select mr-sm-2 bg-white" onchange='this.form.submit()'
-                        id="inlineFormCustomSelect">
-                        @foreach ($category as $item)
-                            <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
-                                {{ $item->category }}
-                            </option>
-                        @endforeach
-                    </select>
+            @if (session('status-success'))
+                <div class="alert alert-success">
+                    {{ session('status-success') }}
                 </div>
-            </form> --}}
+            @endif
+            @if (session('status-fail'))
+                <div class="alert alert-danger">
+                    {{ session('status-fail') }}
+                </div>
+            @endif
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="card">
@@ -44,13 +41,12 @@
                     <div class="tab-content">
                         <div class="tab-pane show active" id="alur">
                             <div class="table-responsive">
-                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary" data-toggle="modal"
-                                    data-target="#add-alur">Tambah</button>
+                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
+                                    data-toggle="modal" data-target="#add-alur">Tambah</button>
                                 <table id="syarat-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID</th>
                                             <th>Alur</th>
                                             <th>Deskripsi</th>
                                             <th>Action</th>
@@ -60,17 +56,18 @@
                                         @foreach ($procedure as $item)
                                             <tr id="row_procedure_{{ $item->id }}">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->id }}</td>
                                                 <td>{{ $item->procedure }}</td>
                                                 <td>{{ $item->description }}</td>
                                                 <td>
-                                                    <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                        data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                            data-toggle="modal" data-id="{{ $item->id }}"
+                                                    <button type="button" class="btn text-success btn-action"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                            class="fas fa-edit" data-toggle="modal"
+                                                            data-id="{{ $item->id }}"
                                                             onclick="editAlurModal(event.target)"></i></button>
-                                                    <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                            data-toggle="modal" data-id="{{ $item->id }}"
+                                                    <button type="button" class="btn btn-action text-danger"
+                                                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                            class="fas fa-trash" data-toggle="modal"
+                                                            data-id="{{ $item->id }}"
                                                             onclick="modalAlurDelete(event.target)"></i></button>
                                                 </td>
                                             </tr>
@@ -82,13 +79,12 @@
                         <div class="tab-pane show" id="syarat">
                             <div class="table-responsive">
 
-                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary" data-toggle="modal"
-                                    data-target="#add-syarat">Tambah</button>
+                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
+                                    data-toggle="modal" data-target="#add-syarat">Tambah</button>
                                 <table id="alur-table" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID</th>
                                             <th>Syarat</th>
                                             <th>Deskripsi</th>
                                             <th>Action</th>
@@ -98,17 +94,18 @@
                                         @foreach ($req as $item)
                                             <tr id="row_terms_{{ $item->id }}">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->id }}</td>
                                                 <td>{{ $item->terms }}</td>
                                                 <td>{{ $item->description }}</td>
                                                 <td>
-                                                    <button type="button" class="btn text-success btn-action" data-toggle="tooltip"
-                                                        data-placement="top" title="Edit"><i class="fas fa-edit"
-                                                            data-toggle="modal" data-id="{{ $item->id }}"
+                                                    <button type="button" class="btn text-success btn-action"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                            class="fas fa-edit" data-toggle="modal"
+                                                            data-id="{{ $item->id }}"
                                                             onclick="editSyaratModal(event.target)"></i></button>
-                                                    <button type="button" class="btn btn-action text-danger" data-toggle="tooltip"
-                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                            data-toggle="modal" data-id="{{ $item->id }}"
+                                                    <button type="button" class="btn btn-action text-danger"
+                                                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                            class="fas fa-trash" data-toggle="modal"
+                                                            data-id="{{ $item->id }}"
                                                             onclick="modalSyaratDelete(event.target)"></i></button>
                                                 </td>
                                             </tr>
@@ -147,13 +144,13 @@
                                 id="input-alur-category">
                             <label for="input-alur-category" class="col-sm-3 col-form-label">Alur</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="procedure" id="input-alur-layanan">
+                                <input type="text" class="form-control" name="procedure" id="input-alur-layanan" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="input-deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="description" id="input-deskripsi">
+                                <input type="text" class="form-control" name="description" id="input-deskripsi" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -187,14 +184,15 @@
                         <div class="form-group row">
                             <label for="edit-alur-layanan" class="col-sm-3 col-form-label">Alur</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="edit_alur_layanan" id="edit-alur-layanan">
+                                <input type="text" class="form-control" name="edit_alur_layanan" id="edit-alur-layanan"
+                                    required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="edit-deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="edit_description_layanan"
-                                    id="edit-alur-deskripsi">
+                                    id="edit-alur-deskripsi" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -250,13 +248,14 @@
                         <div class="form-group row">
                             <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="terms" id="input-syarat-layanan">
+                                <input type="text" class="form-control" name="terms" id="input-syarat-layanan" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="input-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="description" id="input-deskripsi-syarat">
+                                <input type="text" class="form-control" name="description" id="input-deskripsi-syarat"
+                                    required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -290,14 +289,15 @@
                         <div class="form-group row">
                             <label for="edit-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="edit-syarat-layanan" name="edit_syarat_layanan">
+                                <input type="text" class="form-control" id="edit-syarat-layanan" name="edit_syarat_layanan"
+                                    required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="edit-deskripsi-syarat" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="edit-deskripsi-syarat"
-                                    name="edit_description_layanan">
+                                    name="edit_description_layanan" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -360,18 +360,16 @@
         $('#alur-table').DataTable();
         $('.title').hide();
         var dl =
-            ` <form method="GET" action="{{ url('/info-layanan/') }}">
-                                                                                                                                                    <div class="form-group pl-0">
-                                                                                                                                                        <select name="category" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
-                                                                                                                                                            id="inlineFormCustomSelect">
-                                                                                                                                                            @foreach ($category as $item)
-                                                                                                                                                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
-                                                                                                                                                                    {{ $item->category }}
-                                                                                                                                                                </option>
-                                                                                                                                                            @endforeach
-                                                                                                                                                        </select>
-                                                                                                                                                    </div>
-                                                                                                                                                </form>`
+            ` <form method="GET" action="{{ url('/info-layanan/') }}">                                                                                                                              <div class="form-group pl-0">
+                                <select name="category" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
+                                    @foreach ($category as $item)
+                                                                                                                                                                                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
+                                                                                                                                                                                                    {{ $item->category }}
+                                                                                                                                                                                                </option>
+                                                                                                                                                                                            @endforeach
+                                                                                                                                                                                        </select>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </form>`
         $('.header-title').append(dl);
 
         function editAlurModal(event) {

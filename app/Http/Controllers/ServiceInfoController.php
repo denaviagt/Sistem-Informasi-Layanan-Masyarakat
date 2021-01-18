@@ -114,9 +114,9 @@ class ServiceInfoController extends Controller
         }
 
         if ($service->save()) {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Info Layanan Berhasil!');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status_success', 'Ubah Data Info Layanan Berhasil!');
         } else {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status', 'Ubah Data Info Layanan Gagal!');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status_fail', 'Ubah Data Info Layanan Gagal!');
         }
     }
 
