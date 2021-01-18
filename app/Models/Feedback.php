@@ -13,6 +13,6 @@ class Feedback extends Model
     }
     public function dusun()
     {
-        return $this->belongsTo(dusun::class, 'feedback_dusun_id');
+        return $this->belongsTo(Dusun::class, 'feedback_dusun_id');
     }
 }
