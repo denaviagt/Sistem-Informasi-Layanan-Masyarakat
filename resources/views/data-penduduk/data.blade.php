@@ -63,10 +63,11 @@
                                                         data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                             class="fas fa-edit"></i></a>
 
-                                                    <a class="btn btn-action text-danger" data-toggle="tooltip"
-                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
-                                                            onclick="modalDelete(event.target)"
+                                                    {{-- <a class="btn btn-action text-danger"
+                                                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                                                            class="fas fa-trash" onclick="modalDelete(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
+                                                    --}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -144,11 +145,14 @@
             }
         });
     } <<
-    << << < HEAD
+    <<
+    << < HEAD
         ===
-        === =
+        ===
+        =
 
         >>>
-        >>> > 51 d8ac7a4548687b1755cc121c9753ae6aebf5c7
+        >>>
+        > 51 d8ac7a4548687b1755cc121c9753ae6aebf5c7
 
 </script>
