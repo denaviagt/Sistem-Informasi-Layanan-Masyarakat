@@ -21,10 +21,10 @@
                      <!-- Logo text -->
                      <span class="logo-text">
                          <!-- dark Logo text -->
-                         <img src="{{ asset('assets/img/logo.png') }}" alt="homepage" class="dark-logo"  />
+                         <img src="{{ asset('assets/img/logo.png') }}" alt="homepage" class="dark-logo" />
                          <!-- Light Logo text -->
-                         {{-- <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo"
-                             alt="homepage" /> --}}
+                         {{-- <img src="{{ asset('assets/images/logo-light-text.png') }}"
+                             class="light-logo" alt="homepage" /> --}}
                      </span>
                  </a>
              </div>
@@ -45,55 +45,31 @@
              <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                  <li class="nav-item header-title">
                      <h3 class="pl-md-3 position-relative title">
-                        <b> @yield('title')</b>
+                         <b> @yield('title')</b>
                      </h3>
                  </li>
              </ul>
              <!-- ============================================================== -->
              <ul class="navbar-nav ml-auto">
-                 {{--
-                 <!-- ============================================================== -->
-                 <!-- Search -->
-                 <!-- ============================================================== -->
-                 <li class="nav-item d-none d-md-block">
-                     <a class="nav-link" href="javascript:void(0)">
-                         <form>
-                             <div class="customize-input">
-                                 <input class="form-control custom-shadow custom-radius border-0 bg-white" type="search"
-                                     placeholder="Search" aria-label="Search">
-                                 <i class="form-control-icon" data-feather="search"></i>
-                             </div>
-                         </form>
-                     </a>
-                 </li> --}}
-                 <!-- ============================================================== -->
-                 <!-- User profile and search -->
-                 <!-- ============================================================== -->
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                          aria-haspopup="true" aria-expanded="false">
-                         <img src="{{ asset('assets/img/profil.jpg') }}" alt="user" class="rounded-circle"
-                             width="30">
+                         <img src="{{ asset('assets/img/profil.jpg') }}" alt="user" class="rounded-circle" width="30">
                          <span class="ml-2 d-none d-lg-inline-block"><span class="">{{ $user->full_name }}</span> <i
                                  data-feather="chevron-down" class="svg-icon"></i></span>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
-                                 class="svg-icon mr-2 ml-1"></i>
-                             My Profile</a>
-                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
-                                 class="svg-icon mr-2 ml-1"></i>
-                             Account Setting</a>
-                         <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal"><i data-feather="settings"
-                                 class="svg-icon mr-2 ml-1"></i>
+                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">Lihat
+                                 Profil</a></div>
+                         <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal"><i
+                                 data-feather="settings" class="svg-icon mr-2 ml-1"></i>
                              Edit Password</a>
                          <div class="dropdown-divider"></div>
                          <a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="power"
                                  class="svg-icon mr-2 ml-1"></i>
-                             Logout</a>
+                             Keluar</a>
                          <div class="dropdown-divider"></div>
-                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                                 Profile</a></div>
+
                      </div>
                  </li>
                  <!-- ============================================================== -->
@@ -104,26 +80,27 @@
      </nav>
  </header>
  <!--  Modal content for the above example -->
- <div class="modal fade" id="modal-edit-password" tabindex="-1" role="dialog"
-      aria-labelledby="editPasswordModal" aria-hidden="true">
+ <div class="modal fade" id="modal-edit-password" tabindex="-1" role="dialog" aria-labelledby="editPasswordModal"
+     aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered modal-lg">
          <div class="modal-content">
-             <form action="{{ url("/admin/edit/password") }}" method="post">
+             <form action="{{ url('/admin/edit/password') }}" method="post">
                  @csrf
                  <div class="modal-header modal-colored-header bg-primary">
                      <h4 class="modal-title" id="editPasswordModal">Edit Password</h4>
-                     <button type="button" class="close" data-dismiss="modal"
-                             aria-hidden="true">×</button>
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                  </div>
                  <div class="modal-body">
                      <div class="form-group row">
                          <label for="oldPassword" class="col-sm-3 col-form-label">Password Lama</label>
                          <div class="col-sm-9">
-                             <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" id="oldPassword" placeholder="Masukkan password lama anda yang ingin dirubah"  required="">
+                             <input name="old_password" type="password"
+                                 class="form-control @error('old_password') is-invalid @enderror" id="oldPassword"
+                                 placeholder="Masukkan password lama anda yang ingin dirubah" required="">
                              @error('old_password')
-                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                 <span class="invalid-feedback" role="alert">
+                                     <strong>{{ $message }}</strong>
+                                 </span>
                              @enderror
                          </div>
                      </div>
@@ -131,11 +108,13 @@
                      <div class="form-group row">
                          <label for="newPassword" class="col-sm-3 col-form-label">Password Baru</label>
                          <div class="col-sm-9">
-                             <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" id="newPassword" placeholder="Masukkan password baru anda" required="">
+                             <input name="new_password" type="password"
+                                 class="form-control @error('new_password') is-invalid @enderror" id="newPassword"
+                                 placeholder="Masukkan password baru anda" required="">
                              @error('new_password')
-                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                 <span class="invalid-feedback" role="alert">
+                                     <strong>{{ $message }}</strong>
+                                 </span>
                              @enderror
                          </div>
                      </div>
