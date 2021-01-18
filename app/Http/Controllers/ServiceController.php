@@ -37,6 +37,7 @@ class ServiceController extends Controller
                 // 'service_categories.category as service_category',
             )
             ->where('service_category_id', $request->category ?? 1)
+            ->orderBy('services.id', 'desc')
             ->get();
         // return $services;
         return view('service/index', compact(['services', 'category']));

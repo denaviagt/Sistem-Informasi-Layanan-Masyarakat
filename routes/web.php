@@ -138,6 +138,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::get('/maintenance', function () {
+        return view('maintenance');
+    });
 });
 
 Auth::routes();

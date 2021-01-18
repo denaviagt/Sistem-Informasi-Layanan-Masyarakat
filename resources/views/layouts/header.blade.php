@@ -60,7 +60,7 @@
                      </a>
                      <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
 
-                         <a class="dropdown-item" href="#" data-toggle="modal">
+                         <a class="dropdown-item" href="{{ url('maintenance') }}">
                              Lihat Profil</a>
                          <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal">
                              Edit Password</a>

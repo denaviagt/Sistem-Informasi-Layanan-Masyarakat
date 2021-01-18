@@ -123,7 +123,7 @@
                                             <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
                                                 <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
-                                                <a class="btn btn-primary" href="#">Cetak
+                                                <a class="btn btn-primary" href="{{ url('maintenance') }}">Cetak
                                                     Dokumen</a>
                                             </div>
 
@@ -205,33 +205,33 @@
                     return true
                 }
                 // console.log(currentStepIndex);
-                if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
-                    // console.log(stepDirection);
-                    $('#smartwizard').smartWizard("loader", "show");
-                    let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
-                    ajaxInvoke = true;
-                    $.ajax({
-                        url: _url,
-                        type: "GET",
+                // if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
+                //     // console.log(stepDirection);
+                //     $('#smartwizard').smartWizard("loader", "show");
+                //     let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
+                //     ajaxInvoke = true;
+                //     $.ajax({
+                //         url: _url,
+                //         type: "GET",
 
-                    }).then(function(response) {
-                        $('#smartwizard').smartWizard("loader", "hide");
-                        if (response) {
-                            // console.log(response);
-                            if (response.status) {
-                                $('#smartwizard').smartWizard("next");
-                                ajaxInvoke = false;
-                            } else {
-                                alert('Data Gagal Verif')
-                                $('#smartwizard').smartWizard("prev");
-                                // statusAjax = false;
-                                ajaxInvoke = false;
-                            }
-                        }
+                //     }).then(function(response) {
+                //         $('#smartwizard').smartWizard("loader", "hide");
+                //         if (response) {
+                //             // console.log(response);
+                //             if (response.status) {
+                //                 $('#smartwizard').smartWizard("next");
+                //                 ajaxInvoke = false;
+                //             } else {
+                //                 alert('Data Gagal Verif')
+                //                 $('#smartwizard').smartWizard("prev");
+                //                 // statusAjax = false;
+                //                 ajaxInvoke = false;
+                //             }
+                //         }
 
-                        return false;
-                    });
-                }
+                //         return false;
+                //     });
+                // }
             });
 
             var stepIndex = $('#smartwizard').smartWizard("getStepIndex");
