@@ -200,6 +200,7 @@
                 },
                 success: function(response) {
                     $('#modalDetail').modal('hide');
+                    $('#importantCheckbox' + id).prop('checked', true)
                 }
             });
         }
