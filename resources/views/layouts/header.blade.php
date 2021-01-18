@@ -59,14 +59,13 @@
                                  data-feather="chevron-down" class="svg-icon"></i></span>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">Lihat
-                                 Profil</a></div>
-                         <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal"><i
-                                 data-feather="settings" class="svg-icon mr-2 ml-1"></i>
+
+                         <a class="dropdown-item" href="#" data-toggle="modal">
+                             Lihat Profil</a>
+                         <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal">
                              Edit Password</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="power"
-                                 class="svg-icon mr-2 ml-1"></i>
+                         <a class="dropdown-item" href="{{ route('logout') }}">
                              Keluar</a>
                          <div class="dropdown-divider"></div>
 
