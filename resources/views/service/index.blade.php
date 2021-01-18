@@ -14,10 +14,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="text-right mb-3">
+                            {{-- <div class="text-right mb-3">
                                 <a href="javascript:void(0)" id="createService" type="button"
-                                    class="btn waves-effect waves-light btn-rounded btn-primary" onclick="addService()">Tambah</a>
-                            </div>
+                                    class="btn waves-effect waves-light btn-rounded btn-primary"
+                                    onclick="addService()">Tambah</a>
+                            </div> --}}
                             <div class="table-responsive">
                                 <table class="service-table table table-striped table-bordered no-wrap">
                                     <thead>
@@ -223,19 +224,19 @@
             $('.title').hide();
             var dl =
                 ` <form method="GET" action="{{ url('/service/') }}">
-                                            <div class="form-group pl-0 d-flex">
-                                                <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
-                                                    id="inlineFormCustomSelect">
-                                                    @foreach ($category as $item)
-                                                        <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
-                                                            {{ $item->category }}
-                                                            <i class="fas fa-chevron-down"></i>
-                                                        </option>
-                                                    @endforeach
+                                                        <div class="form-group pl-0 d-flex">
+                                                            <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
+                                                                id="inlineFormCustomSelect">
+                                                                @foreach ($category as $item)
+                                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
+                                                                        {{ $item->category }}
+                                                                        <i class="fas fa-chevron-down"></i>
+                                                                    </option>
+                                                                @endforeach
 
-                                                    </select>
-                                            </div>
-                                        </form>`
+                                                                </select>
+                                                        </div>
+                                                    </form>`
             $('.header-title').append(dl);
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
@@ -282,7 +283,7 @@
                     type: "GET",
                     success: function(response) {
                         if (response) {
-                            console.log(response);
+                            // console.log(response);
                             $('#inputName').val(response.data['full_name'])
                             $('#inputAddress').val(response.data['address'])
                         }
@@ -294,7 +295,7 @@
 
         function detailLayanan(event) {
             var id = $(event).data('id');
-            console.log(id);
+            // console.log(id);
             var id_category = $('#categoryService').val();
             window.location.href = `/layanan/${id_category}/${id}`;
             let _url = `/layanan/${id}/status`;
@@ -334,7 +335,7 @@
         function modalDelete(event) {
             var id = $(event).data("id");
             $('#confirmDeleteService').attr('data-id', id);
-            console.log(id); //setter
+            // console.log(id); //setter
             $('#deleteService').modal('show');
 
         }

@@ -97,12 +97,14 @@
                                         <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
                                             class="btn btn-primary mr-2 service-file-btn p-auto ">Lihat File</a>
                                         @if ($files[$key]['status'] == 'verified')
-                                            <button type="button" class="btn btn-success mr-2 btn-verif-file"
+                                            <button type="button"
+                                                class="btn btn-success mr-2 btn-verif-file{{ $files[$key]['id'] }}"
                                                 id="berkas{{ $files[$key]['id'] ?? '' }}"
                                                 onclick="statusUpdate(event.target)"
                                                 data-id="{{ $files[$key]['id'] ?? '' }}" disabled>Verifikasi</button>
                                         @else
-                                            <button type="button" class="btn btn-warning mr-2 btn-verif-file"
+                                            <button type="button"
+                                                class="btn btn-warning mr-2 btn-verif-file{{ $files[$key]['id'] }}"
                                                 id="berkas{{ $files[$key]['id'] ?? '' }}"
                                                 onclick="statusUpdate(event.target)"
                                                 data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
@@ -215,7 +217,7 @@
                     }).then(function(response) {
                         $('#smartwizard').smartWizard("loader", "hide");
                         if (response) {
-                            console.log(response);
+                            // console.log(response);
                             if (response.status) {
                                 $('#smartwizard').smartWizard("next");
                                 ajaxInvoke = false;
@@ -266,7 +268,7 @@
 
             $('#wizard-btn-verified').on('click', function() {
                 var service_id = $('#service_id').val();
-                console.log(service_id);
+                // console.log(service_id);
                 let _url = `/service/${service_id}/verified`;
                 $.ajax({
                     url: _url,
@@ -292,7 +294,7 @@
         }
 
         function fileVerif(id) {
-            console.log(id);
+            // console.log(id);
             let _url = `/service-file/${id}/verifStatus`;
             $.ajax({
                 url: _url,
@@ -301,8 +303,9 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function() {
-                    $('.btn-verif-file').removeClass('btn-warning');
-                    $('.btn-verif-file').addClass('btn-success');
+                    $('.btn-verif-file' + id).removeClass('btn-warning');
+                    $('.btn-verif-file' + id).addClass('btn-success');
+                    $('.btn-verif-file' + id).removeAttr('disabled');
                 }
             });
         }
@@ -331,6 +334,11 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
+                    success: function() {
+                        $('.btn-verif-file' + id).addClass('btn-warning');
+                        $('.btn-verif-file' + id).removeClass('btn-success');
+                        $('.btn-verif-file' + id).removeClass('btn-success');
+                    }
                 });
             } else {
                 return false;

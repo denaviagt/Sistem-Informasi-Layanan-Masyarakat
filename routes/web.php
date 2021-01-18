@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
     Route::post('/admin/edit/password', 'AdminController@updatePassword');
-    Route::delete('/delete/{id}', 'AdminController@destroy');
+    Route::delete('admin/delete/{id}', 'AdminController@destroy');
 
     Route::get('/profil-kalurahan', 'VillageProfileController@index');
     Route::post('/profil-kalurahan', 'VillageProfileController@store');
@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('service', 'ServiceController@index');
     Route::get('/service/index/{id}/edit', 'ServiceController@edit');
     Route::POST('/service/store', 'ServiceController@store');
-    Route::delete('/service/store/{id}', 'ServiceController@destroy');
+    Route::delete('/service/{id}', 'ServiceController@destroy');
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::post('service/{id}/verified', 'ServiceController@serviceVerified');
