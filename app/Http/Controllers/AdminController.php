@@ -42,8 +42,29 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        // die;
+        $validate = $request->validate(
+            [
+                'name' => 'required',
+                'gender' => 'required',
+                'email' => 'required|unique:admins',
+                'username' => 'required|unique:admins',
+                'levelAdmin' => 'required',
+
+            ],
+            [
+                'name.required' => 'Nama tidak boleh kosong',
+                'gender.required' => 'Jenis kelamin tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email sudah terdaftar',
+                'username.unique' => 'Username sudah terdaftar',
+                'username.required' => 'Username tidak boleh kosong',
+                'levelAdmin.required' => 'Username tidak boleh kosong',
+            ]
+        );
+
+        // if ($validate) {
+        //     return response()->json(['errors' => $validate]);
+        // }
         $admins = new Admin;
 
         $admins->full_name = $request->name;
@@ -53,6 +74,8 @@ class AdminController extends Controller
         $admins->is_active = 1;
         $admins->level = $request->levelAdmin;
         $admins->password = Hash::make('password');
+        $admins->token = '';
+        $admins->remember_token = '';
         // $admins->password = Hash::make(Str::random(8));
 
         $admins->save();
@@ -86,7 +109,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updatePassword(UpdatePasswordRequest $request){
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
         $request->user()->update(
             [
                 'password' => Hash::make($request->get('new_password'))
@@ -105,6 +129,9 @@ class AdminController extends Controller
      */
     public function update(Request $request)
     {
+        // if ($validate) {
+        //     return response()->json(['errors' => $validate]);
+        // }
         $admins = Admin::find($request->ed_id_admin);
 
         $admins->full_name = $request->ed_name_admin;
