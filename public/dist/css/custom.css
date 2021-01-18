@@ -1,0 +1,30 @@
+.detail-data-pemohon span,
+.berkas-layanan span {
+    padding: 5px;
+}
+
+.detail-value {
+    background-color: rgb(213, 213, 213);
+    border-radius: 5px;
+    padding-left: 10px !important;
+}
+
+#smartwizard .nav {
+    margin: 0 200px;
+}
+
+#smartwizard .nav::before {
+    width: 80%;
+    left: 10%;
+}
+
+.detail-aduan-val {
+    background-color: rgb(213, 213, 213);
+    border-radius: 5px;
+    padding-left: 10px !important;
+    color: #000;
+}
+
+body {
+    background-color: #FAFAFA !important;
+}

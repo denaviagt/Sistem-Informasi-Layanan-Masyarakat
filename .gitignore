@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/assets/serviceFile/*
 /storage/*.key
 /vendor
 .env
@@ -13,6 +14,12 @@ yarn-error.log
 package-lock.json
 package.json
 /public/mix-manifest.json
-/public/css/app.css
 /public/js/app.js
 /.idea/
+/storage/logs
+/
+
+# No for this files
+
+!/public/assets/serviceFile/berkas1.jpeg
+!/public/assets/serviceFile/Presensi.pdf

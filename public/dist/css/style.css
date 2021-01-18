@@ -97,12 +97,13 @@ body {
     line-height: 1.5;
     color: #7c8798;
     text-align: left;
-    background-color: #f9fbfd;
+    background-color: #FAFAFA;
 }
 
 [tabindex="-1"]:focus {
     outline: 0 !important;
 }
+
 
 hr {
     box-sizing: content-box;
@@ -12813,6 +12814,13 @@ strong {
     margin-bottom: 10px;
     font-size: 0.8rem;
     padding: 10px 20px;
+}
+
+.grid-container {
+    background-color: #e8eaec;
+    margin-bottom: 10px;
+    padding: 20px 50px;
+    border-radius: 20px;
 }
 
 .auth-wrapper {
