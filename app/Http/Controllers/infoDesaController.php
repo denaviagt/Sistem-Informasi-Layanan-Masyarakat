@@ -16,8 +16,11 @@ class infoDesaController extends Controller
     public function index()
     {
         $infoDesa = VillageInfo::all();
+        foreach ($infoDesa as $key => $value) {
+            $date = $infoDesa[$key]->date->isoFormat('dddd, D MMMM Y');
+        }
 
-        return view('info-desa/index', compact('infoDesa'));
+        return view('info-desa/index', compact(['infoDesa', 'date']));
     }
 
     /**
@@ -38,8 +41,12 @@ class infoDesaController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'summernote' => 'required',
+            'status' => 'required'
         ]);
         $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
         $request->thumbnail->move(public_path('thumbnail'), $thumbName);
@@ -92,17 +99,23 @@ class infoDesaController extends Controller
     {
         // dd($request);
         $request->validate([
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'summernote' => 'required',
+            'status' => 'required'
         ]);
-        $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
-        $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+        if ($request->thumbnail != null) {
+            $thumbName = time() . '-' . $request->file('thumbnail')->getClientOriginalName();
+            $request->thumbnail->move(public_path('thumbnail'), $thumbName);
+        }
 
         $infoDesaAdd = VillageInfo::find($request->id);
-        // Admin::find($request->ed_id_admin);
 
         $infoDesaAdd->title = $request->title;
         $infoDesaAdd->content = $request->summernote;
-        $infoDesaAdd->thumbnail = $thumbName;
+        if ($request->thumbnail != null) {
+            $infoDesaAdd->thumbnail = $thumbName;
+        }
         $infoDesaAdd->date = now();
         $infoDesaAdd->status = $request->status;
         $infoDesaAdd->admin_id = $request->admin_id;
