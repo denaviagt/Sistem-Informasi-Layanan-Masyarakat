@@ -13,9 +13,22 @@ class NaturalResourceImageSeeder extends Seeder
     public function run()
     {
         DB::table('natural_resource_images')->insert([
-            'image' => 'lavabantal.jpg',
-            'natural_resource_id' => 1,
-            'created_at' => now(),  
+            [
+                'image' => 'lava-bantal.jpg',
+                'natural_resource_id' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'image' => 'Candi-Abang.jpg',
+                'natural_resource_id' => 2,
+                'created_at' => now(),
+            ],
+            [
+                'image' => 'gua-jepang.jpg',
+                'natural_resource_id' => 3,
+                'created_at' => now(),
+            ],
+
         ]);
     }
 }

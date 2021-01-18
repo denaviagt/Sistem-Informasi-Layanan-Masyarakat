@@ -19,36 +19,12 @@ class ServiceFileSeeder extends Seeder
         $faker->addProvider(new ImagesGeneratorProvider($faker));
         // $image = $faker->imageGenerator();
 
-        DB::table('service_files')->insert([
-            [
-                'service_requirement_id' => 1,
-                'file_url' => 'berkas1.jpeg',
-                'status' => 'unverified',
-                'service_id' => 1,
-                'created_at' => now(),
-            ],
-            [
-                'service_requirement_id' => 2,
-                'file_url' => 'Presensi.pdf',
-                'status' => 'unverified',
-                'service_id' => 1,
-                'created_at' => now(),
-            ],
-            [
-                'service_requirement_id' => 3,
-                'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
-                'status' => 'unverified',
-                'service_id' => 1,
-                'created_at' => now(),
-            ],
-        ]);
-
         for ($i = 0; $i < 3; $i++) {
             DB::table('service_files')->insert([
                 'service_requirement_id' => $faker->numberBetween(1, 3),
                 'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
                 'status' => 'unverified',
-                'service_id' => 2,
+                'service_id' => 21,
                 'created_at' => now(),
             ]);
         }
@@ -57,7 +33,7 @@ class ServiceFileSeeder extends Seeder
                 'service_requirement_id' => $faker->numberBetween(1, 3),
                 'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
                 'status' => 'unverified',
-                'service_id' => 3,
+                'service_id' => 22,
                 'created_at' => now(),
             ]);
         }
@@ -66,9 +42,32 @@ class ServiceFileSeeder extends Seeder
                 'service_requirement_id' => $faker->numberBetween(4, 6),
                 'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
                 'status' => 'unverified',
-                'service_id' => 4,
+                'service_id' => 23,
                 'created_at' => now(),
             ]);
         }
+        DB::table('service_files')->insert([
+            [
+                'service_requirement_id' => 1,
+                'file_url' => 'berkas1.jpeg',
+                'status' => 'unverified',
+                'service_id' => 24,
+                'created_at' => now(),
+            ],
+            [
+                'service_requirement_id' => 2,
+                'file_url' => 'Presensi.pdf',
+                'status' => 'unverified',
+                'service_id' => 24,
+                'created_at' => now(),
+            ],
+            [
+                'service_requirement_id' => 3,
+                'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
+                'status' => 'unverified',
+                'service_id' => 24,
+                'created_at' => now(),
+            ],
+        ]);
     }
 }

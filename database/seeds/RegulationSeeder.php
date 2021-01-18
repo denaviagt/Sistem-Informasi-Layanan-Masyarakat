@@ -13,9 +13,16 @@ class RegulationSeeder extends Seeder
     public function run()
     {
         DB::table('regulations')->insert([
-            'title' => 'Peraturan 1',
-            'file' => 'peraturan.pdf',
-            'created_at' => now(),
+            [
+                'title' => 'Peraturan Desa Nomor 1 Tahun 2021',
+                'file' => 'Peraturan1.pdf',
+                'created_at' => now(),
+            ],
+            [
+                'title' => 'Peraturan Desa Nomor 2 Tahun 2021',
+                'file' => 'Peraturan2.pdf',
+                'created_at' => now(),
+            ],
         ]);
     }
 }

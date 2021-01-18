@@ -13,44 +13,13 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('services')->insert(
-            [
-                [
-                    'date' => '2021-01-04 09:08:55',
-                    'status' => 'processing',
-                    'created_at' => now(),
-                    'service_category_id' => 1,
-                    'citizen_id' => 2,
-                ],
-                [
-                    'date' => '2020-12-12 09:08:55',
-                    'status' => 'processing',
-                    'created_at' => now(),
-                    'service_category_id' => 1,
-                    'citizen_id' => 3,
-                ],
-                [
-                    'date' => '2020-12-30 09:08:55',
-                    'status' => 'accepted',
-                    'created_at' => now(),
-                    'service_category_id' => 1,
-                    'citizen_id' => 4,
-                ],
-                [
-                    'date' => '2020-12-30 09:08:55',
-                    'status' => 'accepted',
-                    'created_at' => now(),
-                    'service_category_id' => 2,
-                    'citizen_id' => 4,
-                ],
-            ]
-        );
+
 
         $faker = Faker::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             DB::table('services')->insert(
                 [
-                    'date' => $faker->dateTime,
+                    'date' => $faker->dateTimeBetween('-10 days', '+200 days'),
                     'status' => $faker->randomElement(
                         ['processing', 'accepted', 'rejected', 'completed']
                     ),
@@ -60,5 +29,37 @@ class ServiceSeeder extends Seeder
                 ],
             );
         }
+        DB::table('services')->insert(
+            [
+                [
+                    'date' => '2021-01-04 09:08:55',
+                    'status' => 'processing',
+                    'created_at' => now(),
+                    'service_category_id' => 1,
+                    'citizen_id' => 3,
+                ],
+                [
+                    'date' => '2020-12-12 09:08:55',
+                    'status' => 'processing',
+                    'created_at' => now(),
+                    'service_category_id' => 1,
+                    'citizen_id' => 4,
+                ],
+                [
+                    'date' => '2020-12-30 09:08:55',
+                    'status' => 'accepted',
+                    'created_at' => now(),
+                    'service_category_id' => 1,
+                    'citizen_id' => 2,
+                ],
+                [
+                    'date' => '2020-12-30 09:08:55',
+                    'status' => 'accepted',
+                    'created_at' => now(),
+                    'service_category_id' => 2,
+                    'citizen_id' => 1,
+                ],
+            ]
+        );
     }
 }
