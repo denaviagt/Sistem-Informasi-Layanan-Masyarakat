@@ -256,7 +256,7 @@
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}"
+                                                            <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
                                                                 class="btn btn-action text-primary regulation-file-view"
                                                                 data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                                     class="fas fa-eye"></i></a>
@@ -509,10 +509,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputStatus" class="col-sm-3 col-form-label">Jabatan</label>
+                            <label for="inputStatus" class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="status" id="inputStatus" required>
-                                    <option disabled selected>Pilih Jabatan</option>
+                                    <option disabled selected>Pilih Status</option>
                                     <option value="active">Aktif</option>
                                     <option value="inactive">Tidak Aktif</option>
                                 </select>
