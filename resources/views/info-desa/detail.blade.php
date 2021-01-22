@@ -17,7 +17,7 @@
                                     <h4 class="card-title">Detail Info Desa</h4>
                                 </div>
                             </div>
-                            <div class="row m-2">
+                            {{-- <div class="row m-2">
                                 <div class="col-sm-2 d-flex">
                                     <span>ID</span>
                                     <span class="ml-auto">:</span>
@@ -25,7 +25,7 @@
                                 <div class="col-sm-10">
                                     <span>{{ $infoDesaDetail->id }}</span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row m-2">
                                 <div class="col-sm-2 d-flex">
                                     <span>Judul</span>
@@ -47,12 +47,12 @@
                             </div>
                             <div class="row m-2">
                                 <div class="col-sm-2 d-flex">
-                                    <span>ID Admin</span>
+                                    <span>Admin</span>
                                     <span class="ml-auto">:</span>
                                 </div>
                                 <div class="col-sm-10">
                                     <span>
-                                        {{ $infoDesaDetail->admin_id }}
+                                        {{ $infoDesaDetail->admin->full_name }}
                                     </span>
                                 </div>
                             </div>

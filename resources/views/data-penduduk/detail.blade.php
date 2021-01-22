@@ -17,7 +17,7 @@
                                     <h4 class="card-title">Detail Data Penduduk</h4>
                                 </div>
                             </div>
-                            <div class="row m-2">
+                            {{-- <div class="row m-2">
                                 <div class="col-sm-3 d-flex">
                                     <span>ID</span>
                                     <span class="ml-auto">:</span>
@@ -25,7 +25,7 @@
                                 <div class="col-sm-9">
                                     <span>{{ $detail->id }}</span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row m-2">
                                 <div class="col-sm-3 d-flex">
                                     <span>NIK</span>
@@ -134,7 +134,7 @@
                                     <span>{{ $detail->address }}</span>
                                 </div>
                             </div>
-                            <div class="row m-2">
+                            {{-- <div class="row m-2">
                                 <div class="col-sm-3 d-flex">
                                     <span>Status</span>
                                     <span class="ml-auto">:</span>
@@ -142,7 +142,7 @@
                                 <div class="col-sm-9">
                                     <span>{{ $detail->status }}</span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group text-right mr-5">
                                 <a href="{{ url('data-penduduk/' . $detail->id . '/edit') }}" type="submit"

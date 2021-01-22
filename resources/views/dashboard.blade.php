@@ -73,7 +73,7 @@
                     <div class="card shadow" style="background-color: #E9EDF1; border-radius: 20px;">
                         <div class="card-body">
                             <div class="d-flex align-items-start">
-                                <h4 class="card-title mb-0">Statistik Penduduk Kalurahan</h4>
+                                <h4 class="card-title mb-0">Statistik Layanan dan Aduan Kalurahan Jogotirto</h4>
                             </div>
                             <div class="pl-4">
                                 <div class="position-relative" style="height: 315px;">
