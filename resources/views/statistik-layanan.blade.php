@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Info Desa')
+@section('title', 'Statistik')
 
 @section('content')
     <div class="page-wrapper">
