@@ -32,7 +32,7 @@
                                     class="btn mb-2 ml-auto btn-rounded btn-primary" role="button">Tambah</a>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered" style="font-size: 14px">
+                                <table id="citizenTable" class="table table-striped table-bordered" style="font-size: 14px">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -46,7 +46,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($citizen as $item)
-                                            <tr>
+                                            <tr id="row_citizen_{{ $item->id }}">
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nik }}</td>
                                                 <td>{{ $item->kk }}</td>
@@ -63,11 +63,11 @@
                                                         data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                             class="fas fa-edit"></i></a>
 
-                                                    {{-- <a class="btn btn-action text-danger"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                            class="fas fa-trash" onclick="modalDelete(event.target)"
+                                                    <a class="btn btn-action text-danger" data-toggle="tooltip"
+                                                        data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                            onclick="modalDelete(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
-                                                    --}}
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -115,44 +115,43 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
-<script>
-    function modalDelete(event) {
-        var id = $(event).data("id");
 
-        $('#confirm-delete-citizen').data('id', id); //setter
-        $('#delete-citizen').modal('show');
-    }
+@section('script')
+    <script>
+        $('#citizenTable').DataTable();
 
-    function deleteData(event) {
-        var id = $(event).data("id");
-        let _url = `/data-penduduk-desa/delete/${id}`;
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: _url,
-            type: "DELETE",
-            success: function(response) {
-                if (response) {
-                    if (response.status) {
-                        location.reload();
-                    } else {
-                        alert("Gagal Menghapus Data penduduk");
+        function modalDelete(event) {
+            var id = $(event).data("id");
+
+            $('#confirm-delete-citizen').data('id', id); //setter
+            $('#delete-citizen').modal('show');
+        }
+
+        function deleteData(event) {
+            var id = $(event).data("id");
+            let _url = `/data-penduduk/delete/${id}`;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: _url,
+                type: "POST",
+                success: function(response) {
+                    if (response) {
+                        if (response.status) {
+                            // alert("Berhasil");
+                            $("#row_citizen_" + id).remove();
+                            $('#delete-citizen').modal('hide');
+                            $('#citizenTable').reload();
+                        } else {
+                            alert("Gagal Menghapus Data penduduk");
+                        }
                     }
                 }
-            }
-        });
-    } <<
-    <<
-    << < HEAD
-        ===
-        ===
-        =
+            });
+        }
 
-        >>>
-        >>>
-        > 51 d8ac7a4548687b1755cc121c9753ae6aebf5c7
-
-</script>
+    </script>
+@endsection

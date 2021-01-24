@@ -14,7 +14,7 @@ class AlterCitizensTableAddSoftdeletes extends Migration
     public function up()
     {
         Schema::table('citizens', function (Blueprint $table) {
-            $table->SoftDeletes();
+            // $table->SoftDeletes();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterCitizensTableAddSoftdeletes extends Migration
     public function down()
     {
         Schema::table('citizens', function (Blueprint $table) {
-            $table->dropSoftDeletes();
+            // $table->dropSoftDeletes();
         });
     }
 }

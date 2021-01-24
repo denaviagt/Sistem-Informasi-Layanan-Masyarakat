@@ -31,6 +31,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Candi Gebang, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 1,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -48,6 +49,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Candi Gebang, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 2,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -65,6 +67,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Kotengan Baru, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 4,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -82,6 +85,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Rejosari, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 3,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -99,6 +103,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Candi Gebang, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 5,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -116,6 +121,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Karongan, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 6,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -133,6 +139,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Kranggan 1, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 7,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
             [
@@ -150,6 +157,7 @@ class CitizenSeeder extends Seeder
                 'address' => 'Caren, Jogotirto, Berbah, Sleman',
                 'status' =>  'unverified',
                 'dusun_id' => 7,
+                'is_deleted' => 0,
                 'created_at' => now(),
             ],
 
@@ -173,6 +181,7 @@ class CitizenSeeder extends Seeder
                 'address' => $faker->address,
                 'status' =>  'unverified',
                 'dusun_id' =>  $faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+                'is_deleted' => 0,
                 'created_at' => now(),
             ]);
         }
