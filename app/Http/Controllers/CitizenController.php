@@ -18,7 +18,7 @@ class CitizenController extends Controller
      */
     public function index()
     {
-        $citizen = Citizen::all();
+        $citizen = Citizen::where('is_deleted', 0)->get();
         return view('data-penduduk/data', compact('citizen'));
     }
 
@@ -73,7 +73,7 @@ class CitizenController extends Controller
 
         if ($citizen->save()) {
             return redirect('data-penduduk')->with('status', 'Tambah Data Penduduk Berhasil!');
-        }else{
+        } else {
             return redirect()->back();
         }
     }
@@ -155,6 +155,21 @@ class CitizenController extends Controller
         $citizen = Citizen::find($id);
         $citizen->status = 'verified';
         $citizen->save();
+    }
+
+    public function updateDelete($id)
+    {
+        $citizen = Citizen::find($id);
+        $citizen->is_deleted = 1;
+        if ($citizen->save()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 
     /**

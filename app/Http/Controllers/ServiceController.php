@@ -37,6 +37,7 @@ class ServiceController extends Controller
                 // 'service_categories.category as service_category',
             )
             ->where('service_category_id', $request->category ?? 1)
+            ->whereNull('services.deleted_at')
             ->orderBy('services.id', 'desc')
             ->get();
         // return $services;
