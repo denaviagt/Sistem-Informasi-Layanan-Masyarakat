@@ -11,10 +11,14 @@ class Citizen extends Model
 {
     // use SoftDeletes;
     use LogsActivity;
+    protected $fillable = [
+        'nik', 'kk', 'full_name', 'gender', 'religion', 'married_status', 'last_education', 'blood_type', 'profession',
+        'pob', 'dob', 'address', 'status', 'dusun_id'
+    ];
     protected static $logName = 'Data Penduduk';
     protected static $logAttributes = [
         'nik', 'kk', 'full_name', 'gender', 'religion', 'married_status', 'last_education', 'blood_type', 'profession',
-        'pob', 'dob', '	address', 'status', 'dusun_id '
+        'pob', 'dob', 'address', 'status', 'dusun_id'
     ];
     protected static $logOnlyDirty = true;
     public function dusun()

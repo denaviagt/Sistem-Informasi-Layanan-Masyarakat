@@ -55,13 +55,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('data-penduduk/create', 'CitizenController@create');
     Route::post('data-penduduk/create', 'CitizenController@store');
     Route::get('data-penduduk/{id}/edit', 'CitizenController@edit');
-    Route::get('data-penduduk/{id}', 'CitizenController@show');
+
     Route::post('data-penduduk/{id}/update', 'CitizenController@update');
     Route::delete('data-penduduk/delete/{id}', 'CitizenController@destroy');
     Route::post('data-penduduk/delete/{id}', 'CitizenController@updateDelete');
+    Route::post('data-penduduk/import-excel', 'CitizenController@importExcel');
+    Route::get('data-penduduk/export-excel', 'CitizenController@exportExcel');
     Route::get('/citizen-name', 'CitizenController@select2Name');
     Route::get('/citizen-nik', 'CitizenController@select2Nik');
-    Route::get('/citizen/{id}', 'CitizenController@show');
+    Route::get('data-penduduk/{id}', 'CitizenController@show');
+    // Route::get('/citizen/{id}', 'CitizenController@show');
     Route::post('/citizen/{id}/dataverif', 'CitizenController@dataVerif');
 
     Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');

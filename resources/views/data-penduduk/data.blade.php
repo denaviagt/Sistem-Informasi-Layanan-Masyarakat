@@ -25,11 +25,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    {{-- notifikasi form validasi --}}
+                    @if ($errors->has('file'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('file') }}</strong>
+                        </span>
+                    @endif
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex">
-                                <a href="{{ url('/data-penduduk/create') }}"
-                                    class="btn mb-2 ml-auto btn-rounded btn-primary" role="button">Tambah</a>
+                                <a href="{{ url('data-penduduk/export-excel') }}" class="btn mb-2 btn-success mr-auto"
+                                    target="_blank">Export Excel</a>
+
+                                <a href="{{ url('/data-penduduk/create') }}" class="btn mb-2 ml-auto btn-primary mr-2"
+                                    role="button">Tambah</a>
+                                <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                    data-target="#importExcel">
+                                    Import Excel
+                                </button>
                             </div>
                             <div class="table-responsive">
                                 <table id="citizenTable" class="table table-striped table-bordered" style="font-size: 14px">
@@ -114,6 +127,35 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- Import Excel -->
+    <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form method="post" action="{{ url('data-penduduk/import-excel') }}" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                    </div>
+                    <div class="modal-body">
+
+                        {{ csrf_field() }}
+
+                        <label>Pilih file excel</label>
+                        <div class="form-group">
+                            <input type="file" name="file" required="required">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
