@@ -43,7 +43,7 @@
                             <div class="table-responsive">
                                 <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
                                     data-toggle="modal" data-target="#add-alur">Tambah</button>
-                                <table id="syarat-table" class="table table-striped table-bordered">
+                                <table id="alur-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -81,7 +81,7 @@
 
                                 <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
                                     data-toggle="modal" data-target="#add-syarat">Tambah</button>
-                                <table id="alur-table" class="table table-striped table-bordered no-wrap">
+                                <table id="syarat-table" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -337,7 +337,7 @@
 @endsection
 @section('script')
     <script>
-        $('#syarat-table').DataTable({
+        var syarat_table = $('#syarat-table').DataTable({
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'copyHtml5',
@@ -361,15 +361,15 @@
         $('.title').hide();
         var dl =
             ` <form method="GET" action="{{ url('/info-layanan/') }}">                                                                                                                              <div class="form-group pl-0">
-                                <select name="category" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
-                                    @foreach ($category as $item)
-                                                                                                                                                                                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
-                                                                                                                                                                                                    {{ $item->category }}
-                                                                                                                                                                                                </option>
-                                                                                                                                                                                            @endforeach
-                                                                                                                                                                                        </select>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </form>`
+                                                                <select name="category" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
+                                                                    @foreach ($category as $item)
+                                                                                                                                                                                                                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
+                                                                                                                                                                                                                                    {{ $item->category }}
+                                                                                                                                                                                                                                </option>
+                                                                                                                                                                                                                            @endforeach
+                                                                                                                                                                                                                        </select>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                </form>`
         $('.header-title').append(dl);
 
         function editAlurModal(event) {
@@ -435,7 +435,11 @@
                         if (response.status) {
                             // location.reload();
                             $("#row_procedure_" + id).remove();
+
                             $('#delete-alur').modal('hide');
+                            syarat_table.remove();
+                            syarat_table.draw();
+
                         } else {
                             alert("Gagal hapus data")
                         }
@@ -468,6 +472,7 @@
                             // location.reload();
                             $("#row_terms_" + id).remove();
                             $('#delete-syarat').modal('hide');
+                            $('#alur-table').reload();
                         } else {
                             alert("Gagal hapus data")
                         }
