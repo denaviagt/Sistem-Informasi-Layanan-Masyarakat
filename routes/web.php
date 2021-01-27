@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     // return view('welcome');
-//     return view('index');
-// });
+Route::get('/main', 'MainController@index');
 Route::group(['middleware' => ['auth']], function () {
     // your routes
     Route::get('/', 'DashboardController@index');
@@ -91,6 +88,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('service-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
     Route::get('service-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
     Route::get('service/count', 'DashboardController@countService');
+
+    // Route::get('/surat', function () {
+    //     // return view('template/surat');
+    //     $pdf = PDF::loadView('template.sku');
+    //     // $pdf->stream("filename.pdf", array("Attachment" => false));
+    //     return $pdf->stream();
+    //     // return $pdf->download('surat.pdf');
+    // });
+    Route::get('/service/surat/{id}/{id_cat}', 'ServiceController@cetakSurat');
+
 
     Route::get('/detail-layanan', function () {
         return view('service/detail-layanan');
