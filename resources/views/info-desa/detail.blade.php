@@ -41,9 +41,8 @@
                                     <span class="ml-auto">:</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    {{-- <img src="{{ $infoDesaDetail->thumbnail }}" alt=""
-                                        width="200px"> --}}
-                                    <img src="{{ url('thumbnail/' . $infoDesaDetail->thumbnail) }}" alt="" width="400px">
+                                    <img src="{{ asset('uploads/images/village_info/' . $infoDesaDetail->thumbnail) }}"
+                                        alt="" width="400px">
                                 </div>
                             </div>
                             <div class="row m-2">
@@ -77,7 +76,7 @@
                             </div>
                             <div class="form-group text-right mr-5">
                                 <a href="{{ url('/edit-info-desa/' . $infoDesaDetail->id . '/edit') }}" type="submit"
-                                    class="btn btn-success btn-sm mb-6 text-white">Edit</a>
+                                    class="btn btn-primary btn-sm mb-6 text-white">Edit</a>
                             </div>
                         </div>
                     </div>

@@ -15,8 +15,8 @@ class VisionSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        DB::table('Visions')->insert([
-            'vision' => $faker->text(250),
+        DB::table('visions')->insert([
+            'vision' => 'Terbentuknya generasi masyarakat desa Jogotirto berimtaq, terampil, cerdas, beremosi matang, berkemampuan sosial tinggi, mandiri, berdasarkan akar budaya nasional, dengan lingkungan yang sehat, mandiri, dan sejahtera untuk bersaing secara global.',
             'village_id' => 1,
             'created_at' => now(),
         ]);

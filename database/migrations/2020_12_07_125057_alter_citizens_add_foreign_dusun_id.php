@@ -14,7 +14,7 @@ class AlterCitizensAddForeignDusunId extends Migration
     public function up()
     {
         Schema::table('citizens', function (Blueprint $table) {
-            $table->foreignId('dusun_id')->constrained('dusuns')->onDelete('NO ACTION');
+            $table->foreignId('dusun_id')->constrained('dusuns');
         });
     }
 

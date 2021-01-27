@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/assets/serviceFile/*
 /storage/*.key
 /vendor
 /.idea
@@ -17,4 +18,9 @@ package.json
 /public/js/app.js
 /.idea/
 /storage/logs
+/
 
+# No for this files
+
+!/public/assets/serviceFile/berkas1.jpeg
+!/public/assets/serviceFile/Presensi.pdf

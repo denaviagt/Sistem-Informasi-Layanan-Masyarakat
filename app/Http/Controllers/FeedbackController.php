@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Citizen;
 use App\Models\Feedback;
 use App\Models\User;
+use FeedbackSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,11 +18,11 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::orderBy('date', 'desc')->get();
         // return $feedbacks->id;
-        foreach ($feedbacks as $key ) {
-            $feed_val = [Str::limit($key->feedback, 20, '...')];
-        }
+        // foreach ($feedbacks as $key) {
+        //     $feed_val = [Str::limit($key->feedback, 20, '...')];
+        // }
         return view('aduan', compact(['feedbacks']));
     }
 
@@ -86,11 +87,20 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function importantUpdate($id)
+    public function importantUpdate($id, $status)
     {
         $feedback = Feedback::find($id);
-        $feedback->is_important = 1;
-
+        if ($status == 'true') {
+            $feedback->is_important = 1;
+        } else {
+            $feedback->is_important = 0;
+        }
+        $feedback->save();
+    }
+    public function readUpdate($id)
+    {
+        $feedback = Feedback::find($id);
+        $feedback->is_read = 1;
         $feedback->save();
     }
 
@@ -102,6 +112,15 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        if ($feedback->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 }

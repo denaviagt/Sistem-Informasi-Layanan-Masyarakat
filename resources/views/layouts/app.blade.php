@@ -18,7 +18,9 @@ $user = auth()->user();
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"> --}}
+    {{--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css">
+    --}}
     <link href="{{ asset('dist/css/icons/font-awesome/css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -28,9 +30,11 @@ $user = auth()->user();
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
     <!-- Custom CSS -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/tes.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/css.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/newcss.css') }}" rel="stylesheet">
+    {{--
+    <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -96,107 +100,20 @@ $user = auth()->user();
     <script src="{{ asset('/assets/libs/chart.js/dist/Chart.min.js') }}"></script>
     @yield('script')
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#zero_config').DataTable();
-
-
-            $('#smartwizard').smartWizard({
-                theme: 'dots',
-                lang: { // Language variables for button
-                    next: 'Selanjutnya',
-                    previous: 'Sebelumnya'
-                },
-                toolbarSettings: {
-                    toolbarExtraButtons: [
-                        $('<button></button>').text('Finish')
-                        .addClass('btn btn-info')
-                        .on('click', function() {
-                            alert('Finish button click');
-                        }),
-                        $('<button></button>').text('Cancel')
-                        .addClass('btn btn-danger')
-                        .on('click', function() {
-                            alert('Cancel button click');
-                        })
-                    ]
-                },
-            });
-        })
-
         $('#summernote').summernote({
             height: 300,
             width: 700
         });
 
-        var chart = new Chart(document.getElementById("statistik-layanan"), {
-            type: 'pie',
-            data: {
-                labels: ["Kartu Tanda Penduduk Elektronik", "Kartu Keluarga", "Akta Kelahiran", "Akta kematian",
-                    "Pindah penduduk", "Pengurusan Masuk Penduduk", "Pengurusan Nikah",
-                    "SKU",
-                ],
-                datasets: [{
-                    label: "250",
-                    fill: true,
-                    backgroundColor: ["rgba(116, 96, 238,0.2)", 'red', 'blue', 'green', 'yellow',
-                        'grey', 'lightblue', 'orange'
-                    ],
-                    pointBorderColor: "#fff",
-                    pointBackgroundColor: "rgba(116, 96, 238,1)",
-                    data: [10, 20, 30, 40, 50, 40, 30, 25, ]
-                }]
-            },
-            options: {
-                legend: {
-                    display: true,
-                    position: "bottom",
-                    verticalAlign: "center",
-                    labels: {
-                        fontColor: "black",
-                        boxWidth: 20,
-                        padding: 20
-                    }
-                },
-                title: {
-                    display: false,
-                }
-            }
-        });
-        var chart2 = new Chart(document.getElementById("statistik-layanan-perdusun"), {
-            type: 'pie',
-            data: {
-                labels: ["Jragung", "Blambangan", "Morobangun", "Karongan", "Rejosari", "Krasaan", "Jlatren",
-                    "Bulu", "Kranggan 1", "Kranggan 2"
-                ],
-                datasets: [{
-                    label: "250",
-                    fill: true,
-                    backgroundColor: ["rgba(116, 96, 238,0.2)", 'red', 'blue', 'green', 'yellow',
-                        'grey', 'lightblue', 'orange', 'black', 'cream'
-                    ],
-                    pointBorderColor: "#fff",
-                    pointBackgroundColor: "rgba(116, 96, 238,1)",
-                    data: [10, 20, 30, 40, 50, 40, 30, 25, 15, 5]
-                }]
-            },
-            options: {
-                legend: {
-                    display: true,
-                    position: "bottom",
-                    verticalAlign: "center",
-                    labels: {
-                        fontColor: "black",
-                        boxWidth: 20,
-                        padding: 20
-                    }
-                },
-                title: {
-                    display: false,
-                }
-            }
-        });
-
     </script>
+
+    @if ($errors->has('old_password') || $errors->has('new_password'))
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $('#modal-edit-password').modal('show');
+        })
+    </script>
+    @endif
 </body>
 
 </html>
