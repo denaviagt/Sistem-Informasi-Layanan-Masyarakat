@@ -217,26 +217,38 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-        $('.service-table').DataTable();
+        $('.service-table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf', 'print'
+            ],
+            // dom: {
+            //     button: {
+            //         tag: "button",
+            //         className: "btn btn-primary"
+            //     },
+            // }
+        });
         $(document).ready(function() {
+            $('.dt-button').addClass('btn btn-primary')
             $('#sidebarService').addClass('selected');
             $('#sidebarService .sidebar-link').addClass('active');
             $('.title').hide();
             var dl =
                 ` <form method="GET" action="{{ url('/service/') }}">
-                                                        <div class="form-group pl-0 d-flex">
-                                                            <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
-                                                                id="inlineFormCustomSelect">
-                                                                @foreach ($category as $item)
-                                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
-                                                                        {{ $item->category }}
-                                                                        <i class="fas fa-chevron-down"></i>
-                                                                    </option>
-                                                                @endforeach
+                                                                                <div class="form-group pl-0 d-flex">
+                                                                                    <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
+                                                                                        id="inlineFormCustomSelect">
+                                                                                        @foreach ($category as $item)
+                                                                                            <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
+                                                                                                {{ $item->category }}
+                                                                                                <i class="fas fa-chevron-down"></i>
+                                                                                            </option>
+                                                                                        @endforeach
 
-                                                                </select>
-                                                        </div>
-                                                    </form>`
+                                                                                        </select>
+                                                                                </div>
+                                                                            </form>`
             $('.header-title').append(dl);
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
