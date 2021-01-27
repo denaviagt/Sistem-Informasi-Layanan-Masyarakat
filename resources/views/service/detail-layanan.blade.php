@@ -123,8 +123,20 @@
                                             <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
                                                 <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
-                                                <a class="btn btn-primary" href="{{ url('maintenance') }}">Cetak
-                                                    Dokumen</a>
+                                                {{-- <form action="post"
+                                                    action="{{ url('/service/surat/') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id_service" value="{{ $service->id }}">
+                                                    <input type="hidden" name="service_category_id" id="service_category_id"
+                                                        value="{{ $service->service_category_id }}">
+                                                    --}}
+                                                    <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
+                                                        class="btn btn-primary">Cetak Dokumen</a>
+                                                    {{-- <button class="btn btn-primary"
+                                                        type="submit">Cetak
+                                                        Dokumen</button> --}}
+                                                    {{--
+                                                </form> --}}
                                             </div>
 
                                         </div>
@@ -344,6 +356,24 @@
                 return false;
             }
         }
+
+        // function cetakSurat() {
+        //     var id_service = $('#service_id').val();
+        //     var id_category = $('#service_category_id').val();
+        //     let _url = `/service/${id_category}/surat/${id_service}`;
+        //     // console.log(id_service, id_category);
+        //     $.ajax({
+        //         url: _url,
+        //         type: "POST",
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function() {
+        //             console.log('berhasil');
+        //         }
+        //     });
+
+        // }
 
     </script>
 @endsection

@@ -7,6 +7,9 @@ use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFile;
 use App\Models\ServiceRequirement;
+use App\Models\Village;
+// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Datatables;
 use Illuminate\Support\Facades\DB;
@@ -178,5 +181,24 @@ class ServiceController extends Controller
     {
         Service::find($id)->delete();
         return response()->json(['success' => 'Service terhapus']);
+    }
+
+    public function cetakSurat($id, $id_cat)
+    {
+        $data =  Service::where("id", $id)->where("service_category_id", $id_cat)->first();
+        $village = Village::first();
+        if ($id_cat == 1) {
+            $pdf = PDF::loadView('template.ektp', compact(['data', 'village']));
+        } elseif ($id_cat == 3) {
+            $pdf = PDF::loadView('template.aktalahir', compact(['data', 'village']));
+        } elseif ($id_cat == 4) {
+            $pdf = PDF::loadView('template.aktamati', compact(['data', 'village']));
+        } elseif ($id_cat == 8) {
+            $pdf = PDF::loadView('template.sku', compact(['data', 'village']));
+        }
+
+
+        return $pdf->stream();
+        // return $pdf->download($data->citizen->full_name . '.pdf');
     }
 }
