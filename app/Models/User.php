@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as AuthenticableModel;
 
-class User extends Model
+class User extends AuthenticableModel
 {
     public function feedback()
     {
