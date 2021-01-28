@@ -26,15 +26,16 @@
                         <div class="card-body">
                             <div class="text-right mb-3">
                                 <a href="{{ url('potensi-desa/add') }}" type="button"
-                                    class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
+                                    class="btn waves-effect waves-light btn-primary" style="margin-bottom: -90px"><i
+                                        class="fas fa-plus"></i> Tambah</a>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered">
+                                <table id="naturalResourceTable" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Judul</th>
-                                            <th>Deskripsi</th>
+                                            <th style="width: 300px !important">Deskripsi</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -121,4 +122,26 @@
             <!-- ============================================================== -->
         </div>
 
+    @endsection
+    @section('script')
+        <script type="text/javascript">
+            $('#naturalResourceTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: '<i class="fas fa-file-excel"></i> Excel'
+
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="fas fa-file-pdf"></i> PDF'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fas fa-print"></i> Print'
+                    },
+                ]
+            })
+
+        </script>
     @endsection

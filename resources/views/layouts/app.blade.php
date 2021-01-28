@@ -111,6 +111,10 @@ $user = auth()->user();
             width: 700
         });
 
+        $(document).ready(function() {
+            $('.dt-button').addClass('btn btn-primary mb-2')
+        })
+
     </script>
 
     @if ($errors->has('old_password') || $errors->has('new_password'))

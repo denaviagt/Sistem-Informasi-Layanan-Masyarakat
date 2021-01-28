@@ -25,7 +25,8 @@
                         <div class="card-body">
                             <div class="text-right mb-3">
                                 <a href="{{ url('tambah-info-desa') }}" type="button"
-                                    class="btn waves-effect waves-light btn-rounded btn-primary">Tambah</a>
+                                    class="btn waves-effect waves-light btn-primary" style="margin-bottom: -90px"><i
+                                        class="fas fa-plus"></i> Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table id="infoTable" class="table table-striped table-bordered">
@@ -46,7 +47,17 @@
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $date }}</td>
                                                 <td>{{ $item->admin->full_name }}</td>
-                                                <td>{{ $item->status }}</td>
+                                                @if ($item->status == 'draft')
+                                                    <td>
+                                                        <span class="badge badge-pill badge-primary">Draft
+                                                        </span>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <span class="badge badge-pill badge-success">Publish
+                                                        </span>
+                                                    </td>
+                                                @endif
                                                 <td>
                                                     <a href="{{ url('info-desa/' . $item->id) }}"
                                                         class="btn btn-action text-primary" data-toggle="tooltip"
@@ -107,7 +118,23 @@
 
 @section('script')
     <script>
-        $('#infoTable').DataTable();
+        $('#infoTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excel',
+                    text: '<i class="fas fa-file-excel"></i> Excel'
+
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fas fa-file-pdf"></i> PDF'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> Print'
+                },
+            ]
+        });
         // $(document).ready(function() {
         function modalDelete(event) {
             // var $elem = $(this).parent().parent();

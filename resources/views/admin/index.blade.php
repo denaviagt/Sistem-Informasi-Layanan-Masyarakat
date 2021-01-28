@@ -25,8 +25,9 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn-add btn  mb-2 d-flex ml-auto" data-toggle="modal"
-                                data-target="#add-admin">Tambah</button>
+                            <button type="button" class="btn-add btn d-flex ml-auto" data-toggle="modal"
+                                data-target="#add-admin" style="margin-bottom: -60px"><i
+                                    class="fas fa-plus mt-1 mr-1"></i>Tambah</button>
                             <div class="table-responsive">
                                 <table id="adminTable" class="table table-bordered display" style="width:100%">
                                     <thead class="">
@@ -300,7 +301,23 @@
         // @enderror
 
         $(document).ready(function() {
-            $('#adminTable').DataTable({});
+            $('#adminTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: '<i class="fas fa-file-excel"></i> Excel'
+
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="fas fa-file-pdf"></i> PDF'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fas fa-print"></i> Print'
+                    },
+                ]
+            });
         })
         // $('#addSubmit').click(function(e) {
         //     e.preventDefault();

@@ -34,7 +34,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex">
-                                <a href="{{ url('data-penduduk/export-excel') }}" class="btn mb-2 btn-success mr-auto"
+                                <a href="{{ url('data-penduduk/export-excel') }}" class="btn mb-2 btn-primary mr-auto"
                                     target="_blank">Export Excel</a>
 
                                 <a href="{{ url('/data-penduduk/create') }}" class="btn mb-2 ml-auto btn-primary mr-2"

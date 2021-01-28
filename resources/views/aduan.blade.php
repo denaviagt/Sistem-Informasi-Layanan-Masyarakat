@@ -152,7 +152,22 @@
 @endsection
 @section('script')
     <script>
-        $('#aduanTable').DataTable();
+        $('#aduanTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> Excel',
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> Print',
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> PDF',
+                }
+            ]
+        });
 
         function detailFeedback(event) {
             var id = $(event).data("id");

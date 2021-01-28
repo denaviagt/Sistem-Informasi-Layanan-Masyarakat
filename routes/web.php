@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('/citizen/{id}', 'CitizenController@show');
     Route::post('/citizen/{id}/dataverif', 'CitizenController@dataVerif');
 
-    Route::get('/info-layanan/{category?}', 'ServiceInfoController@index');
+    Route::get('/info-layanan', 'ServiceInfoController@index');
     Route::post('/info-layanan', 'ServiceInfoController@store');
     Route::get('/info-layanan/{id}/{type}/edit', 'ServiceInfoController@edit');
     Route::put('/info-layanan/{type}', 'ServiceInfoController@update');
