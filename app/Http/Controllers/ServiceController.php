@@ -193,12 +193,16 @@ class ServiceController extends Controller
             $pdf = PDF::loadView('template.aktalahir', compact(['data', 'village']));
         } elseif ($id_cat == 4) {
             $pdf = PDF::loadView('template.aktamati', compact(['data', 'village']));
+        } elseif ($id_cat == 5) {
+            $pdf = PDF::loadView('template.pindah-penduduk', compact(['data', 'village']));
+        } elseif ($id_cat == 7) {
+            $pdf = PDF::loadView('template.nikah', compact(['data', 'village']));
         } elseif ($id_cat == 8) {
             $pdf = PDF::loadView('template.sku', compact(['data', 'village']));
         }
 
 
-        return $pdf->stream();
+        return $pdf->stream($data->citizen->full_name . '.pdf');
         // return $pdf->download($data->citizen->full_name . '.pdf');
     }
 }
