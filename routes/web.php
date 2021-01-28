@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/main', 'MainController@index');
 Route::group(['middleware' => ['auth']], function () {
-    // your routes
     Route::get('/', 'DashboardController@index');
     Route::get('login', function () {
         return view('login');
@@ -40,13 +39,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit-password', function () {
         return view('edit-password');
     });
-    Route::get('/info-desa', 'infoDesaController@index');
-    Route::get('/info-desa/{id}', 'infoDesaController@show');
-    Route::get('/edit-info-desa/{id}/edit', 'infoDesaController@edit');
-    Route::put('/edit-info-desa/{id}', 'infoDesaController@update');
-    Route::get('/tambah-info-desa', 'infoDesaController@create');
-    Route::post('/tambah-info-desa', 'infoDesaController@store');
-    Route::delete('/info-desa/{id}', 'infoDesaController@destroy');
+    Route::get('/info-desa', 'VillageInfoController@index');
+    Route::get('/info-desa/{id}', 'VillageInfoController@show');
+    Route::get('/edit-info-desa/{id}/edit', 'VillageInfoController@edit');
+    Route::put('/edit-info-desa/{id}', 'VillageInfoController@update');
+    Route::get('/tambah-info-desa', 'VillageInfoController@create');
+    Route::post('/tambah-info-desa', 'VillageInfoController@store');
+    Route::delete('/info-desa/{id}', 'VillageInfoController@destroy');
 
     Route::get('/data-penduduk', 'CitizenController@index');
     Route::get('data-penduduk/create', 'CitizenController@create');
@@ -71,10 +70,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/info-layanan/{id}/{type}', 'ServiceInfoController@destroy');
     Route::get('/info-layanan/data/alur', 'ServiceInfoController@data_alur');
 
-    // Route::get('/layanan', function () {
-    //     return view('service/index');
-    // });
-    // Route::get('/service/index', 'ServiceInfoController@index');
     Route::get('service', 'ServiceController@index');
     Route::get('/service/index/{id}/edit', 'ServiceController@edit');
     Route::POST('/service/store', 'ServiceController@store');
@@ -82,47 +77,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('layanan/{category}/{id}', 'ServiceController@show');
     Route::post('layanan/{id}/status', 'ServiceController@statusUpdate');
     Route::post('service/{id}/verified', 'ServiceController@serviceVerified');
-    // Route::resource('service', 'ServiceController');
-
+    Route::get('/service/surat/{id}/{id_cat}', 'ServiceController@cetakSurat');
     Route::post('service-file/{id}/verifStatus', 'ServiceFileController@verifUpdate');
     Route::post('service-file/{id}/deniedStatus/{service_id}', 'ServiceFileController@deniedUpdate');
     Route::get('service-file/{id}/verifFiles/{cat}', 'ServiceFileController@verifFiles');
     Route::get('service/count', 'DashboardController@countService');
-
-    // Route::get('/surat', function () {
-    //     // return view('template/surat');
-    //     $pdf = PDF::loadView('template.sku');
-    //     // $pdf->stream("filename.pdf", array("Attachment" => false));
-    //     return $pdf->stream();
-    //     // return $pdf->download('surat.pdf');
-    // });
-    Route::get('/service/surat/{id}/{id_cat}', 'ServiceController@cetakSurat');
-
-
-    Route::get('/detail-layanan', function () {
-        return view('service/detail-layanan');
-    });
-    Route::get('/detail-kk', function () {
-        return view('service/detail-kk');
-    });
-    Route::get('/detail-akta-kelahiran', function () {
-        return view('service/detail-akta-kelahiran');
-    });
-    Route::get('/detail-surat-kematian', function () {
-        return view('service/detail-surat-kematian');
-    });
-    Route::get('/detail-pindah-penduduk', function () {
-        return view('service/detail-pindah-penduduk');
-    });
-    Route::get('/detail-masuk-penduduk', function () {
-        return view('service/detail-masuk-penduduk');
-    });
-    Route::get('/detail-pengurusan-nikah', function () {
-        return view('service/detail-pengurusan-nikah');
-    });
-    Route::get('/detail-pengajuan-sku', function () {
-        return view('service/detail-pengajuan-sku');
-    });
 
     Route::get('/aduan', 'FeedbackController@index');
     Route::get('/aduan/{id}', 'FeedbackController@show');
@@ -131,14 +90,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/aduan/{id}/importantUpdate/{status}', 'FeedbackController@importantUpdate');
 
     Route::get('/statistik-layanan', function () {
-        return view('statistik-layanan');
+        return view('statistik.index');
     });
     Route::get('/statistik-layanan/{month}', 'StatisticsController@getCountService');
     Route::get('/statistik-layanan-dusun/{month}', 'StatisticsController@getCountServiceDusun');
     Route::get('/statistik-aduan-dusun/{month}', 'StatisticsController@getCountFeedbackDusun');
-    Route::get('/statistik-aduan', function () {
-        return view('statistik-aduan');
-    });
 
     Route::get('/potensi-desa', 'NaturalResourceController@index');
     Route::get('/potensi-desa/add', 'NaturalResourceController@create');

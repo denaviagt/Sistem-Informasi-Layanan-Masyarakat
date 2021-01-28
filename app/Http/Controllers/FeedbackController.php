@@ -23,7 +23,7 @@ class FeedbackController extends Controller
         // foreach ($feedbacks as $key) {
         //     $feed_val = [Str::limit($key->feedback, 20, '...')];
         // }
-        return view('aduan', compact(['feedbacks']));
+        return view('feedback.index', compact(['feedbacks']));
     }
 
     /**

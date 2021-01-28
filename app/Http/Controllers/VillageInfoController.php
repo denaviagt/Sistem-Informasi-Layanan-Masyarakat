@@ -6,7 +6,7 @@ use App\Models\VillageInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class infoDesaController extends Controller
+class VillageInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class infoDesaController extends Controller
             $date = $infoDesa[$key]->date->isoFormat('dddd, D MMMM Y');
         }
 
-        return view('info-desa/index', compact(['infoDesa', 'date']));
+        return view('village-info/index', compact(['infoDesa', 'date']));
     }
 
     /**
@@ -30,7 +30,7 @@ class infoDesaController extends Controller
      */
     public function create()
     {
-        return view('info-desa/tambah');
+        return view('village-info/tambah');
     }
 
     /**
@@ -73,7 +73,7 @@ class infoDesaController extends Controller
     public function show($id)
     {
         $infoDesaDetail = VillageInfo::where('id', $id)->first();
-        return view('info-desa/detail', compact('infoDesaDetail'));
+        return view('village-info/detail', compact('infoDesaDetail'));
     }
 
     /**
@@ -85,7 +85,7 @@ class infoDesaController extends Controller
     public function edit($id)
     {
         $infoDesaDetail = VillageInfo::where('id', $id)->first();
-        return view('info-desa/edit', compact('infoDesaDetail'));
+        return view('village-info/edit', compact('infoDesaDetail'));
     }
 
     /**
