@@ -304,7 +304,7 @@
                     @foreach ($naturalResources as $key => $naturalResource)
                         <div class="col-lg-4 col-md-6">
                             <div class="card single-blogs mb-100">
-                                <a href="#">
+                                <a href="view-info">
                                     <div class="blog-img">
                                         <img src="{{ asset('uploads/images/natural_resource/' . $naturalResourceImage[$key]->image) }}"
                                             alt="image">
