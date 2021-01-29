@@ -88,47 +88,6 @@
                         <div class="card-body">
                             <h4 class="card-title">Aktivitas Terbaru</h4>
                             <div class="mt-4 activity">
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Proses Layanan</h5>
-                                        <p class="font-14 mb-2 text-muted">John Musa memproses layanan dengan ID
-                                            21.
-                                        </p>
-                                        <span class="font-weight-light font-14 text-muted">10 Menit yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Layanan Selesai</h5>
-                                        <p class="font-14 mb-2 text-muted">Richardson telah menyelesaikan layanan dengan id
-                                            20
-                                        </p>
-                                        <span class="font-weight-light font-14 text-muted">25 Menit yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start border-left-line">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Proses Layanan
-                                        </h5>
-                                        <p class="font-14 mb-2 text-muted">Ryne Doe memproses layanan dengan ID 20</p>
-                                        <span class="font-weight-light font-14 mb-1 d-block text-muted">2 jam yang
-                                            lalu</span>
-                                        <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Lihat
-                                            Selanjutnya</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,6 +110,9 @@
 @section('script')
 
     <script>
+        $(document).ready(function() {
+            getLog();
+        })
         $('.count').each(function() {
             $(this).prop('Counter', 0).animate({
                 Counter: $(this).text()
@@ -224,6 +186,29 @@
                     }
                 }
 
+            });
+        }
+
+        function getLog() {
+            $.ajax({
+                url: 'logactivity',
+                type: "GET",
+                success: function(response) {
+                    console.table(response)
+                    for (let index = 0; index < response.length; index++) {
+                        $(".activity").append(`<div class="d-flex align-items-start border-left-line pb-3">
+                                                                            <div>
+                                                                                <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="ml-3 mt-2">
+                                                                                <h5 class="text-dark font-weight-medium mb-2">${response[index][['title']]}</h5>
+                                                                                <p class="font-14 mb-2 text-muted">${response[index][['content']]}</p>
+                                                                                <span class="font-weight-light font-14 text-muted">${response[index][['time']]}</span>
+                                                                            </div>
+                                                                        </div>`)
+                    }
+                }
             });
         }
 

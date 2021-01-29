@@ -37,7 +37,7 @@ class DashboardController extends Controller
             'Desember'
         );
         for ($months = 1; $months < 13; $months++) {
-            $result = DB::table('services')->whereMonth('date', $months)->whereYear('date', Date('Y'))->get();
+            $result = DB::table('services')->whereNull('services.deleted_at')->whereMonth('date', $months)->whereYear('date', Date('Y'))->get();
             $data[$monthText[$months - 1]] = count($result) ?? 0;
         }
         $feedback = array();

@@ -70,8 +70,6 @@ $user = auth()->user();
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    --}}
     <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- apps -->
@@ -97,6 +95,14 @@ $user = auth()->user();
     <script src="{{ asset('dist/js/pages/dashboards/dashboard1.min.js') }}"></script>
     <script src="{{ asset('assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+
     <script src="{{ asset('/assets/libs/chart.js/dist/Chart.min.js') }}"></script>
     @yield('script')
     <script type="text/javascript">
@@ -105,14 +111,19 @@ $user = auth()->user();
             width: 700
         });
 
+        $(document).ready(function() {
+            $('.dt-button').addClass('btn btn-primary mb-2')
+        })
+
     </script>
 
     @if ($errors->has('old_password') || $errors->has('new_password'))
-    <script type="text/javascript">
-        $(document).ready(function () {
+        <script type="text/javascript">
+            $(document).ready(function() {
                 $('#modal-edit-password').modal('show');
-        })
-    </script>
+            })
+
+        </script>
     @endif
 </body>
 

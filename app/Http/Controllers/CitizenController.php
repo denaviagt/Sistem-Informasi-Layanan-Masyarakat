@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Data\Constants\CitizenCons;
+use App\Exports\CitizenExport;
 use App\Http\Requests\StoreCitizenRequest;
+use App\Imports\CitizenImport;
 use App\Models\Citizen;
 use App\Models\Dusun;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CitizenController extends Controller
 {
@@ -18,7 +23,7 @@ class CitizenController extends Controller
      */
     public function index()
     {
-        $citizen = Citizen::all();
+        $citizen = Citizen::whereNull('is_deleted')->orWhere('is_deleted', '0')->get();
         return view('data-penduduk/data', compact('citizen'));
     }
 
@@ -73,9 +78,38 @@ class CitizenController extends Controller
 
         if ($citizen->save()) {
             return redirect('data-penduduk')->with('status', 'Tambah Data Penduduk Berhasil!');
-        }else{
+        } else {
             return redirect()->back();
         }
+    }
+    public function exportExcel()
+    {
+        return Excel::download(new CitizenExport, 'Data Penduduk.xlsx');
+        // return 'hai';
+    }
+
+    public function importExcel(Request $request)
+    {
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('uploads/file_citizen', $nama_file);
+
+        // import data
+        Excel::import(new CitizenImport, public_path('/uploads/file_citizen/' . $nama_file));
+
+
+        // alihkan halaman kembali
+        return redirect('/data-penduduk')->with('status', 'Import Data Penduduk Berhasil!');;
     }
 
     /**
@@ -86,24 +120,24 @@ class CitizenController extends Controller
      */
     public function show($id)
     {
-        $citizen = Citizen::query();
-        if ($id != '') {
-            // Apply NIK if Request has NIK ID
-            $citizen = $citizen->where('id', $id);
-        }
-        $citizen = $citizen->first();
+        // $citizen = Citizen::query();
+        // if ($id != '') {
+        //     // Apply NIK if Request has NIK ID
+        //     $citizen = $citizen->where('id', $id);
+        // }
+        // $citizen = $citizen->first();
 
-        $citizen = Citizen::find($id);
-        $data = [
-            'detail' => $citizen,
-        ];
-        return view('data-penduduk.detail', $data);
+        $detail = Citizen::find($id);
+        // $data = [
+        //     'detail' => $citizen,
+        // ];
+        return view('data-penduduk.detail', compact('detail'));
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Data Fetched',
-            'data' => $citizen,
-        ]);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'Data Fetched',
+        //     'data' => $citizen,
+        // ]);
     }
 
     /**
@@ -155,6 +189,21 @@ class CitizenController extends Controller
         $citizen = Citizen::find($id);
         $citizen->status = 'verified';
         $citizen->save();
+    }
+
+    public function updateDelete($id)
+    {
+        $citizen = Citizen::find($id);
+        $citizen->is_deleted = 1;
+        if ($citizen->save()) {
+            return response()->json([
+                'status' => true
+            ]);
+        } else {
+            return response()->json([
+                'status' => false
+            ]);
+        }
     }
 
     /**
