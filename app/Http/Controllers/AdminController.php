@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->level =  Auth::guard('web')->user()->level;
+            $this->id_admin = session('id');
+            if (($this->level != 'superadmin')) {
+                return redirect('tes')->send();
+            }
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

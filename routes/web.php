@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/main', 'MainController@index');
+Route::get('/tes', function () {
+    return 'Ini bukan superadmin';
+});
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('login', function () {

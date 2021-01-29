@@ -11,11 +11,13 @@
                                 class="hide-menu">Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" id="admin-menu"
-                            href="{{ url('/admin') }}" aria-expanded="false"><i class="fas fa-user"></i><span
-                                class="hide-menu">Data Admin</span>
-                        </a>
-                    </li>
+                    @if (Auth::guard('web')->user()->level == 'superadmin')
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" id="admin-menu"
+                                href="{{ url('/admin') }}" aria-expanded="false"><i class="fas fa-user"></i><span
+                                    class="hide-menu">Data Admin</span>
+                            </a>
+                        </li>
+                    @endif
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Tentang Desa</span></li>
 
@@ -39,7 +41,8 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
                     <li class="sidebar-item"> <a href="{{ url('/info-layanan') }}" class="sidebar-link"
-                            aria-expanded="false"><i class="fas fa-question"></i><span class="hide-menu">Info Layanan
+                            aria-expanded="false"><i class="fas fa-question"></i><span class="hide-menu">Info
+                                Layanan
                             </span></a>
                     </li>
                     <li id="sidebarService" class="sidebar-item"> <a class="sidebar-link" href="{{ url('service') }}"
