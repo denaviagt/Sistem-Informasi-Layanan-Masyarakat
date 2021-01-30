@@ -55,4 +55,17 @@ class DashboardController extends Controller
             'feedback' => $feedback
         ]);
     }
+
+    public function logActivity()
+    {
+        $logs = logActivityLists();
+        $data = array();
+        foreach ($logs as $key => $value) {
+            $data[$key] = array('description' => $logs[$key]->description, 'event' => $logs[$key]->event, 'time' => $logs[$key]->log_time->diffForHumans());
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
 }

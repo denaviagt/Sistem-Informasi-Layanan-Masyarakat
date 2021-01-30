@@ -84,9 +84,9 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card" style="background-color: #E9EDF1; border-radius: 20px;">
+                    <div class="card" style="background-color: #58A5F0; border-radius: 20px; ">
                         <div class="card-body">
-                            <h4 class="card-title">Aktivitas Terbaru</h4>
+                            <h4 class="card-title" style="color: white">Aktivitas Terbaru</h4>
                             <div class="mt-4 activity">
                             </div>
                         </div>
@@ -194,19 +194,33 @@
                 url: 'logactivity',
                 type: "GET",
                 success: function(response) {
-                    console.table(response)
-                    for (let index = 0; index < response.length; index++) {
+                    for (let index = 0; index < response.data.length; index++) {
                         $(".activity").append(`<div class="d-flex align-items-start border-left-line pb-3">
-                                                                            <div>
-                                                                                <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="ml-3 mt-2">
-                                                                                <h5 class="text-dark font-weight-medium mb-2">${response[index][['title']]}</h5>
-                                                                                <p class="font-14 mb-2 text-muted">${response[index][['content']]}</p>
-                                                                                <span class="font-weight-light font-14 text-muted">${response[index][['time']]}</span>
-                                                                            </div>
-                                                                        </div>`)
+                                                                                        <div>
+                                                                                            <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
+                                                                                                ${
+                                                                                                    (() =>{
+                                                                                                    if (response.data[index].event == "create") {
+                                                                                                        return ('<i class="fas fa-plus text-info"></i>');
+                                                                                                    } else if (response.data[index].event == 'update') {
+                                                                                                        return('<i class="fas fa-edit text-warning"></i>');
+                                                                                                    } else if(response.data[index].event == 'delete') {
+                                                                                                        return('<i class="fas fa-trash-alt text-danger"></i>');
+                                                                                                    } else if(response.data[index].event == 'mark') {
+                                                                                                        return('<i class="fas fa-tag text-primary"></i>');
+                                                                                                    } else if(response.data[index].event == 'process') {
+                                                                                                        return('<i class="fas fa-retweet text-primary"></i>');
+                                                                                                    } else{return('<i class="fas fa-check text-success"></i>');
+                                                                                                    }
+                                                                                                })()
+                                                                                            }
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="ml-3 ">
+                                                                                            <p class="font-14 mb-0 text-white">${response.data[index].description}</p>
+                                                                                            <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
+                                                                                        </div>
+                                                                                    </div>`)
                     }
                 }
             });

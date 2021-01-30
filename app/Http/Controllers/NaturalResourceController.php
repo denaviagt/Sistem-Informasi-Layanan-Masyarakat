@@ -7,9 +7,19 @@ use App\Http\Requests\StoreNatureResourceRequest;
 use App\Models\NaturalResource;
 use App\Models\NaturalResourceImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NaturalResourceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +27,10 @@ class NaturalResourceController extends Controller
      */
     public function index()
     {
-
         $naturalResources = NaturalResource::all();
         foreach ($naturalResources as $key => $value) {
             $date = $naturalResources[$key]->created_at->isoFormat('dddd, D MMMM Y');
         }
-
-
         return view('natural-resource.index', compact(['naturalResources', 'date']));
     }
 
@@ -82,12 +89,13 @@ class NaturalResourceController extends Controller
                 }
                 $naturalResource->images()->saveMany($naturalResourceImages);
                 if ($naturalResource->push()) {
+                    addToLog($this->url, $this->ip, $this->nama_admin . ' menambah potensi desa', 'create');
                     return redirect('potensi-desa')->with('status', 'Berhasil tambah data');
                 }
             }
+        } else {
+            return redirect()->back()->with('status', 'Gagal tambah data');
         }
-
-        return redirect()->back()->with('status', 'Gagal tambah data');
     }
 
     /**
@@ -148,8 +156,10 @@ class NaturalResourceController extends Controller
         $naturalResource->title = $title;
         $naturalResource->status = $status;
         $naturalResource->description = $description;
-        if ($naturalResource->save()) return redirect('potensi-desa')->with('status', 'Berhasil Update Data');
-        else return redirect()->back()->with('status', 'Gagal Update data');
+        if ($naturalResource->save()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' mengedit potensi desa dengan judul ' . $naturalResource->title, 'update');
+            return redirect('potensi-desa')->with('status', 'Berhasil Update Data');
+        } else return redirect()->back()->with('status', 'Gagal Update data');
     }
 
     /**
@@ -163,6 +173,7 @@ class NaturalResourceController extends Controller
         $naturalResource = NaturalResource::find($id);
 
         if ($naturalResource->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus potensi desa dengan judul ' . $naturalResource->title, 'delete');
             return back()->with('status', 'Berhasil Hapus data ' . $naturalResource->title);
         } else {
             return back()->with('status', 'Gagal Hapus data ' . $naturalResource->title);
