@@ -7,10 +7,20 @@ use App\Models\Feedback;
 use App\Models\User;
 use FeedbackSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class FeedbackController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -114,6 +124,8 @@ class FeedbackController extends Controller
     {
         $feedback = Feedback::find($id);
         if ($feedback->delete()) {
+
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus aduan ', 'delete');
             return response()->json([
                 'status' => true
             ]);

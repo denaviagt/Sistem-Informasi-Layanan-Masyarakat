@@ -219,11 +219,12 @@
                                                                     data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger"
-                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                                    class="fas fa-trash" data-toggle="modal"
-                                                                    data-id="{{ $item->id }}"
+                                                            {{-- <button type="button"
+                                                                class="btn btn-action text-danger" data-toggle="tooltip"
+                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                                    data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
+                                                            --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

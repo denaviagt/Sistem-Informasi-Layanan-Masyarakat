@@ -6,9 +6,20 @@ use App\Models\ServiceCategory;
 use App\Models\ServiceProcedure;
 use App\Models\ServiceRequirement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceInfoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,8 +69,12 @@ class ServiceInfoController extends Controller
         }
         $service->description = $request->description;
         $service->service_category_id = $request->category ?? 1;
-        if ($service->save()) {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-success', 'Tambah Data Layanan ' . $request->type . '  Berhasil!');
+        if ($service->save() && $request->type == 'procedure') {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data alur layanan', 'create');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-success', 'Tambah Data Alur Layanan Berhasil!');
+        } else if ($service->save() && $request->type == 'terms') {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data syarat layanan', 'create');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-success', 'Tambah Data Syarat Layanan Berhasil!');
         } else {
             return redirect('info-layanan')->with('status-fail', 'Tambah Data Layanan ' . $request->type . '  Gagal!');
         }
@@ -113,10 +128,14 @@ class ServiceInfoController extends Controller
             $service->description = $request->edit_description_layanan;
         }
 
-        if ($service->save()) {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status_success', 'Ubah Data Info Layanan Berhasil!');
+        if ($service->save() && $type == 'procedure') {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data alur layanan', 'update');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-success', 'Ubah Data Alur Layanan Berhasil!');
+        } else if ($service->save() && $type == 'terms') {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data syarat layanan', 'update');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-success', 'Ubah Data Syarat Layanan Berhasil!');
         } else {
-            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status_fail', 'Ubah Data Info Layanan Gagal!');
+            return redirect('info-layanan?category=' . $request->category ?? 1)->with('status-fail', 'Ubah Data Info Layanan Gagal!');
         }
     }
 
@@ -135,9 +154,17 @@ class ServiceInfoController extends Controller
         }
 
         if ($service->delete()) {
-            return response()->json([
-                'status' => true
-            ]);
+            if ($type == 'procedure') {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data alur layanan', 'delete');
+                return response()->json([
+                    'status' => true
+                ]);
+            } else {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data syarat layanan', 'delete');
+                return response()->json([
+                    'status' => true
+                ]);
+            }
         } else {
             return response()->json([
                 'status' => false

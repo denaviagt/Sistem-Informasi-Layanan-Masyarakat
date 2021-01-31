@@ -12,10 +12,20 @@ use App\Models\Village;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Datatables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -156,14 +166,29 @@ class ServiceController extends Controller
     public function statusUpdate($id)
     {
         $service = Service::find($id);
-        $service->status = 'processing';
-        $service->save();
+        if ($service->status == 'accepted' || $service->status == 'rejected') {
+            $service->status = 'processing';
+            if ($service->save()) {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' memproses layanan dengan ID ' . $service->id, 'process');
+            }
+        }
     }
     public function serviceVerified($id)
     {
         $service = Service::find($id);
-        $service->status = 'completed';
-        $service->save();
+        if ($service->status !== 'completed') {
+            $service->status = 'completed';
+            if ($service->save()) {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi layanan dengan ID ' . $service->id, 'verif');
+                return response()->json([
+                    'status' => true,
+                ]);
+            } else {
+                return response()->json([
+                    'status' => false,
+                ]);
+            }
+        }
     }
     // public function statusDenied($id)
     // {
@@ -179,8 +204,11 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::find($id)->delete();
-        return response()->json(['success' => 'Service terhapus']);
+        $service = Service::find($id);
+        if ($service->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus layanan dengan ID ' . $service->id, 'delete');
+            return response()->json(['success' => true]);
+        }
     }
 
     public function cetakSurat($id, $id_cat)

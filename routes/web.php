@@ -104,7 +104,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/potensi-desa/{id}/edit', 'NaturalResourceController@update');
     Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
-    Route::get('/logactivity', 'ActivityLogController@index');
+    Route::get('/logactivity', 'DashboardController@logActivity');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
