@@ -94,7 +94,8 @@ class AdminController extends Controller
         // $admins->password = Hash::make(Str::random(8));
 
         if ($admins->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
+            addToLog($request, $this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
+            // addToLog($request, $this->nama_admin . ' membuat admin baru', 'create');
         }
         return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
     }

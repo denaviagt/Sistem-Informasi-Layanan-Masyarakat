@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\VillageInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class VillageInfoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -60,8 +71,10 @@ class VillageInfoController extends Controller
         $infoDesaAdd->status = $request->status;
         $infoDesaAdd->admin_id = $request->admin_id;
 
-        $infoDesaAdd->save();
-        return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
+        if ($infoDesaAdd->save()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data info kalurahan', 'create');
+            return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
+        }
     }
 
     /**
@@ -120,8 +133,12 @@ class VillageInfoController extends Controller
         $infoDesaAdd->status = $request->status;
         $infoDesaAdd->admin_id = $request->admin_id;
 
-        $infoDesaAdd->save();
-        return redirect('info-desa')->with('status', 'Ubah Data Info Desa Berhasil!');
+        // $title = Str::substr($infoDesaAdd->title, 0, 15);
+
+        if ($infoDesaAdd->save()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' mengubah data info kalurahan ' . $infoDesaAdd->title, 'update');
+            return redirect('info-desa')->with('status', 'Ubah Data Info Desa Berhasil!');
+        }
     }
 
     /**
@@ -135,6 +152,7 @@ class VillageInfoController extends Controller
         $infoDesa = VillageInfo::find($id);
         // $infoDesa->delete();
         if ($infoDesa->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data info kalurahan ' . $infoDesa->title, 'delete');
             return response()->json([
                 'status' => true
             ]);

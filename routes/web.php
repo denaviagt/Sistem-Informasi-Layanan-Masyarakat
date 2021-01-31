@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/main', 'MainController@index');
-Route::get('/tes', function () {
-    return 'Ini bukan superadmin';
-});
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('login', function () {
@@ -107,7 +104,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/potensi-desa/{id}/edit', 'NaturalResourceController@update');
     Route::get('/potensi-desa/{id}/destroy', 'NaturalResourceController@destroy');
 
-    Route::get('/logactivity', 'ActivityLogController@index');
+    Route::get('/logactivity', 'DashboardController@logActivity');
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

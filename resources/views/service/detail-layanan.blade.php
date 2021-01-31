@@ -11,6 +11,7 @@
         <div class="container-fluid">
             <!-- ============================================================== -->
             <div class="card">
+                <input type="hidden" name="service-status" id="service-status" value="{{ $service->status }}">
                 <div class="card-body">
                     <div id="smartwizard">
 
@@ -123,8 +124,8 @@
                                             <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
                                                 <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
-                                                    <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
-                                                        class="btn btn-primary" target="_blank">Cetak Dokumen</a>
+                                                <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
+                                                    class="btn btn-primary" target="_blank" id="btnCetak">Cetak Dokumen</a>
                                             </div>
 
                                         </div>
@@ -142,6 +143,7 @@
     <script src="{{ asset('dist/js/EZView.js') }}"></script>
     <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
+        var service_status = $('#service-status').val();
         $(document).ready(function() {
             $('#sidebarService').addClass('selected');
             $('#sidebarService .sidebar-link').addClass('active');
@@ -181,6 +183,10 @@
                     ]
                 },
             });
+            if (service_status == 'completed') {
+                $('#wizard-btn-verified').prop('disabled', true)
+                $('#wizard-btn-verified').css('cursor', 'not-allowed')
+            }
             var ajaxInvoke = false;
             $('#smartwizard').on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex,
                 stepDirection) {
@@ -268,6 +274,7 @@
 
             $('#wizard-btn-verified').on('click', function() {
                 var service_id = $('#service_id').val();
+                var category_id = $('#service_category_id').val();
                 // console.log(service_id);
                 let _url = `/service/${service_id}/verified`;
                 $.ajax({
@@ -276,8 +283,15 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function() {
-                        alert('Layanan terverifikasi');
+                    success: function(response) {
+                        if (response) {
+                            if (response.status == true) {
+                                alert('Layanan Terverifikasi');
+                                location.replace('/service?category=' + category_id);
+                            } else {
+                                alert('Gagal Verifikasi Layanan');
+                            }
+                        }
 
                     }
                 })
@@ -344,6 +358,22 @@
                 return false;
             }
         }
+
+        $('#btnCetak').on('click', function() {
+            if (service_status != 'completed') {
+                var service_id = $('#service_id').val();
+                var category_id = $('#service_category_id').val();
+                // console.log(service_id);
+                let _url = `/service/${service_id}/verified`;
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+            }
+        });
 
         // function cetakSurat() {
         //     var id_service = $('#service_id').val();

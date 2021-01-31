@@ -197,9 +197,11 @@ class CitizenController extends Controller
     public function dataVerif($id)
     {
         $citizen = Citizen::find($id);
-        $citizen->status = 'verified';
-        if ($citizen->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' memelakukan verifikasi data penduduk dengan NIK ' . $citizen->nik, 'verif');
+        if ($citizen->status != 'verified') {
+            $citizen->status = 'verified';
+            if ($citizen->save()) {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' memelakukan verifikasi data penduduk dengan NIK ' . $citizen->nik, 'verif');
+            }
         }
     }
 

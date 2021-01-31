@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')
+    <style>
+        .log-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+
+    </style>
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper" id="page-wrapper">
@@ -196,31 +206,33 @@
                 success: function(response) {
                     for (let index = 0; index < response.data.length; index++) {
                         $(".activity").append(`<div class="d-flex align-items-start border-left-line pb-3">
-                                                                                        <div>
-                                                                                            <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
-                                                                                                ${
-                                                                                                    (() =>{
-                                                                                                    if (response.data[index].event == "create") {
-                                                                                                        return ('<i class="fas fa-plus text-info"></i>');
-                                                                                                    } else if (response.data[index].event == 'update') {
-                                                                                                        return('<i class="fas fa-edit text-warning"></i>');
-                                                                                                    } else if(response.data[index].event == 'delete') {
-                                                                                                        return('<i class="fas fa-trash-alt text-danger"></i>');
-                                                                                                    } else if(response.data[index].event == 'mark') {
-                                                                                                        return('<i class="fas fa-tag text-primary"></i>');
-                                                                                                    } else if(response.data[index].event == 'process') {
-                                                                                                        return('<i class="fas fa-retweet text-primary"></i>');
-                                                                                                    } else{return('<i class="fas fa-check text-success"></i>');
-                                                                                                    }
-                                                                                                })()
-                                                                                            }
-                                                                                            </a>
-                                                                                        </div>
-                                                                                        <div class="ml-3 ">
-                                                                                            <p class="font-14 mb-0 text-white">${response.data[index].description}</p>
-                                                                                            <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
-                                                                                        </div>
-                                                                                    </div>`)
+                                                                    <div>
+                                                                        <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
+                                                                            ${
+                                                                                (() =>{
+                                                                                if (response.data[index].event == "create") {
+                                                                                    return ('<i class="fas fa-plus text-info"></i>');
+                                                                                } else if (response.data[index].event == 'update') {
+                                                                                    return('<i class="fas fa-edit text-warning"></i>');
+                                                                                } else if(response.data[index].event == 'delete') {
+                                                                                    return('<i class="fas fa-trash-alt text-danger"></i>');
+                                                                                } else if(response.data[index].event == 'mark') {
+                                                                                    return('<i class="fas fa-tag text-primary"></i>');
+                                                                                } else if(response.data[index].event == 'process') {
+                                                                                    return('<i class="fas fa-retweet text-primary"></i>');
+                                                                                } else if(response.data[index].event == 'reject') {
+                                                                                    return('<i class="fas fa-exclamation text-danger"></i>');
+                                                                                } else{return('<i class="fas fa-check text-success"></i>');
+                                                                                }
+                                                                            })()
+                                                                        }
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="ml-3 ">
+                                                                        <p class="font-14 mb-0 text-white log-title">${response.data[index].description}</p>
+                                                                        <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
+                                                                    </div>
+                                                                </div>`)
                     }
                 }
             });

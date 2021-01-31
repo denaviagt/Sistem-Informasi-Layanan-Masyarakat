@@ -244,9 +244,9 @@
                 <div class="modal-body m-2">
                     <form action="{{ url('/info-layanan/') }}" method="POST">
                         @csrf
-                        <input type="text" hidden class="form-control" name="type" value="terms" id="input-alur-layanan">
+                        <input type="text" hidden class="form-control" name="type" value="terms" id="input-syarat-type">
                         <input type="text" hidden class="form-control" name="category" value="{{ request()->category }}"
-                            id="input-alur-layanan">
+                            id="input-syarat-layanan">
                         <div class="form-group row">
                             <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
                             <div class="col-sm-9">
@@ -400,16 +400,17 @@
         });
         $('.title').hide();
         var dl =
-            ` <form method="GET" action="{{ url('/info-layanan/') }}    ">                                                                                                                              <div class="form-group pl-0">
-                                                                                                <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
-                                                                                                    @foreach ($category as $item)
-                                                                                                            <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
-                                                                                                                {{ $item->category }}
-                                                                                                            </option>
-                                                                                                        @endforeach
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </form>`
+            ` <form method="GET" action="{{ url('/info-layanan/') }}">                                                                                                                              
+                <div class="form-group pl-0">
+                    <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
+                        @foreach ($category as $item)
+                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
+                                    {{ $item->category }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>`
         $('.header-title').append(dl);
 
         function editAlurModal(event) {
