@@ -21,7 +21,7 @@ class ServiceRequirementSeeder extends Seeder
                 'service_category_id' => 1
             ],
             [
-                'terms' => 'Mengisi formulir F-1.07 dan tandatangan dukuh',
+                'terms' => 'Formulir F-1.07 dan tandatangan dukuh',
                 'description' => 'Formulir F-1.07',
                 'status' => 'active',
                 'created_at' => now(),
@@ -83,13 +83,13 @@ class ServiceRequirementSeeder extends Seeder
                 'created_at' => now(),
                 'service_category_id' => 3
             ],
-            [
-                'terms' => 'Bagi pemohon yang sudah dewasa melampirkan ijazah terakhir yang mencantumkan nama orangtua',
-                'description' => '',
-                'status' => 'active',
-                'created_at' => now(),
-                'service_category_id' => 3
-            ],
+            // [
+            //     'terms' => 'Bagi pemohon yang sudah dewasa melampirkan ijazah terakhir yang mencantumkan nama orangtua',
+            //     'description' => '',
+            //     'status' => 'active',
+            //     'created_at' => now(),
+            //     'service_category_id' => 3
+            // ],
             [
                 'terms' => 'Fotokopi E-KTP saksi 2 orang',
                 'description' => '',
@@ -146,13 +146,13 @@ class ServiceRequirementSeeder extends Seeder
                 'created_at' => now(),
                 'service_category_id' => 4
             ],
-            [
-                'terms' => 'Bagi WNA ditambah surat kewarganegaraan asing',
-                'description' => '',
-                'status' => 'active',
-                'created_at' => now(),
-                'service_category_id' => 4
-            ],
+            // [
+            //     'terms' => 'Bagi WNA ditambah surat kewarganegaraan asing',
+            //     'description' => '',
+            //     'status' => 'active',
+            //     'created_at' => now(),
+            //     'service_category_id' => 4
+            // ],
             [
                 'terms' => 'Fotokopi E-KTP saksi 2 orang',
                 'description' => '',
@@ -217,15 +217,15 @@ class ServiceRequirementSeeder extends Seeder
                 'service_category_id' => 7
             ],
             [
-                'terms' => 'Bagi pemohon laki-laki membawa identitas calon istri kartu keluarga dan akta kelahiran',
-                'description' => '',
+                'terms' => 'Identitas calon istri kartu keluarga dan akta kelahiran',
+                'description' => 'Bagi pemohon laki-laki membawa identitas calon istri kartu keluarga dan akta kelahiran',
                 'status' => 'active',
                 'created_at' => now(),
                 'service_category_id' => 7
             ],
             [
-                'terms' => 'Bagi pemohon perempuan membawa syarat nikah laki-laki',
-                'description' => '',
+                'terms' => 'Syarat nikah laki-laki',
+                'description' => 'Bagi pemohon perempuan membawa syarat nikah laki-laki',
                 'status' => 'active',
                 'created_at' => now(),
                 'service_category_id' => 7
