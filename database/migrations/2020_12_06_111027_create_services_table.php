@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->date('date');
             $table->enum('status', ['accepted', 'processing', 'rejected', 'completed', 'sent']);
+            $table->string('description');
             $table->timestamps();
         });
     }
