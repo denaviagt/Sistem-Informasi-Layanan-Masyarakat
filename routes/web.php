@@ -111,6 +111,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/maintenance', function () {
         return view('maintenance');
     });
+    Route::get('/view-info', function () {
+        return view('view-info');
+    });
 });
 
 Auth::routes();
