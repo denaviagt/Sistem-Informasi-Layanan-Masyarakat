@@ -26,11 +26,13 @@ class VillageInfoController extends Controller
      */
     public function index()
     {
+        $date = '';
         $infoDesa = VillageInfo::all();
-        foreach ($infoDesa as $key => $value) {
-            $date = $infoDesa[$key]->date->isoFormat('dddd, D MMMM Y');
+        if ($infoDesa) {
+            foreach ($infoDesa as $key => $value) {
+                $date = $infoDesa[$key]->date->isoFormat('dddd, D MMMM Y');
+            }
         }
-
         return view('village-info/index', compact(['infoDesa', 'date']));
     }
 
