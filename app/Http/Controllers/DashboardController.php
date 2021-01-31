@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feedback;
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,11 @@ class DashboardController extends Controller
         $serviceOfDate = Service::where('date', $date)->get();
         $countServiceOfDate = $serviceOfDate->count();
         $feedback = Feedback::get();
+
         $feedbacks = $feedback->count();
+        $current = Carbon::now();
+        // dd($current->subMonths());
+        DB::table('log_activity')->where('log_time', '<=', $current->subMonths())->delete();
 
         return view('dashboard', compact(['proccesses', 'accepteds', 'rejecteds', 'completeds', 'countServiceOfDate', 'feedbacks']));
     }
