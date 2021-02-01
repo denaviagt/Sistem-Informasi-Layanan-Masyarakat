@@ -20,9 +20,7 @@
     {{--
     <link href="{{ asset('dist/css/icons/font-awesome/css/fontawesome.css') }}" rel="stylesheet">
     --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css"
-        integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('dist/css/themify-icon.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/nice-select.css') }}">
@@ -117,15 +115,13 @@
                                     <!-- Slider btn -->
                                     <div class="slider-btns">
                                         <!-- Hero-btn -->
-                                        <a data-animation="fadeInLeft" data-delay="1.0s" href="#"
-                                            class="btn radius-btn">Unduh Sekarang</a>
+                                        <a data-animation="fadeInLeft" data-delay="1.0s" href="#" class="btn radius-btn">Unduh Sekarang</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6" style="margin-top: -200px">
                                 <div class="hero__img d-none d-lg-block" data-animation="fadeInRight" data-delay="1s">
-                                    <img src="{{ asset('assets/img/hero_right.png') }}" alt="" height="500px"
-                                        style="margin:auto">
+                                    <img src="{{ asset('assets/img/hero_right.png') }}" alt="" height="500px" style="margin:auto">
                                 </div>
                             </div>
                         </div>
@@ -159,12 +155,12 @@
                                 <div class="hero__img d-none d-lg-block f-right" data-animation="fadeInRight"
                                     data-delay="1s">
                                     <img src="{{ asset('assets/img/hero_right.png') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
+        </div>
+        </div>
+        </div>
+        </div> --}}
+        </div>
         </div>
         <!-- Slider Area End -->
 
@@ -250,39 +246,91 @@
                 </div>
                 <!-- Section caption -->
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="services-caption text-center mb-30">
-                            <div class="service-icon">
-                                <span class="flaticon-businessman"></span>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center active mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
                             </div>
-                            <div class="service-cap">
-                                <h4><a href="#">Visi Misi</a></h4>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                    laborea.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="services-caption active text-center mb-30">
-                            <div class="service-icon">
-                                <span class="flaticon-pay"></span>
-                            </div>
-                            <div class="service-cap">
-                                <h4><a href="#">Struktur Organisasi</a></h4>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                    laborea.</p>
+                            <div>
+                                <b> LURAH</b>
+                                <p>Arum Setiya, S.Pd.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="services-caption text-center mb-30">
-                            <div class="service-icon">
-                                <span class="flaticon-plane"></span>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
                             </div>
-                            <div class="service-cap">
-                                <h4><a href="#">Produk Hukum</a></h4>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                    laborea.</p>
+                            <div>
+                                <b>CARIK</b>
+                                <p>Erwin Dwi Hastomo, S.E.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Kepala urusan Danarta</b>
+                                <p> Dra. Rini Prabaharsi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Kepala Urusan Tata Laksana</b>
+                                <p> Vitra Ikayanti, S.P</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Kepala Urusan Pangripta</b>
+                                <p> Nurkartika Rahmawati, S.Pd.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Kamituwo</b>
+                                <p>Arif Aryono, S.Sos.I.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Jagabaya</b>
+                                <p>Ali Rozikin, S.Pd.I.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+                        <div class="services-caption text-center mb-10" style="height: 350px">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                            </div>
+                            <div>
+                                <b>Ulu-Ulu</b>
+                                <p>Maryadi, A.Md.</p>
                             </div>
                         </div>
                     </div>
@@ -302,55 +350,54 @@
                 </div>
                 <div class="row">
                     @foreach ($naturalResources as $key => $naturalResource)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card single-blogs mb-100">
-                                <a href="view-info">
-                                    <div class="blog-img">
-                                        <img src="{{ asset('uploads/images/natural_resource/' . $naturalResourceImage[$key]->image) }}"
-                                            alt="image">
-                                    </div>
-                                    <div class="blog-cap card-body">
-                                        <small class="text-secondary">{{ $naturalResourceDate }}</small>
-                                        <h5 class="card-title">{{ $naturalResource->title }}</h5>
-                                    </div>
-                                </a>
-                            </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card single-blogs mb-100">
+                            <a href="view-info">
+                                <div class="blog-img">
+                                    <img src="{{ asset('uploads/images/natural_resource/' . $naturalResourceImage[$key]->image) }}" alt="image">
+                                </div>
+                                <div class="blog-cap card-body">
+                                    <small class="text-secondary">{{ $naturalResourceDate }}</small>
+                                    <h5 class="card-title">{{ $naturalResource->title }}</h5>
+                                </div>
+                            </a>
                         </div>
+                    </div>
                     @endforeach
                     {{-- <div class="col-lg-4 col-md-6">
                         <div class="single-blogs mb-100">
                             <div class="blog-img">
                                 <img src="{{ asset('uploads/images/natural_resource/lava-bantal.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-cap">
-                                <span class="color1">23 Dec, 2020</span>
-                                <h4><a href="#">Addiction When Gambling Becomes</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blogs mb-100">
-                            <div class="blog-img">
-                                <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-cap">
-                                <span class="color1">23 Dec, 2020</span>
-                                <h4><a href="#">Addiction When Gambling Becomes</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blogs mb-100">
-                            <div class="blog-img">
-                                <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-cap">
-                                <span class="color1">23 Dec, 2020</span>
-                                <h4><a href="#">Addiction When Gambling Becomes</a></h4>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
+                <div class="blog-cap">
+                    <span class="color1">23 Dec, 2020</span>
+                    <h4><a href="#">Addiction When Gambling Becomes</a></h4>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-blogs mb-100">
+                    <div class="blog-img">
+                        <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}" alt="">
+                    </div>
+                    <div class="blog-cap">
+                        <span class="color1">23 Dec, 2020</span>
+                        <h4><a href="#">Addiction When Gambling Becomes</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-blogs mb-100">
+                    <div class="blog-img">
+                        <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}" alt="">
+                    </div>
+                    <div class="blog-cap">
+                        <span class="color1">23 Dec, 2020</span>
+                        <h4><a href="#">Addiction When Gambling Becomes</a></h4>
+                    </div>
+                </div>
+            </div> --}}
+            </div>
             </div>
         </section>
         <!-- Applic App Start -->
@@ -463,76 +510,25 @@
                 </div>
             </div>
         </div> --}}
-        <!-- Pricing Card End -->
-        <!-- Our Customer Start -->
-        <div class="our-customer section-padd-top30">
-            <div class="container-fluid">
-                <div class="our-customer-wrapper">
-                    <!-- Section Tittle -->
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-xl-8">
-                            <div class="section-tittle text-center">
-                                <h2>Potensi Desa</h2>
-                            </div>
+        <div class="container mt-5 mb-3 agenda agenda-carousel">
+            <div class="section-tittle text-center mb-80">
+                <h2>Potensi Desa</h2>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach ($naturalResources as $index => $naturalResource)
+                @foreach ($naturalResource->images as $image)
+                <div class="item">
+                    <div class="card">
+                        <div class="blog-img">
+                            <img src="{{ asset('uploads/images/natural_resource/'.$image->image) }}" alt="{{ $naturalResource->title }}">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="customar-active dot-style d-flex dot-style">
-                                @foreach ($naturalResources as $key => $naturalResource)
-                                    <div class="single-customer mb-100">
-                                        <div class="natural-resource-img">
-                                            <img src="{{ asset('uploads/images/natural_resource/' . $naturalResourceImage[$key]->image) }}"
-                                                alt="">
-                                        </div>
-                                        <div class="what-cap">
-                                            <h4><a href="#">{{ $naturalResource->title }}</a></h4>
-                                            <p>{{ $naturalResource->description }}</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                {{-- <div class="single-customer mb-100">
-                                    <div class="natural-resource-img">
-                                        <img src="{{ asset('uploads/images/natural_resource/Candi-Abang.jpg') }}"
-                                            alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Candi Abang</a></h4>
-                                        <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip
-                                            ex ea commodo consequat duis aute irure dolor in represse.</p>
-                                    </div>
-                                </div>
-
-                                <div class="single-customer mb-100">
-                                    <div class="natural-resource-img">
-                                        <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Gua Jepang</a></h4>
-                                        <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip
-                                            ex ea commodo consequat duis aute irure dolor in represse.</p>
-                                    </div>
-                                </div> --}}
-                                @foreach ($naturalResources as $key => $naturalResource)
-                                    <div class="single-customer mb-100">
-                                        <div class="natural-resource-img">
-                                            <img src="{{ asset('uploads/images/natural_resource/gua-jepang.jpg') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="what-cap">
-                                            <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                            <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut
-                                                aliquip
-                                                ex ea commodo consequat duis aute irure dolor in represse.</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
+                        <div class="card-body">
+                            <h5>{{ $naturalResource->title }}</h5>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @endforeach
             </div>
         </div>
         <!-- Our Customer End -->
@@ -698,6 +694,33 @@
     <script src="{{ asset('/dist/js/plugins.js') }}"></script>
     <script src="{{ asset('dist/js/landing.js') }}"></script>
 
+    <script>
+        $('.owl-carousel').owlCarousel({
+            items: 4
+            , loop: true
+            , nav: true
+            , margin: 10
+            , autoplay: true
+            , mergeFit: true
+            , autoplayTimeout: 3000
+            , loop: true
+            , responsiveClass: true
+            , navText: ['<', '>']
+            , responsive: {
+                0: {
+                    items: 1
+                , }
+                , 700: {
+                    items: 2
+                , }
+                , 1000: {
+                    items: 4
+                , }
+
+            }
+        })
+
+    </script>
 </body>
 
 </html>
