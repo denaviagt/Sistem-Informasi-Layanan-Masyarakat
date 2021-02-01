@@ -41,9 +41,7 @@ class AdminSeeder extends Seeder
                 'token' => "",
                 'remember_token' => "",
                 'is_active' => 1,
-                'level' => $faker->randomElement(
-                    ['admin', 'lurah']
-                ),
+                'level' => 'admin',
                 'created_at' => now(),
             ]);
         }
