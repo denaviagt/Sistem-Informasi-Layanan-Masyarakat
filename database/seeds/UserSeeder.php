@@ -15,13 +15,13 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('users')->insert([
                 'email' => $faker->freeEmail,
                 'username' => $faker->userName,
                 'password' => Hash::make('password'),
                 'created_at' => now(),
-                'citizen_id' => $faker->randomElement([1, 2, 3, 4, 5])
+                'citizen_id' => $i + 8
             ]);
         }
     }
