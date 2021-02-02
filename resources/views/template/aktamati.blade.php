@@ -84,17 +84,18 @@
                 <tr>
                     <td style="width:200px">Hari, tanggal</td>
                     <td>:</td>
-                    <td style="width: 400px">Hari, 27 Januari 2020</td>
+                    <td style="width: 400px">{{ $extra_fields[0]->value ?? '' }},
+                        {{ $extra_fields[1]->value ?? '' }}</td>
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td style="width:200px">Pukul</td>
                     <td>:</td>
                     <td style="width: 400px">13.10 WIB</td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td style="width:200px">Dimakamkan di</td>
                     <td>:</td>
-                    <td style="width: 400px">TPU Rejosari</td>
+                    <td style="width: 400px">{{ $extra_fields[2]->value ?? '' }}</td>
                 </tr>
             </table>
             <p class="text-justify">Demikian surat keterangan kematian ini dikeluarkan untuk dapat

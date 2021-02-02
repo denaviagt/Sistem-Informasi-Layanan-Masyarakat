@@ -82,13 +82,6 @@
                     <td>:</td>
                     <td>{{ $data->citizen->address }}</td>
                 </tr>
-
-                <tr>
-                    <td>Nama Orangtua</td>
-                    <td>:</td>
-                    <td>Nama orang tua</td>
-                </tr>
-
             </table>
 
             <p class="text-justify">Adalah anggota masyarakat Desa Jogotirto dengan status

@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Template Surat</title>
+    <title>Elektronik Kartu Tanda Penduduk</title>
     <meta charset="utf-8">
     <link href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/surat.css') }}" rel="stylesheet">
-    <style>
-        #halaman {
-            width: auto;
-            padding-top: 30px;
-            padding-left: 30px;
-            padding-right: 30px;
-            padding-bottom: 80px;
-        }
-
-    </style>
 
 </head>
 
