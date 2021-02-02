@@ -45,4 +45,8 @@ class Service extends Model
     {
         return $this->hasMany(ServiceFile::class);
     }
+    public function extraValue()
+    {
+        return $this->hasMany(ExtraValue::class);
+    }
 }
