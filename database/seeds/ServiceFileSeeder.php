@@ -21,10 +21,37 @@ class ServiceFileSeeder extends Seeder
 
         for ($i = 0; $i < 2; $i++) {
             DB::table('service_files')->insert([
-                'service_requirement_id' => 25,
+                'service_requirement_id' => $faker->numberBetween(32, 33),
                 'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
                 'status' => 'unverified',
-                'service_id' => $faker->numberBetween(54, 53),
+                'service_id' => 51,
+                'created_at' => now(),
+            ]);
+        }
+        for ($i = 0; $i < 2; $i++) {
+            DB::table('service_files')->insert([
+                'service_requirement_id' => $faker->numberBetween(32, 33),
+                'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
+                'status' => 'unverified',
+                'service_id' => 52,
+                'created_at' => now(),
+            ]);
+        }
+        for ($i = 0; $i < 7; $i++) {
+            DB::table('service_files')->insert([
+                'service_requirement_id' => $faker->numberBetween(25, 31),
+                'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
+                'status' => 'unverified',
+                'service_id' => 53,
+                'created_at' => now(),
+            ]);
+        }
+        for ($i = 0; $i < 7; $i++) {
+            DB::table('service_files')->insert([
+                'service_requirement_id' => $faker->numberBetween(25, 31),
+                'file_url' => $faker->imageGenerator(public_path('assets/serviceFile/'), 640, 480, 'png', false, 'Berkas Tester', null, null),
+                'status' => 'unverified',
+                'service_id' => 54,
                 'created_at' => now(),
             ]);
         }
