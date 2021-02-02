@@ -234,109 +234,103 @@
         </section> --}}
         <!-- Best Features End -->
         <!-- Profil Kalurahan Start -->
-        <section class="service-area sky-blue section-padding2" id="profilKalurahan">
-            <div class="container">
-                <!-- Section Tittle -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="section-tittle text-center">
-                            <h2>Profil Kalurahan</h2>
-                        </div>
-                    </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-tittle text-center">
+                    <h2>Profil Kalurahan</h2>
                 </div>
-                <!-- Section caption -->
-                <div class="row">
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center active mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b> LURAH</b>
-                                <p>Arum Setiya, S.Pd.</p>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center active mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
                     </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>CARIK</b>
-                                <p>Erwin Dwi Hastomo, S.E.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Kepala urusan Danarta</b>
-                                <p> Dra. Rini Prabaharsi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Kepala Urusan Tata Laksana</b>
-                                <p> Vitra Ikayanti, S.P</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Kepala Urusan Pangripta</b>
-                                <p> Nurkartika Rahmawati, S.Pd.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Kamituwo</b>
-                                <p>Arif Aryono, S.Sos.I.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Jagabaya</b>
-                                <p>Ali Rozikin, S.Pd.I.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-4">
-                        <div class="services-caption text-center mb-10" style="height: 350px">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
-                            </div>
-                            <div>
-                                <b>Ulu-Ulu</b>
-                                <p>Maryadi, A.Md.</p>
-                            </div>
-                        </div>
+                    <div>
+                        <b> LURAH</b>
+                        <p>Arum Setiya, S.Pd.</p>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>CARIK</b>
+                        <p>Erwin Dwi Hastomo, S.E.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Kepala urusan Danarta</b>
+                        <p> Dra. Rini Prabaharsi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Kepala Urusan Tata Laksana</b>
+                        <p> Vitra Ikayanti, S.P</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Kepala Urusan Pangripta</b>
+                        <p> Nurkartika Rahmawati, S.Pd.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Kamituwo</b>
+                        <p>Arif Aryono, S.Sos.I.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Jagabaya</b>
+                        <p>Ali Rozikin, S.Pd.I.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="services-caption text-center mb-10" style="height: 350px">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg" width="150px" alt="">
+                    </div>
+                    <div>
+                        <b>Ulu-Ulu</b>
+                        <p>Maryadi, A.Md.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Profil Kalurahan End -->
         <section class="blogs-area section-padding" id="infoKalurahan">
             <div class="container">
@@ -518,14 +512,9 @@
                 @foreach ($naturalResources as $index => $naturalResource)
                 @foreach ($naturalResource->images as $image)
                 <div class="item">
-                    <div class="card">
                         <div class="blog-img">
-                            <img src="{{ asset('uploads/images/natural_resource/'.$image->image) }}" alt="{{ $naturalResource->title }}">
+                            <img src="{{ asset('uploads/images/natural_resource/'.$image->image) }}" alt="{{ $naturalResource->title }}" <title> {{ $naturalResource->title }}</title>
                         </div>
-                        <div class="card-body">
-                            <h5>{{ $naturalResource->title }}</h5>
-                        </div>
-                    </div>
                 </div>
                 @endforeach
                 @endforeach
