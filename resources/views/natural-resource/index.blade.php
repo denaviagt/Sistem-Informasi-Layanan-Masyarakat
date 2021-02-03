@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="page-wrapper">
 
         <div class="container-fluid">
@@ -46,7 +45,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $naturalResource->title }}</td>
-                                                <td>{!! $naturalResource->description !!}</td>
+                                                <td> {!! Str::substr($naturalResource->description, 0, 80) !!}... </td>
                                                 <td>{{ $date }}</td>
                                                 @if ($naturalResource->status == 'draft')
                                                     <td>

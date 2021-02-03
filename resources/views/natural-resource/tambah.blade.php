@@ -48,8 +48,7 @@
                                                         {{ $status }}
                                                     </option>
                                                 @endforeach
-                                                {{-- <option value="3">Three</option>
-                                                --}}
+                                                {{-- <option value="3">Three</option> --}}
                                             </select>
                                             @error('status')
                                                 <span class="text-danger">
@@ -68,19 +67,20 @@
                                             </span>
                                         @enderror
                                         <div class="multiple-container">
-                                            <input type="file" name="images[]" multiple="multiple" class="file"
-                                                accept="image/*" id="multiple-file"
-                                                style="visibility: hidden; position: absolute">
-                                            <div class="input-group @error('images') is-invalid @enderror my-3">
-                                                <input type="text" id="multiple-text"
+                                            <input type="file" name="images[]" multiple class="file" accept="image/*"
+                                                id="multiple-file" style="visibility: hidden; position: absolute">
+                                            <div class="input-group @error('images') is-invalid @enderror my-3 row">
+                                                {{-- <input type="text" id="multiple-text"
                                                     class="form-control @error('images') is-invalid @enderror" disabled
-                                                    placeholder="Upload File">
+                                                    placeholder="Upload File"> --}}
+                                                <div class="row m-1" id="multiple-thumbnail"></div>
                                                 <div class="input-group-append">
                                                     <button type="button" id="multiple-button"
-                                                        class="btn btn-primary">Upload</button>
+                                                        class="btn btn-primary my-auto" style="height: 40px"><i
+                                                            class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="row m-1" id="multiple-thumbnail"></div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -122,29 +122,32 @@
                 $('#multiple-file').trigger("click");
             });
             $('#multiple-file').change(function(e) {
-                const lastPosition = e.target.files.length - 1
-                const file = e.target.files[lastPosition];
-                $("#multiple-text").val(file.name);
-                console.log(e.target.files.length)
+                // const lastPosition = e.target.files.length - 1
+                // const file = e.target.files[lastPosition];
+                // $("#multiple-text").val(file.name);
+                // console.log(e.target.files.length)
                 if (window.File || window.FileReader || window.FileList || window.Blob) {
-                    const data = $(this)[0].files;
-                    let containers = [];
+                    var data = $(this)[0].files;
+                    // let containers = [];
                     $.each(data, function(index, file) {
-                        const fRead = new FileReader();
-                        fRead.onload = (function(file) {
-                            return function(e) {
-                                const img = $('<img/>').addClass('img-thumbnail m-1')
-                                    .attr('src', e.target.result);
-                                containers[index] = $('<div/>').addClass(
-                                    'mt-2 col-sm-4').append(img);
-                            };
-                        })(file);
-                        fRead.onloadend = (function(file) {
-                            return function(e) {
-                                $('#multiple-thumbnail').empty().append(containers);
-                            };
-                        })(file);
-                        fRead.readAsDataURL(file);
+                        if (/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)) {
+                            var fRead = new FileReader();
+                            fRead.onload = (function(file) {
+                                return function(e) {
+                                    var img = $('<img/>').addClass(
+                                            ' m-1').attr('height', 300)
+                                        .attr('src', e.target.result);
+                                    $('#multiple-thumbnail').append(img);
+                                    $('#multiple-button').addClass('m-5')
+                                };
+                            })(file);
+                            // fRead.onloadend = (function(file) {
+                            //     return function(e) {
+                            //         $('#multiple-thumbnail').empty().append(containers);
+                            //     };
+                            // })(file);
+                            fRead.readAsDataURL(file);
+                        }
                     });
 
                 } else alert("Your browser doesn't support File API!");

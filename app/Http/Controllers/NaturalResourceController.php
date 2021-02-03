@@ -55,6 +55,7 @@ class NaturalResourceController extends Controller
      */
     public function store(StoreNatureResourceRequest $request)
     {
+        return $request->all();
         $request->validated();
 
         $title = $request->title;
@@ -64,7 +65,7 @@ class NaturalResourceController extends Controller
         $data = [
             'title' => $title,
             'status' => $status,
-            //          'thumbnail' => $thumbnail,
+            'images' => $request->images,
             'description' => $description,
         ];
 
@@ -74,7 +75,7 @@ class NaturalResourceController extends Controller
         $naturalResource->description = $description;
 
         if ($naturalResource->save()) {
-            $naturalResource->refresh();
+            // $naturalResource->refresh();
             if ($request->hasFile('images')) {
                 $images = $request->file('images');
                 foreach ($images as $image) {
