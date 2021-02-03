@@ -60,7 +60,6 @@
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
                             href="{{ url('statistik-layanan') }}" aria-expanded="false"><i
                                 class="fas fa-chart-bar"></i><span class="hide-menu">Statistik
-                                Layanan
                             </span></a>
                     </li>
                     {{-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
