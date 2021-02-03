@@ -54,7 +54,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo ">
-                                <a href="{{ url('main') }}" class="d-flex text-dark">
+                                <a href="{{ url('/') }}" class="d-flex text-dark">
                                     <img src="{{ asset('assets/img/logo.jpg') }}" alt="" width="40px">
                                     <div class="ml-3">
                                         <span class="font-weight-bold">Kalurahan <br> Jogotirto</span>
@@ -67,7 +67,7 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="{{ url('main') }}"> Beranda</a></li>
+                                        <li><a href="{{ url('/') }}"> Beranda</a></li>
                                         <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
                                         <li><a href="#vision">Visi</a></li>
                                         <li><a href="#mission">Misi</a></li>

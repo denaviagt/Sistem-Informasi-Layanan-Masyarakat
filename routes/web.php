@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/main', 'MainController@index');
+Route::get('/', 'MainController@index');
 Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', 'DashboardController@index');
+    Route::get('/dashboard', 'DashboardController@index');
     Route::get('login', function () {
         return view('login');
     });
