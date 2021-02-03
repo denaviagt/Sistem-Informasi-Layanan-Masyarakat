@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/main-logo.png') }}">
 
     <!-- CSS here -->
     <link href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -17,16 +17,14 @@
     <link rel="stylesheet" href="{{ asset('dist/css/slicknav.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/magnific-popup.css') }}">
-    {{--
-    <link href="{{ asset('dist/css/icons/font-awesome/css/fontawesome.css') }}" rel="stylesheet">
-    --}}
+    {{-- <link href="{{ asset('dist/css/icons/font-awesome/css/fontawesome.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css"
         integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('dist/css/themify-icon.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/landingcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/landingcss.css') }}">
     <style>
         .natural-resource-img img {
             width: 100%
@@ -38,16 +36,13 @@
 <body>
 
     <!-- Preloader Start -->
-    {{-- <div id="preloader-active">
+    <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
-                </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Preloader Start -->
 
     <header>
@@ -58,11 +53,13 @@
                     <div class="row align-items-center">
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
-                            <div class="logo d-flex">
-                                <a href="#"><img src="{{ asset('assets/img/logo.jpg') }}" alt="" width="40px"></a>
-                                <div class="ml-3">
-                                    <span class="font-weight-bold">Kalurahan <br> Jogotirto</span>
-                                </div>
+                            <div class="logo ">
+                                <a href="{{ url('main') }}" class="d-flex text-dark">
+                                    <img src="{{ asset('assets/img/logo.jpg') }}" alt="" width="40px">
+                                    <div class="ml-3">
+                                        <span class="font-weight-bold">Kalurahan <br> Jogotirto</span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -70,19 +67,12 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li class="active"><a href="#"> Beranda</a></li>
-                                        <li><a href="#profilKalurahan">Profil Kalurahan</a></li>
-                                        <li><a href="#">Info Kalurahan</a></li>
-                                        <li><a href="#">Potensi Kalurahan</a></li>
-                                        {{-- <li><a href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Element</a></li>
-                                            </ul>
-                                        </li> --}}
-                                        {{-- <li><a href="contact.html">Contact</a></li>
-                                        --}}
+                                        <li><a href="{{ url('main') }}"> Beranda</a></li>
+                                        <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
+                                        <li><a href="#vision">Visi</a></li>
+                                        <li><a href="#mission">Misi</a></li>
+                                        <li class="active"><a href="#infoKalurahan">Info Kalurahan</a></li>
+                                        <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -98,17 +88,17 @@
         <!-- Header End -->
     </header>
 
-    <div class="services-area">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-tittle text-center mb-80">
-                        <h2>Lava Bantal</h2>
-                    </div>
+
+    <div class="container" style="padding-top: 120px">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-tittle text-center mb-80">
+                    <h2>Info Kalurahan</h2>
                 </div>
             </div>
         </div>
     </div>
+
 
     <section class="blog_area single-post-area">
         <div class="container">
@@ -116,118 +106,161 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="https://genpijogja.com/wp-content/uploads/2018/08/Lava-Bantal.jpg" alt="">
+                            <img class="img-fluid"
+                                src="{{ asset('uploads/images/village_info/' . $villageInfo->thumbnail) }}" alt="">
                         </div>
                         <div class="blog_details">
-                            <h2>Keunikan Lava Bantal, Salah Satu Geowisata di Yogyakarta
+                            <h2>{{ $villageInfo->title }}
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="ti-user"></i>Layla</a></li>
-                                <li><a href="#"><i class="ti-comment-alt"></i>January, 29 2021</a></li>
+                                <li><a href="#"><i class="ti-user"></i>{{ $admin->full_name }}</a></li>
+                                <li><a href="#"><i
+                                            class="ti-comment-alt"></i>{{ $villageInfo->date->isoFormat('dddd, D MMMM Y') }}</a>
+                                </li>
                             </ul>
                             <p class="excert">
-                                " Lava bantal terbentuk karena lahar yang keluar dari gunung api bawah laut. Jadi lahar panasnya langsung masuk masuk ke air yang dingin," tutur pemandu wisata Jogja Geowisata, Imaduddin Yazid kepada KompasTravel.
-                            </p>
-                            <p>
-                                Lava Bantal disebut-sebut memiliki kontribusi besar terhadap terbentuknya Pulau Jawa. Proses pertemuan tersebut membuat lahar mengalami proses pembekuan. Fenomena ini cukup jarang ditemukan. Imaddudin menambahkan, di Pulau Jawa fenomena alam seperti ini hanya ada di Karangsambung (Kebumen), Ciletuh (Jawa Barat), dan Yogyakarta.
-                            </p>
-                            <p>
-                                “Saat ini belum ada tarif retribusi yang ditarik dari wisatawan untuk masuk ke kawasan wisata Lava Bantal ini. Wisatawan cukup membayar tarif parkir yang fasilitas parkirnya pun dikelola oleh warga setempat,” tutur Albyan Pratama, salah seorang karang taruna setempat saat ditemui KompasTravel beberapa waktu lalu.
-                            </p>
-                            <p>
-                                Selain wisatawan, Kawasan Wisata Lava Bantal juga populer di kalangan mahasiswa. Albyan menuturkan, tak sedikit mahasiswa Teknik Geologi UGM dan UPN yang datang untuk penelitian.
+                                {{ $villageInfo->content }}
                             </p>
                         </div>
                     </div>
-                        <div class="navigation-area">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img class="img-fluid" src="https://i.pinimg.com/236x/98/72/df/9872df28885cd34453195df87bb21e82.jpg" width="75px" alt="">
+                    {{-- <div class="navigation-area">
+                        <div class="row">
+                            <div
+                                class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://i.pinimg.com/236x/98/72/df/9872df28885cd34453195df87bb21e82.jpg"
+                                            width="75px" alt="">
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#">
+                                        <span class="lnr text-white ti-arrow-left"></span>
+                                    </a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev Post</p>
+                                    <a href="#">
+                                        <h4>Space The Final Frontier</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div
+                                class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                <div class="detials">
+                                    <p>Next Post</p>
+                                    <a href="#">
+                                        <h4>Telescopes 101</h4>
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#">
+                                        <span class="lnr text-white ti-arrow-right"></span>
+                                    </a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://i.pinimg.com/236x/6f/14/87/6f148777013fe8b204e8cf2e0a136550.jpg"
+                                            width="75px" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Info Terbaru</h3>
+                            @foreach ($villageInfos as $item)
+                                <div class="media post_item">
+                                    <img src="{{ asset('uploads/images/village_info/' . $item->thumbnail) }}"
+                                        width="50px" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>{{ $item->title }}</h3>
                                         </a>
-                                    </div>
-                                    <div class="arrow">
-                                        <a href="#">
-                                            <span class="lnr text-white ti-arrow-left"></span>
-                                        </a>
-                                    </div>
-                                    <div class="detials">
-                                        <p>Prev Post</p>
-                                        <a href="#">
-                                            <h4>Space The Final Frontier</h4>
-                                        </a>
+                                        <p>{{ $item->date->isoFormat('dddd, D MMMM Y') }}</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                    <div class="detials">
-                                        <p>Next Post</p>
-                                        <a href="#">
-                                            <h4>Telescopes 101</h4>
-                                        </a>
+                            @endforeach
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+
+        <!-- Footer Start-->
+        <div class="footer-main">
+            <div class="footer-area footer-padding">
+                <div class="container">
+                    <div class="row  justify-content-between">
+                        <div class="col-lg-6 col-md-4 col-sm-8">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="#" class="d-flex">
+                                        <img src="{{ asset('assets/img/logo.jpg') }}" alt="" height="50px">
+                                        <h4 class="ml-4 text-primay font-weight-bold">Kalurahan Jogotirto</h4>
+                                    </a>
+
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="d-flex">
+                                        <i class="ti-location-pin mr-2 mt-2"></i>
+                                        <p>Karongan, Jogotirto, Berbah, Sleman, Daerah Istimewa Yogyakarta 55573</p>
                                     </div>
-                                    <div class="arrow">
-                                        <a href="#">
-                                            <span class="lnr text-white ti-arrow-right"></span>
-                                        </a>
-                                    </div>
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img class="img-fluid" src="https://i.pinimg.com/236x/6f/14/87/6f148777013fe8b204e8cf2e0a136550.jpg" width="75px" alt="">
-                                        </a>
+                                    <div class="d-flex">
+                                        <i class="ti-mobile mr-2 mt-1"></i>
+                                        <p>089514953073</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title">Recent Post</h3>
-                                <div class="media post_item">
-                                    <img src="https://i.pinimg.com/236x/39/da/a1/39daa1e32e7b559f39d9fbb112e57ea0.jpg" width="50px" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>From life was you fish...</h3>
-                                        </a>
-                                        <p>January 12, 2019</p>
-                                    </div>
+                        <div class="col-lg-3 col-md-4 col-sm-5">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Navigasi</h4>
+                                    <ul>
+                                        <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
+                                        <li><a href="#vision">Visi</a></li>
+                                        <li><a href="#mission">Misi</a></li>
+                                        <li><a href="#infoKalurahan">Info Kalurahan</a></li>
+                                        <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
+                                    </ul>
                                 </div>
-                                <div class="media post_item">
-                                    <img src="https://i.pinimg.com/236x/7f/a9/5c/7fa95c69072e88b7ddc6489c938845ef.jpg" width="50px" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>The Amazing Hubble</h3>
-                                        </a>
-                                        <p>02 Hours ago</p>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-8">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Unduh Aplikasi</h4>
+                                    <img src="{{ asset('assets/img/app_btn2.png') }}" alt="">
                                 </div>
-                                <div class="media post_item">
-                                    <img src="https://i.pinimg.com/236x/76/6c/fb/766cfb174b611221ae02ba9ceb412518.jpg" width="50px" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>Astronomy Or Astrology</h3>
-                                        </a>
-                                        <p>03 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="https://i.pinimg.com/236x/cf/8d/b0/cf8db04d1676fc25d2c3de21bc322476.jpg" width="50px" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>Asteroids telescope</h3>
-                                        </a>
-                                        <p>01 Hours ago</p>
-                                    </div>
-                                </div>
-                            </aside>
+                            </div>
                         </div>
                     </div>
+                    <!-- Copy-Right -->
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right">
+                                <p>
+                                    Copyright &copy; 2021 E-Silam Team
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+        <!-- Footer End-->
 
+    </footer>
     <!-- JS here -->
 
     <!-- All JS Custom Plugins Link Here here -->

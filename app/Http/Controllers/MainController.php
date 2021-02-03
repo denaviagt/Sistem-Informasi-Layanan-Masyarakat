@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Apparatus;
 use App\Models\Mission;
 use App\Models\NaturalResource;
 use App\Models\NaturalResourceImage;
@@ -16,7 +18,8 @@ class MainController extends Controller
     {
         $mission = Mission::all();
         $vision = Vision::all();
-        $villageInfos = VillageInfo::limit(6)->get();
+        $apparatus = Apparatus::all();
+        $villageInfos = VillageInfo::limit(6)->orderBy('date', 'desc')->where('status', 'published')->get();
         $naturalResources = NaturalResource::limit(6)->get();
         $naturalResourceImage = array();
         foreach ($naturalResources as $key => $value) {
@@ -26,6 +29,14 @@ class MainController extends Controller
         }
         // return $naturalResourceImage;
 
-        return view('main', compact(['villageInfos', 'naturalResources', 'naturalResourceDate', 'naturalResourceImage']));
+        return view('main', compact(['villageInfos', 'naturalResources', 'naturalResourceDate', 'naturalResourceImage', 'vision', 'mission', 'apparatus']));
+    }
+    public function villageInfoDetail($id)
+    {
+        $villageInfos = VillageInfo::limit(6)->orderBy('date', 'desc')->where('status', 'published')->get();
+        $villageInfo = VillageInfo::find($id);
+        $admin = Admin::find($villageInfo->admin_id);
+
+        return view('view-info', compact('villageInfo', 'admin', 'villageInfos'));
     }
 }

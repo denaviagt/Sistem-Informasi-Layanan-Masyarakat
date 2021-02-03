@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/main', 'MainController@index');
+Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('login', function () {
@@ -110,9 +111,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/maintenance', function () {
         return view('maintenance');
-    });
-    Route::get('/view-info', function () {
-        return view('view-info');
     });
 });
 
