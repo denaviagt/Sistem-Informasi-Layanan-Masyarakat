@@ -90,30 +90,48 @@
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-2">
+
                                 @foreach ($requirement as $key => $req)
                                     <div class="row m-3">
                                         <span class="col-4">{{ $req->terms }}</span>
                                         <span class="col-3 mr-2 detail-value" name="file-name"
-                                            id="file-name{{ $files[$key]['id'] ?? '' }}">{{ $files[$key]['file_url'] ?? '' }}</span>
-                                        <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
-                                            class="btn btn-primary mr-2 service-file-btn p-auto ">Lihat File</a>
-                                        @if ($files[$key]['status'] == 'verified')
-                                            <button type="button"
-                                                class="btn btn-success mr-2 btn-verif-file{{ $files[$key]['id'] }}"
-                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
-                                                onclick="statusUpdate(event.target)"
-                                                data-id="{{ $files[$key]['id'] ?? '' }}" disabled>Verifikasi</button>
-                                        @else
-                                            <button type="button"
-                                                class="btn btn-warning mr-2 btn-verif-file{{ $files[$key]['id'] }}"
-                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
-                                                onclick="statusUpdate(event.target)"
-                                                data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+                                            id="file-name{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">{{ isset($files[$key]) ? $files[$key]['file_url'] : ' ' }}</span>
+                                        @if (isset($files[$key]))
+                                            <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
+                                                class="btn btn-primary mr-2 service-file-btn p-auto align-self-center">Lihat
+                                                File</a>
 
+                                            @if ($files[$key]['status'] == 'verified')
+                                                <button type="button"
+                                                    class="btn btn-success mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                    id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    onclick="statusUpdate(event.target)"
+                                                    data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    disabled>Verifikasi</button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn btn-warning mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                    id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    onclick="statusUpdate(event.target)"
+                                                    data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">Verifikasi</button>
+                                            @endif
+
+                                            <button type="button" class="btn btn-danger align-self-center"
+                                                id="btn-berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                onclick="fileDenied(event.target)"
+                                                data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">Tolak</button>
+                                        @else
+                                            <button class="btn btn-primary mr-2 service-file-btn p-auto align-self-center"
+                                                disabled>Lihat
+                                                File</button>
+                                            <button type="button"
+                                                class="btn btn-success mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                disabled>Verifikasi</button>
+                                            <button type="button" class="btn btn-danger align-self-center"
+                                                id="btn-berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                onclick="fileDenied(event.target)" disabled>Tolak</button>
                                         @endif
-                                        <button type="button" class="btn btn-danger"
-                                            id="btn-berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileDenied(event.target)"
-                                            data-id="{{ $files[$key]['id'] ?? '' }}">Tolak</button>
                                     </div>
                                 @endforeach
                             </div>
@@ -123,9 +141,12 @@
                                         <div class="verification">
                                             <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
-                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
-                                                <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
-                                                    class="btn btn-primary" target="_blank" id="btnCetak">Cetak Dokumen</a>
+                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai ! <b></h1>
+                                                @if ($service->service_category_id != 2 && $service->service_category_id != 6)
+                                                    <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
+                                                        class="btn btn-primary" target="_blank" id="btnCetak">Cetak
+                                                        Dokumen</a>
+                                                @endif
                                             </div>
 
                                         </div>

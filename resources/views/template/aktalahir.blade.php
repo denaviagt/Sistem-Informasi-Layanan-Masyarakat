@@ -78,17 +78,17 @@
                 <tr>
                     <td style="width:200px">Nama Ayah Kandung</td>
                     <td>:</td>
-                    <td style="width: 400px">Nama Ayah</td>
+                    <td style="width: 400px">{{ $extra_fields[1]->value ?? '' }}</td>
                 </tr>
                 <tr>
                     <td style="width:200px">Nama Ibu Kandung</td>
                     <td>:</td>
-                    <td style="width: 400px">Nama Ibu</td>
+                    <td style="width: 400px">{{ $extra_fields[0]->value ?? '' }}</td>
                 </tr>
                 <tr>
                     <td style="width:200px">Anak ke</td>
                     <td>:</td>
-                    <td style="width: 400px">2</td>
+                    <td style="width: 400px">{{ $extra_fields[2]->value ?? '' }}</td>
                 </tr>
             </table>
             <p class="text-justify">Demikian surat keterangan pengantar akta kelahiran ini dikeluarkan untuk dapat

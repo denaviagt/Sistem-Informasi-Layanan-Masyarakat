@@ -90,32 +90,17 @@
                 <tr>
                     <td>Pindah ke</td>
                     <td>:</td>
-                </tr>
-                <tr>
-                    <td class="pl-4">Desa/ Kelurahan</td>
-                    <td>:</td>
-                </tr>
-                <tr>
-                    <td class="pl-4">Kecamatan</td>
-                    <td>:</td>
-                </tr>
-                <tr>
-                    <td class="pl-4">Kota/Kabupaten</td>
-                    <td>:</td>
-                </tr>
-                <tr>
-                    <td class="pl-4">Provinsi</td>
-                    <td>:</td>
+                    <td>{{ $extra_fields[0]->value ?? '' }}</td>
                 </tr>
                 <tr>
                     <td class="">Alasan Pindah</td>
                     <td>:</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>{{ $extra_fields[1]->value ?? '' }}</td>
                 </tr>
                 <tr>
                     <td class="">Pengikut</td>
                     <td>:</td>
-                    <td>1</td>
+                    <td>{{ $extra_fields[2]->value ?? '' }}</td>
                 </tr>
             </table>
 

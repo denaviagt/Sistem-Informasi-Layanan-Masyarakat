@@ -23,7 +23,7 @@ class CreateAdminsTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('token');
             $table->string('remember_token');
-            $table->enum('level', ['admin', 'superadmin', 'lurah']);
+            $table->enum('level', ['admin', 'superadmin']);
             $table->timestamps();
         });
     }

@@ -16,4 +16,8 @@ class ServiceCategory extends Model
     {
         return $this->hasMany(ServiceCategory::class);
     }
+    public function extraField()
+    {
+        return $this->hasMany(ExtraField::class);
+    }
 }

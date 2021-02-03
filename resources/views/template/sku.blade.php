@@ -82,22 +82,21 @@
                 ini:</p>
             <table class="table-isi">
                 <tr>
-                    <td style="width:200px">Nama Usaaha</td>
+                    <td style="width:200px">Jenis Usaaha</td>
                     <td>:</td>
-                    <td style="width: 400px">Nama Usaha</td>
-                </tr>
-                <tr>
-                    <td style="width:200px">Jenis Usaha</td>
-                    <td>:</td>
-                    <td style="width: 400px">Jenis Usaha</td>
+                    <td style="width: 400px">{{ $extra_fields[0]->value ?? '' }}</td>
                 </tr>
                 <tr>
                     <td style="width:200px">Alamat Usaha</td>
                     <td>:</td>
-                    <td style="width: 400px">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus in amet non
-                        quos quod ea, dolorum mollitia quas alias totam magnam? Accusamus tenetur cumque laudantium
-                        dolores, maxime architecto? Rerum, minima.</td>
+                    <td style="width: 400px">{{ $extra_fields[1]->value ?? '' }}</td>
                 </tr>
+                <tr>
+                    <td style="width:200px">Lama Usaha</td>
+                    <td>:</td>
+                    <td style="width: 400px">{{ $extra_fields[2]->value ?? '' }}</td>
+                </tr>
+
             </table>
             <p class="text-justify">Demikian surat keterangan usaha ini dikeluarkan untuk dapat
                 dipergunakan sebagaimana mestinya. Atas kerjasamanya diucapkan terimakasih</p>

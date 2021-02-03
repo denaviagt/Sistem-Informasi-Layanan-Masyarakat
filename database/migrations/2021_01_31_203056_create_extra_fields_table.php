@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateExtraFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('extra_fields', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->enum('status', ['accepted', 'processing', 'rejected', 'completed', 'sent']);
-            $table->string('description');
+            $table->string('field');
+            $table->foreignId('service_category_id')->constrained('service_categories');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('extra_fields');
     }
 }
