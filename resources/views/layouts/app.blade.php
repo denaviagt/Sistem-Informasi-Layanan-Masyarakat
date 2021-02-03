@@ -12,7 +12,7 @@ $user = auth()->user();
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo.jpg') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/main-logo.png') }}">
     <title>@yield('title') - e-SILAM</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">

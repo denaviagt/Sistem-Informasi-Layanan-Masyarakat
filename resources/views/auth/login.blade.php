@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo.jpg') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/main-logo.png') }}">
     <title>Login - e-SILAM</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
@@ -109,8 +109,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
     <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- apps -->
