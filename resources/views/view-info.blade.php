@@ -119,7 +119,7 @@
                                 </li>
                             </ul>
                             <p class="excert">
-                                {{ $villageInfo->content }}
+                                {!! $villageInfo->content !!}
                             </p>
                         </div>
                     </div>

@@ -67,7 +67,7 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li class="active"><a href="{{ url('/') }}"> Beranda</a></li>
+                                        {{-- <li class="active"><a href="{{ url('/') }}"> Beranda</a></li> --}}
                                         <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
                                         <li><a href="#vision">Visi</a></li>
                                         <li><a href="#mission">Misi</a></li>
