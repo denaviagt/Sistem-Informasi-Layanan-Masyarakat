@@ -175,7 +175,7 @@ class CitizenSeeder extends Seeder
                 'married_status' => $faker->randomElement(['Kawin', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati']),
                 'last_education' => $faker->randomElement(['Tidak/Belum Sekolah', 'Tidak Tamat SD/Sederajat', 'SD Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'Diploma I/II', 'Akademi/Diploma III/S.Muda', 'Diploma IV/Strata I', 'Strata II', 'Strata III']),
                 'blood_type' => $faker->randomElement(['A', 'B', 'O', 'AB']),
-                'profession' => $faker->jobTitle,
+                'profession' => $faker->randomElement(['Belum Bekerja', 'Mengurus rumah tangga', 'Pensiunan', 'Pegawai Negeri Sipil', 'TNI', 'Polisi', 'Petani', 'Karyawan Swasta', 'Buruh', 'Guru', 'Dosen', 'Pilot', 'Dokter', 'Wirausaha']),
                 'pob' => $faker->city,
                 'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'address' => $faker->address,
