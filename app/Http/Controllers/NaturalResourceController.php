@@ -55,7 +55,7 @@ class NaturalResourceController extends Controller
      */
     public function store(StoreNatureResourceRequest $request)
     {
-        return $request->all();
+        // return $request->all();
         $request->validated();
 
         $title = $request->title;

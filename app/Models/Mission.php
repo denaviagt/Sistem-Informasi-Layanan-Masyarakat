@@ -7,8 +7,4 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Mission extends Model
 {
-    use LogsActivity;
-    protected static $logName = 'Misi';
-    protected static $logAttributes = ['mission'];
-    protected static $logOnlyDirty = true;
 }

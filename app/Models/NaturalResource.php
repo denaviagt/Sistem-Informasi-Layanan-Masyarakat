@@ -7,11 +7,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class NaturalResource extends Model
 {
-    use LogsActivity;
+
     protected $fillable = [];
-    protected static $logName = 'Potensi Desa';
-    protected static $logAttributes = ['title', 'description', 'status'];
-    protected static $logOnlyDirty = true;
+
 
     public function images()
     {

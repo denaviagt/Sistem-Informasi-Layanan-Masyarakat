@@ -9,10 +9,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class ServiceFile extends Model
 {
     use SoftDeletes;
-    use LogsActivity;
-    protected static $logName = 'service_file';
-    protected static $logAttributes = ['file_url', 'service_id', 'status', 'service_requirement_id'];
-    protected static $logOnlyDirty = true;
 
     public function serviceRequirement()
     {

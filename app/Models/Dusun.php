@@ -11,10 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Dusun extends Model
 {
     // use SoftDeletes;
-    use LogsActivity;
-    protected static $logName = 'Dusun';
-    protected static $logAttributes = ['dusun_name', 'head_of_dusun'];
-    protected static $logOnlyDirty = true;
+
     public function citizen()
     {
         return $this->hasMany(Citizen::class);

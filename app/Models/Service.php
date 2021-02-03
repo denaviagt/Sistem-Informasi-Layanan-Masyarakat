@@ -9,14 +9,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Service extends Model
 {
     use SoftDeletes;
-    use LogsActivity;
-    protected static $logName = 'Layanan';
-    protected static $logAttributes = ['date', 'status', 'service_category_id', 'citizen_id'];
-    protected static $logOnlyDirty = true;
-    // public function getDescriptionForEvent(string $eventName): string
-    // {
-    //     return "This model has been {$eventName}";
-    // }
+
     /**
      * Override parent boot and Call deleting event
      *
