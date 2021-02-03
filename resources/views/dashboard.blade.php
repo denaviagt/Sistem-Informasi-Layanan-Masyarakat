@@ -40,7 +40,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Masuk</h6>
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Permohonan Masuk</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count">{{ $accepteds }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -49,7 +49,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Diproses</h6>
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Permohonan Diproses</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count">{{ $proccesses }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -58,7 +58,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Selesai</h6>
+                            <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Permohonan Selesai</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count ">{{ $completeds }}</h2>
                             <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -206,33 +206,33 @@
                 success: function(response) {
                     for (let index = 0; index < response.data.length; index++) {
                         $(".activity").append(`<div class="d-flex align-items-start border-left-line pb-3">
-                                                                    <div>
-                                                                        <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
-                                                                            ${
-                                                                                (() =>{
-                                                                                if (response.data[index].event == "create") {
-                                                                                    return ('<i class="fas fa-plus text-info"></i>');
-                                                                                } else if (response.data[index].event == 'update') {
-                                                                                    return('<i class="fas fa-edit text-warning"></i>');
-                                                                                } else if(response.data[index].event == 'delete') {
-                                                                                    return('<i class="fas fa-trash-alt text-danger"></i>');
-                                                                                } else if(response.data[index].event == 'mark') {
-                                                                                    return('<i class="fas fa-tag text-primary"></i>');
-                                                                                } else if(response.data[index].event == 'process') {
-                                                                                    return('<i class="fas fa-retweet text-primary"></i>');
-                                                                                } else if(response.data[index].event == 'reject') {
-                                                                                    return('<i class="fas fa-exclamation text-danger"></i>');
-                                                                                } else{return('<i class="fas fa-check text-success"></i>');
-                                                                                }
-                                                                            })()
-                                                                        }
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="ml-3 ">
-                                                                        <p class="font-14 mb-0 text-white log-title">${response.data[index].description}</p>
-                                                                        <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
-                                                                    </div>
-                                                                </div>`)
+                                                                        <div>
+                                                                            <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
+                                                                                ${
+                                                                                    (() =>{
+                                                                                    if (response.data[index].event == "create") {
+                                                                                        return ('<i class="fas fa-plus text-info"></i>');
+                                                                                    } else if (response.data[index].event == 'update') {
+                                                                                        return('<i class="fas fa-edit text-warning"></i>');
+                                                                                    } else if(response.data[index].event == 'delete') {
+                                                                                        return('<i class="fas fa-trash-alt text-danger"></i>');
+                                                                                    } else if(response.data[index].event == 'mark') {
+                                                                                        return('<i class="fas fa-tag text-primary"></i>');
+                                                                                    } else if(response.data[index].event == 'process') {
+                                                                                        return('<i class="fas fa-retweet text-primary"></i>');
+                                                                                    } else if(response.data[index].event == 'reject') {
+                                                                                        return('<i class="fas fa-exclamation text-danger"></i>');
+                                                                                    } else{return('<i class="fas fa-check text-success"></i>');
+                                                                                    }
+                                                                                })()
+                                                                            }
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="ml-3 ">
+                                                                            <p class="font-14 mb-0 text-white log-title">${response.data[index].description}</p>
+                                                                            <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
+                                                                        </div>
+                                                                    </div>`)
                     }
                 }
             });
