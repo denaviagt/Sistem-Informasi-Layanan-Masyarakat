@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ExtraValue;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFile;
@@ -32,5 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RegulationSeeder::class);
         $this->call(ServiceFileSeeder::class);
         $this->call(VillageInfoSeeder::class);
+        $this->call(ExtraFieldSeeder::class);
+        $this->call(ExtraValueSeeder::class);
     }
 }

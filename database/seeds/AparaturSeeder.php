@@ -33,7 +33,7 @@ class AparaturSeeder extends Seeder
             ],
             [
                 // 'name' => 'Vitra Ikayati, SP',
-                'position' => 'Kaur Tatalaksana',
+                'position' => 'Kepala Urusan Tata Laksana',
                 'period' => '2019/2022',
                 'status' => 'active',
                 'citizen_id' => 3,
@@ -42,7 +42,7 @@ class AparaturSeeder extends Seeder
             ],
             [
                 // 'name' => 'Dra. Rini Prabaharsi',
-                'position' => 'Kaur Danarta',
+                'position' => 'Kepala Urusan Danarta',
                 'period' => '2019/2022',
                 'status' => 'active',
                 'citizen_id' => 4,
@@ -51,7 +51,7 @@ class AparaturSeeder extends Seeder
             ],
             [
                 // 'name' => 'Nurkartika Rahmawati, S.Pd',
-                'position' => 'Kaur Pangripta',
+                'position' => 'Kepala Urusan Pangripta',
                 'period' => '2019/2022',
                 'status' => 'active',
                 'citizen_id' => 5,
@@ -60,7 +60,7 @@ class AparaturSeeder extends Seeder
             ],
             [
                 // 'name' => 'Ali Rozikin, S.Pd.I',
-                'position' => 'Jayabaya',
+                'position' => 'Jagabaya',
                 'period' => '2019/2022',
                 'status' => 'active',
                 'citizen_id' => 6,

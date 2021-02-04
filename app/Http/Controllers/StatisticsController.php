@@ -18,7 +18,7 @@ class StatisticsController extends Controller
         }
 
         for ($cat = 1; $cat < 9; $cat++) {
-            $result = DB::table('services')->where('service_category_id', $cat)->whereMonth('date', $month)->whereYear('date', Date('Y'))->get();
+            $result = DB::table('services')->whereNull('services.deleted_at')->where('service_category_id', $cat)->whereMonth('date', $month)->whereYear('date', Date('Y'))->get();
             $data[$cat - 1] = count($result) ?? 0;
         }
         return ([$data, $category]);
@@ -33,6 +33,7 @@ class StatisticsController extends Controller
         }
         foreach ($dusuns as $key => $value) {
             $result = DB::table('services')
+                ->whereNull('services.deleted_at')
                 ->join('citizens', 'services.citizen_id', 'citizens.id')
                 ->where('citizens.dusun_id', $key + 1)
                 ->whereMonth('date', $month)->whereYear('date', Date('Y'))

@@ -5,23 +5,37 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use LogActivity;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->level =  Auth::guard('web')->user()->level;
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            if (($this->level != 'superadmin')) {
+                return redirect('login')->send();
+            }
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $admins = Admin::all();
-        // return $admins;
 
-        return view('admin', compact('admins'));
+        return view('admin.index', compact('admins'));
     }
 
     /**
@@ -65,6 +79,7 @@ class AdminController extends Controller
         // if ($validate) {
         //     return response()->json(['errors' => $validate]);
         // }
+
         $admins = new Admin;
 
         $admins->full_name = $request->name;
@@ -78,7 +93,10 @@ class AdminController extends Controller
         $admins->remember_token = '';
         // $admins->password = Hash::make(Str::random(8));
 
-        $admins->save();
+        if ($admins->save()) {
+            addToLog($request, $this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
+            // addToLog($request, $this->nama_admin . ' membuat admin baru', 'create');
+        }
         return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
     }
 
@@ -144,6 +162,7 @@ class AdminController extends Controller
         }
 
         if ($admins->save()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data admin dengan username ' . $admins->username, 'update');
             return redirect('admin')->with('status', 'Ubah Data Admin Berhasil!');
         } else {
             return redirect('admin')->with('status', 'Ubah Data Admin Gagal!');
@@ -161,6 +180,7 @@ class AdminController extends Controller
 
         $admins = Admin::find($id);
         if ($admins->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data admin dengan username ' . $admins->username, 'delete');
             return response()->json([
                 'status' => true
             ]);

@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto"
                                             data-toggle="modal" data-target="#addVision">Tambah</button>
                                         <table id="visionTable" class="table table-striped table-bordered display "
                                             style="width:100%; table-layout: auto;">
@@ -97,7 +97,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto"
                                             data-toggle="modal" data-target="#addMission">Tambah</button>
                                         <table id="missionTable" class="table table-striped table-bordered display"
                                             style="width:100%">
@@ -138,8 +138,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
-                                            data-toggle="modal" data-target="#addApparatus">Tambah</button>
+                                        <button type="button" class="btn btn-primary d-flex ml-auto" data-toggle="modal"
+                                            data-target="#addApparatus" style="margin-bottom: -60px">Tambah</button>
                                         <table id="aparatusTable" class="table table-striped table-bordered display"
                                             style="width:100%">
                                             <thead>
@@ -191,8 +191,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
-                                            data-toggle="modal" data-target="#addDusuns">Tambah</button>
+                                        <button type="button" class="btn btn-primary d-flex ml-auto"
+                                            style="margin-bottom: -40px" data-toggle="modal"
+                                            data-target="#addDusuns">Tambah</button>
                                         <table id="dusunTable" class="table table-striped table-bordered display"
                                             style="width:100%">
                                             <thead>
@@ -202,7 +203,7 @@
                                                     <th>Kepala Dukuh</th>
                                                     {{-- <th>Status</th>
                                                     --}}
-                                                    <th style="width: 10px !important">Aksi</th>
+                                                    <th style="width: 20px !important">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -218,11 +219,12 @@
                                                                     data-id="{{ $item->id }}"
                                                                     onclick="modalEditDusun(event.target)"></i></button>
 
-                                                            <button type="button" class="btn btn-action text-danger"
-                                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                                    class="fas fa-trash" data-toggle="modal"
-                                                                    data-id="{{ $item->id }}"
+                                                            {{-- <button type="button"
+                                                                class="btn btn-action text-danger" data-toggle="tooltip"
+                                                                data-placement="top" title="Hapus"><i class="fas fa-trash"
+                                                                    data-toggle="modal" data-id="{{ $item->id }}"
                                                                     onclick="modalDeleteDusun(event.target)"></i></button>
+                                                            --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -237,7 +239,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto btn-rounded"
+                                        <button type="button" class="btn btn-primary mb-2 d-flex ml-auto"
                                             data-toggle="modal" data-target="#addRegulation">Tambah</button>
                                         <table id="regulationsTable" class="table table-striped table-bordered display"
                                             style="width:100%">
@@ -256,7 +258,7 @@
                                                         <td>{{ $item->title }}</td>
                                                         <td>{{ $item->file }}</td>
                                                         <td>
-                                                            <a href="{{ url('info-desa/' . $item->id) }}"
+                                                            <a href="{{ asset('uploads/regulationFile/' . $item->file) }}"
                                                                 class="btn btn-action text-primary regulation-file-view"
                                                                 data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                                     class="fas fa-eye"></i></a>
@@ -509,10 +511,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputStatus" class="col-sm-3 col-form-label">Jabatan</label>
+                            <label for="inputStatus" class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="status" id="inputStatus" required>
-                                    <option disabled selected>Pilih Jabatan</option>
+                                    <option disabled selected>Pilih Status</option>
                                     <option value="active">Aktif</option>
                                     <option value="inactive">Tidak Aktif</option>
                                 </select>
@@ -835,15 +837,54 @@
     <script src="{{ asset('dist/js/EZView.js') }}"></script>
     <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
-        $('#aparatusTable').DataTable();
-        $('#dusunTable').DataTable();
+        $('#aparatusTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excel',
+                    filename: 'Data Struktur Organisasi'
+                },
+                {
+                    extend: 'pdf',
+                    filename: 'Data Struktur Organisasi'
+                },
+                {
+                    extend: 'print',
+                    filename: 'Data Struktur Organisasi'
+                },
+
+            ],
+
+        });
+        $('#dusunTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excel',
+                    filename: 'Data Padukuhan'
+                },
+                {
+                    extend: 'pdf',
+                    filename: 'Data Padukuhan'
+                },
+                {
+                    extend: 'print',
+                    filename: 'Data Padukuhan'
+                },
+                // {
+                //     text: 'Tambah',
+                //     className: 'btn btn btn-primary ml-auto add-dusun'
+                // }
+
+            ],
+
+        });
         $('#visionTable').DataTable();
         $('#regulationsTable').DataTable();
         $('#missionTable').DataTable();
 
         $(document).ready(function() {
             $('.regulation-file-view').EZView();
-
+            $('.dt-buttons').addClass('d-flex mb-2')
+            $('.dt-button').addClass('m-1')
         });
         $('.js-example-basic-single').select2({
             theme: "bootstrap",

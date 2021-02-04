@@ -11,6 +11,7 @@
         <div class="container-fluid">
             <!-- ============================================================== -->
             <div class="card">
+                <input type="hidden" name="service-status" id="service-status" value="{{ $service->status }}">
                 <div class="card-body">
                     <div id="smartwizard">
 
@@ -89,30 +90,48 @@
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane berkas-layanan" role="tabpanel" aria-labelledby="step-2">
+
                                 @foreach ($requirement as $key => $req)
                                     <div class="row m-3">
                                         <span class="col-4">{{ $req->terms }}</span>
                                         <span class="col-3 mr-2 detail-value" name="file-name"
-                                            id="file-name{{ $files[$key]['id'] ?? '' }}">{{ $files[$key]['file_url'] ?? '' }}</span>
-                                        <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
-                                            class="btn btn-primary mr-2 service-file-btn p-auto ">Lihat File</a>
-                                        @if ($files[$key]['status'] == 'verified')
-                                            <button type="button"
-                                                class="btn btn-success mr-2 btn-verif-file{{ $files[$key]['id'] }}"
-                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
-                                                onclick="statusUpdate(event.target)"
-                                                data-id="{{ $files[$key]['id'] ?? '' }}" disabled>Verifikasi</button>
-                                        @else
-                                            <button type="button"
-                                                class="btn btn-warning mr-2 btn-verif-file{{ $files[$key]['id'] }}"
-                                                id="berkas{{ $files[$key]['id'] ?? '' }}"
-                                                onclick="statusUpdate(event.target)"
-                                                data-id="{{ $files[$key]['id'] ?? '' }}">Verifikasi</button>
+                                            id="file-name{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">{{ isset($files[$key]) ? $files[$key]['file_url'] : ' ' }}</span>
+                                        @if (isset($files[$key]))
+                                            <a href="{{ asset('assets/serviceFile/' . $files[$key]['file_url']) }}"
+                                                class="btn btn-primary mr-2 service-file-btn p-auto align-self-center">Lihat
+                                                File</a>
 
+                                            @if ($files[$key]['status'] == 'verified')
+                                                <button type="button"
+                                                    class="btn btn-success mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                    id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    onclick="statusUpdate(event.target)"
+                                                    data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    disabled>Verifikasi</button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn btn-warning mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                    id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                    onclick="statusUpdate(event.target)"
+                                                    data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">Verifikasi</button>
+                                            @endif
+
+                                            <button type="button" class="btn btn-danger align-self-center"
+                                                id="btn-berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                onclick="fileDenied(event.target)"
+                                                data-id="{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}">Tolak</button>
+                                        @else
+                                            <button class="btn btn-primary mr-2 service-file-btn p-auto align-self-center"
+                                                disabled>Lihat
+                                                File</button>
+                                            <button type="button"
+                                                class="btn btn-success mr-2 btn-verif-file{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }} align-self-center"
+                                                id="berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                disabled>Verifikasi</button>
+                                            <button type="button" class="btn btn-danger align-self-center"
+                                                id="btn-berkas{{ isset($files[$key]) ? $files[$key]['id'] : ' ' }}"
+                                                onclick="fileDenied(event.target)" disabled>Tolak</button>
                                         @endif
-                                        <button type="button" class="btn btn-danger"
-                                            id="btn-berkas{{ $files[$key]['id'] ?? '' }}" onclick="fileDenied(event.target)"
-                                            data-id="{{ $files[$key]['id'] ?? '' }}">Tolak</button>
                                     </div>
                                 @endforeach
                             </div>
@@ -122,9 +141,12 @@
                                         <div class="verification">
                                             <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             <div class="verification_content">
-                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai !<b></h1>
-                                                <a class="btn btn-primary" href="#">Cetak
-                                                    Dokumen</a>
+                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai ! <b></h1>
+                                                @if ($service->service_category_id != 2 && $service->service_category_id != 6)
+                                                    <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
+                                                        class="btn btn-primary" target="_blank" id="btnCetak">Cetak
+                                                        Dokumen</a>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -142,6 +164,7 @@
     <script src="{{ asset('dist/js/EZView.js') }}"></script>
     <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
+        var service_status = $('#service-status').val();
         $(document).ready(function() {
             $('#sidebarService').addClass('selected');
             $('#sidebarService .sidebar-link').addClass('active');
@@ -181,6 +204,10 @@
                     ]
                 },
             });
+            if (service_status == 'completed') {
+                $('#wizard-btn-verified').prop('disabled', true)
+                $('#wizard-btn-verified').css('cursor', 'not-allowed')
+            }
             var ajaxInvoke = false;
             $('#smartwizard').on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex,
                 stepDirection) {
@@ -205,33 +232,33 @@
                     return true
                 }
                 // console.log(currentStepIndex);
-                if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
-                    // console.log(stepDirection);
-                    $('#smartwizard').smartWizard("loader", "show");
-                    let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
-                    ajaxInvoke = true;
-                    $.ajax({
-                        url: _url,
-                        type: "GET",
+                // if (stepDirection === 'forward' && currentStepIndex === 1 && ajaxInvoke == false) {
+                //     // console.log(stepDirection);
+                //     $('#smartwizard').smartWizard("loader", "show");
+                //     let _url = `/service-file/${id_service}/verifFiles/${id_category}`;
+                //     ajaxInvoke = true;
+                //     $.ajax({
+                //         url: _url,
+                //         type: "GET",
 
-                    }).then(function(response) {
-                        $('#smartwizard').smartWizard("loader", "hide");
-                        if (response) {
-                            // console.log(response);
-                            if (response.status) {
-                                $('#smartwizard').smartWizard("next");
-                                ajaxInvoke = false;
-                            } else {
-                                alert('Data Gagal Verif')
-                                $('#smartwizard').smartWizard("prev");
-                                // statusAjax = false;
-                                ajaxInvoke = false;
-                            }
-                        }
+                //     }).then(function(response) {
+                //         $('#smartwizard').smartWizard("loader", "hide");
+                //         if (response) {
+                //             // console.log(response);
+                //             if (response.status) {
+                //                 $('#smartwizard').smartWizard("next");
+                //                 ajaxInvoke = false;
+                //             } else {
+                //                 alert('Data Gagal Verif')
+                //                 $('#smartwizard').smartWizard("prev");
+                //                 // statusAjax = false;
+                //                 ajaxInvoke = false;
+                //             }
+                //         }
 
-                        return false;
-                    });
-                }
+                //         return false;
+                //     });
+                // }
             });
 
             var stepIndex = $('#smartwizard').smartWizard("getStepIndex");
@@ -268,6 +295,7 @@
 
             $('#wizard-btn-verified').on('click', function() {
                 var service_id = $('#service_id').val();
+                var category_id = $('#service_category_id').val();
                 // console.log(service_id);
                 let _url = `/service/${service_id}/verified`;
                 $.ajax({
@@ -276,8 +304,15 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function() {
-                        alert('Layanan terverifikasi');
+                    success: function(response) {
+                        if (response) {
+                            if (response.status == true) {
+                                alert('Layanan Terverifikasi');
+                                location.replace('/service?category=' + category_id);
+                            } else {
+                                alert('Gagal Verifikasi Layanan');
+                            }
+                        }
 
                     }
                 })
@@ -344,6 +379,40 @@
                 return false;
             }
         }
+
+        $('#btnCetak').on('click', function() {
+            if (service_status != 'completed') {
+                var service_id = $('#service_id').val();
+                var category_id = $('#service_category_id').val();
+                // console.log(service_id);
+                let _url = `/service/${service_id}/verified`;
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+            }
+        });
+
+        // function cetakSurat() {
+        //     var id_service = $('#service_id').val();
+        //     var id_category = $('#service_category_id').val();
+        //     let _url = `/service/${id_category}/surat/${id_service}`;
+        //     // console.log(id_service, id_category);
+        //     $.ajax({
+        //         url: _url,
+        //         type: "POST",
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function() {
+        //             console.log('berhasil');
+        //         }
+        //     });
+
+        // }
 
     </script>
 @endsection

@@ -16,6 +16,7 @@ class AlterServicesAddForeignKey extends Migration
         Schema::table('services', function (Blueprint $table) {
             $table->foreignId('service_category_id')->constrained('service_categories')->onDelete('NO ACTION');
             $table->foreignId('citizen_id')->constrained('citizens')->onDelete('NO ACTION');
+            $table->foreignId('user_id')->constrained('users')->onDelete('NO ACTION');
         });
     }
 
@@ -27,7 +28,7 @@ class AlterServicesAddForeignKey extends Migration
     public function down()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->dropForeign(['service_category_id', 'citizen_id']);
+            $table->dropForeign(['service_category_id', 'citizen_id', 'user_id']);
         });
     }
 }

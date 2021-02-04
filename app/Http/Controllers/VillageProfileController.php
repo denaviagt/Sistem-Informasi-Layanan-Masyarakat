@@ -9,11 +9,21 @@ use App\Models\Mission;
 use App\Models\Regulation;
 use App\Models\Vision;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 // use App\Models\Regulation;
 
 class VillageProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     public function index()
     {
         $visions = Vision::all();
@@ -29,14 +39,17 @@ class VillageProfileController extends Controller
     {
         //  return $request; die;
         if ($request->type == 'vision') {
+            $type = 'visi';
             $villageProfile = new Vision();
             $villageProfile->vision = $request->visionAdd;
             $villageProfile->village_id = 1;
         } else if ($request->type == 'mission') {
+            $type = 'misi';
             $villageProfile = new Mission();
             $villageProfile->mission = $request->missionAdd;
             $villageProfile->village_id = 1;
         } else if ($request->type == 'apparatus') {
+            $type = 'struktur organisasi';
             $villageProfile = new Apparatus();
             $villageProfile->position = $request->position;
             $villageProfile->period = $request->period;
@@ -44,10 +57,12 @@ class VillageProfileController extends Controller
             $villageProfile->citizen_id = $request->citizen_id;
             $villageProfile->admin_id = $request->admin_id;
         } else if ($request->type == 'dusuns') {
+            $type = 'dusun';
             $villageProfile = new Dusun();
             $villageProfile->dusun_name = $request->dusun_name;
             $villageProfile->head_of_dusun = $request->head_of_dusun;
         } else if ($request->type == 'regulations') {
+            $type = 'produk hukum';
             $request->validate([
                 'file' => 'required|mimes:pdf|max:2048',
             ]);
@@ -58,9 +73,10 @@ class VillageProfileController extends Controller
             $villageProfile->file = $fileName;
         }
         if ($villageProfile->save()) {
-            return redirect('profil-kalurahan')->with('status-success', 'Tambah Data Layanan ' . $request->type . '  Berhasil!');
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data ' . $type, 'create');
+            return redirect('profil-kalurahan')->with('status-success', 'Tambah Data ' . $type . '  Berhasil!');
         } else {
-            return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data Layanan ' . $request->type . '  Gagal!');
+            return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data ' . $type . '  Gagal!');
         }
     }
     public function edit($id, $type)
@@ -87,21 +103,25 @@ class VillageProfileController extends Controller
         if ($request->type == 'vision') {
             $villageProfile = Vision::find($request->visionId);
             $villageProfile->vision = $request->visionEdit;
-            $type = 'Visi';
+            $type = 'visi';
         } else if ($request->type == 'mission') {
             $villageProfile = Mission::find($request->missionId);
             $villageProfile->mission = $request->missionEdit;
+            $type = 'misi';
         } else if ($request->type == 'apparatus') {
             $villageProfile = Apparatus::find($request->apparatusId);
             $villageProfile->position = $request->position;
             $villageProfile->period = $request->period;
             $villageProfile->status = $request->status;
             $villageProfile->citizen_id = $request->citizen_id;
+            $type = 'struktur organisasi';
         } else if ($request->type == 'dusuns') {
             $villageProfile = Dusun::find($request->dusunId);
             $villageProfile->dusun_name = $request->dusun_name;
             $villageProfile->head_of_dusun = $request->head_of_dusun;
+            $type = 'dusun';
         } else if ($request->type == 'regulations') {
+            $type = 'produk hukum';
             // return ('berhasil');
             $request->validate([
                 'file' => 'required|mimes:pdf|max:2048',
@@ -113,7 +133,8 @@ class VillageProfileController extends Controller
             $villageProfile->file = $fileName;
         }
         if ($villageProfile->save()) {
-            return redirect('profil-kalurahan')->with('status-success', 'Tambah Data Layanan ' . $type . '  Berhasil!');
+            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data ' . $type . ' dengan id ' . $villageProfile->id, 'update');
+            return redirect('profil-kalurahan')->with('status-success', 'Edit Data ' . $type . 'Berhasil!');
         } else {
             return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data Layanan ' . $type . '  Gagal!');
         }
@@ -123,16 +144,22 @@ class VillageProfileController extends Controller
         //  return $request; die;
         if ($type == 'vision') {
             $villageProfile = Vision::find($id);
+            $type = 'visi';
         } else if ($type == 'mission') {
             $villageProfile = Mission::find($id);
+            $type = 'misi';
         } else if ($type == 'apparatus') {
             $villageProfile = Apparatus::find($id);
+            $type = 'struktur organisasi';
         } else if ($type == 'dusuns') {
             $villageProfile = Dusun::find($id);
+            $type = 'dusun';
         } else if ($type == 'regulations') {
             $villageProfile = Regulation::find($id);
+            $type = 'produk hukum';
         }
         if ($villageProfile->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data ' . $type . ' dengan id ' . $villageProfile->id, 'delete');
             return response()->json([
                 'status' => true
             ]);

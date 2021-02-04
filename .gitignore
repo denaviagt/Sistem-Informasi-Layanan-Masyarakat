@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/assets/serviceFile/*
+/public/uploads/*
 /storage/*.key
 /vendor
 /.idea
@@ -16,9 +17,9 @@ package-lock.json
 package.json
 /public/mix-manifest.json
 /public/js/app.js
-/.idea/
 /storage/logs
 /
+
 
 # No for this files
 

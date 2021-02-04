@@ -41,9 +41,10 @@
                     <div class="tab-content">
                         <div class="tab-pane show active" id="alur">
                             <div class="table-responsive">
-                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
-                                    data-toggle="modal" data-target="#add-alur">Tambah</button>
-                                <table id="syarat-table" class="table table-striped table-bordered">
+                                <button type="button" class="btn d-flex ml-auto btn-primary" data-toggle="modal"
+                                    data-target="#add-alur" style="margin-bottom: -35px"><i
+                                        class="fas fa-plus mt-1 mr-1"></i>Tambah</button>
+                                <table id="alur-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -79,9 +80,10 @@
                         <div class="tab-pane show" id="syarat">
                             <div class="table-responsive">
 
-                                <button type="button" class="btn mb-2 d-flex ml-auto btn-rounded btn-primary"
-                                    data-toggle="modal" data-target="#add-syarat">Tambah</button>
-                                <table id="alur-table" class="table table-striped table-bordered no-wrap">
+                                <button type="button" class="btn d-flex ml-auto btn-primary" data-toggle="modal"
+                                    data-target="#add-syarat" style="margin-bottom: -35px"><i
+                                        class="fas fa-plus mt-1 mr-1"></i>Tambah</button>
+                                <table id="syarat-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -242,9 +244,9 @@
                 <div class="modal-body m-2">
                     <form action="{{ url('/info-layanan/') }}" method="POST">
                         @csrf
-                        <input type="text" hidden class="form-control" name="type" value="terms" id="input-alur-layanan">
+                        <input type="text" hidden class="form-control" name="type" value="terms" id="input-syarat-type">
                         <input type="text" hidden class="form-control" name="category" value="{{ request()->category }}"
-                            id="input-alur-layanan">
+                            id="input-syarat-layanan">
                         <div class="form-group row">
                             <label for="input-syarat-layanan" class="col-sm-3 col-form-label">Syarat</label>
                             <div class="col-sm-9">
@@ -337,39 +339,78 @@
 @endsection
 @section('script')
     <script>
-        $('#syarat-table').DataTable({
+        function fileName() {
+            var category = @json($category);
+            var id_category = $('#categoryService').val();
+            // console.log(id_category);
+            for (let index = 0; index < category.length; index++) {
+                var category_name = category[id_category - 1].category;
+            }
+            return category_name;
+        }
+        var syarat_table = $('#syarat-table').DataTable({
             dom: 'Bfrtip',
             buttons: [{
-                    extend: 'copyHtml5',
-                    className: 'btn-success'
-                },
-                {
                     extend: 'excelHtml5',
-                    className: 'btn-success'
+                    text: '<i class="fas fa-file-excel"></i> Excel',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
                 },
                 {
-                    extend: 'csvHtml5',
-                    className: 'btn-success'
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> Print',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
                 },
                 {
                     extend: 'pdfHtml5',
-                    className: 'btn-success'
+                    text: '<i class="fas fa-file-pdf"></i> PDF',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
                 }
             ]
         });
-        $('#alur-table').DataTable();
+        $('#alur-table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> Excel',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> Print',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> PDF',
+                    filename: function() {
+                        return 'Syarat' + fileName();
+                    },
+                }
+            ]
+        });
         $('.title').hide();
         var dl =
-            ` <form method="GET" action="{{ url('/info-layanan/') }}">                                                                                                                              <div class="form-group pl-0">
-                                <select name="category" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
-                                    @foreach ($category as $item)
-                                                                                                                                                                                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
-                                                                                                                                                                                                    {{ $item->category }}
-                                                                                                                                                                                                </option>
-                                                                                                                                                                                            @endforeach
-                                                                                                                                                                                        </select>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </form>`
+            ` <form method="GET" action="{{ url('/info-layanan/') }}">                                                                                                                              
+                <div class="form-group pl-0">
+                    <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'id="inlineFormCustomSelect">
+                        @foreach ($category as $item)
+                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
+                                    {{ $item->category }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>`
         $('.header-title').append(dl);
 
         function editAlurModal(event) {
@@ -435,7 +476,11 @@
                         if (response.status) {
                             // location.reload();
                             $("#row_procedure_" + id).remove();
+
                             $('#delete-alur').modal('hide');
+                            syarat_table.remove();
+                            syarat_table.draw();
+
                         } else {
                             alert("Gagal hapus data")
                         }
@@ -468,6 +513,7 @@
                             // location.reload();
                             $("#row_terms_" + id).remove();
                             $('#delete-syarat').modal('hide');
+                            $('#alur-table').reload();
                         } else {
                             alert("Gagal hapus data")
                         }

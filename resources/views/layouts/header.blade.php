@@ -15,7 +15,7 @@
                  <a href="{{ url('/') }}">
                      <b class="logo-icon">
                          <!-- Dark Logo icon -->
-                         <img src="{{ asset('assets/img/logo.jpg') }}" alt="homepage" class="dark-logo" width="30px" />
+                         <img src="{{ asset('assets/img/main-logo.png') }}" alt="homepage" class="dark-logo" width="30px" />
                      </b>
                      <!--End Logo icon -->
                      <!-- Logo text -->
@@ -60,7 +60,7 @@
                      </a>
                      <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
 
-                         <a class="dropdown-item" href="#" data-toggle="modal">
+                         <a class="dropdown-item" href="{{ url('maintenance') }}">
                              Lihat Profil</a>
                          <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal">
                              Edit Password</a>

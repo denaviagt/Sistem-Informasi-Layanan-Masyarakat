@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo.jpg') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/main-logo.png') }}">
     <title>Login - e-SILAM</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
@@ -24,20 +24,24 @@
 
     {{-- Datatable --}}
     <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <div class="main-wrapper bg-white">
+    <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
+
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative">
             <div class="row" style="max-width: 600px">
                 <div class="col-12 text-center text-dark">
                     <h1><b>E-SILAM</b></h1>
                     <p><b>Sistem Informasi Layanan Masyarakat Jogotirto</b></p>
                 </div>
-                <div class="col-lg-12 col-md-12 login-box">
+                <div class="col-lg-12 col-md-12 login-box shadow">
                     <div class="p-5">
                         <h2 class="mt-3 text-center text-dark font-weight-bold">{{ __('Login') }}</h2>
                         <form class="mt-4" method="POST" action="{{ route('login') }}">
@@ -65,16 +69,10 @@
                                                 name="password" id="password" type="password"
                                                 placeholder="Masukkan password" autocomplete="current-password">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-secondary" type="button" id="showPassword"><i
+                                                <button class="btn btn-primary" type="button" id="showPassword"><i
                                                         class="fas fa-eye"></i></button>
                                             </span>
                                         </div>
-                                        {{-- <input
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            id="password" type="password" placeholder="Masukkan password"
-                                            autocomplete="current-password">
-                                        <input class="form-check" type="checkbox" name="showPassword" id="showPassword">
-                                        --}}
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -95,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn btn-block btn-dark">Masuk</button>
+                                    <button type="submit" class="btn btn-block btn-primary">Masuk</button>
                                 </div>
                             </div>
                         </form>
@@ -111,8 +109,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
     <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- apps -->
@@ -127,13 +124,13 @@
                     $password.attr('type', 'text')
                     $('#showPassword .fas').removeClass('fa-eye');
                     $('#showPassword .fas').addClass('fa-eye-slash');
-                    $('#showPassword').removeClass('btn-secondary');
+                    $('#showPassword').removeClass('btn-primary');
                     $('#showPassword').addClass('btn-success');
                 } else {
                     $password.attr('type', 'password')
                     $('#showPassword .fas').removeClass('fa-eye-slash');
                     $('#showPassword .fas').addClass('fa-eye');
-                    $('#showPassword').addClass('btn-secondary');
+                    $('#showPassword').addClass('btn-primary');
                     $('#showPassword').removeClass('btn-success');
                 }
             })

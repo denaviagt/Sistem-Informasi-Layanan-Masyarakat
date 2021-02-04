@@ -28,6 +28,7 @@ class CreateCitizensTable extends Migration
             $table->date('dob')->nullable(false);
             $table->string('address')->nullable(false);
             $table->enum('status', ['unverified', 'verified', 'denied'])->default('unverified');
+            $table->boolean('is_deleted')->nullable();
             $table->timestamps();
         });
     }

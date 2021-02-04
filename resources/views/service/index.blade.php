@@ -12,6 +12,14 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
+                    <div class="status-response">
+
+                    </div>
+                    {{-- @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif --}}
                     <div class="card">
                         <div class="card-body">
                             {{-- <div class="text-right mb-3">
@@ -217,26 +225,54 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-        $('.service-table').DataTable();
+        function fileName() {
+            var category = @json($category);
+            var id_category = $('#categoryService').val();
+            for (let index = 0; index < category.length; index++) {
+                var category_name = category[id_category - 1].category;
+            }
+            return category_name;
+        }
+        $('.service-table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excel',
+                    filename: function() {
+                        return fileName();
+                    },
+                },
+                {
+                    extend: 'pdf',
+                    filename: function() {
+                        return fileName();
+                    },
+                },
+                {
+                    extend: 'print',
+                    filename: function() {
+                        return fileName();
+                    },
+                }
+            ],
+        });
         $(document).ready(function() {
             $('#sidebarService').addClass('selected');
             $('#sidebarService .sidebar-link').addClass('active');
             $('.title').hide();
             var dl =
                 ` <form method="GET" action="{{ url('/service/') }}">
-                                                        <div class="form-group pl-0 d-flex">
-                                                            <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
-                                                                id="inlineFormCustomSelect">
-                                                                @foreach ($category as $item)
-                                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
-                                                                        {{ $item->category }}
-                                                                        <i class="fas fa-chevron-down"></i>
-                                                                    </option>
-                                                                @endforeach
-
-                                                                </select>
-                                                        </div>
-                                                    </form>`
+                                        <div class="form-group pl-0 d-flex">
+                                            <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
+                                                id="inlineFormCustomSelect">
+                                                @foreach ($category as $item)
+                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
+                                                        {{ $item->category }}
+                                                        <i class="fas fa-chevron-down"></i>
+                                                    </option>
+                                                @endforeach
+                                                </select>
+                                        </div>
+                                    </form>`
             $('.header-title').append(dl);
             $('.js-example-basic-single').select2({
                 theme: "bootstrap",
@@ -263,8 +299,6 @@
                         });
                         params.page = params.page || 1;
 
-                        // console.log(data);
-                        // Transforms the top-level key of the response object from 'items' to 'results'
                         return {
                             results: items,
                             pagination: {
@@ -277,13 +311,11 @@
             $('#inputNik').on('change', function(e) {
                 var id = $('#inputNik').val();
                 let _url = `/citizen/${id}`;
-                // console.log(id);
                 $.ajax({
                     url: _url,
                     type: "GET",
                     success: function(response) {
                         if (response) {
-                            // console.log(response);
                             $('#inputName').val(response.data['full_name'])
                             $('#inputAddress').val(response.data['address'])
                         }
@@ -352,8 +384,18 @@
                     _token: _token
                 },
                 success: function(response) {
-                    $("#row_" + id).remove();
-                    $('#deleteService').modal('hide');
+                    if (response.success) {
+                        $('#deleteService').modal('hide');
+                        $("#row_" + id).remove();
+                        $('.status-response').append(
+                            '<div class="alert alert-success">Layanan Berhasil Terhapus</div>')
+                        setTimeout(function() {
+                            location.reload()
+                        }, 1000);
+                    } else {
+                        $('.status-response').append(
+                            '<div class="alert alert-danger">Layanan Gagal Terhapus</div>')
+                    }
 
                 }
             });

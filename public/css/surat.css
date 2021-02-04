@@ -1,0 +1,46 @@
+.table-kop {
+    width: 100%;
+    border-bottom: 3px double black
+}
+
+.logo {
+    width: 200px;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.kop {
+    line-height: 20px
+}
+
+.kop h6 {
+    margin: 0;
+}
+
+.kop img {
+    margin: 2px;
+    height: 40px;
+}
+
+.kop p {
+    font-size: 12px;
+}
+
+#halaman {
+    width: auto;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+}
+
+.table-isi {
+    width: 100%;
+    margin-left: 30px;
+}
+
+.table-isi td {
+    vertical-align: top;
+}

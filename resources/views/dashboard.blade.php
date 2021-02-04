@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')
+    <style>
+        .log-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+
+    </style>
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper" id="page-wrapper">
@@ -30,7 +40,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Masuk</h6>
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Permohonan Masuk</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count">{{ $accepteds }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -39,7 +49,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Diproses</h6>
+                            <h6 class="font-weight-normal mb-2 w-100 text-truncate">Permohonan Diproses</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count">{{ $proccesses }}</h2>
                             <h6 class="font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -48,7 +58,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="align-items-center text-center">
-                            <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Jumlah Permohonan Selesai</h6>
+                            <h6 class=" font-weight-normal mb-2 w-100 text-truncate">Permohonan Selesai</h6>
                             <h2 class="text-dark mb-1 font-weight-medium count ">{{ $completeds }}</h2>
                             <h6 class=" font-weight-normal mb-0 w-100 text-truncate">Permohonan</h6>
                         </div>
@@ -73,7 +83,7 @@
                     <div class="card shadow" style="background-color: #E9EDF1; border-radius: 20px;">
                         <div class="card-body">
                             <div class="d-flex align-items-start">
-                                <h4 class="card-title mb-0">Statistik Penduduk Kalurahan</h4>
+                                <h4 class="card-title mb-0">Statistik Layanan dan Aduan Kalurahan Jogotirto</h4>
                             </div>
                             <div class="pl-4">
                                 <div class="position-relative" style="height: 315px;">
@@ -84,51 +94,10 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card" style="background-color: #E9EDF1; border-radius: 20px;">
+                    <div class="card" style="background-color: #58A5F0; border-radius: 20px; ">
                         <div class="card-body">
-                            <h4 class="card-title">Aktivitas Terbaru</h4>
+                            <h4 class="card-title" style="color: white">Aktivitas Terbaru</h4>
                             <div class="mt-4 activity">
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Proses Layanan</h5>
-                                        <p class="font-14 mb-2 text-muted">John Musa memproses layanan dengan ID
-                                            21.
-                                        </p>
-                                        <span class="font-weight-light font-14 text-muted">10 Menit yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Layanan Selesai</h5>
-                                        <p class="font-14 mb-2 text-muted">Richardson telah menyelesaikan layanan dengan id
-                                            20
-                                        </p>
-                                        <span class="font-weight-light font-14 text-muted">25 Menit yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start border-left-line">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Proses Layanan
-                                        </h5>
-                                        <p class="font-14 mb-2 text-muted">Ryne Doe memproses layanan dengan ID 20</p>
-                                        <span class="font-weight-light font-14 mb-1 d-block text-muted">2 jam yang
-                                            lalu</span>
-                                        <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Lihat
-                                            Selanjutnya</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,6 +120,9 @@
 @section('script')
 
     <script>
+        $(document).ready(function() {
+            getLog();
+        })
         $('.count').each(function() {
             $(this).prop('Counter', 0).animate({
                 Counter: $(this).text()
@@ -224,6 +196,45 @@
                     }
                 }
 
+            });
+        }
+
+        function getLog() {
+            $.ajax({
+                url: 'logactivity',
+                type: "GET",
+                success: function(response) {
+                    for (let index = 0; index < response.data.length; index++) {
+                        $(".activity").append(`<div class="d-flex align-items-start border-left-line pb-3">
+                                                                        <div>
+                                                                            <a href="javascript:void(0)" class="activity-icon btn btn-light btn-circle mb-2 btn-item">
+                                                                                ${
+                                                                                    (() =>{
+                                                                                    if (response.data[index].event == "create") {
+                                                                                        return ('<i class="fas fa-plus text-info"></i>');
+                                                                                    } else if (response.data[index].event == 'update') {
+                                                                                        return('<i class="fas fa-edit text-warning"></i>');
+                                                                                    } else if(response.data[index].event == 'delete') {
+                                                                                        return('<i class="fas fa-trash-alt text-danger"></i>');
+                                                                                    } else if(response.data[index].event == 'mark') {
+                                                                                        return('<i class="fas fa-tag text-primary"></i>');
+                                                                                    } else if(response.data[index].event == 'process') {
+                                                                                        return('<i class="fas fa-retweet text-primary"></i>');
+                                                                                    } else if(response.data[index].event == 'reject') {
+                                                                                        return('<i class="fas fa-exclamation text-danger"></i>');
+                                                                                    } else{return('<i class="fas fa-check text-success"></i>');
+                                                                                    }
+                                                                                })()
+                                                                            }
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="ml-3 ">
+                                                                            <p class="font-14 mb-0 text-white log-title">${response.data[index].description}</p>
+                                                                            <span class="font-weight-light font-12 text-white">${response.data[index].time}</span>                                                       
+                                                                        </div>
+                                                                    </div>`)
+                    }
+                }
             });
         }
 

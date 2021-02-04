@@ -3,16 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Citizen;
+use App\Models\ExtraValue;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFile;
 use App\Models\ServiceRequirement;
+use App\Models\Village;
+// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Datatables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->nama_admin = Auth::guard('web')->user()->full_name;
+            $this->url = $request->fullUrl();
+            $this->ip = $request->ip();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +39,6 @@ class ServiceController extends Controller
         $services = DB::table('citizens')
             ->join('services', 'citizens.id', 'services.citizen_id')
             ->join('dusuns', 'dusuns.id', 'citizens.dusun_id')
-            // ->join('service_categories', 'service_categories.id', 'services.service_category_id')
             ->select(
                 'services.id',
                 'services.date as date',
@@ -37,6 +50,8 @@ class ServiceController extends Controller
                 // 'service_categories.category as service_category',
             )
             ->where('service_category_id', $request->category ?? 1)
+            ->whereNull('services.deleted_at')
+            ->orderBy('services.id', 'desc')
             ->get();
         // return $services;
         return view('service/index', compact(['services', 'category']));
@@ -121,6 +136,7 @@ class ServiceController extends Controller
             ->where('services.id', $id)
             ->first();
         $files = ServiceFile::where('service_id', $id)->get();
+        // return ([$files, $requirement, $service]);
         return view('service/detail-layanan', compact(['requirement', 'service', 'files']));
     }
 
@@ -151,14 +167,29 @@ class ServiceController extends Controller
     public function statusUpdate($id)
     {
         $service = Service::find($id);
-        $service->status = 'processing';
-        $service->save();
+        if ($service->status == 'accepted' || $service->status == 'rejected') {
+            $service->status = 'processing';
+            if ($service->save()) {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' memproses layanan dengan ID ' . $service->id, 'process');
+            }
+        }
     }
     public function serviceVerified($id)
     {
         $service = Service::find($id);
-        $service->status = 'completed';
-        $service->save();
+        if ($service->status !== 'completed') {
+            $service->status = 'completed';
+            if ($service->save()) {
+                addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi layanan dengan ID ' . $service->id, 'verif');
+                return response()->json([
+                    'status' => true,
+                ]);
+            } else {
+                return response()->json([
+                    'status' => false,
+                ]);
+            }
+        }
     }
     // public function statusDenied($id)
     // {
@@ -174,7 +205,38 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::find($id)->delete();
-        return response()->json(['success' => 'Service terhapus']);
+        $service = Service::find($id);
+        if ($service->delete()) {
+            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus layanan dengan ID ' . $service->id, 'delete');
+            return response()->json(['success' => true]);
+        }
+    }
+
+    public function cetakSurat($id, $id_cat)
+    {
+        $data =  Service::where("id", $id)->where("service_category_id", $id_cat)->first();
+        $village = Village::first();
+        $extra_fields = DB::table('extra_fields')
+            ->join('extra_values', 'extra_values.extra_field_id', 'extra_fields.id')
+            ->where('extra_values.service_id', $id)
+            ->get();
+        // return ([$data, $village]);
+        if ($id_cat == 1) {
+            $pdf = PDF::loadView('template.ektp', compact(['data', 'village']));
+        } elseif ($id_cat == 3) {
+            $pdf = PDF::loadView('template.aktalahir', compact(['data', 'village', 'extra_fields']));
+        } elseif ($id_cat == 4) {
+            $pdf = PDF::loadView('template.aktamati', compact(['data', 'village', 'extra_fields']));
+        } elseif ($id_cat == 5) {
+            $pdf = PDF::loadView('template.pindah-penduduk', compact(['data', 'village', 'extra_fields']));
+        } elseif ($id_cat == 7) {
+            $pdf = PDF::loadView('template.nikah', compact(['data', 'village']));
+            // return $pdf->stream($data['citizen']->full_name . '.pdf');
+        } elseif ($id_cat == 8) {
+            $pdf = PDF::loadView('template.sku', compact(['data', 'village', 'extra_fields']));
+        }
+
+        return $pdf->stream($data->citizen->full_name . '.pdf');
+        // return $pdf->download($data->citizen->full_name . '.pdf');
     }
 }
