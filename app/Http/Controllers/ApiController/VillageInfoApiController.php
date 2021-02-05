@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\VillageInfo;
 use Illuminate\Http\JsonResponse;
 
 class VillageInfoApiController extends ApiController
@@ -13,9 +14,9 @@ class VillageInfoApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'data' => []
-        ]);
+        $data = VillageInfo::all();
+        $message = "List of the Village Info.";
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -26,8 +27,13 @@ class VillageInfoApiController extends ApiController
      */
     public function show($id)
     {
-        return response()->json([
-            'message' => 'Village Info ' . $id
-        ]);
+        $data = VillageInfo::find($id);
+        if ($data == null) {
+            $message = "Village Info not Found";
+            return $this->errorResponse(compact('message'),404);
+        }
+
+        $message = `Detail of Village Info $data.`;
+        return $this->successResponse(compact('data', 'message'));
     }
 }
