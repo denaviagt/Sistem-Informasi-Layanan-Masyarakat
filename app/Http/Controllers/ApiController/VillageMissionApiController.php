@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\Mission;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +16,10 @@ class VillageMissionApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Mission ',
-            'data' => []
-        ]);
+        $data = Mission::all();
+        $message = "List of Village's Mission";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
