@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\Vision;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +16,10 @@ class VillageVisionApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Vision ',
-            'data' => []
-        ]);
+        $data = Vision::all();
+        $message = "List of Village's Natural Resource";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
