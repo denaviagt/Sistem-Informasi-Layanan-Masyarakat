@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginApiRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthApiController extends Controller
+class AuthApiController extends ApiController
 {
 
     public function login(LoginApiRequest $request)

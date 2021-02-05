@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VillageApiController extends Controller
+class VillageApiController extends ApiController
 {
     /**
      * Display a listing of the resource.

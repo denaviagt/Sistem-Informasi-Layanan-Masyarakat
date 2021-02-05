@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class UserServiceApiController extends Controller
+class UserServiceApiController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
-class VillageInfoApiController extends Controller
+class VillageInfoApiController extends ApiController
 {
     /**
      * Display a listing of the resource.
