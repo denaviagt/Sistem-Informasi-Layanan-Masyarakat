@@ -17,7 +17,7 @@ class VillageVisionApiController extends ApiController
     public function index()
     {
         $data = Vision::all();
-        $message = "List of Village's Natural Resource";
+        $message = "List Village's Visions";
 
         return $this->successResponse(compact('data', 'message'));
     }
