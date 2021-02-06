@@ -7,6 +7,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Citizen;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthApiController extends ApiController
 {
@@ -43,7 +44,7 @@ class AuthApiController extends ApiController
         ]);
 
         $nik = $request->nik;
-        $password = $request->password;
+        $password = Hash::make($request->password);
         $phone = $request->phone_number;
 
         $citizen = Citizen::where('nik', $nik)->first();
@@ -63,7 +64,9 @@ class AuthApiController extends ApiController
             dd($user->getRelations());
         }
 
-        return $this->successResponse(new UserResource($user), 201);
+        $message = "Registrasi User Berhasil!";
+        $data = new UserResource($user);
+        return $this->successResponse(compact('data', 'message'), 201);
     }
 
     /**
