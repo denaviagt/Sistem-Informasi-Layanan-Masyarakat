@@ -43,8 +43,18 @@ class FeedbackApiController extends ApiController
         $feedback_dusun_id = null;
 
         if (!isset($dusunWhere)) {
-            $message = "The dusun_name field or feedback_dusun_id field is required";
-            return $this->errorResponse(compact('message'));
+            $message = "The value was invalid!";
+            $errors = [
+                [
+                    'source' => 'dusun_name',
+                    'message' => $message
+                ],
+                [
+                    'source' => 'feedback_dusun_id',
+                    'message' => $message
+                ]
+            ];
+            return $this->errorResponse(compact('errors'), 422);
         }
 
         if (($dusun = Dusun::where($dusunWhere, $dusunClause)->first()) == null) {
