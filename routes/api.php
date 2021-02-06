@@ -38,7 +38,7 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::prefix('villages')->group(function (){
+Route::prefix('villages')->group(function () {
     Route::get('infos', [VillageInfoApiController::class, 'index']);
     Route::get('infos/{info_id}', [VillageInfoApiController::class, 'show']);
     Route::get('resources', [VillageResourceApiController::class, 'index']);
@@ -61,6 +61,7 @@ Route::prefix('services')->group(function () {
 
 Route::prefix('feedback')->group(function () {
     Route::post('', [FeedbackApiController::class, 'store']);
+    Route::get('', [FeedbackApiController::class, 'index']);
 });
 
 Route::prefix('users')->group(function () {

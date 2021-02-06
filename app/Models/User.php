@@ -6,6 +6,9 @@ use Illuminate\Foundation\Auth\User as AuthenticableModel;
 
 class User extends AuthenticableModel
 {
+
+    protected $fillable = ['username', 'email', 'citizen_id', 'password', 'phone'];
+
     public function feedback()
     {
         return $this->hasMany(Feedback::class);
