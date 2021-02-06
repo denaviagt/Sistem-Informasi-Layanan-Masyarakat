@@ -28,18 +28,22 @@ class FeedbackApiController extends ApiController
      */
     public function store(Request $request)
     {
-        $isImportant = $request->is_important;
-        $isAnonim = $request->is_anonim;
-        $isRead = $request->is_read;
+        $request->validate([
+            'feedback' => ['required'],
+            'user_id' => ['required']
+        ]);
         $feedback = $request->feedback;
+        $user_id = $request->user_id;
+        $is_important = $request->is_important ?? false;
+        $is_anonim = $request->is_anonim ?? false;
+        $is_read = $request->is_read ?? false;
         $date = $request->date ?? now();
-        $userId = $request->user_id;
-        $dusunWhere = $request->feedback_dusun_id != null ? "id" : "dusun_name";
+        $dusunWhere = isset($request->feedback_dusun_id) ? "id" : (isset($request->dusun_name) ? "dusun_name" : null);
         $dusunClause = $request->feedback_dusun_id ?? $request->dusun_name;
-        $feedbackDusunId = null;
+        $feedback_dusun_id = null;
 
-        if ($dusunWhere == null) {
-            $message = "Field dusun_name or feedback_dusun_id required";
+        if (!isset($dusunWhere)) {
+            $message = "The dusun_name field or feedback_dusun_id field is required";
             return $this->errorResponse(compact('message'));
         }
 
@@ -47,17 +51,17 @@ class FeedbackApiController extends ApiController
             $message = "Dusun Not Found!";
             return $this->errorResponse(compact('message'), 404);
         }
-        $feedbackDusunId = $dusun->id;
+        $feedback_dusun_id = $dusun->id;
 
         $feedback = Feedback::create(
             compact(
-                'isImportant',
-                'isAnonim',
-                'isRead',
+                'is_important',
+                'is_anonim',
+                'is_read',
                 'feedback',
                 'date',
-                'userId',
-                'feedbackDusunId'
+                'user_id',
+                'feedback_dusun_id'
             ));
 
         if (!$feedback) {
