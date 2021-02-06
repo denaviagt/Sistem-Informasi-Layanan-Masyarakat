@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => $faker->freeEmail,
                 'username' => $faker->userName,
                 'password' => Hash::make('password'),
+                'phone' => $faker->phoneNumber,
                 'created_at' => now(),
                 'citizen_id' => $i + 8
             ]);

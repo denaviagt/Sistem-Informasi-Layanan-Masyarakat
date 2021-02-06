@@ -17,7 +17,10 @@ class FeedbackApiController extends ApiController
      */
     public function index()
     {
-        //
+        $data = Feedback::all();
+        $message = "List of Feedback!";
+
+        return $this->successResponse(compact('data', 'message'), 201);
     }
 
     /**
