@@ -11,4 +11,8 @@ class Apparatus extends Model
     {
         return $this->belongsTo(Citizen::class, 'citizen_id');
     }
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 }

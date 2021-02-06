@@ -55,7 +55,7 @@ Route::prefix('services')->group(function () {
     Route::get('categories/{category_id}', [ServiceCategoryApiController::class, 'show']);
     Route::get('categories/{category_id}/requirements', [ServiceCategoryApiController::class, 'requirements']);
     Route::get('categories/{category_id}/procedures', [ServiceCategoryApiController::class, 'procedures']);
-    Route::get('categories/{category_id}/files', [ServiceCategoryApiController::class, 'files']);
+    Route::post('categories/{category_id}/files', [ServiceCategoryApiController::class, 'files']);
     Route::post('categories/{category_id}/submit', [ServiceApiController::class, 'store']);
 });
 

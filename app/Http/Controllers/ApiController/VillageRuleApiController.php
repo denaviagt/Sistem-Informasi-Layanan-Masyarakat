@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\VillageRegulationResource;
+use App\Models\Regulation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +17,10 @@ class VillageRuleApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Rules ',
-            'data' => []
-        ]);
+        $data = VillageRegulationResource::collection(Regulation::all());
+        $message = "List of Village's Rules";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**

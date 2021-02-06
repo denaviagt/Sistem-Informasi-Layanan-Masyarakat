@@ -15,4 +15,12 @@ class ServiceCategory extends Model
     {
         return $this->hasMany(ExtraField::class);
     }
+    public function requirement()
+    {
+        return $this->hasMany(ServiceRequirement::class);
+    }
+    public function procedure()
+    {
+        return $this->hasMany(ServiceProcedure::class);
+    }
 }

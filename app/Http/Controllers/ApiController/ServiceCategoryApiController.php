@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\ServiceCategoryResource;
+use App\Models\ServiceCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +17,10 @@ class ServiceCategoryApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Category ',
-            'data' => []
-        ]);
+        $data = ServiceCategoryResource::collection(ServiceCategory::all());
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -36,11 +38,19 @@ class ServiceCategoryApiController extends ApiController
      * Display the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
-        //
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = new ServiceCategoryResource($serviceCategories);
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -73,10 +83,15 @@ class ServiceCategoryApiController extends ApiController
      */
     public function requirements($id)
     {
-        return response()->json([
-            'message' => 'Village Category ' . $id . ' Requirements',
-            'data' => []
-        ]);
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = $serviceCategories->requirement;
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -86,10 +101,15 @@ class ServiceCategoryApiController extends ApiController
      */
     public function procedures($id)
     {
-        return response()->json([
-            'message' => 'Village Category ' . $id . ' Procedures',
-            'data' => []
-        ]);
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = $serviceCategories->procedure;
+        $message = "List of Service Procedures";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -97,7 +117,7 @@ class ServiceCategoryApiController extends ApiController
      *
      * @return JsonResponse
      */
-    public function files($id)
+    public function files($id, Request $request)
     {
         return response()->json([
             'message' => 'Village Category ' . $id . ' Files',
