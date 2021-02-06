@@ -58,6 +58,16 @@ class AuthApiController extends ApiController
         $email = "";
         $citizen_id = $citizen->id;
 
+        if (User::where('phone', $phone)->first() != null) {
+            $message = "Nomor Telepon Sudah Digunakan!";
+            return $this->errorResponse(compact('message'), 409);
+        }
+
+        if (User::where('citizen_id', $citizen_id)->first() != null) {
+            $message = "Nomor Induk Kependudukan User Sudah Terdaftar!";
+            return $this->errorResponse(compact('message'), 409);
+        }
+
         $user = User::create(compact('username', 'email', 'citizen_id', 'password', 'phone'));
 
         if ($user == null) {
