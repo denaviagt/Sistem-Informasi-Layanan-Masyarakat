@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Builder;
 
 class UserServiceApiController extends ApiController
 {
@@ -32,7 +35,7 @@ class UserServiceApiController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -43,36 +46,50 @@ class UserServiceApiController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function history($id)
     {
-        return response()->json([
-            'message' => 'User ' . $id. ' services history',
-            'data' => null
-        ]);
+        $data = User::find($id);
+        if ($data == null) {
+            $message = "User Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $message = "Detail User Of " . $data->username;
+        $data = $data->service->whereIn(
+            'status', ['accepted', 'rejected', 'processing', 'completed', 'sent']
+        );
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function submission($id)
     {
-        return response()->json([
-            'message' => 'User ' . $id. ' status layanan',
-            'data' => null
-        ]);
+        $data = User::find($id);
+        if ($data == null) {
+            $message = "User Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $message = "Detail User Of " . $data->username;
+        $data = $data->service->whereIn(
+            'status',  ['processing', 'sent']
+        );
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -83,7 +100,7 @@ class UserServiceApiController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
