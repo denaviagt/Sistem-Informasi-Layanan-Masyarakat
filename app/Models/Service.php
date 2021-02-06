@@ -10,6 +10,8 @@ class Service extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = ['description', 'user_id', 'date', 'status', 'citizen_id', 'service_category_id'];
+
     /**
      * Override parent boot and Call deleting event
      *
