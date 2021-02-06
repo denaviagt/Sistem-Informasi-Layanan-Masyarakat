@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -32,49 +33,65 @@ class UserApiController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function show($id)
     {
-        return response()->json([
-            'message' => 'Detail user ' . $id,
-            'data' => null
-        ]);
+        $data = User::find($id);
+        if ($data == null) {
+            $message = "User Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+
+        $message = "Detail User Of " . $data->username;
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function citizen($id)
     {
-        return response()->json([
-            'message' => 'Detail citizen user ' . $id,
-            'data' => null
-        ]);
+        $data = User::find($id);
+        if ($data == null) {
+            $message = "User Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+
+        $message = "Detail Citizen By User " . $data->username;
+        $data = $data->citizen;
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function dusun($id)
     {
-        return response()->json([
-            'message' => 'Detail dusun user ' . $id,
-            'data' => null
-        ]);
+        $data = User::find($id);
+        if ($data == null) {
+            $message = "User Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+
+        $message = "Dusun Citizen By User " . $data->username;
+        $data = $data->citizen->dusun;
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function showCitizen($id)
@@ -89,7 +106,7 @@ class UserApiController extends ApiController
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -100,7 +117,7 @@ class UserApiController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
