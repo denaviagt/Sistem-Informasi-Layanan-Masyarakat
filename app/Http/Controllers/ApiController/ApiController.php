@@ -67,4 +67,14 @@ class ApiController extends Controller
             $options
         );
     }
+
+    /**
+     * @param $word
+     * @param string $pattern
+     * @param string $replacement
+     * @return string
+     */
+    protected function string_filter($word, string $replacement = "", string $pattern = "/[^a-zA-Z0-9]+/"): string{
+        return preg_replace($pattern, $replacement, $word);
+    }
 }
