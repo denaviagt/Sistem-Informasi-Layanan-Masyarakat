@@ -117,7 +117,7 @@ class ServiceCategoryApiController extends ApiController
      *
      * @return JsonResponse
      */
-    public function files($id)
+    public function files($id, Request $request)
     {
         return response()->json([
             'message' => 'Village Category ' . $id . ' Files',
