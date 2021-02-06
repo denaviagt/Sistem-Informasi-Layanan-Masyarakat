@@ -13,6 +13,7 @@ class FeedbackSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create('id_ID');
         // $gender = $faker->randomElement(['male', 'female']);
         DB::table('feedbacks')->insert(
             [
@@ -22,6 +23,7 @@ class FeedbackSeeder extends Seeder
                     'is_read' => 0,
                     'feedback' => 'Jalan kampung rusak',
                     'date' => now(),
+                    'location' => $faker->address,
                     'user_id' => 1,
                     'feedback_dusun_id' => 3,
                 ],
@@ -31,12 +33,12 @@ class FeedbackSeeder extends Seeder
                     'is_read' => 0,
                     'feedback' => 'Lampu jalan mati',
                     'date' => now(),
+                    'location' => $faker->address,
                     'user_id' => 3,
                     'feedback_dusun_id' => 2,
                 ],
             ]
         );
-        $faker = Faker::create('id_ID');
         for ($i = 0; $i < 10; $i++) {
             DB::table('feedbacks')->insert(
                 [
