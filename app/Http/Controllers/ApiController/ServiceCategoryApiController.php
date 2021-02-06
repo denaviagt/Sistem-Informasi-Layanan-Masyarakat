@@ -83,10 +83,15 @@ class ServiceCategoryApiController extends ApiController
      */
     public function requirements($id)
     {
-        return response()->json([
-            'message' => 'Village Category ' . $id . ' Requirements',
-            'data' => []
-        ]);
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = $serviceCategories->requirement;
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -96,10 +101,15 @@ class ServiceCategoryApiController extends ApiController
      */
     public function procedures($id)
     {
-        return response()->json([
-            'message' => 'Village Category ' . $id . ' Procedures',
-            'data' => []
-        ]);
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = $serviceCategories->procedure;
+        $message = "List of Service Procedures";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
