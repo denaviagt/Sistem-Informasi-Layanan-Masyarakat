@@ -39,13 +39,13 @@ class AuthApiController extends ApiController
     {
         $this->validate($request, [
             'nik' => ['required', 'min:16'],
-            'phone_number' => ['required'],
+            'phone' => ['required'],
             'password' => ['required', 'min:8'],
         ]);
 
         $nik = $request->nik;
         $password = Hash::make($request->password);
-        $phone = $request->phone_number;
+        $phone = $request->phone;
 
         $citizen = Citizen::where('nik', $nik)->first();
 
