@@ -16,23 +16,19 @@ class AuthApiController extends ApiController
     {
         $request->validated();
 
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only('phone', 'password');
 
         if (!auth('webapi')->attempt($credentials)) {
-            return response()->json([
-                'error' => 'Your credentials are invalid'
-            ], 401);
+            $message = 'Your credentials are invalid';
+            return $this->errorResponse(compact(['message']), 401);
         }
 
         $currentUser = auth('webapi')->user();
 
-        $userResource = new UserResource($currentUser);
-        return $userResource
-            ->additional([
-                'relations' => [
-                    'citizen' => $currentUser->citizen
-                ]
-            ]);
+        $message = "Berhasil login!";
+        $data = new UserResource($currentUser);
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     public function register(Request $request)
