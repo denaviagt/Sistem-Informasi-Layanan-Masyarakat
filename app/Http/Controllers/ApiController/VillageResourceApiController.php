@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\VillageResource_Resource;
 use App\Models\NaturalResource;
 use Illuminate\Http\JsonResponse;
 
@@ -14,7 +15,7 @@ class VillageResourceApiController extends ApiController
      */
     public function index()
     {
-        $data = NaturalResource::all();
+        $data = VillageResource_Resource::collection(NaturalResource::all());
         $message = "List of Village's Natural Resource";
 
         return $this->successResponse(compact('data', 'message'));
@@ -28,8 +29,8 @@ class VillageResourceApiController extends ApiController
      */
     public function show($id)
     {
-        $data = NaturalResource::find($id);
-        $title = $data != null ? $data->title : "";
+        $data = new VillageResource_Resource(NaturalResource::find($id));
+        $title = $data != null ? $data->resource->title : "";
         $message = "Detail Village's Natural Resource" . $title;
 
         if ($data == null) {
