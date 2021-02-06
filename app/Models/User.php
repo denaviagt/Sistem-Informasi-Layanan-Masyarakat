@@ -14,4 +14,9 @@ class User extends AuthenticableModel
     {
         return $this->belongsTo(Citizen::class);
     }
+
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }
