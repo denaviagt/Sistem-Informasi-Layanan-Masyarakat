@@ -13,4 +13,9 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(VillageInfo::class);
     }
+
+    public function apparatus()
+    {
+        return $this->hasMany(Apparatus::class);
+    }
 }
