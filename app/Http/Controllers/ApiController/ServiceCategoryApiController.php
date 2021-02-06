@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\ServiceCategoryResource;
+use App\Models\ServiceCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +17,10 @@ class ServiceCategoryApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Category ',
-            'data' => []
-        ]);
+        $data = ServiceCategoryResource::collection(ServiceCategory::all());
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
