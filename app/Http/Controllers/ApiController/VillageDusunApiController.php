@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Models\Dusun;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +16,10 @@ class VillageDusunApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Rules ',
-            'data' => []
-        ]);
+        $data = Dusun::all();
+        $message = "List of Village's Rules";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
