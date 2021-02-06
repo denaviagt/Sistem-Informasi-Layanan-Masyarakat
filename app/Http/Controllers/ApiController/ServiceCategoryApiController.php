@@ -38,11 +38,19 @@ class ServiceCategoryApiController extends ApiController
      * Display the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
-        //
+        $serviceCategories = ServiceCategory::find($id);
+        if ($serviceCategories == null) {
+            $message = "Detail Service Category Not Found";
+            return $this->errorResponse(compact('message'), 404);
+        }
+        $data = new ServiceCategoryResource($serviceCategories);
+        $message = "List of Service Categories";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
