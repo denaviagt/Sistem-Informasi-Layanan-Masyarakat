@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\OrganizationResource;
+use App\Http\Resources\OrganizationResourceCollection;
+use App\Models\Apparatus;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +18,10 @@ class VillageOrganizationStructureApiController extends ApiController
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Village Organization Structure ',
-            'data' => []
-        ]);
+        $data = OrganizationResource::collection(Apparatus::all());
+        $message = "List of Village's Organization Structure";
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
