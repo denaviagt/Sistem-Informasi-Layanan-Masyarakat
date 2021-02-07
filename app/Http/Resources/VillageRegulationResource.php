@@ -18,7 +18,7 @@ class VillageRegulationResource extends JsonResource
         return [
             "id" => $this->id,
             "title" => $this->title,
-            'file' => asset("uploads/regulationFile/") . $this->file
+            'file' => asset("uploads/regulationFile/" . $this->file)
         ];
     }
 }
