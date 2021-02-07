@@ -33,9 +33,12 @@ class FeedbackApiController extends ApiController
     {
         $request->validate([
             'feedback' => ['required'],
-            'user_id' => ['required']
+            'location' => ['required'],
+            'user_id' => ['required'],
         ]);
+
         $feedback = $request->feedback;
+        $location = $request->location;
         $user_id = $request->user_id;
         $is_important = $request->is_important ?? false;
         $is_anonim = $request->is_anonim ?? false;
@@ -46,7 +49,7 @@ class FeedbackApiController extends ApiController
         $feedback_dusun_id = null;
 
         if (!isset($dusunWhere)) {
-            $message = "The value was invalid!";
+            $message = "The field dusun_name or feedback_dusun_id is required!";
             $errors = [
                 [
                     'source' => 'dusun_name',
@@ -57,7 +60,7 @@ class FeedbackApiController extends ApiController
                     'message' => $message
                 ]
             ];
-            return $this->errorResponse(compact('errors'), 422);
+            return $this->errorResponse(compact('message', 'errors'), 422);
         }
 
         if (($dusun = Dusun::where($dusunWhere, $dusunClause)->first()) == null) {
@@ -66,12 +69,13 @@ class FeedbackApiController extends ApiController
         }
         $feedback_dusun_id = $dusun->id;
 
-        $feedback = Feedback::create(
+        $data = Feedback::create(
             compact(
                 'is_important',
                 'is_anonim',
                 'is_read',
                 'feedback',
+                'location',
                 'date',
                 'user_id',
                 'feedback_dusun_id'
@@ -79,10 +83,9 @@ class FeedbackApiController extends ApiController
 
         if (!$feedback) {
             $message = "Gagal Mengirimkan Aduan!";
-            return $this->errorResponse(compact('message'), 404);
+            return $this->errorResponse(compact('message'), 422);
         }
 
-        $data = $feedback->procedure;
         $message = "Berhasil Mengirimkan Aduan!";
 
         return $this->successResponse(compact('data', 'message'), 201);
