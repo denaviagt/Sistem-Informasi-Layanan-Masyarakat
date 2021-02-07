@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Apparatus;
+use Faker\Factory;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrganizationResource extends JsonResource
@@ -15,14 +16,16 @@ class OrganizationResource extends JsonResource
      */
     public function toArray($request)
     {
+        $faker = Factory::create("id_ID");
         return [
             'apparatus' => [
                 "id" => $this->id,
                 "position" => $this->position,
                 "period" => $this->period,
                 "status" => $this->status,
+                "phone" => $faker->phoneNumber,
                 "citizen_id" => $this->citizen_id,
-                "admin_id" => $this->admin_id
+                "admin_id" => $this->admin_id,
             ],
             'citizen' => [
                 "id" => $this->citizen->id,
@@ -51,5 +54,18 @@ class OrganizationResource extends JsonResource
                 "level" => $this->admin->level,
             ],
         ];
+    }
+
+    /**
+     * @param int $length
+     * @return string
+     */
+    private function generateRandomNumber(int $length = 1): string
+    {
+        $number = "";
+        for ($index = 0; $index <= $length; $index++) {
+            $number .= rand(0, 9);
+        }
+        return $number;
     }
 }
