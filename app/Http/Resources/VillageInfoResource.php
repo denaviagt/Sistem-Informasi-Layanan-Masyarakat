@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class VillageInfoResource extends JsonResource
@@ -18,7 +19,8 @@ class VillageInfoResource extends JsonResource
             "id" => $this->id,
             "title" => $this->title,
             "content" => $this->content,
-            "date" => $this->date,
+            "date" => Carbon::createFromFormat('Y-m-d H:i:s', $this->date)
+                ->format('D, d M Y'),
             "thumbnail" => (isset($this->thumbnail))
                 ? asset('uploads/images/village_info/' . $this->thumbnail)
                 : null,
