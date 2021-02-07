@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\UserServiceResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -60,6 +61,7 @@ class UserServiceApiController extends ApiController
         $data = $data->service->whereIn(
             'status', ['accepted', 'rejected', 'processing', 'completed', 'sent']
         );
+        $data = UserServiceResource::collection($data);
 
         return $this->successResponse(compact('data', 'message'));
     }
@@ -81,6 +83,7 @@ class UserServiceApiController extends ApiController
         $data = $data->service->whereIn(
             'status',  ['processing', 'sent']
         );
+        $data = UserServiceResource::collection($data);
 
         return $this->successResponse(compact('data', 'message'));
     }
