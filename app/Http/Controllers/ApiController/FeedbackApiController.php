@@ -13,7 +13,7 @@ class FeedbackApiController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
