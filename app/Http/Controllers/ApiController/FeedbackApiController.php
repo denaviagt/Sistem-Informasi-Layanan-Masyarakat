@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ApiController;
 
 use App\Models\Dusun;
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,7 +49,12 @@ class FeedbackApiController extends ApiController
         $dusunClause = $request->feedback_dusun_id ?? $request->dusun_name;
         $feedback_dusun_id = null;
 
-        if (!isset($dusunWhere)) {
+        if (isset($location)) {
+            $user = User::find($user_id);
+            $feedback_dusun_id = $user->citizen->dusun->id;
+        }
+
+        if (!isset($feedback_dusun_id)) {
             $message = "The field dusun_name or feedback_dusun_id is required!";
             $errors = [
                 [
