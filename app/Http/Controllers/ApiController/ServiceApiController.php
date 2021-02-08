@@ -100,7 +100,7 @@ class ServiceApiController extends ApiController
             return $this->errorResponse(compact('message'), 422);
         }
 
-        $category = ServiceCategory::find($service->id);
+        $category = ServiceCategory::find($service->service_category_id);
 
         $requirement_file = $request->file('requirement_file');
         $requirement_id = $request->requirement_id;
