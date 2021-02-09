@@ -17,7 +17,7 @@ class CitizenSeeder extends Seeder
     {
         DB::table('citizens')->insert([
             [
-                'nik' => '5102456102205325',
+                'nik' => '000000000011111',
                 'kk' => '7413655412945297',
                 'full_name' => 'Arum Setya, S.Pd',
                 'gender' => 'male',
@@ -35,7 +35,7 @@ class CitizenSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'nik' => '5102456122225',
+                'nik' => '000001111122222',
                 'kk' => '12341234213421',
                 'full_name' => 'Erwin Dwi Hastomo, SE',
                 'gender' => 'male',
@@ -53,7 +53,7 @@ class CitizenSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'nik' => '344081305640003',
+                'nik' => '222223333344444',
                 'kk' => '1234123421342111',
                 'full_name' => 'Vitra Ikayati, SP',
                 'gender' => 'female',
@@ -71,7 +71,7 @@ class CitizenSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'nik' => '344084405720002',
+                'nik' => '555555555555555',
                 'kk' => '3404080802059634',
                 'full_name' => 'Dra. Rini Prabaharsi',
                 'gender' => 'female',
@@ -89,7 +89,7 @@ class CitizenSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'nik' => '3404080802059634',
+                'nik' => '666666666666666',
                 'kk' => '344085607930001',
                 'full_name' => 'Nurkartika Rahmawati, S.Pd',
                 'gender' => 'female',
