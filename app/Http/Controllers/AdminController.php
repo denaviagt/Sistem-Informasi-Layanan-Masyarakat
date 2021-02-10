@@ -19,6 +19,7 @@ class AdminController extends Controller
     {
         $this->middleware(function ($request, $next) {
             $this->level =  Auth::guard('web')->user()->level;
+            $this->id =  Auth::guard('web')->user()->id;
             $this->nama_admin = Auth::guard('web')->user()->full_name;
             if (($this->level != 'superadmin')) {
                 return redirect('login')->send();
@@ -141,10 +142,15 @@ class AdminController extends Controller
             'data' => $admin
         ]);
     }
+    public function editPassword()
+    {
+        return view('admin.edit-password');
+    }
 
     public function updatePassword(UpdatePasswordRequest $request)
     {
-        $request->user()->update(
+
+        Admin::find($this->id)->update(
             [
                 'password' => Hash::make($request->get('new_password'))
             ]
