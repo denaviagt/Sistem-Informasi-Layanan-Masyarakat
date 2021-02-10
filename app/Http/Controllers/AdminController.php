@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdatePasswordRequest;
+use App\Mail\SendPasswordMail;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use LogActivity;
@@ -80,6 +82,8 @@ class AdminController extends Controller
         //     return response()->json(['errors' => $validate]);
         // }
 
+        $password = Str::random(8);
+
         $admins = new Admin;
 
         $admins->full_name = $request->name;
@@ -88,7 +92,7 @@ class AdminController extends Controller
         $admins->username = $request->username;
         $admins->is_active = 1;
         $admins->level = $request->levelAdmin;
-        $admins->password = Hash::make('password');
+        $admins->password = Hash::make($password);
         $admins->token = '';
         $admins->remember_token = '';
         // $admins->password = Hash::make(Str::random(8));
@@ -97,7 +101,18 @@ class AdminController extends Controller
             addToLog($request, $this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
             // addToLog($request, $this->nama_admin . ' membuat admin baru', 'create');
         }
+        $this->sendEmailToAdmin($admins, $password);
         return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
+    }
+
+    public function sendEmailToAdmin($admins, $password)
+    {
+        // $admin = Admin::first();
+        // $to_email = "anggitadenav@gmail.com";
+        $to_email = $admins->email;
+        Mail::to($to_email)->send(new SendPasswordMail($admins, $password));
+        return "<p> Your E-mail has been sent successfully. </p>";
+        // return $admin;
     }
 
     /**
