@@ -15,7 +15,8 @@
                  <a href="{{ url('/') }}">
                      <b class="logo-icon">
                          <!-- Dark Logo icon -->
-                         <img src="{{ asset('assets/img/main-logo.png') }}" alt="homepage" class="dark-logo" width="30px" />
+                         <img src="{{ asset('assets/img/main-logo.png') }}" alt="homepage" class="dark-logo"
+                             width="30px" />
                      </b>
                      <!--End Logo icon -->
                      <!-- Logo text -->
@@ -85,7 +86,7 @@
          <div class="modal-content">
              <form action="{{ url('/admin/edit/password') }}" method="post">
                  @csrf
-                 <div class="modal-header modal-colored-header bg-primary">
+                 <div class="modal-header">
                      <h4 class="modal-title" id="editPasswordModal">Edit Password</h4>
                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                  </div>
@@ -95,7 +96,7 @@
                          <div class="col-sm-9">
                              <input name="old_password" type="password"
                                  class="form-control @error('old_password') is-invalid @enderror" id="oldPassword"
-                                 placeholder="Masukkan password lama anda yang ingin dirubah" required="">
+                                 placeholder="Masukkan Password Lama" required="">
                              @error('old_password')
                                  <span class="invalid-feedback" role="alert">
                                      <strong>{{ $message }}</strong>
@@ -109,8 +110,22 @@
                          <div class="col-sm-9">
                              <input name="new_password" type="password"
                                  class="form-control @error('new_password') is-invalid @enderror" id="newPassword"
-                                 placeholder="Masukkan password baru anda" required="">
+                                 placeholder="Masukkan Password Baru" required="">
                              @error('new_password')
+                                 <span class="invalid-feedback" role="alert">
+                                     <strong>{{ $message }}</strong>
+                                 </span>
+                             @enderror
+                         </div>
+                     </div>
+
+                     <div class="form-group row">
+                         <label for="newPassword" class="col-sm-3 col-form-label">Konfirmasi Baru</label>
+                         <div class="col-sm-9">
+                             <input name="new_confirm_password" type="password"
+                                 class="form-control @error('new_confirm_password') is-invalid @enderror"
+                                 id="newPassword" placeholder="Konfirmasi Password Baru" required="">
+                             @error('new_confirm_password')
                                  <span class="invalid-feedback" role="alert">
                                      <strong>{{ $message }}</strong>
                                  </span>

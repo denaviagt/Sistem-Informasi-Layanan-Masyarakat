@@ -24,10 +24,21 @@ Route::group(['middleware' => ['auth']], function () {
         return view('login');
     });
 
+    Route::get("send-email", "EmailController@sendEmailToAdmin");
+    // Route::get("send-email", "NotifyController@sendPassword");
+
+    Route::get('mail', function () {
+        // $email = App\Models\Admin::find(1);
+
+        return (new App\Notifications\SendPassword())
+            ->toMail('anggitadenav@gmail.com');
+    });
+
     Route::get('/admin', 'AdminController@index');
     Route::post('/admin', 'AdminController@store');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
+    Route::get('/admin/edit/password', 'AdminController@editPassword');
     Route::post('/admin/edit/password', 'AdminController@updatePassword');
     Route::delete('admin/delete/{id}', 'AdminController@destroy');
 

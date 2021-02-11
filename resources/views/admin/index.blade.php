@@ -147,9 +147,8 @@
                                 <select name="levelAdmin" id="selectLevelAdmin" class="form-control">
                                     <option value="Admin" {{ old('levelAdmin') == 'Admin' ? 'selected' : '' }}>Admin
                                     </option>
-                                    <option value="Lurah" {{ old('levelAdmin') == 'Lurah' ? 'selected' : '' }}>
-                                        Lurah</option>
-                                    <option value="Super Admin" {{ old('levelAdmin') == 'Super Admin' ? 'selected' : '' }}>
+                                    <option value="Superadmin"
+                                        {{ old('levelAdmin') == 'Super Admin' ? 'selected' : '' }}>
                                         Super Admin</option>
                                 </select>
                             </div>
