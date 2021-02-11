@@ -30,8 +30,8 @@
         <p>
             Segera lakukan aktivasi akun Anda dan ubah password untuk keamanan akun Anda pada link dibawah ini:
         </p>
-        @component('mail::button', ['url' => "/verifikasi-akun/$code", 'color' => 'primary'])
-            Verifikasi Akun
+        @component('mail::button', ['url' => config('app.url'). '/admin/edit/password', 'color' => 'primary'])
+            Ubah Password
         @endcomponent
         <p>
             Terimakasih telah menggunakan website kami.
