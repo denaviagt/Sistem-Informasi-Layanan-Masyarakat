@@ -99,7 +99,7 @@ class AdminController extends Controller
         // $admins->password = Hash::make(Str::random(8));
 
         if ($admins->save()) {
-            addToLog($request, $this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
+            addToLog($this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
             // addToLog($request, $this->nama_admin . ' membuat admin baru', 'create');
         }
         $this->sendEmailToAdmin($admins, $password);
