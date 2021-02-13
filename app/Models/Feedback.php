@@ -9,7 +9,7 @@ class Feedback extends Model
 {
     protected $table = 'feedbacks';
 
-    protected $fillable = ['is_important', 'feedback', 'date', 'user_id', 'feedback_dusun_id'];
+    protected $fillable = ['is_important', 'is_anonim', 'is_read', 'feedback', 'location', 'date', 'user_id', 'feedback_dusun_id'];
 
     public function user()
     {
