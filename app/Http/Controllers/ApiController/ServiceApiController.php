@@ -114,7 +114,10 @@ class ServiceApiController extends ApiController
 
         $uploadFolder = 'assets/serviceFile/';
         $fileExtension = $requirement_file->getClientOriginalExtension();
-        $serviceRequirementName = $requirement->terms;
+        $serviceRequirementName = implode("_", [
+            $requirement->terms,
+            now()
+        ]);
 
         $fileName = implode(".", [$serviceRequirementName, $fileExtension]);
         $imageUploadPath = $requirement_file->move(public_path($uploadFolder), $fileName);
