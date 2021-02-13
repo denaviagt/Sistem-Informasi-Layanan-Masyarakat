@@ -47,7 +47,7 @@ class ServiceApiController extends ApiController
         $description = $request->description;
         $user_id = $request->user_id;
         $date = $request->date ?? now();
-        $status = $request->status ?? "sent";
+        $status = $request->status ?? "accepted";
         $service_category_id = $id;
 
         $citizen_id = null;
@@ -114,16 +114,7 @@ class ServiceApiController extends ApiController
 
         $uploadFolder = 'assets/serviceFile/';
         $fileExtension = $requirement_file->getClientOriginalExtension();
-        $serviceRequirementName = strtolower(
-            $this->string_filter(
-                implode(".", [
-                    'category', $category->id,
-                    'service', $service->id,
-                    $requirement->terms,
-                    $requirement_file->getFilename()
-                ]), "_"
-            )
-        );
+        $serviceRequirementName = $requirement->terms;
 
         $fileName = implode(".", [$serviceRequirementName, $fileExtension]);
         $imageUploadPath = $requirement_file->move(public_path($uploadFolder), $fileName);
