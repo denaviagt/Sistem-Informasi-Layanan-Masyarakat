@@ -46,16 +46,25 @@
                         <h2 class="mt-3 text-center text-dark font-weight-bold">{{ __('Login') }}</h2>
                         <form class="mt-4" method="POST" action="{{ route('login') }}">
                             @csrf
+                            @error('email', 'password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="username">Username/ Email</label>
-                                        <input class="form-control @error('email') is-invalid @enderror"
+                                        <input
+                                            class="form-control @error('email') is-invalid @enderror @error('username') is-invalid @enderror"
                                             value="{{ old('username') }}" name="username" id="username" type="text"
-                                            placeholder="Masukkan Username atau Email">
+                                            placeholder="Masukkan Username atau Email" required>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>Email tidak sesuai!</strong>
+                                            </span>
+                                        @enderror
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>Username tidak sesuai!</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -67,7 +76,8 @@
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 name="password" id="password" type="password"
-                                                placeholder="Masukkan password" autocomplete="current-password">
+                                                placeholder="Masukkan password" autocomplete="current-password" required
+                                                value="{{ old('password') }}">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-primary" type="button" id="showPassword"><i
                                                         class="fas fa-eye"></i></button>
@@ -75,7 +85,7 @@
                                         </div>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>Password tidak sesuai!</strong>
                                             </span>
                                         @enderror
                                     </div>
