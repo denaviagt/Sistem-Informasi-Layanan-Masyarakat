@@ -23,6 +23,7 @@
         <div class="m-2" style="font-weight: 600">
             <ul style="list-style-type: none; ">
                 <li>Nama : {{ $admin->full_name }}</li>
+                <li>Username : {{ $admin->username }}</li>
                 <li>Email : {{ $admin->email }}</li>
                 <li>Password : {{ $password }}</li>
             </ul>
@@ -30,7 +31,7 @@
         <p>
             Segera lakukan aktivasi akun Anda dan ubah password untuk keamanan akun Anda pada link dibawah ini:
         </p>
-        @component('mail::button', ['url' => config('app.url'). '/admin/edit/password', 'color' => 'primary'])
+        @component('mail::button', ['url' => config('app.url') . '/admin/edit/password', 'color' => 'primary'])
             Ubah Password
         @endcomponent
         <p>
