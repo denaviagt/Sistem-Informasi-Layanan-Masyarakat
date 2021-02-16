@@ -4,7 +4,7 @@
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
+            <nav class="sidebar-nav" style="overflow: auto !important">
                 <ul id="sidebarnav">
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('dashboard') }}"
                             aria-expanded="false"><i class="fas fa-home mr-2"></i><span
