@@ -106,14 +106,26 @@ class AdminController extends Controller
         return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
     }
 
+    public function resendEmail($id)
+    {
+        $admins = Admin::find($id);
+
+        $password = Str::random(8);
+        $admins->password = Hash::make($password);
+        if ($admins->save()) {
+            $this->sendEmailToAdmin($admins, $password);
+            addToLog($this->url, $this->ip, $this->nama_admin . ' mengirim ulang email admin dengan email ' . $admins->email, 'update');
+            return redirect('admin')->with('status', 'Kirim Ulang Email Admin Berhasil!');
+        } else {
+            return redirect('admin')->with('status', 'Kirim Ulang Email Admin Gagal!');
+        }
+    }
+
     public function sendEmailToAdmin($admins, $password)
     {
-        // $admin = Admin::first();
-        // $to_email = "anggitadenav@gmail.com";
         $to_email = $admins->email;
         Mail::to($to_email)->send(new SendPasswordMail($admins, $password));
         return "<p> Your E-mail has been sent successfully. </p>";
-        // return $admin;
     }
 
     /**

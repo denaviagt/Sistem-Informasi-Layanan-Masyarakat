@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index');
 Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
+Route::get('/detail-service-info/{id}', 'MainController@ServiceInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('login', function () {
@@ -27,15 +28,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("send-email", "EmailController@sendEmailToAdmin");
     // Route::get("send-email", "NotifyController@sendPassword");
 
-    Route::get('mail', function () {
-        // $email = App\Models\Admin::find(1);
-
-        return (new App\Notifications\SendPassword())
-            ->toMail('anggitadenav@gmail.com');
-    });
-
     Route::get('/admin', 'AdminController@index');
     Route::post('/admin', 'AdminController@store');
+    Route::get('/admin/resend/{id}', 'AdminController@resendEmail');
     Route::get('/admin/{id}/edit', 'AdminController@edit');
     Route::post('/admin/edit', 'AdminController@update');
     Route::get('/admin/edit/password', 'AdminController@editPassword');

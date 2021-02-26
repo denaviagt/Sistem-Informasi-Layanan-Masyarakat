@@ -46,7 +46,7 @@
                                             <tr>
                                                 <td class="table-info">{{ $loop->iteration }}</td>
                                                 <td class="table-info">{{ $item->full_name }}</td>
-                                                <td class="table-info">{{ $item->email }}</td>
+                                                <td class="table-info">{{ $item->email }}  <a class="btn text-success btn-action" href="{{ url('admin/resend/'. $item->id) }}"  data-toggle="tooltip"data-placement="top" title="Resend"><span class="badge badge-info">Resend</span></a></td>
                                                 <td class="table-info">{{ $item->username }}</td>
                                                 <td class="table-info">{{ $item->level }}</td>
                                                 @if ($item->is_active){
