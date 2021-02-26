@@ -33,7 +33,7 @@ class CitizenController extends Controller
      */
     public function index()
     {
-        $citizen = Citizen::whereNull('is_deleted')->orWhere('is_deleted', '0')->get();
+        $citizen = Citizen::whereNull('is_deleted')->orWhere('is_deleted', '0')->orderBy('created_at', 'desc')->get();
         return view('data-penduduk/data', compact('citizen'));
     }
 
