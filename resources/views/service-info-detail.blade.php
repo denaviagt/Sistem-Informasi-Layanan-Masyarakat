@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Info Desa Jogotirto</title>
+    <title>Kalurahan Jogotirto</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -40,11 +40,11 @@
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
+
             </div>
         </div>
     </div>
     <!-- Preloader Start -->
-
     <header>
         <!-- Header Start -->
         <div class="header-area header-transparrent ">
@@ -71,9 +71,9 @@
                                         <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
                                         <li><a href="#vision">Visi</a></li>
                                         <li><a href="#mission">Misi</a></li>
-                                        <li class="active"><a href="#infoKalurahan">Info Kalurahan</a></li>
+                                        <li><a href="#infoKalurahan">Info Kalurahan</a></li>
                                         <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
-                                        <li><a href="#">Info Layanan</a>
+                                        <li><a href="#" class="active">Info Layanan</a>
                                             <ul class="submenu dropdown-menu-right">
                                                 @foreach ($serviceCategories as $serviceCategory)
                                                     <li><a
@@ -81,7 +81,6 @@
                                                             {{ $serviceCategory->category }}</a>
                                                     </li>
                                                 @endforeach
-
                                             </ul>
                                         </li>
                                     </ul>
@@ -104,106 +103,64 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
                 <div class="section-tittle text-center mb-80">
-                    <h2>Info Kalurahan</h2>
+                    <h3>Layanan {{ $judul->category }}</h3>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <section class="blog_area single-post-area">
+    <main>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 posts-list">
-                    <div class="single-post">
-                        <div class="feature-img">
-                            <img class="img-fluid"
-                                src="{{ asset('uploads/images/village_info/' . $villageInfo->thumbnail) }}" alt="">
+                <div class="col-8">
+
+                    <div class="card" style="background-color:transparent">
+                        <div class="card-header bg-secondary text-white">
+                            Prosedur Layanan
                         </div>
-                        <div class="blog_details">
-                            <h2>{{ $villageInfo->title }}
-                            </h2>
-                            <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="ti-user"></i>{{ $admin->full_name }}</a></li>
-                                <li><a href="#"><i
-                                            class="ti-comment-alt"></i>{{ $villageInfo->date->isoFormat('dddd, D MMMM Y') }}</a>
-                                </li>
-                            </ul>
-                            <p class="excert">
-                                {!! $villageInfo->content !!}
-                            </p>
-                        </div>
+                        <ul class="card-body unordered-list">
+                            @foreach ($procedures as $procedure)
+                                <li>{{ $procedure->procedure }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    {{-- <div class="navigation-area">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                <div class="thumb">
-                                    <a href="#">
-                                        <img class="img-fluid"
-                                            src="https://i.pinimg.com/236x/98/72/df/9872df28885cd34453195df87bb21e82.jpg"
-                                            width="75px" alt="">
-                                    </a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#">
-                                        <span class="lnr text-white ti-arrow-left"></span>
-                                    </a>
-                                </div>
-                                <div class="detials">
-                                    <p>Prev Post</p>
-                                    <a href="#">
-                                        <h4>Space The Final Frontier</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                <div class="detials">
-                                    <p>Next Post</p>
-                                    <a href="#">
-                                        <h4>Telescopes 101</h4>
-                                    </a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#">
-                                        <span class="lnr text-white ti-arrow-right"></span>
-                                    </a>
-                                </div>
-                                <div class="thumb">
-                                    <a href="#">
-                                        <img class="img-fluid"
-                                            src="https://i.pinimg.com/236x/6f/14/87/6f148777013fe8b204e8cf2e0a136550.jpg"
-                                            width="75px" alt="">
-                                    </a>
-                                </div>
-                            </div>
+
+                    <div class="card mt-4" style="background-color:transparent">
+                        <div class="card-header bg-secondary text-white">
+                            Syarat Layanan
                         </div>
-                    </div> --}}
+                        <ul class="card-body unordered-list">
+                            @foreach ($requirements as $requirement)
+                                <li>{{ $requirement->terms }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="text-right">
+                        <h4 class="mt-3">Silahkan ajukan layanan pada aplikasi berikut</h4>
+                        <img src="{{ asset('assets/img/app_btn2.png') }}" alt="">
+                    </div>
+
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Info Terbaru</h3>
-                            @foreach ($villageInfos as $item)
-                                <div class="media post_item">
-                                    <img src="{{ asset('uploads/images/village_info/' . $item->thumbnail) }}"
-                                        width="50px" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>{{ $item->title }}</h3>
-                                        </a>
-                                        <p>{{ $item->date->isoFormat('dddd, D MMMM Y') }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Kategori Layanan</h4>
+                            <ul class="list cat-list">
+                                @foreach ($serviceCategories as $serviceCategory)
+                                    <li><a href="{{ url('detail-service-info/' . $serviceCategory->id) }}"
+                                            class="d-flex">
+                                            {{ $serviceCategory->category }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </aside>
                     </div>
                 </div>
+
             </div>
         </div>
-    </section>
+    </main>
     <footer>
 
         <!-- Footer Start-->
@@ -272,6 +229,7 @@
         <!-- Footer End-->
 
     </footer>
+
     <!-- JS here -->
 
     <!-- All JS Custom Plugins Link Here here -->
@@ -299,17 +257,9 @@
     <script src="{{ asset('dist/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
 
-    <!-- contact js -->
-    {{-- <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
-    <script src="./assets/js/jquery.validate.min.js"></script>
-    <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script> --}}
-
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('/dist/js/plugins.js') }}"></script>
     <script src="{{ asset('dist/js/landing.js') }}"></script>
-
 </body>
 
 </html>

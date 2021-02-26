@@ -73,13 +73,17 @@
                                         <li><a href="#mission">Misi</a></li>
                                         <li><a href="#infoKalurahan">Info Kalurahan</a></li>
                                         <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
-                                        {{-- <li><a href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Element</a></li>
+                                        <li><a href="#">Info Layanan</a>
+                                            <ul class="submenu dropdown-menu-right">
+                                                @foreach ($serviceCategories as $serviceCategory)
+                                                    <li><a
+                                                            href="{{ url('detail-service-info/' . $serviceCategory->id) }}">
+                                                            {{ $serviceCategory->category }}</a>
+                                                    </li>
+                                                @endforeach
+
                                             </ul>
-                                        </li> --}}
+                                        </li>
                                         {{-- <li><a href="contact.html">Contact</a></li> --}}
                                     </ul>
                                 </nav>
