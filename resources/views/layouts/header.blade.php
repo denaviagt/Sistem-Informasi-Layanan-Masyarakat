@@ -55,14 +55,14 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                          aria-haspopup="true" aria-expanded="false">
-                         <img src="{{ asset('assets/img/profil.jpg') }}" alt="user" class="rounded-circle" width="30">
+                         {{-- <img src="{{ asset('assets/img/profil.jpg') }}" alt="user" class="rounded-circle" width="30"> --}}
                          <span class="ml-2 d-none d-lg-inline-block"><span class="">{{ $user->full_name }}</span> <i
                                  data-feather="chevron-down" class="svg-icon"></i></span>
                      </a>
-                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                     <div class="dropdown-menu dropdown-menu-right animated flipInY" style="min-width: 200px;">
 
-                         <a class="dropdown-item" href="{{ url('maintenance') }}">
-                             Lihat Profil</a>
+                         {{-- <a class="dropdown-item" href="{{ url('maintenance') }}">
+                             Lihat Profil</a> --}}
                          <a class="dropdown-item" href="#modal-edit-password" data-toggle="modal">
                              Edit Password</a>
                          <div class="dropdown-divider"></div>
