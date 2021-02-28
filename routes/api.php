@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController\AuthApiController;
+use App\Http\Controllers\ApiController\CitizenApiController;
 use App\Http\Controllers\ApiController\FeedbackApiController;
 use App\Http\Controllers\ApiController\ServiceApiController;
 use App\Http\Controllers\ApiController\ServiceCategoryApiController;
@@ -51,11 +52,12 @@ Route::prefix('villages')->group(function () {
 });
 
 Route::prefix('services')->group(function () {
+    Route::get('', [ServiceApiController::class, 'index']);
+    Route::post('{service_id}/upload', [ServiceApiController::class, 'upload']);
     Route::get('categories', [ServiceCategoryApiController::class, 'index']);
     Route::get('categories/{category_id}', [ServiceCategoryApiController::class, 'show']);
     Route::get('categories/{category_id}/requirements', [ServiceCategoryApiController::class, 'requirements']);
     Route::get('categories/{category_id}/procedures', [ServiceCategoryApiController::class, 'procedures']);
-    Route::post('categories/{category_id}/files', [ServiceCategoryApiController::class, 'files']);
     Route::post('categories/{category_id}/submit', [ServiceApiController::class, 'store']);
 });
 
@@ -70,4 +72,10 @@ Route::prefix('users')->group(function () {
     Route::get('{user_id}/citizen/dusun', [UserApiController::class, 'dusun']);
     Route::get('{user_id}/services/submission', [UserServiceApiController::class, 'submission']);
     Route::get('{user_id}/services/history', [UserServiceApiController::class, 'history']);
+});
+
+Route::prefix('citizens')->group(function () {
+    Route::get('', [CitizenApiController::class, 'index']);
+    Route::get('search', [CitizenApiController::class, 'find']);
+    Route::get('first', [CitizenApiController::class, 'single']);
 });

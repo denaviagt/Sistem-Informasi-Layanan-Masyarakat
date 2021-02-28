@@ -111,17 +111,4 @@ class ServiceCategoryApiController extends ApiController
 
         return $this->successResponse(compact('data', 'message'));
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
-    public function files($id, Request $request)
-    {
-        return response()->json([
-            'message' => 'Village Category ' . $id . ' Files',
-            'data' => []
-        ]);
-    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VillageRegulationResource extends JsonResource
+class ServiceFileResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +17,10 @@ class VillageRegulationResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "title" => $this->title,
-            'file' => asset("uploads/regulationFile/" . $this->file)
+            "service_id" => $this->service_id,
+            "service_requirement_id" => $this->service_requirement_id,
+            "file_url" => asset('assets/serviceFile/' . $this->file_url),
+            "status" => $this->status,
         ];
     }
 }

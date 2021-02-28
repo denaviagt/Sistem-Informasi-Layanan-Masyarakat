@@ -17,7 +17,15 @@ class UserServiceResource extends JsonResource
         return [
             'user' => $this->user,
             'citizen' => $this->citizen,
-            'service' => $this->service,
+            'service' => [
+                "id" => $this->id,
+                "user_id" => $this->user_id,
+                "citizen_id" => $this->citizen_id,
+                "service_category_id" => $this->service_category_id,
+                "description" => $this->description,
+                "status" => $this->status,
+                "date" => $this->date,
+            ],
             'service_category' => $this->service_category,
         ];
     }

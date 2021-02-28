@@ -10,6 +10,8 @@ class ServiceFile extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = ['file_url', 'status', 'service_id', 'service_requirement_id'];
+
     public function serviceRequirement()
     {
         return $this->belongsTo(ServiceRequirement::class, 'service_requirement_id');
