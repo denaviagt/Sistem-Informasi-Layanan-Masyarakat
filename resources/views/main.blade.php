@@ -209,17 +209,22 @@
             </div>
             <div class="owl-carousel owl-theme">
                 @foreach ($apparatus as $item)
-                    <div class="col-xl-11 col-lg-6 col-md-8 d-flex mx-auto card shadow-sm">
+                    <div class="col-xl-11 col-lg-6 col-md-8 d-flex mx-auto card shadow-sm mb-40 pb-40" style="padding-left:0 !important; padding-right:0 !important; ">
                         <div class="text-center active mb-10" style="height: 350px">
                             <div class="feature-img">
-                                @if ($item->citizen->gender == 'male')
+                                @if ($item->avatar)
                                     <img class="img-fluid card-img-top"
-                                        src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg"
-                                        width="150px" alt="">
-                                @else
-                                    <img class="img-fluid card-img-top"
-                                        src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg"
-                                        width="150px" alt="">
+                                    src="{{ url('uploads/images/apparatus-avatar/'.$item->avatar) }}" alt="Foto" style="height: 250px !important; object-fit: cover">
+                                @else    
+                                    @if ($item->citizen->gender == 'male')
+                                        <img class="img-fluid card-img-top"
+                                            src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg"
+                                            width="150px" alt="">
+                                    @else
+                                        <img class="img-fluid card-img-top"
+                                            src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg"
+                                            width="150px" alt="">
+                                    @endif
                                 @endif
                             </div>
                             <div class="mt-3 card-body">
