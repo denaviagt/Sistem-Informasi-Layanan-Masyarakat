@@ -56,6 +56,15 @@ class VillageProfileController extends Controller
             $villageProfile->status = $request->status;
             $villageProfile->citizen_id = $request->citizen_id;
             $villageProfile->admin_id = $request->admin_id;
+            if ($request->avatar) {
+                $request->validate([
+                    'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $avatarName = time() . '-' . $request->file('avatar')->getClientOriginalName();
+                $request->avatar->move(public_path('uploads/images/apparatus-avatar'), $avatarName);
+                $villageProfile->avatar = $avatarName;
+            }
+
         } else if ($request->type == 'dusuns') {
             $type = 'dusun';
             $villageProfile = new Dusun();
@@ -114,6 +123,13 @@ class VillageProfileController extends Controller
             $villageProfile->period = $request->period;
             $villageProfile->status = $request->status;
             $villageProfile->citizen_id = $request->citizen_id;
+            if ($request->avatar) {
+                $avatarName = time() . '-' . $request->file('avatar')->getClientOriginalName();
+                $avatarName = str_replace(' ', '-', $avatarName);
+                $request->avatar->move(public_path('uploads/images/apparatus-avatar'), $avatarName);
+
+                $villageProfile->avatar = $avatarName;
+            }
             $type = 'struktur organisasi';
         } else if ($request->type == 'dusuns') {
             $villageProfile = Dusun::find($request->dusunId);

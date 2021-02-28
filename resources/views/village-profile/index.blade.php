@@ -145,6 +145,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
+                                                    <th>Foto Profil</th>
                                                     <th>Nama</th>
                                                     <th>Jabatan</th>
                                                     <th>Periode</th>
@@ -156,6 +157,23 @@
                                                 @foreach ($apparatus as $item)
                                                     <tr id="row_apparatus_{{ $item->id }}">
                                                         <td>{{ $loop->iteration }}</td>
+                                                        <td style="text-align: center; padding:0">
+                                                            @if ($item->avatar)
+                                                                <img src="{{ url('uploads/images/apparatus-avatar/' . $item->avatar) }}"
+                                                                    alt="" width="70" height="70"
+                                                                    style="object-fit:cover; ">
+                                                            @else
+                                                                @if ($item->citizen->gender == 'male')
+                                                                    <img src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg"
+                                                                        width="70" height="70" style="object-fit:cover; "
+                                                                        alt="">
+                                                                @else
+                                                                    <img src="https://www.insane.net.au/wp-content/uploads/2019/11/placeholder-profile-female.jpg"
+                                                                        width="70" height="70" style="object-fit:cover; "
+                                                                        alt="">
+                                                                @endif
+                                                            @endif
+                                                        </td>
                                                         <td>{{ $item->citizen->full_name }}</td>
                                                         <td>{{ $item->position }}</td>
                                                         <td>{{ $item->period }}</td>
@@ -201,8 +219,7 @@
                                                     <th>No</th>
                                                     <th>Nama Pedukuhan</th>
                                                     <th>Kepala Dukuh</th>
-                                                    {{-- <th>Status</th>
-                                                    --}}
+                                                    {{-- <th>Status</th> --}}
                                                     <th style="width: 20px !important">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -223,8 +240,7 @@
                                                                 class="btn btn-action text-danger" data-toggle="tooltip"
                                                                 data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                                     data-toggle="modal" data-id="{{ $item->id }}"
-                                                                    onclick="modalDeleteDusun(event.target)"></i></button>
-                                                            --}}
+                                                                    onclick="modalDeleteDusun(event.target)"></i></button> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -474,7 +490,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/profil-kalurahan') }}" method="POST">
+                    <form action="{{ url('/profil-kalurahan') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}">
                         <input type="text" hidden class="form-control" name="type" value="apparatus" id="inputApparatusType"
@@ -501,6 +517,28 @@
                                     <option value="Ulu-ulu">Ulu-ulu</option>
                                     <option value="Kamituwa">Kamituwa</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label col-form-label-sm">Foto Profil</label>
+                            <div class="col-sm-7">
+                                <div id="msg"></div>
+                                <input type="file" name="avatar" id="avatar"
+                                    class="file @error('avatar') is-invalid @enderror" accept="image/*"
+                                    style="visibility: hidden; position: absolute">
+                                <div class="input-group my-3">
+                                    <input type="text" class="form-control" disabled placeholder="Upload File"
+                                        id="file-name-add" value="{{ old('avatar') }}">
+                                    <div class="input-group-append">
+                                        <button type="button" class="browse-add btn btn-primary">Upload</button>
+                                    </div>
+                                </div>
+                                @error('avatar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="ml-2 col-sm-6">
+                                    <img src="https://placehold.it/80x80" id="add-preview" class="img-thumbnail">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -544,7 +582,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/profil-kalurahan/apparatus') }}" method="POST">
+                    <form action="{{ url('/profil-kalurahan/apparatus') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}">
@@ -554,6 +592,12 @@
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single form-control" name="citizen_id" id="editName"
                                     style="width: 100%;" required>
+                                    @if (is_array(old('citizen_id')))
+                                        @foreach (old('citizen_id') as $citizen_id)
+                                            <option value="{{ $citizen_id }}" selected="selected">{{ $citizen_id }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -574,6 +618,28 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-3 col-form-label col-form-label-sm">Foto Profil</label>
+                            <div class="col-sm-7">
+                                <div id="msg"></div>
+                                <input type="file" name="avatar" id="edit-avatar"
+                                    class="file @error('avatar') is-invalid @enderror" accept="image/*"
+                                    style="visibility: hidden; position: absolute">
+                                <div class="input-group my-3">
+                                    <input type="text" class="form-control" disabled placeholder="Upload File"
+                                        id="file-name-edit">
+                                    <div class="input-group-append">
+                                        <button type="button" class="browse-edit btn btn-primary">Upload</button>
+                                    </div>
+                                </div>
+                                <div class="ml-2 col-sm-6" id="previewBlock">
+                                    {{-- <img id="editPreview"class="img-thumbnail"> --}}
+                                </div>
+                                @error('avatar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="editPeriod" class="col-sm-3 col-form-label">Periode Jabatan</label>
                             <div class="col-sm-9">
                                 <input type="text" value="" name="period" class="form-control" id="editPeriod"
@@ -590,13 +656,11 @@
                                 </select>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <div class=" d-flex mx-auto">
                                 <button type="submit" class="btn btn-danger m-2" data-dismiss="modal"
                                     aria-hidden="true">Batal</button>
-                                <button type="submit" class="btn btn-primary m-2">Tambah</button>
+                                <button type="submit" class="btn btn-primary m-2">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -604,7 +668,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Delete Struktur Organisasi--}}
+    {{-- Modal Delete Struktur Organisasi --}}
     <div class="modal fade" id="deleteApparatus" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -705,7 +769,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Delete Struktur Organisasi--}}
+    {{-- Modal Delete Produk Hukum --}}
     <div class="modal fade" id="deleteDusun" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -746,7 +810,6 @@
                             <div class="col-sm-9">
                                 <input class="form-control" name="title" id="inputTitle" type="text"
                                     placeholder="Masukkan Judul Produk Hukum" required>
-                                </input>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -778,7 +841,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/profil-kalurahan/regulations') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/profil-kalurahan/regulations') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="text" hidden class="form-control" name="regulationId" id="regulationId">
@@ -810,7 +874,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {{-- Modal Delete Produk Hukum--}}
+    {{-- Modal Delete Produk Hukum --}}
     <div class="modal fade" id="deleteRegulation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
@@ -837,6 +901,38 @@
     <script src="{{ asset('dist/js/EZView.js') }}"></script>
     <script src="{{ asset('dist/js/draggable.js') }}"></script>
     <script>
+        $(document).on("click", ".browse-add", function() {
+            var file = $(this).parents().find("#avatar");
+            file.trigger("click");
+        });
+        $('#avatar').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $("#file-name-add").val(fileName);
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("add-preview").src = e.target.result;
+            };
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        });
+        $(document).on("click", ".browse-edit", function() {
+            var file = $(this).parents().find("#edit-avatar");
+            file.trigger("click");
+        });
+        $('#edit-avatar').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $("#file-name-edit").val(fileName);
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("editPreview").src = e.target.result;
+            };
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        });
         $('#aparatusTable').DataTable({
             dom: 'Bfrtip',
             buttons: [{
@@ -1040,8 +1136,22 @@
                         $('#editPosition').val(response.data['position'])
                         $('#editPeriod').val(response.data['period'])
                         $('#editStatus').val(response.data['status'])
+                        var avatar = response.data['avatar']
+                        if (avatar != null) {
+                            $('#previewBlock').append(
+                                `<img class="img-thumbnail" id="editPreview" src={{ url('uploads/images/apparatus-avatar/${avatar}') }}>`
+                            )
+                        } else {
+                            $('#previewBlock').append(
+                                ` <img src="https://placehold.it/80x80" id="editPreview" class="img-thumbnail">`
+                            )
+                        }
                         $('#editApparatus').modal('show');
+
                     }
+                    $("#editApparatus").on('hide.bs.modal', function() {
+                        $('#editPreview').remove();
+                    });
                 }
             });
         }
@@ -1092,6 +1202,7 @@
                         $('#editDusunName').val(response.data['dusun_name'])
                         $('#editHeadOfDusun').val(response.data['head_of_dusun'])
                         $('#editDusun').modal('show');
+
                     }
                 }
             });
