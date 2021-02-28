@@ -592,12 +592,6 @@
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single form-control" name="citizen_id" id="editName"
                                     style="width: 100%;" required>
-                                    @if (is_array(old('citizen_id')))
-                                        @foreach (old('citizen_id') as $citizen_id)
-                                            <option value="{{ $citizen_id }}" selected="selected">{{ $citizen_id }}
-                                            </option>
-                                        @endforeach
-                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -605,7 +599,7 @@
                             <label for="editPosition" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="position" id="editPosition" required>
-                                    <option disabled selected>Pilih Posisi</option>
+                                    {{-- <option disabled selected>Pilih Posisi</option> --}}
                                     <option value="Lurah">Lurah</option>
                                     <option value="Carik">Carik</option>
                                     <option value="Kaur Tatalaksana">Kaur Tatalaksana</option>
@@ -1130,12 +1124,16 @@
                 type: "GET",
                 success: function(response) {
                     console.log(response.data);
+
                     if (response) {
                         $('#apparatusId').val(response.data['id'])
                         $('#editName').val(response.data['citizen_id'])
                         $('#editPosition').val(response.data['position'])
                         $('#editPeriod').val(response.data['period'])
                         $('#editStatus').val(response.data['status'])
+                        var apparatus_name = response.data['name']['full_name']
+                        var position = response.data['position']
+                        var citizen_id = response.data['citizen_id']
                         var avatar = response.data['avatar']
                         if (avatar != null) {
                             $('#previewBlock').append(
@@ -1146,6 +1144,17 @@
                                 ` <img src="https://placehold.it/80x80" id="editPreview" class="img-thumbnail">`
                             )
                         }
+                        if (position != null) {
+                            $('#editPosition').append(
+                                `<img class="img-thumbnail" id="editPreview" src={{ url('uploads/images/apparatus-avatar/${avatar}') }}>`
+                            )
+                        }
+                        if (apparatus_name != null) {
+                            $('#editName').append(
+                                `<option value="${citizen_id}" selected>${apparatus_name}</option>`
+                            )
+                        }
+
                         $('#editApparatus').modal('show');
 
                     }

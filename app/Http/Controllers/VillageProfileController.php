@@ -97,6 +97,12 @@ class VillageProfileController extends Controller
             $villageProfile = Mission::find($id);
         } else if ($type == 'apparatus') {
             $villageProfile = Apparatus::find($id);
+            $apparatus_name = DB::table('citizens')->select('full_name')->where('id', $villageProfile->citizen_id)->first();
+            // return $apparatus_name;
+
+            $villageProfile['name'] = $apparatus_name;
+            // array_push($villageProfile, $apparatus_name);
+            
         } else if ($type == 'dusuns') {
             $villageProfile = Dusun::find($id);
         } else if ($type == 'regulations') {
