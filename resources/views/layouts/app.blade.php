@@ -18,9 +18,7 @@ $user = auth()->user();
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{--
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css">
-    --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"> --}}
     <link href="{{ asset('dist/css/icons/font-awesome/css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -33,8 +31,7 @@ $user = auth()->user();
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/css.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/newcss.css') }}" rel="stylesheet">
-    {{--
-    <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
+    {{-- <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -108,7 +105,16 @@ $user = auth()->user();
     <script type="text/javascript">
         $('#summernote').summernote({
             height: 300,
-            width: 700
+            width: 700,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
         });
 
         $(document).ready(function() {
