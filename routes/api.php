@@ -68,6 +68,7 @@ Route::prefix('feedback')->group(function () {
 
 Route::prefix('users')->group(function () {
     Route::get('{user_id}', [UserApiController::class, 'show']);
+    Route::put('{user_id}', [UserApiController::class, 'update']);
     Route::get('{user_id}/citizen', [UserApiController::class, 'citizen']);
     Route::get('{user_id}/citizen/dusun', [UserApiController::class, 'dusun']);
     Route::get('{user_id}/services/submission', [UserServiceApiController::class, 'submission']);
@@ -76,6 +77,8 @@ Route::prefix('users')->group(function () {
 
 Route::prefix('citizens')->group(function () {
     Route::get('', [CitizenApiController::class, 'index']);
+    Route::get('{citizen_id}', [CitizenApiController::class, 'show']);
+    Route::put('{citizen_id}', [CitizenApiController::class, 'update']);
     Route::get('search', [CitizenApiController::class, 'find']);
     Route::get('first', [CitizenApiController::class, 'single']);
 });
