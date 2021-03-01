@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
-use App\Http\Controllers\Controller;
+use App\Http\Resources\CitizenResource;
 use App\Models\Citizen;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -47,7 +47,7 @@ class CitizenApiController extends ApiController
         $clause = $request->search;
 
         if (!empty($where) && !empty($clause)) {
-            $data = Citizen::where($where, $clause)->get();
+            $data = Citizen::where($where, 'LIKE', "%$clause%")->get();
         } else {
             $data = Citizen::all();
         }
@@ -77,7 +77,7 @@ class CitizenApiController extends ApiController
             return $this->errorResponse(compact('message'), 422);
         }
 
-        $data = Citizen::where($where, $clause)->first();
+        $data = Citizen::where($where, 'LIKE', "%$clause%")->first();
 
         if (!isset($data)) {
             $message = "Citizen Search By " . strtoupper($where) . " Not Found!";
