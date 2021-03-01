@@ -20,10 +20,13 @@
                     @endif
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Tentang Desa</span></li>
-
-                    <li class="sidebar-item"> <a class="sidebar-link"
-                            href="{{ url('/profil-kalurahan') }}"" aria-expanded=" false"><i
-                                class="far fa-building"></i><span class="hide-menu">Profil Kalurahan
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('data-penduduk') }}"
+                            aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Data Penduduk
+                            </span></a>
+                    </li>
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{ url('/profil-kalurahan') }}"
+                            aria-expanded=" false"><i class="far fa-building"></i><span class="hide-menu">Profil
+                                Kalurahan
                             </span></a>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/info-desa') }}"
@@ -34,10 +37,7 @@
                             aria-expanded="false"><i data-feather="globe" class="feather-icon"></i><span
                                 class="hide-menu">Potensi Kalurahan</span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('data-penduduk') }}"
-                            aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Data Penduduk
-                            </span></a>
-                    </li>
+
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">Layanan dan Aduan</span></li>
                     <li class="sidebar-item"> <a href="{{ url('/info-layanan') }}" class="sidebar-link"
