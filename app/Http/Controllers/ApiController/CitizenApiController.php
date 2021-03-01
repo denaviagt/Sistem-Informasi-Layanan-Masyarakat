@@ -19,6 +19,7 @@ class CitizenApiController extends ApiController
     {
         $message = "List Of Citizen!";
         $data = Citizen::all();
+        $data = CitizenResource::collection($data);
 
         return $this->successResponse(compact('data', 'message'));
     }
@@ -52,6 +53,8 @@ class CitizenApiController extends ApiController
         }
 
         $message = "Citizen Search Result!";
+        $data = CitizenResource::collection($data);
+
         return $this->successResponse(compact('data', 'message'));
     }
 
@@ -82,6 +85,8 @@ class CitizenApiController extends ApiController
         }
 
         $message = "Citizen By " . strtoupper($where) . " Result!";
+        $data = new CitizenResource($data);
+
         return $this->successResponse(compact('data', 'message'));
     }
 
@@ -89,7 +94,7 @@ class CitizenApiController extends ApiController
      * Display the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -101,7 +106,7 @@ class CitizenApiController extends ApiController
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
