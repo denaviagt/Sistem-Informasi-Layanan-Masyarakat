@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -20,7 +21,10 @@ class UserResource extends JsonResource
             "email" => $this->email,
             "username" => $this->username,
             "phone" => $this->phone,
-            "registration_date" => $this->created_at,
+            "register_at" => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)
+                ->format('D, d M Y'),
+            "updated_at" => Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at ?? $this->created_at)
+                ->format('D, d M Y'),
         ];
     }
 }
