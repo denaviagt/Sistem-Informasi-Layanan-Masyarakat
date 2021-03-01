@@ -98,7 +98,17 @@ class CitizenApiController extends ApiController
      */
     public function show($id)
     {
-        //
+        $citizen = Citizen::find($id);
+
+        if (!isset($citizen)){
+            $message = "Citizen Not Found!";
+            return $this->errorResponse(compact('message'), 404);
+        }
+
+        $message = 'Detail Of Citizen ' . $citizen->full_name;
+        $data = new CitizenResource($citizen);
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
@@ -110,7 +120,40 @@ class CitizenApiController extends ApiController
      */
     public function update(Request $request, $id)
     {
-        //
+        $citizen = Citizen::find($id);
+
+        if (!isset($citizen)){
+            $message = "Citizen Not Found!";
+            return $this->errorResponse(compact( 'message'), 404);
+        }
+
+        $citizen->nik = $request->nik ?? $citizen->nik;
+        $citizen->kk = $request->kk ?? $citizen->kk;
+        $citizen->full_name = $request->full_name ?? $citizen->full_name;
+        $citizen->religion = $request->religion ?? $citizen->religion;
+        $citizen->married_status = $request->married_status ?? $citizen->married_status;
+        $citizen->last_education = $request->last_education ?? $citizen->last_education;
+        $citizen->blood_type = $request->blood_type ?? $citizen->blood_type;
+        $citizen->profession = $request->profession ?? $citizen->profession;
+        $citizen->pob = $request->pob ?? $citizen->pob;
+        $citizen->dob = $request->dob ?? $citizen->dob;
+        $citizen->address = $request->address ?? $citizen->address;
+        $citizen->status = $request->status ?? $citizen->status;
+
+        if (!$citizen->save()){
+            $message = "Failed To Update Citizen!";
+            return $this->errorResponse(compact( 'message'), 409);
+        }
+
+        $data = new CitizenResource($citizen);
+
+        $message = "Success Update Citizen Data";
+
+        if (!$citizen->wasChanged()){
+            $message = "Nothings Changed With Citizen!";
+        }
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
