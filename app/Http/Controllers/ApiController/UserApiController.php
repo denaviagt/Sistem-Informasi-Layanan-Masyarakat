@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,11 +13,14 @@ class UserApiController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
-        //
+        $data = User::all();
+        $data = UserResource::collection($data);
+        $message = "List of User";
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
