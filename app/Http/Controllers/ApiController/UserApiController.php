@@ -111,11 +111,36 @@ class UserApiController extends ApiController
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!isset($user)){
+            $message = "User Id Not Found!";
+            return $this->errorResponse(compact( 'message'), 404);
+        }
+
+        $user->username = $request->username ?? $user->username;
+        $user->email = $request->email ?? $user->email;
+        $user->citizen_id = $request->citizen_id ?? $user->citizen_id;
+        $user->password = $request->password ?? $user->password;
+        $user->phone = $request->phone ?? $user->phone;
+
+        if (!$user->save()){
+            $message = "Failed To Update User!";
+            return $this->errorResponse(compact( 'message'), 409);
+        }
+
+        $data = new UserResource($user);
+
+        $message = "Success Update User Data";
+        if (!$user->wasChanged()){
+            $message = "Nothings Changed With User!";
+        }
+
+        return $this->successResponse(compact('data', 'message'));
     }
 
     /**
