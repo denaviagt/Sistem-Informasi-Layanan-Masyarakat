@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Requests\LoginApiRequest;
 use App\Http\Requests\RegisterApiRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Citizen;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthApiController extends ApiController
 {
 
-    public function login(RegisterApiRequest $request)
+    public function login(LoginApiRequest $request)
     {
         $request->validated();
 
