@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\CitizenResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 class UserApiController extends ApiController
 {
@@ -67,7 +69,7 @@ class UserApiController extends ApiController
         }
 
         $message = "Detail Citizen By User " . $data->username;
-        $data = $data->citizen;
+        $data = new CitizenResource($data->citizen);
 
         return $this->successResponse(compact('data', 'message'));
     }
@@ -125,7 +127,7 @@ class UserApiController extends ApiController
         $user->username = $request->username ?? $user->username;
         $user->email = $request->email ?? $user->email;
         $user->citizen_id = $request->citizen_id ?? $user->citizen_id;
-        $user->password = $request->password ?? $user->password;
+        $user->password = $user->password = isset($request->password) ? Hash::make($request->password) : $user->password;
         $user->phone = $request->phone ?? $user->phone;
 
         if (!$user->save()){

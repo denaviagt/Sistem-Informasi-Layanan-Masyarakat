@@ -130,13 +130,14 @@ class CitizenApiController extends ApiController
         $citizen->nik = $request->nik ?? $citizen->nik;
         $citizen->kk = $request->kk ?? $citizen->kk;
         $citizen->full_name = $request->full_name ?? $citizen->full_name;
+        $citizen->gender = $request->gender ?? $citizen->gender;
         $citizen->religion = $request->religion ?? $citizen->religion;
         $citizen->married_status = $request->married_status ?? $citizen->married_status;
         $citizen->last_education = $request->last_education ?? $citizen->last_education;
         $citizen->blood_type = $request->blood_type ?? $citizen->blood_type;
         $citizen->profession = $request->profession ?? $citizen->profession;
-        $citizen->pob = $request->pob ?? $citizen->pob;
-        $citizen->dob = $request->dob ?? $citizen->dob;
+        $citizen->pob = $request->place_of_birth ?? $request->pob ?? $citizen->pob;
+        $citizen->dob = $request->date_of_birth ?? $request->dob ?? $citizen->dob;
         $citizen->address = $request->address ?? $citizen->address;
         $citizen->status = $request->status ?? $citizen->status;
 
