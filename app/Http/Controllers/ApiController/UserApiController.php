@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiController;
 
+use App\Http\Resources\CitizenResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -68,7 +69,7 @@ class UserApiController extends ApiController
         }
 
         $message = "Detail Citizen By User " . $data->username;
-        $data = new UserResource($data->citizen);
+        $data = new CitizenResource($data->citizen);
 
         return $this->successResponse(compact('data', 'message'));
     }
