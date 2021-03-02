@@ -68,7 +68,7 @@ class UserApiController extends ApiController
         }
 
         $message = "Detail Citizen By User " . $data->username;
-        $data = $data->citizen;
+        $data = new UserResource($data->citizen);
 
         return $this->successResponse(compact('data', 'message'));
     }
