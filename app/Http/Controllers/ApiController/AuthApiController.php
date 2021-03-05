@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiController;
 
 use App\Http\Requests\LoginApiRequest;
+use App\Http\Requests\RegisterApiRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Citizen;
 use App\Models\User;
@@ -31,13 +32,9 @@ class AuthApiController extends ApiController
         return $this->successResponse(compact('data', 'message'));
     }
 
-    public function register(Request $request)
+    public function register(RegisterApiRequest $request)
     {
-        $this->validate($request, [
-            'nik' => ['required', 'min:16'],
-            'phone' => ['required'],
-            'password' => ['required', 'min:8'],
-        ]);
+        $request->validated();
 
         $nik = $request->nik;
         $password = Hash::make($request->password);

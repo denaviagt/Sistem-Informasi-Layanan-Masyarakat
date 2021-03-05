@@ -30,6 +30,7 @@ class CitizenResource extends JsonResource
             "date_of_birth"=> $this->dob,
             "address"=> $this->address,
             "status"=> $this->status,
+            "dusun_id" => $this->dusun_id,
             "register_at" => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)
                 ->format('D, d M Y'),
             "updated_at" => Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at ?? $this->created_at)
