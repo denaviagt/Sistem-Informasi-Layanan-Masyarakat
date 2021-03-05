@@ -68,9 +68,9 @@
                                 <nav>
                                     <ul id="navigation">
                                         {{-- <li class="active"><a href="{{ url('/') }}"> Beranda</a></li> --}}
-                                        <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
                                         <li><a href="#vision">Visi</a></li>
                                         <li><a href="#mission">Misi</a></li>
+                                        <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
                                         <li><a href="#infoKalurahan">Info Kalurahan</a></li>
                                         <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
                                         <li><a href="#">Info Layanan</a>
@@ -209,13 +209,15 @@
             </div>
             <div class="owl-carousel owl-theme">
                 @foreach ($apparatus as $item)
-                    <div class="col-xl-11 col-lg-6 col-md-8 d-flex mx-auto card shadow-sm mb-40 pb-40" style="padding-left:0 !important; padding-right:0 !important; ">
+                    <div class="col-xl-11 col-lg-6 col-md-8 d-flex mx-auto card shadow-sm mb-40 pb-40"
+                        style="padding-left:0 !important; padding-right:0 !important; ">
                         <div class="text-center active mb-10" style="height: 350px">
                             <div class="feature-img">
                                 @if ($item->avatar)
                                     <img class="img-fluid card-img-top"
-                                    src="{{ url('uploads/images/apparatus-avatar/'.$item->avatar) }}" alt="Foto" style="height: 250px !important; object-fit: cover">
-                                @else    
+                                        src="{{ url('uploads/images/apparatus-avatar/' . $item->avatar) }}" alt="Foto"
+                                        style="height: 250px !important; object-fit: cover">
+                                @else
                                     @if ($item->citizen->gender == 'male')
                                         <img class="img-fluid card-img-top"
                                             src="https://st2.depositphotos.com/1502311/12020/v/600/depositphotos_120206862-stock-illustration-profile-picture-vector.jpg"
@@ -326,10 +328,10 @@
                                         <i class="ti-location-pin mr-2 mt-2"></i>
                                         <p>Karongan, Jogotirto, Berbah, Sleman, Daerah Istimewa Yogyakarta 55573</p>
                                     </div>
-                                    <div class="d-flex">
+                                    {{-- <div class="d-flex">
                                         <i class="ti-mobile mr-2 mt-1"></i>
                                         <p>089514953073</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
