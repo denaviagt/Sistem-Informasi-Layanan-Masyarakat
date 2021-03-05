@@ -183,10 +183,10 @@
                                         <i class="ti-location-pin mr-2 mt-2"></i>
                                         <p>Karongan, Jogotirto, Berbah, Sleman, Daerah Istimewa Yogyakarta 55573</p>
                                     </div>
-                                    <div class="d-flex">
+                                    {{-- <div class="d-flex">
                                         <i class="ti-mobile mr-2 mt-1"></i>
                                         <p>089514953073</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
