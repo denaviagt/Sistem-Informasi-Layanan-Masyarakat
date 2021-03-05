@@ -23,5 +23,5 @@ function addToLog($url, $ip, $description, $event)
 }
 function logActivityLists()
 {
-    return LogActivityModels::where('url', 'not like', 'http://e-silam.gete/admin%')->limit(5)->orderBy('log_time', 'desc')->get();
+    return LogActivityModels::where('url', 'not like', '%jogotirto.id/admin%')->limit(5)->orderBy('log_time', 'desc')->get();
 }
