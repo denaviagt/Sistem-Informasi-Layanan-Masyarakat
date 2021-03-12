@@ -120,11 +120,11 @@
                      </div>
 
                      <div class="form-group row">
-                         <label for="newPassword" class="col-sm-3 col-form-label">Konfirmasi Baru</label>
+                         <label for="new_confirm_password" class="col-sm-3 col-form-label">Konfirmasi Baru</label>
                          <div class="col-sm-9">
                              <input name="new_confirm_password" type="password"
                                  class="form-control @error('new_confirm_password') is-invalid @enderror"
-                                 id="newPassword" placeholder="Konfirmasi Password Baru" required="">
+                                 id="new_confirm_password" placeholder="Konfirmasi Password Baru" required="">
                              @error('new_confirm_password')
                                  <span class="invalid-feedback" role="alert">
                                      <strong>{{ $message }}</strong>
