@@ -516,6 +516,7 @@
                                     <option value="Jayabaya">Jayabaya</option>
                                     <option value="Ulu-ulu">Ulu-ulu</option>
                                     <option value="Kamituwa">Kamituwa</option>
+                                    <option value="Dukuh">Dukuh</option>
                                 </select>
                             </div>
                         </div>
@@ -608,6 +609,7 @@
                                     <option value="Jayabaya">Jayabaya</option>
                                     <option value="Ulu-ulu">Ulu-ulu</option>
                                     <option value="Kamituwa">Kamituwa</option>
+                                    <option value="Dukuh">Dukuh</option>
                                 </select>
                             </div>
                         </div>
@@ -641,10 +643,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="editStatus" class="col-sm-3 col-form-label">Jabatan</label>
+                            <label for="editStatus" class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="status" id="editStatus" required>
-                                    <option disabled selected>Pilih Jabatan</option>
+                                    <option disabled selected>Pilih Status</option>
                                     <option value="active">Aktif</option>
                                     <option value="inactive">Tidak Aktif</option>
                                 </select>
