@@ -31,18 +31,6 @@ class AdminSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'full_name' => 'Laila Indah Kusuma',
-                'gender' => 'female',
-                'email' => 'laila@gmail.com',
-                'username' => 'layla',
-                'password' => Hash::make('password'),
-                'token' => "",
-                'remember_token' => "",
-                'is_active' => 1,
-                'level' => 'superadmin',
-                'created_at' => now(),
-            ],
-            [
                 'full_name' => 'Pengkuh Dwi Septiandi',
                 'gender' => 'male',
                 'email' => 'pengkuh@gmail.com',
@@ -55,70 +43,18 @@ class AdminSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'full_name' => 'Muhammad Syahrul',
+                'full_name' => 'Super Admin',
                 'gender' => 'male',
-                'email' => 'syahrul@gmail.com',
-                'username' => 'syahrul',
+                'email' => 'superadmin@gmail.com',
+                'username' => 'superadmin',
                 'password' => Hash::make('password'),
                 'token' => "",
                 'remember_token' => "",
                 'is_active' => 1,
-                'level' => 'admin',
+                'level' => 'superadmin',
                 'created_at' => now(),
-            ],
-            [
-                'full_name' => 'Vina Aulia',
-                'gender' => 'female',
-                'email' => 'vina@gmail.com',
-                'username' => 'vina',
-                'password' => Hash::make('password'),
-                'token' => "",
-                'remember_token' => "",
-                'is_active' => 1,
-                'level' => 'admin',
-                'created_at' => now(),
-            ],
-            [
-                'full_name' => 'Gallant Setiawan',
-                'gender' => 'male',
-                'email' => 'gallant@gmail.com',
-                'username' => 'gallant',
-                'password' => Hash::make('password'),
-                'token' => "",
-                'remember_token' => "",
-                'is_active' => 1,
-                'level' => 'admin',
-                'created_at' => now(),
-            ],
-            [
-                'full_name' => 'Revania H',
-                'gender' => 'female',
-                'email' => 'reva@gmail.com',
-                'username' => 'reva',
-                'password' => Hash::make('password'),
-                'token' => "",
-                'remember_token' => "",
-                'is_active' => 1,
-                'level' => 'admin',
-                'created_at' => now(),
-            ],
+            ]
         ]);
 
-        // $faker = Faker::create('id_ID');
-        // $gender = $faker->randomElement(['male', 'female']);
-        // for ($i = 1; $i <= 5; $i++) {
-        //     DB::table('admins')->insert([
-        //         'full_name' => $faker->name,
-        //         'gender' => $faker->randomElement(['male', 'female']),
-        //         'email' => $faker->freeEmail,
-        //         'username' => $faker->userName,
-        //         'password' => Hash::make('password'),
-        //         'token' => "",
-        //         'remember_token' => "",
-        //         'is_active' => 1,
-        //         'level' => 'admin',
-        //         'created_at' => now(),
-        //     ]);
-        // }
     }
 }
