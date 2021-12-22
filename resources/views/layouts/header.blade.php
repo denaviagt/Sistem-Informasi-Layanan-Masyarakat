@@ -15,8 +15,8 @@
                  <a href="{{ url('/') }}">
                      <b class="logo-icon">
                          <!-- Dark Logo icon -->
-                         <img src="{{ asset('assets/img/main-logo.png') }}" alt="homepage" class="dark-logo"
-                             width="30px" />
+                         {{-- <img src="{{ asset('assets/img/main-logo.png') }}" alt="homepage" class="dark-logo"
+                             width="30px" /> --}}
                      </b>
                      <!--End Logo icon -->
                      <!-- Logo text -->
@@ -56,8 +56,9 @@
                      <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                          aria-haspopup="true" aria-expanded="false">
                          {{-- <img src="{{ asset('assets/img/profil.jpg') }}" alt="user" class="rounded-circle" width="30"> --}}
-                         <span class="ml-2 d-none d-lg-inline-block"><span class="">{{ $user->full_name }}</span> <i
-                                 data-feather="chevron-down" class="svg-icon"></i></span>
+                         <span class="ml-2 d-none d-lg-inline-block"><span
+                                 class="">{{ $user->full_name }}</span> <i data-feather="chevron-down"
+                                 class="svg-icon"></i></span>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right animated flipInY" style="min-width: 200px;">
 
