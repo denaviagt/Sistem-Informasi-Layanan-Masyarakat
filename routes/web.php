@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index');
+Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
+Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
+Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
+// Route::get('/', function ()
+// {
+//     return 'acb';
+// });
 Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
 Route::get('/detail-service-info/{id}', 'MainController@ServiceInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
