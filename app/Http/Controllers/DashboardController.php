@@ -30,7 +30,7 @@ class DashboardController extends Controller
         $feedbacks = $feedback->count();
         $current = Carbon::now();
         // dd($current->subMonths());
-        DB::table('log_activity')->where('log_time', '<=', $current->subMonths())->delete();
+        // DB::table('log_activity')->where('log_time', '<=', $current->subMonths())->delete();
 
         return view('dashboard', compact(['proccesses', 'accepteds', 'rejecteds', 'completeds', 'countServiceOfDate', 'feedbacks']));
     }
@@ -61,16 +61,16 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function logActivity()
-    {
-        $logs = logActivityLists();
-        $data = array();
-        foreach ($logs as $key => $value) {
-            $data[$key] = array('description' => $logs[$key]->description, 'event' => $logs[$key]->event, 'time' => $logs[$key]->log_time->diffForHumans());
-        }
+    // public function logActivity()
+    // {
+    //     $logs = logActivityLists();
+    //     $data = array();
+    //     foreach ($logs as $key => $value) {
+    //         $data[$key] = array('description' => $logs[$key]->description, 'event' => $logs[$key]->event, 'time' => $logs[$key]->log_time->diffForHumans());
+    //     }
 
-        return response()->json([
-            'data' => $data,
-        ]);
-    }
+    //     return response()->json([
+    //         'data' => $data,
+    //     ]);
+    // }
 }
