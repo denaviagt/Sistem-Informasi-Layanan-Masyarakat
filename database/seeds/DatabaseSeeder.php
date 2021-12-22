@@ -17,12 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminSeeder::class);
         $this->call(DusunSeeder::class);
-        $this->call(CitizenSeeder::class);
-        $this->call(VillageSeeder::class);       
+        $this->call(CitizenSeeder::class);      
         $this->call(UserSeeder::class);
-        $this->call(FeedbackSeeder::class);
         $this->call(ServiceCategorySeeder::class);
-        $this->call(ServiceSeeder::class);
+        // $this->call(ServiceSeeder::class);
         $this->call(ServiceProcedureSeeder::class);
         $this->call(ServiceRequirementSeeder::class);
     }
