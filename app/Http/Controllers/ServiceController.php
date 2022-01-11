@@ -222,6 +222,7 @@ class ServiceController extends Controller
 
     public function cetakSurat($id, $id_cat)
     {
+        return redirect()->back()->with('error', 'Fitur Cetak Sedang Dalam Perbaikan!');
         $data =  Service::where("id", $id)->where("service_category_id", $id_cat)->first();
         $village = Village::first();
         $extra_fields = DB::table('extra_fields')
