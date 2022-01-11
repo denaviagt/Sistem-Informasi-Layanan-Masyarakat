@@ -9,6 +9,11 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
             <!-- ============================================================== -->
             <div class="card">
                 <input type="hidden" name="service-status" id="service-status" value="{{ $service->status }}">
@@ -139,9 +144,11 @@
                                 <div class="row">
                                     <div class="col-md-5 mx-auto mt-6">
                                         <div class="verification">
-                                            <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                            <div class="check"><i class="fa fa-check" aria-hidden="true"></i>
+                                            </div>
                                             <div class="verification_content">
-                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai ! <b></h1>
+                                                <h1 class="m-3 "><b>Berkas Sudah Lengkap, Verifikasi Selesai ! <b>
+                                                </h1>
                                                 @if ($service->service_category_id != 2 && $service->service_category_id != 6)
                                                     <a href="{{ url('/service/surat/' . $service->id . '/' . $service->service_category_id) }}"
                                                         class="btn btn-primary" target="_blank" id="btnCetak">Cetak
@@ -413,6 +420,5 @@
         //     });
 
         // }
-
     </script>
 @endsection

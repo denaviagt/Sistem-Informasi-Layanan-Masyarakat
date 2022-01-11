@@ -33,7 +33,8 @@
             <P>Nomor: ...............................</P>
         </div>
         <div class="isi">
-            <p class="text-justify">Yang bertanda tangan di bawah ini Lurah Jogotirto Kepanewon Berbah Kabupaten Sleman,
+            <p class="text-justify">Yang bertanda tangan di bawah ini Lurah Jogotirto Kepanewon Berbah Kabupaten
+                Sleman,
                 menerangkan:</p>
             <table class="table-isi">
                 <tr>
@@ -78,7 +79,8 @@
                     <td>{{ $data->citizen->address }}</td>
                 </tr>
             </table>
-            <p class="text-justify">Nama tersebut di atas adalah penduduk Kalurahan Jogotirto yang telah memenuhi syarat
+            <p class="text-justify">Nama tersebut di atas adalah penduduk Kalurahan Jogotirto yang telah memenuhi
+                syarat
                 dan ketentuan untuk
                 melakukan perekaman E-KTP.</p>
             <p class="text-justify">Demikian surat pengantar ini dibuat dengan sebenarnya untuk dapat dipergunakan
@@ -100,7 +102,7 @@
                 <td style="height: 70px"></td>
             </tr>
             <tr>
-                <td><u>{{ $village->lurah }}</u></td>
+                <td><u>Arum Setya, S.Pd</u></td>
             </tr>
         </table>
     </div>

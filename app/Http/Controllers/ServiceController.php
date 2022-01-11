@@ -222,27 +222,27 @@ class ServiceController extends Controller
 
     public function cetakSurat($id, $id_cat)
     {
-        return redirect()->back()->with('error', 'Fitur Cetak Sedang Dalam Perbaikan!');
+        // return redirect()->back()->with('error', 'Fitur Cetak Sedang Dalam Perbaikan!');
         $data =  Service::where("id", $id)->where("service_category_id", $id_cat)->first();
-        $village = Village::first();
-        $extra_fields = DB::table('extra_fields')
-            ->join('extra_values', 'extra_values.extra_field_id', 'extra_fields.id')
-            ->where('extra_values.service_id', $id)
-            ->get();
+        // $village = Village::first();
+        // $extra_fields = DB::table('extra_fields')
+        //     ->join('extra_values', 'extra_values.extra_field_id', 'extra_fields.id')
+        //     ->where('extra_values.service_id', $id)
+        //     ->get();
         // return ([$data, $village]);
         if ($id_cat == 1) {
-            $pdf = PDF::loadView('template.ektp', compact(['data', 'village']));
+            $pdf = PDF::loadView('template.ektp', compact(['data']));
         } elseif ($id_cat == 3) {
-            $pdf = PDF::loadView('template.aktalahir', compact(['data', 'village', 'extra_fields']));
+            $pdf = PDF::loadView('template.aktalahir', compact(['data', 'extra_fields']));
         } elseif ($id_cat == 4) {
-            $pdf = PDF::loadView('template.aktamati', compact(['data', 'village', 'extra_fields']));
+            $pdf = PDF::loadView('template.aktamati', compact(['data', 'extra_fields']));
         } elseif ($id_cat == 5) {
-            $pdf = PDF::loadView('template.pindah-penduduk', compact(['data', 'village', 'extra_fields']));
+            $pdf = PDF::loadView('template.pindah-penduduk', compact(['data', 'extra_fields']));
         } elseif ($id_cat == 7) {
-            $pdf = PDF::loadView('template.nikah', compact(['data', 'village']));
+            $pdf = PDF::loadView('template.nikah', compact(['data']));
             // return $pdf->stream($data['citizen']->full_name . '.pdf');
         } elseif ($id_cat == 8) {
-            $pdf = PDF::loadView('template.sku', compact(['data', 'village', 'extra_fields']));
+            $pdf = PDF::loadView('template.sku', compact(['data', 'extra_fields']));
         }
 
         return $pdf->stream($data->citizen->full_name . '.pdf');
