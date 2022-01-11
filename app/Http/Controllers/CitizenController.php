@@ -86,7 +86,7 @@ class CitizenController extends Controller
         }
 
         if ($citizen->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' membuat data penduduk baru', 'create');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' membuat data penduduk baru', 'create');
             return redirect('data-penduduk')->with('status', 'Tambah Data Penduduk Berhasil!');
         } else {
             return redirect()->back();
@@ -149,6 +149,17 @@ class CitizenController extends Controller
         // ]);
     }
 
+    public function show_data($nik)
+    {
+        $detail = Citizen::where('nik', $nik)->first();
+        // $data = [
+        //     'detail' => $citizen,
+        // ];
+        // return view('data-penduduk.detail', compact('detail'));
+
+        return $detail;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -187,7 +198,7 @@ class CitizenController extends Controller
         $citizen->dusun_id = $request->dusun_id;
 
         if ($citizen->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data penduduk dengan NIK ' . $citizen->nik, 'update');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data penduduk dengan NIK ' . $citizen->nik, 'update');
             return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Berhasil!');
         } else {
             return redirect('data-penduduk')->with('status', 'Ubah Data Penduduk Gagal!');
@@ -200,7 +211,7 @@ class CitizenController extends Controller
         if ($citizen->status != 'verified') {
             $citizen->status = 'verified';
             if ($citizen->save()) {
-                addToLog($this->url, $this->ip, $this->nama_admin . ' memelakukan verifikasi data penduduk dengan NIK ' . $citizen->nik, 'verif');
+                // addToLog($this->url, $this->ip, $this->nama_admin . ' memelakukan verifikasi data penduduk dengan NIK ' . $citizen->nik, 'verif');
             }
         }
     }
@@ -210,7 +221,7 @@ class CitizenController extends Controller
         $citizen = Citizen::find($id);
         $citizen->is_deleted = 1;
         if ($citizen->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data penduduk dengan NIK ' . $citizen->nik, 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data penduduk dengan NIK ' . $citizen->nik, 'delete');
             return response()->json([
                 'status' => true
             ]);

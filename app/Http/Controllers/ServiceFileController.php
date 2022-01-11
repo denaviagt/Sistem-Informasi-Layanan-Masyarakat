@@ -28,7 +28,7 @@ class ServiceFileController extends Controller
         if ($file->status != 'verified') {
             $file->status = 'verified';
             if ($file->save()) {
-                addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi berkas ' . $req_name->terms . ' pada layanan ID ' . $service_id->id, 'verif');
+                // addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi berkas ' . $req_name->terms . ' pada layanan ID ' . $service_id->id, 'verif');
             }
         }
     }
@@ -44,7 +44,7 @@ class ServiceFileController extends Controller
             $file->status = 'denied';
             $service->status = 'rejected';
             if ($file->save() && $service->save()) {
-                addToLog($this->url, $this->ip, $this->nama_admin . ' menolak layanan ' . $service->id . ' karena berkas bermasalah', 'reject');
+                // addToLog($this->url, $this->ip, $this->nama_admin . ' menolak layanan ' . $service->id . ' karena berkas bermasalah', 'reject');
             }
         }
     }

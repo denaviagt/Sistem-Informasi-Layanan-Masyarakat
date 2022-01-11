@@ -125,7 +125,7 @@ class FeedbackController extends Controller
         $feedback = Feedback::find($id);
         if ($feedback->delete()) {
 
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus aduan ', 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus aduan ', 'delete');
             return response()->json([
                 'status' => true
             ]);

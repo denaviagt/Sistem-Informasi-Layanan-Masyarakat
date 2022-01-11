@@ -97,11 +97,11 @@ class AdminController extends Controller
         $admins->token = '';
         $admins->remember_token = '';
         // $admins->password = Hash::make(Str::random(8));
-
-        if ($admins->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
+        $admins->save();
+        // if () {
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' membuat admin baru', 'create');
             // addToLog($request, $this->nama_admin . ' membuat admin baru', 'create');
-        }
+        // }
         $this->sendEmailToAdmin($admins, $password);
         return redirect('admin')->with('status', 'Tambah Data Admin Berhasil!');
     }
@@ -114,7 +114,7 @@ class AdminController extends Controller
         $admins->password = Hash::make($password);
         if ($admins->save()) {
             $this->sendEmailToAdmin($admins, $password);
-            addToLog($this->url, $this->ip, $this->nama_admin . ' mengirim ulang email admin dengan email ' . $admins->email, 'update');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' mengirim ulang email admin dengan email ' . $admins->email, 'update');
             return redirect('admin')->with('status', 'Kirim Ulang Email Admin Berhasil!');
         } else {
             return redirect('admin')->with('status', 'Kirim Ulang Email Admin Gagal!');
@@ -195,7 +195,7 @@ class AdminController extends Controller
         }
 
         if ($admins->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data admin dengan username ' . $admins->username, 'update');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data admin dengan username ' . $admins->username, 'update');
             return redirect('admin')->with('status', 'Ubah Data Admin Berhasil!');
         } else {
             return redirect('admin')->with('status', 'Ubah Data Admin Gagal!');
@@ -213,7 +213,7 @@ class AdminController extends Controller
 
         $admins = Admin::find($id);
         if ($admins->delete()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data admin dengan username ' . $admins->username, 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data admin dengan username ' . $admins->username, 'delete');
             return response()->json([
                 'status' => true
             ]);

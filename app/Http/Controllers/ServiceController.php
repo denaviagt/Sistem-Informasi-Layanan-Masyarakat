@@ -85,17 +85,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $citizen = Citizen::where('nik', $request->input_nik)->first();
         $service = Service::updateOrCreate(
             ['id' => $request->service_id],
             [
                 'date' => now(),
                 'status' => $request->status,
-                'service_category_id' => $request->service_category_id,
-                'citizen_id' => $request->citizen_id
+                'service_category_id' => 1,
+                'citizen_id' => $citizen->id,
+                'description' => $request->desc,
+                'user_id' => Auth::user()->id
             ]
         );
 
-        return response()->json(['success' => 'Service sukses', 'data' => $service, 'code' => 200, 200]);
+        if ($service) {
+            $service_file = new ServiceFile();
+            $service_file->file_url;
+        }
+
+        return redirect()->route('service');
     }
 
     /**
@@ -170,7 +178,7 @@ class ServiceController extends Controller
         if ($service->status == 'accepted' || $service->status == 'rejected') {
             $service->status = 'processing';
             if ($service->save()) {
-                addToLog($this->url, $this->ip, $this->nama_admin . ' memproses layanan dengan ID ' . $service->id, 'process');
+                // addToLog($this->url, $this->ip, $this->nama_admin . ' memproses layanan dengan ID ' . $service->id, 'process');
             }
         }
     }
@@ -180,7 +188,7 @@ class ServiceController extends Controller
         if ($service->status !== 'completed') {
             $service->status = 'completed';
             if ($service->save()) {
-                addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi layanan dengan ID ' . $service->id, 'verif');
+                // addToLog($this->url, $this->ip, $this->nama_admin . ' melakukan verifikasi layanan dengan ID ' . $service->id, 'verif');
                 return response()->json([
                     'status' => true,
                 ]);
@@ -207,7 +215,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         if ($service->delete()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus layanan dengan ID ' . $service->id, 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus layanan dengan ID ' . $service->id, 'delete');
             return response()->json(['success' => true]);
         }
     }

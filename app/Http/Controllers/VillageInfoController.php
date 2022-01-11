@@ -74,7 +74,7 @@ class VillageInfoController extends Controller
         $infoDesaAdd->admin_id = $request->admin_id;
 
         if ($infoDesaAdd->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data info kalurahan', 'create');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data info kalurahan', 'create');
             return redirect('info-desa')->with('status', 'Tambah Data Info Desa Berhasil!');
         }
     }
@@ -138,7 +138,7 @@ class VillageInfoController extends Controller
         // $title = Str::substr($infoDesaAdd->title, 0, 15);
 
         if ($infoDesaAdd->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' mengubah data info kalurahan ' . $infoDesaAdd->title, 'update');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' mengubah data info kalurahan ' . $infoDesaAdd->title, 'update');
             return redirect('info-desa')->with('status', 'Ubah Data Info Desa Berhasil!');
         }
     }
@@ -154,7 +154,7 @@ class VillageInfoController extends Controller
         $infoDesa = VillageInfo::find($id);
         // $infoDesa->delete();
         if ($infoDesa->delete()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data info kalurahan ' . $infoDesa->title, 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data info kalurahan ' . $infoDesa->title, 'delete');
             return response()->json([
                 'status' => true
             ]);

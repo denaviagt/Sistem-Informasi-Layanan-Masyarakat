@@ -82,7 +82,7 @@ class VillageProfileController extends Controller
             $villageProfile->file = $fileName;
         }
         if ($villageProfile->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data ' . $type, 'create');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menambah data ' . $type, 'create');
             return redirect('profil-kalurahan')->with('status-success', 'Tambah Data ' . $type . '  Berhasil!');
         } else {
             return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data ' . $type . '  Gagal!');
@@ -155,7 +155,7 @@ class VillageProfileController extends Controller
             $villageProfile->file = $fileName;
         }
         if ($villageProfile->save()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data ' . $type . ' dengan id ' . $villageProfile->id, 'update');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' merubah data ' . $type . ' dengan id ' . $villageProfile->id, 'update');
             return redirect('profil-kalurahan')->with('status-success', 'Edit Data ' . $type . 'Berhasil!');
         } else {
             return redirect('profil-kalurahan')->with('status-fail', 'Tambah Data Layanan ' . $type . '  Gagal!');
@@ -181,7 +181,7 @@ class VillageProfileController extends Controller
             $type = 'produk hukum';
         }
         if ($villageProfile->delete()) {
-            addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data ' . $type . ' dengan id ' . $villageProfile->id, 'delete');
+            // addToLog($this->url, $this->ip, $this->nama_admin . ' menghapus data ' . $type . ' dengan id ' . $villageProfile->id, 'delete');
             return response()->json([
                 'status' => true
             ]);
