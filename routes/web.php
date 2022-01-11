@@ -17,13 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index');
+Route::get('/login_user', function ()
+{
+    return view('front.login');
+});
 Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
 Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
 Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
-// Route::get('/', function ()
-// {
-//     return 'acb';
-// });
+Route::post('/aduan/store', 'MainController@aduan_store')->name('aduan.store');
+
 Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
 Route::get('/detail-service-info/{id}', 'MainController@ServiceInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
@@ -74,7 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/citizen-name', 'CitizenController@select2Name');
     Route::get('/citizen-nik', 'CitizenController@select2Nik');
     Route::get('data-penduduk/{id}', 'CitizenController@show');
-    // Route::get('/citizen/{id}', 'CitizenController@show');
+    Route::get('/citizen/{id}', 'CitizenController@show_data');
     Route::post('/citizen/{id}/dataverif', 'CitizenController@dataVerif');
 
     Route::get('/info-layanan', 'ServiceInfoController@index');
@@ -84,7 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/info-layanan/{id}/{type}', 'ServiceInfoController@destroy');
     Route::get('/info-layanan/data/alur', 'ServiceInfoController@data_alur');
 
-    Route::get('service', 'ServiceController@index');
+    Route::get('service', 'ServiceController@index')->name('service');
     Route::get('/service/index/{id}/edit', 'ServiceController@edit');
     Route::POST('/service/store', 'ServiceController@store');
     Route::delete('/service/{id}', 'ServiceController@destroy');
