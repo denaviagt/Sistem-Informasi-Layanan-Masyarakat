@@ -3,9 +3,6 @@
 
 @section('content')
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
             <!-- Start Page Content -->
@@ -13,20 +10,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="status-response">
-
                     </div>
-                    {{-- @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif --}}
                     <div class="card">
                         <div class="card-body">
-                            {{-- <div class="text-right mb-3">
+                            <div class="text-right mb-3">
                                 <a href="javascript:void(0)" id="createService" type="button"
                                     class="btn waves-effect waves-light btn-rounded btn-primary"
                                     onclick="addService()">Tambah</a>
-                            </div> --}}
+                            </div>
                             <div class="table-responsive">
                                 <table class="service-table table table-striped table-bordered no-wrap">
                                     <thead>
@@ -47,33 +38,36 @@
                                                 <td>{{ $item->full_name }}</td>
                                                 <td>{{ $item->date }}</td>
                                                 @if ($item->status == 'accepted')
-                                                    <td class="table-info"><span class="badge badge-warning">Diterima</span>
+                                                    <td class="table-info"><span
+                                                            class="badge badge-warning">Diterima</span>
                                                     </td>
                                                 @elseif($item->status == 'processing')
-                                                    <td class="table-info"><span class="badge badge-primary">Proses</span>
+                                                    <td class="table-info"><span
+                                                            class="badge badge-primary">Proses</span>
                                                     </td>
                                                 @elseif($item->status == 'rejected')
-                                                    <td class="table-info"><span class="badge badge-danger">Ditolak</span>
+                                                    <td class="table-info"><span
+                                                            class="badge badge-danger">Ditolak</span>
                                                     </td>
                                                 @elseif($item->status == 'completed')
-                                                    <td class="table-info"><span class="badge badge-success">Selesai</span>
+                                                    <td class="table-info"><span
+                                                            class="badge badge-success">Selesai</span>
                                                     </td>
                                                 @else
-                                                    <td class="table-info"><span class="badge badge-info">Terkirim</span>
+                                                    <td class="table-info"><span
+                                                            class="badge badge-info">Terkirim</span>
                                                     </td>
                                                 @endif
                                                 <td>
-                                                    {{-- href="{{ url('/detail-layanan/') }}"
-                                                    --}}
+                                                    {{-- href="{{ url('/detail-layanan/') }}" --}}
                                                     <a href="javascript:void(0)" class="btn btn-action text-primary"
                                                         data-toggle="tooltip" data-placement="top" title="Detail"><i
                                                             class="fas fa-eye" onclick="detailLayanan(event.target)"
                                                             data-id="{{ $item->id }}"></i></a>
-                                                    {{-- <a href="javascript:void(0)"
-                                                        data-id="{{ $item->id }}" onclick="editService(event.target)"
+                                                    <a href="javascript:void(0)" data-id="{{ $item->id }}"
+                                                        onclick="editService(event.target)"
                                                         class="btn btn-action text-success" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                    --}}
 
                                                     <a class="btn btn-action text-danger" data-toggle="tooltip"
                                                         data-placement="top" title="Hapus"><i data-id="{{ $item->id }}"
@@ -92,10 +86,6 @@
             <!-- ============================================================== -->
             <!-- End PAge Content -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
     </div>
 
     <!--  Modal content for Add Layanan -->
@@ -134,12 +124,13 @@
                                 <textarea type="text" class="form-control" id="inputAddress" disabled></textarea>
                             </div>
                         </div>
-                        {{-- <div class="form-group row">
+                        <div class="form-group row">
                             <label for="input-deskripsi-layanan" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
-                                <textarea type="text" class="form-control" id="input-deskripsi-layanan" disabled></textarea>
+                                <textarea type="text" class="form-control" id="input-deskripsi-layanan"
+                                    name="desc"></textarea>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label col-form-label-sm">Masukan foto KTP</label>
                             <div class="col-sm-9">
@@ -181,8 +172,7 @@
                                     <option value="processing">Diproses</option>
                                     <option value="rejected">Ditolak</option>
                                     <option value="completed">Komplit</option>
-                                    {{-- <option value="sent">sent</option>
-                                    --}}
+                                    {{-- <option value="sent">sent</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -265,7 +255,7 @@
                                             <select name="category" id="categoryService" class="custom-select mr-sm-2 bg-transparent border-0 text-dark font-weight-bold " onchange='this.form.submit()'
                                                 id="inlineFormCustomSelect">
                                                 @foreach ($category as $item)
-                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}" >
+                                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
                                                         {{ $item->category }}
                                                         <i class="fas fa-chevron-down"></i>
                                                     </option>
@@ -292,7 +282,7 @@
                     },
                     processResults: function(data, params) {
                         var items = $.map(data.data, function(obj) {
-                            obj.id = obj.id;
+                            obj.id = obj.nik;
                             obj.text = obj.nik;
 
                             return obj;
@@ -316,8 +306,8 @@
                     type: "GET",
                     success: function(response) {
                         if (response) {
-                            $('#inputName').val(response.data['full_name'])
-                            $('#inputAddress').val(response.data['address'])
+                            $('#inputName').val(response.full_name)
+                            $('#inputAddress').val(response.address)
                         }
                     }
                 });
@@ -345,7 +335,7 @@
             $('#ajaxModal').modal('show');
         };
 
-        function editService(evet) {
+        function editService(event) {
             var id = $(event).data('id');
             let _url = `/service/${id}`;
 
@@ -400,6 +390,5 @@
                 }
             });
         }
-
     </script>
 @endsection
