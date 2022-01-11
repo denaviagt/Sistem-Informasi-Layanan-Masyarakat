@@ -27,7 +27,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' =>  $faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8]),
                     'citizen_id' => $faker->numberBetween(1, 55),
                     'description' => $faker->text(),
-                    'user_id' => $faker->numberBetween(1, 20)
+                    'user_id' => $faker->numberBetween(1, 10)
                 ],
             );
         }
@@ -41,7 +41,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 8,
                     'citizen_id' => 23,
                     'description' => 'pelengkap permohonan bantuan',
-                    'user_id' => 16
+                    'user_id' => 2
                 ],
                 [
                     // id 52
@@ -51,7 +51,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 8,
                     'citizen_id' => 22,
                     'description' => 'permohonan bantuan',
-                    'user_id' => 15
+                    'user_id' => 2
                 ],
                 [
                     // id 53
@@ -61,7 +61,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 7,
                     'citizen_id' => 21,
                     'description' => 'Surat pengantar nikah',
-                    'user_id' => 14
+                    'user_id' => 1
                 ],
                 [
                     // id 54
@@ -71,7 +71,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 7,
                     'citizen_id' => 28,
                     'description' => 'Pengurusan surat pengantar nikah',
-                    'user_id' => 13
+                    'user_id' => 1
                 ],
                 [
                     // id 55
@@ -81,7 +81,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 6,
                     'citizen_id' => 20,
                     'description' => 'Ikut istri',
-                    'user_id' => 12
+                    'user_id' => 1
                 ],
                 [
                     // id 56
@@ -91,7 +91,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 5,
                     'citizen_id' => 19,
                     'description' => 'Pindah dinas ke luar kota',
-                    'user_id' => 11
+                    'user_id' => 1
                 ],
                 [
                     // id 57
@@ -101,7 +101,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 5,
                     'citizen_id' => 18,
                     'description' => 'Pindah penduduk karena mengikuti suami',
-                    'user_id' => 10
+                    'user_id' => 2
                 ],
                 [
                     // id 58
@@ -111,7 +111,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 4,
                     'citizen_id' => 33,
                     'description' => 'Pembuatan akta kematian saudara kandung',
-                    'user_id' => 9
+                    'user_id' => 2
                 ],
                 [
                     // id 59
@@ -121,7 +121,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 4,
                     'citizen_id' => 32,
                     'description' => 'Pembuatan akta kematian orang tua',
-                    'user_id' => 8
+                    'user_id' => 1
                 ],
                 [
                     // id 60
@@ -131,7 +131,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 3,
                     'citizen_id' => 31,
                     'description' => 'Pembuatan akta lahir',
-                    'user_id' => 7
+                    'user_id' => 2
                 ],
                 [
                     // id 61
@@ -141,7 +141,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 3,
                     'citizen_id' => 30,
                     'description' => 'Pembuatan akta lahir',
-                    'user_id' => 6
+                    'user_id' => 1
                 ],
                 [
                     // id 62
@@ -151,7 +151,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 2,
                     'citizen_id' => 13,
                     'description' => 'Pembuatan KK baru',
-                    'user_id' => 5
+                    'user_id' => 2
                 ],
                 [
                     // id 63
@@ -161,7 +161,7 @@ class ServiceSeeder extends Seeder
                     'service_category_id' => 2,
                     'citizen_id' => 12,
                     'description' => 'Pembuatan KK baru',
-                    'user_id' => 4
+                    'user_id' => 1
                 ],
                 [
                     // id 64

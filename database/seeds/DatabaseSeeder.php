@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CitizenSeeder::class);      
         $this->call(UserSeeder::class);
         $this->call(ServiceCategorySeeder::class);
-        // $this->call(ServiceSeeder::class);
+        $this->call(ServiceSeeder::class);
         $this->call(ServiceProcedureSeeder::class);
         $this->call(ServiceRequirementSeeder::class);
+        $this->call(ServiceFileSeeder::class);
     }
 }
