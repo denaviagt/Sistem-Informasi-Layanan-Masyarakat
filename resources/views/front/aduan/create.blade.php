@@ -6,9 +6,23 @@
             <div class="section-tittle text-center mb-5">
                 <h3>Laporkan Keluhan Anda</h3>
             </div>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <div class="card border-0 shadow">
                 <div class="card-body m-2">
-                    <form class="form-contact">
+                    <form class="form-contact" action="{{ route('aduan.store') }}" method="POST">
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="nama">Nama Pengirim</label>
@@ -25,9 +39,9 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
-                                <label for="agama">Daerah</label>
+                                <label for="dusun">Daerah</label>
                                 <br>
-                                <select id="agama" name="religion" class="form-control w-100">
+                                <select id="dusun" name="dusun_id" class="form-control w-100">
                                     <option selected>Choose Daerah</option>
                                     @foreach ($dusun as $ds)
                                         <option value="{{ $ds->id }}">{{ $ds->dusun_name }}</option>
