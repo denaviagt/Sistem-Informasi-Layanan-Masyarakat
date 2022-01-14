@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\ServiceInfoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@index');
 Route::get('/login_user', function ()
 {
-    return view('front.login');
-});
+    return view('front.auth.login');
+})->name('login_user');
+Route::post('/login_user', 'Auth\FrontLoginController@login')->name('login_user');
 Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
 Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
 Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
