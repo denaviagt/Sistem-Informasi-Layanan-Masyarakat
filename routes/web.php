@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'MainController@index');
-Route::get('/login_user', function ()
-{
-    return view('front.auth.login');
-})->name('login_user');
-Route::post('/login_user', 'Auth\FrontLoginController@login')->name('login_user');
+Route::middleware('auth:user')->group(function(){
+    Route::get('/', 'MainController@index');
+  });
+Route::get('user/login', 'Auth\FrontLoginController@getLogin')->name('user.login');
+Route::post('user/login', 'Auth\FrontLoginController@postLogin');
+Route::get('user/logout', 'Auth\FrontLoginController@postLogout');
 Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
 Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
 Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
