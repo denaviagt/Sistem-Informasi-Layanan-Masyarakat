@@ -19,6 +19,8 @@ Route::middleware('auth:user')->group(function(){
 Route::get('user/login', 'Auth\FrontLoginController@getLogin')->name('user.login');
 Route::post('user/login', 'Auth\FrontLoginController@postLogin');
 Route::get('user/logout', 'Auth\FrontLoginController@postLogout');
+Route::get('/user/nik/{nik}', 'UserController@show_data_by_nik')->name('user.nik');
+
 Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
 Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
 Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
