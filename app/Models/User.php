@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as AuthenticableModel;
+use Illuminate\Notifications\Notifiable;
 
 class User extends AuthenticableModel
 {
+    use Notifiable;
+
+    protected $guard = 'webuser';
 
     protected $fillable = ['username', 'email', 'citizen_id', 'password', 'phone'];
 

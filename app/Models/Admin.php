@@ -11,6 +11,8 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
+    protected $guard = 'user';
+
     protected $fillable = ['password'];
 
     public function villageInfo()
