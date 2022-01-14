@@ -33,7 +33,13 @@ class FrontLoginController extends Controller
             'password' => 'required|min:5'
         ]);
 
-        if (auth()->guard('user')->attempt($request->only('username', 'password'))) {
+        $field = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [
+            $field => $request->input('username'),
+            'password' => $request->input('password')
+        ];
+
+        if (auth()->guard('user')->attempt($credentials)) {
             $request->session()->regenerate();
             $this->clearLoginAttempts($request);
             return redirect()->intended();
