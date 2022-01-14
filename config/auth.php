@@ -41,7 +41,7 @@ return [
             'provider' => 'admins',
         ],
 
-        'webapi' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
