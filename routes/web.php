@@ -14,20 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware('auth:user')->group(function(){
-    Route::get('/', 'MainController@index');
-  });
+    Route::get('/', 'MainController@index')->name('layanan.index');
+    Route::get('/user/nik/{nik}', 'UserController@show_data_by_nik')->name('user.nik');
+    Route::get('/layanan', 'MainController@show')->name('layanan.show');
+    Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
+    Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
+    Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
+    Route::post('/aduan/store', 'MainController@aduan_store')->name('aduan.store');
+});
 Route::get('user/login', 'Auth\FrontLoginController@getLogin')->name('user.login');
 Route::post('user/login', 'Auth\FrontLoginController@postLogin');
-Route::get('user/logout', 'Auth\FrontLoginController@postLogout');
-Route::get('/user/nik/{nik}', 'UserController@show_data_by_nik')->name('user.nik');
+Route::get('user/logout', 'Auth\FrontLoginController@postLogout')->name('user.logout');
 
-Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
-Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
-Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
-Route::post('/aduan/store', 'MainController@aduan_store')->name('aduan.store');
-
-Route::get('/view-info/{id}', 'MainController@villageInfoDetail');
-Route::get('/detail-service-info/{id}', 'MainController@ServiceInfoDetail');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('login', function () {
@@ -46,22 +44,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/edit/password', 'AdminController@updatePassword');
     Route::delete('admin/delete/{id}', 'AdminController@destroy');
 
-    Route::get('/profil-kalurahan', 'VillageProfileController@index');
-    Route::post('/profil-kalurahan', 'VillageProfileController@store');
-    Route::get('/profil-kalurahan/{id}/{type}/edit', 'VillageProfileController@edit');
-    Route::put('/profil-kalurahan/{type}', 'VillageProfileController@update');
-    Route::delete('/profil-kalurahan/{id}/{type}', 'VillageProfileController@destroy');
 
     Route::get('/edit-password', function () {
         return view('edit-password');
     });
-    Route::get('/info-desa', 'VillageInfoController@index');
-    Route::get('/info-desa/{id}', 'VillageInfoController@show');
-    Route::get('/edit-info-desa/{id}/edit', 'VillageInfoController@edit');
-    Route::put('/edit-info-desa/{id}', 'VillageInfoController@update');
-    Route::get('/tambah-info-desa', 'VillageInfoController@create');
-    Route::post('/tambah-info-desa', 'VillageInfoController@store');
-    Route::delete('/info-desa/{id}', 'VillageInfoController@destroy');
+
 
     Route::get('/data-penduduk', 'CitizenController@index');
     Route::get('data-penduduk/create', 'CitizenController@create');
