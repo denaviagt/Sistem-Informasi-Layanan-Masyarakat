@@ -9,7 +9,7 @@ class User extends AuthenticableModel
 {
     use Notifiable;
 
-    protected $guard = 'webuser';
+    protected $guard = 'user';
 
     protected $fillable = ['username', 'email', 'citizen_id', 'password', 'phone'];
 

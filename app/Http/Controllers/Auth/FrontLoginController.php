@@ -4,94 +4,54 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class FrontLoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    use AuthenticatesUsers;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $maxAttempts = 3;
+    protected $decayMinutes = 2;
+
     public function __construct()
     {
-//        $this->middleware('auth:user')->except('logout');
+        $this->middleware('guest:user')->except('postLogout');
     }
 
-    protected function guard()
+    public function getLogin()
     {
-        return Auth::guard('user');
+        return view('auth.user.login');
     }
 
-    public function username(Request $request)
+    public function postLogin(Request $request)
     {
-        $login = $request->input('username');
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        request()->merge([$field => $login]);
-        return $field;
-    }
-
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function login(Request $request)
-    {
-        $request->validate([
-            'username' => ['required', 'email'],
-            'password' => ['required'],
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required|min:5'
         ]);
 
-        $credentials = $request->only(['username', 'password']);
-        $attempt = Auth::guard('user')->attempt($credentials);
+        if (auth()->guard('user')->attempt($request->only('username', 'password'))) {
+            $request->session()->regenerate();
+            $this->clearLoginAttempts($request);
+            return redirect()->intended();
+        } else {
+            $this->incrementLoginAttempts($request);
 
-        if (!$attempt) {
-            echo 'Failed';
-            return redirect()->back()->withInput($request->only('email', 'password'));
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(["Incorrect user login details!"]);
         }
-
-        $currentUser = Auth::guard('user')->user();
-        dd($currentUser);
-//        $request->session()->regenerate();
-//        return redirect()->route();
     }
-    // alternatif nek login e iseh raiso
-    public function login_user(Request $request)
+
+    public function postLogout()
     {
-        $request->validate([
-            'username' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        auth()->guard('user')->logout();
+        session()->flush();
 
-        $user = User::where($this->username($request), $request->username)->first();
-        if ($user != null) {
-            if (Hash::check($request->password, $user->password)) {
-                Auth::guard('user')->login($user);
-            }
-        }
-
-        if (!Auth::guard('user')->check()) {
-            echo 'Failed';
-            return redirect()->back()->withInput($request->only('email', 'password'));
-        }
-
-        $currentUser = Auth::guard('user')->user();
-        $request->session()->regenerate();
-        return redirect();
+        return redirect()->route('user.login');
     }
 }
