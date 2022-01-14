@@ -39,11 +39,11 @@
             <div class="row" style="max-width: 600px">
                 <div class="col-12 text-center text-dark">
                     <h1><b>E-SILAM</b></h1>
-                    <p><b>Sistem Informasi Layanan Masyarakat Jogotirto</b></p>
+                    <p><b>Sistem Informasi Layanan Masyarakat</b></p>
                 </div>
                 <div class="col-lg-12 col-md-12 login-box shadow">
                     <div class="p-5">
-                        <h2 class="mt-3 text-center text-dark font-weight-bold">{{ __('Login') }}</h2>
+                        <h2 class="mt-3 text-center text-dark font-weight-bold">{{ __('Login User') }}</h2>
                         <form class="mt-4" method="POST" action="{{ route('login_user') }}">
                             @csrf
                             @error('email', 'password')
