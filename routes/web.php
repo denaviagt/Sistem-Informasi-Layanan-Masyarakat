@@ -20,6 +20,7 @@ Route::get('/login_user', function ()
     return view('front.auth.login');
 })->name('login_user');
 Route::post('/login_user', 'Auth\FrontLoginController@login')->name('login_user');
+Route::get('/user/nik/{nik}', 'UserController@show_data_by_nik')->name('user.nik');
 Route::get('/layanan/{id}/show', 'MainController@show')->name('layanan.show');
 Route::get('/layanan/{id}/create', 'MainController@create')->name('layanan.create');
 Route::get('/aduan/create', 'MainController@aduan_create')->name('aduan.create');
