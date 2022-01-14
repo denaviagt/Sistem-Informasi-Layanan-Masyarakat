@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FrontLoginController extends Controller
 {
@@ -56,8 +58,8 @@ class FrontLoginController extends Controller
         ]);
 
         $credentials = $request->only(['username', 'password']);
+        $attempt = Auth::guard('user')->attempt($credentials);
 
-        $attempt = Auth::guard('user')->attempt($credentials, $request->remember);
         if (!$attempt) {
             echo 'Failed';
             return redirect()->back()->withInput($request->only('email', 'password'));
@@ -67,5 +69,29 @@ class FrontLoginController extends Controller
         dd($currentUser);
 //        $request->session()->regenerate();
 //        return redirect()->route();
+    }
+    // alternatif nek login e iseh raiso
+    public function login_user(Request $request)
+    {
+        $request->validate([
+            'username' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        $user = User::where($this->username($request), $request->username)->first();
+        if ($user != null) {
+            if (Hash::check($request->password, $user->password)) {
+                Auth::guard('user')->login($user);
+            }
+        }
+
+        if (!Auth::guard('user')->check()) {
+            echo 'Failed';
+            return redirect()->back()->withInput($request->only('email', 'password'));
+        }
+
+        $currentUser = Auth::guard('user')->user();
+        $request->session()->regenerate();
+        return redirect();
     }
 }
