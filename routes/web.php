@@ -23,6 +23,8 @@ Route::middleware('auth:user')->group(function(){
     Route::post('/aduan/store', 'MainController@aduan_store')->name('aduan.store');
 });
 Route::get('user/login', 'Auth\FrontLoginController@getLogin')->name('user.login');
+Route::get('user/register', 'Auth\FrontLoginController@getRegister')->name('user.register');
+Route::post('user/register', 'Auth\FrontLoginController@postRegister')->name('user.register');
 Route::post('user/login', 'Auth\FrontLoginController@postLogin');
 Route::get('user/logout', 'Auth\FrontLoginController@postLogout')->name('user.logout');
 
