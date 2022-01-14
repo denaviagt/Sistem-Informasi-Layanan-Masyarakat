@@ -50,41 +50,25 @@
             <div class="main-header header-sticky">
                 <div class="container">
                     <div class="row align-items-center">
-                        <!-- Logo -->
-                        {{-- <div class="col-xl-2 col-lg-2 col-md-2">
-                            <div class="logo d-flex">
-                                <a href="#"><img src="{{ asset('assets/img/main-logo.png') }}" alt=""
-                                        width="40px"></a>
-                                <div class="ml-3">
-                                    <span class="font-weight-bold">Kalurahan <br> Jogotirto</span>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <!-- Main-menu -->
                             <div class="main-menu align-item-center d-none d-lg-block">
-                                <nav class="d-flex justify-content-center">
-                                    <ul id="navigation">
-                                        {{-- <li class="active"><a href="{{ url('/') }}"> Beranda</a></li> --}}
-                                        <li><a href="{{ url('/') }}">Pengajuan Layanan</a></li>
-                                        <li><a href="{{ route('aduan.create') }}">Pengajuan Masalah</a></li>
-                                        {{-- <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
-                                        <li><a href="#infoKalurahan">Info Kalurahan</a></li>
-                                        <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li> --}}
-                                        {{-- <li><a href="#">Info Layanan</a>
-                                            <ul class="submenu dropdown-menu-right">
-                                                @foreach ($serviceCategories as $serviceCategory)
-                                                    <li><a
-                                                            href="{{ url('detail-service-info/' . $serviceCategory->id) }}">
-                                                            {{ $serviceCategory->category }}</a>
-                                                    </li>
-                                                @endforeach
-
-                                            </ul>
-                                        </li> --}}
-                                        {{-- <li><a href="contact.html">Contact</a></li> --}}
-                                    </ul>
-                                </nav>
+                                <div class="d-flex justify-content-between">
+                                    <nav class="d-flex justify-content-center">
+                                        <ul id="navigation">
+                                            <li><a href="{{ route('layanan.index') }}">Pengajuan Layanan</a></li>
+                                            <li><a href="{{ route('aduan.create') }}">Pengajuan Masalah</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div>
+                                        <ul id="navigation">
+                                            <img src="" alt="">
+                                            <li>{{ Auth::user()->citizen->full_name }}</li>
+                                            <li><a href="{{ route('user.logout') }}"><i class="fas fa-sign-out-alt"
+                                                        aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -100,73 +84,6 @@
 
     @yield('content')
 
-    <footer>
-
-        <!-- Footer Start-->
-        <div class="footer-main">
-            <div class="footer-area footer-padding">
-                <div class="container">
-                    <div class="row  justify-content-between">
-                        <div class="col-lg-6 col-md-4 col-sm-8">
-                            <div class="single-footer-caption mb-30">
-                                <!-- logo -->
-                                <div class="footer-logo">
-                                    <a href="#" class="d-flex">
-                                        <img src="{{ asset('assets/img/logo.jpg') }}" alt="" height="50px">
-                                        <h4 class="ml-4 text-primay font-weight-bold">Kalurahan Jogotirto</h4>
-                                    </a>
-
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="d-flex">
-                                        <i class="ti-location-pin mr-2 mt-2"></i>
-                                        <p>Karongan, Jogotirto, Berbah, Sleman, Daerah Istimewa Yogyakarta 55573</p>
-                                    </div>
-                                    {{-- <div class="d-flex">
-                                        <i class="ti-mobile mr-2 mt-1"></i>
-                                        <p>089514953073</p>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <div class="col-lg-3 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Navigasi</h4>
-                                    <ul>
-                                        <li><a href="#strukturOrganisasi">Struktur Organisasi</a></li>
-                                        <li><a href="#vision">Visi</a></li>
-                                        <li><a href="#mission">Misi</a></li>
-                                        <li><a href="#infoKalurahan">Info Kalurahan</a></li>
-                                        <li><a href="#potensiKalurahan">Potensi Kalurahan</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-8">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Unduh Aplikasi</h4>
-                                    <img src="{{ asset('assets/img/app_btn2.png') }}" alt="">
-                                </div>
-                            </div>
-                        </div> --}}
-                    </div>
-                    <!-- Copy-Right -->
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 ">
-                            <div class="footer-copy-right">
-                                <p>
-                                    Copyright &copy; 2021 </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End-->
-
-    </footer>
 
     <!-- JS here -->
 
