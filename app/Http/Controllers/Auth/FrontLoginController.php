@@ -58,7 +58,6 @@ class FrontLoginController extends Controller
         $credentials = $request->only(['username', 'password']);
 
         $attempt = Auth::guard('user')->attempt($credentials, $request->remember);
-        dd($attempt);
         if (!$attempt) {
             echo 'Failed';
             return redirect()->back()->withInput($request->only('email', 'password'));
