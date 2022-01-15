@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="img js-fullheight" style="background-image: url(../assets/img/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(../assets/img/bg2.jpg);">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
