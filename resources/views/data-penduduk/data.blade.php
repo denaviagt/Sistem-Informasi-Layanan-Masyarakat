@@ -37,12 +37,12 @@
                                 <a href="{{ url('data-penduduk/export-excel') }}" class="btn mb-2 btn-primary mr-auto"
                                     target="_blank">Export Excel</a>
 
-                                <a href="{{ url('/data-penduduk/create') }}" class="btn mb-2 ml-auto btn-primary mr-2"
+                                {{-- <a href="{{ url('/data-penduduk/create') }}" class="btn mb-2 ml-auto btn-primary mr-2"
                                     role="button">Tambah</a>
                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                     data-target="#importExcel">
                                     Import Excel
-                                </button>
+                                </button> --}}
                             </div>
                             <div class="table-responsive">
                                 <table id="citizenTable" class="table table-striped table-bordered" style="font-size: 14px">
@@ -69,9 +69,9 @@
                                                 <td>
                                                     <a class="btn btn-action text-info" data-toggle="tooltip"
                                                         data-placement="top" title="Detail"
-                                                        href="{{ url('data-penduduk/' . $item->id) }}"><i class="fas fa-eye"
-                                                            data-id="{{ $item->id }}"></i></a>
-                                                    <a class="btn btn-action text-success"
+                                                        href="{{ url('data-penduduk/' . $item->id) }}"><i
+                                                            class="fas fa-eye" data-id="{{ $item->id }}"></i></a>
+                                                    {{-- <a class="btn btn-action text-success"
                                                         href="{{ url('data-penduduk/' . $item->id . '/edit') }}"
                                                         data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                             class="fas fa-edit"></i></a>
@@ -79,7 +79,7 @@
                                                     <a class="btn btn-action text-danger" data-toggle="tooltip"
                                                         data-placement="top" title="Hapus"><i class="fas fa-trash"
                                                             onclick="modalDelete(event.target)"
-                                                            data-id="{{ $item->id }}"></i></a>
+                                                            data-id="{{ $item->id }}"></i></a> --}}
 
                                                 </td>
                                             </tr>
@@ -194,6 +194,5 @@
                 }
             });
         }
-
     </script>
 @endsection

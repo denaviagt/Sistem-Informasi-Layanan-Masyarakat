@@ -79,21 +79,21 @@
             <!-- Start Location and Earnings Charts Section -->
             <!-- *************************************************************** -->
             <div class="row">
-                <div class="col-md-6 col-lg-8">
+                <div class="col-md-6 col-lg-12">
                     <div class="card shadow" style="background-color: #E9EDF1; border-radius: 20px;">
                         <div class="card-body">
                             <div class="d-flex align-items-start">
                                 <h4 class="card-title mb-0">Statistik Layanan dan Aduan Kalurahan Jogotirto</h4>
                             </div>
                             <div class="pl-4">
-                                <div class="position-relative" style="height: 315px;">
+                                <div class="position-relative">
                                     <canvas id="dashboardStatistik"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                {{-- <div class="col-md-6 col-lg-4">
                     <div class="card" style="background-color: #58A5F0; border-radius: 20px; ">
                         <div class="card-body">
                             <h4 class="card-title" style="color: white">Aktivitas Terbaru</h4>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- *************************************************************** -->
             <!-- End Location and Earnings Charts Section -->

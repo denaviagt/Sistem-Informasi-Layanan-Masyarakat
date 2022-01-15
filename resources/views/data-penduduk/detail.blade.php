@@ -135,10 +135,10 @@
                                 </div>
                             </div> --}}
 
-                            <div class="form-group text-right mr-5">
+                            {{-- <div class="form-group text-right mr-5">
                                 <a href="{{ url('data-penduduk/' . $detail->id . '/edit') }}" type="submit"
                                     class="btn btn-primary btn-sm mb-6 text-white">Edit</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
